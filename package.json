@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve",
+    "generate": "honkit pdf ./ ./dhia_nabli_report.pdf"
+  },
+  "devDependencies": {
+    "honkit": "^4.0.7"
+  },
+  "dependencies": {
+    "ebook-convert": "^2.0.1"
+  }
+}
