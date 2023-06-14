@@ -1,1 +1,1 @@
-# Methodology
+# Chapter 3: Methodology

@@ -1,1 +1,1 @@
-# Discussion
+# Chapter 6: Discussion

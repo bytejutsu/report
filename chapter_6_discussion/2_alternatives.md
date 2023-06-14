@@ -1,1 +1,1 @@
-# Alternatives
+## 6.2 Alternatives
