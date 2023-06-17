@@ -1,3 +1,0 @@
-# Chapter 1: Introduction
-
-The introduction chapter provides an overview of the project and introduces the TALL stack (TailwindCSS, Alpine.js, Laravel, and Livewire) as the chosen technology stack for the web application. The following sections will discuss the motivation behind the project, its objectives, and the significance of exploring the integration of these technologies. Through this introduction, readers will gain a clear understanding of the context and purpose of the project.

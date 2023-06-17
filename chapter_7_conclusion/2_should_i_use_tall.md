@@ -1,1 +1,0 @@
-## 7.2 Should I Use TALL?

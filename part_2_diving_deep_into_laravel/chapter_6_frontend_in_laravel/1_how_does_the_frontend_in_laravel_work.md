@@ -1,0 +1,1 @@
+## 6.1 How Does The Frontend in Laravel Work
