@@ -10,9 +10,9 @@
   "hidepagefooters": [],
   "plugins": [
     "chapter-fold",
-    "theme-creative",
     "hide-published-with",
-    "hints"
+    "hints",
+    "mermaid-newface"
   ],
   "pdf": {
     "pageNumbers": true,
@@ -24,7 +24,16 @@
   "pluginsConfig": {
     "asciidoc": {
       "numbered": {},
-      "chapter-fold":{}
+      "chapter-fold":{},
+      "mermaid-newface": {
+        "theme": "neutral"
+      },
+      "hints": {
+        "info": "fa fa-info-circle",
+        "tip": "fa fa-mortar-board",
+        "danger": "fa fa-exclamation-cicle",
+        "working": "fa fa-wrench"
+      }
     }
   }
 }

@@ -11,7 +11,7 @@
 ###  Part 2: Understanding Web Applications
 
 * [Chapter 2: Introduction to Web Applications](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/README.md)
-  * [Section 2.1: Anatomy of a Web Application](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/1_anatomy_of_a_web_application.md)
+  * [Section 2.1: Anatomy of a Web Application](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/1_request_response_cycle.md)
 
 ### Part 3: Diving Deep into Laravel
 
