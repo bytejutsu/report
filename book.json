@@ -1,3 +1,30 @@
 {
-  "variables": {}
+  "variables": {},
+  "title": "Laravel Frontend Development",
+  "description": "Beginners guide for frontend development in Laravel",
+  "author": "Dhia Eddine Nabli",
+  "copyright": "Dhia Eddine Nabli",
+  "keywords": "Laravel,Livewire,Vue.js",
+  "language": "en",
+  "hidepageheaders": [],
+  "hidepagefooters": [],
+  "plugins": [
+    "chapter-fold",
+    "theme-creative",
+    "hide-published-with",
+    "hints"
+  ],
+  "pdf": {
+    "pageNumbers": true,
+    "margin": {
+      "right": 32,
+      "left": 32
+    }
+  },
+  "pluginsConfig": {
+    "asciidoc": {
+      "numbered": {},
+      "chapter-fold":{}
+    }
+  }
 }
