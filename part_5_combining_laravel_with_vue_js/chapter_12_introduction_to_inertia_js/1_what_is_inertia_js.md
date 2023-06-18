@@ -1,1 +1,0 @@
-## 12.1 What is Inertia.js

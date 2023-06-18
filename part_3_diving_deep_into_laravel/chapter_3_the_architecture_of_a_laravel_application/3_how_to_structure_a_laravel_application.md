@@ -1,1 +1,0 @@
-## 3.3 How to Structure a Laravel Application

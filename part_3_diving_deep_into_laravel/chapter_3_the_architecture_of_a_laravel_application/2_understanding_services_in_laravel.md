@@ -1,1 +1,0 @@
-## 3.2 Understanding Services in Laravel

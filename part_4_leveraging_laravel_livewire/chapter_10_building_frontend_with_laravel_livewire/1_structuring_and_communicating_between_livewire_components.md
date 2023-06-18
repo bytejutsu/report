@@ -1,0 +1,1 @@
+## 10.1 Structuring and Communicating between Livewire Components

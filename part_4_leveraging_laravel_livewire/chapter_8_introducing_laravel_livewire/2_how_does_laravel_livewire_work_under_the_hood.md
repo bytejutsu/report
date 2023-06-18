@@ -1,1 +1,0 @@
-## 8.1 How does Laravel Livewire Work under the Hood

@@ -1,1 +1,0 @@
-## Chapter 6: Frontend in Laravel

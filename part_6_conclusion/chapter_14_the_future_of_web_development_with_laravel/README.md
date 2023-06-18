@@ -1,1 +1,0 @@
-## Chapter 14: The Future of Web Development with Laravel

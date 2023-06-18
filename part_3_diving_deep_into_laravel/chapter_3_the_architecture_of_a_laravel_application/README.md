@@ -1,1 +1,0 @@
-## Chapter 3: The Architecture af a Laravel Application

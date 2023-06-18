@@ -1,1 +1,0 @@
-## 6.2 Laravel Blade Template Engine
