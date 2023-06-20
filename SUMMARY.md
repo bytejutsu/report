@@ -11,7 +11,10 @@
 ###  Part 2: Understanding Web Applications
 
 * [Chapter 2: Introduction to Web Applications](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/README.md)
-  * [Section 2.1: Anatomy of a Web Application](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/1_request_response_cycle.md)
+  * [Section 2.1: Request Response Cycle](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/1_request_response_cycle.md)
+  * [Section 2.2: Web Server VS Application Server](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/2_web_server_vs_application_server.md)
+  * [Section 2.3: Web Server Application Server Interface](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/3_web_server_application_server_interface.md)
+  * [Section 2.4: Application Server](part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/4_application_server.md)
 
 ### Part 3: Diving Deep into Laravel
 
