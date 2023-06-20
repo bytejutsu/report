@@ -1,4 +1,4 @@
-## 2.2 Web Server vs Application Server
+## 2.3 Web Server vs Application Server
 
 Web Server and Application Server are both components used in web applications, they work in conjunction but serve different purposes. Let's compare them:
 

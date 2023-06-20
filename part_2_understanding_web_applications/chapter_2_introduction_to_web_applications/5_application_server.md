@@ -1,4 +1,4 @@
-## 2.4 Application Server
+## 2.5 Application Server
 
 {% hint style="working" %}
 
