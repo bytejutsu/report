@@ -98,7 +98,27 @@ To enable or disable modules, you can use the `a2enmod` and `a2dismod` commands 
 
 {% endhint %}
 
+---
 
+```mermaid
+sequenceDiagram
+participant Browser
+box "Apache HTTP Server Process"
+participant Apache as Apache Core Module and Enabled Modules
+participant mod_php
+end
+participant ASC as Application Source Code
+participant Database as Database Server Process
+Browser->>Apache: HTTP request for profile.html
+Apache->>ASC: Locate profile.html
+Note over ASC: Contains multiple files
+Note over ASC: including profile.html
+Apache->>mod_php: Pass request if PHP script inside
+mod_php->>Database: Query data (if needed)
+mod_php->>Apache: Return generated HTML
+Apache->>Browser: HTTP response with HTML content
+Browser->>Browser: Render the page
+```
 
 ---
 The following is a sequence diagram that visually represents the interactions between the user, browser, web server, and application server during the request-response cycle of a web application.
