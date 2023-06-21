@@ -88,14 +88,44 @@ Prior to Apache 2.0, the Apache server used a single process model called the `m
 There are different MPMs available in Apache, each implementing different strategies for managing concurrency. Some commonly used MPMs include:
 
 
-**Prefork MPM**: This MPM follows a non-threaded approach and creates multiple worker processes, each capable of handling a single connection at a time. It provides excellent stability and isolation between processes but can consume more memory due to the overhead of separate processes.
+* **Prefork MPM**: This MPM follows a non-threaded approach and creates multiple worker processes, each capable of handling a single connection at a time. It provides excellent stability and isolation between processes but can consume more memory due to the overhead of separate processes.
 
 
-**Worker MPM**: The Worker MPM is a hybrid model that combines processes and threads. It creates multiple worker processes, each containing multiple threads. Each thread handles an individual connection, allowing for higher concurrency and reduced memory usage compared to the Prefork MPM.
+* **Worker MPM**: The Worker MPM is a hybrid model that combines processes and threads. It creates multiple worker processes, each containing multiple threads. Each thread handles an individual connection, allowing for higher concurrency and reduced memory usage compared to the Prefork MPM.
 
 
-**Event MPM**: The Event MPM is similar to the Worker MPM but introduces a more efficient event-driven architecture. It utilizes a small number of threads to handle a large number of connections, using event notifications to efficiently manage concurrency and reduce resource usage.
+* **Event MPM**: The Event MPM is similar to the Worker MPM but introduces a more efficient event-driven architecture. It utilizes a small number of threads to handle a large number of connections, using event notifications to efficiently manage concurrency and reduce resource usage.
 
+---
+
+The following is a diagram that represents different implementations of the MPM and how they differ.
+
+```mermaid
+
+graph TD;
+  A[Apache HTTP Server];
+  MPM[Multi-Processing Modules];
+  B[mpm_prefork];
+  C[mpm_worker];
+  D[mpm_event];
+  E[Multiple Child Processes];
+  F[Multiple Threads per Child];
+  G[Keep-Alive Handling];
+  A --> MPM;
+  MPM --> B;
+  MPM --> C;
+  MPM --> D;
+  B --> E;
+  C --> E;
+  C --> F;
+  D --> E;
+  D --> F;
+  D --> G;
+  
+```
+
+
+---
 
 {% hint style="info" %}
 
