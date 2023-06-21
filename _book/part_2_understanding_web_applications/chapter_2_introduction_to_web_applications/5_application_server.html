@@ -3,7 +3,7 @@
 <html lang="en" >
     <head>
         <meta charset="UTF-8">
-        <title>Section 2.4: Why Use Both · Laravel Frontend Development</title>
+        <title>Section 2.4: Application Server · Laravel Frontend Development</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 4.0.7">
@@ -67,7 +67,7 @@
     <link rel="next" href="../../part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/" />
     
     
-    <link rel="prev" href="3_apache_and_laravel_as_examples.html" />
+    <link rel="prev" href="4_web_server_application_server_interface.html" />
     
 
     </head>
@@ -150,9 +150,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1.1" data-path="1_request_response_cycle.html">
+        <li class="chapter " data-level="3.1.1" data-path="2_web_server.html">
             
-                <a href="1_request_response_cycle.html">
+                <a href="2_web_server.html">
             
                     
                     Section 2.1: Request Response Cycle
@@ -163,9 +163,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.2" data-path="2_web_server_vs_application_server.html">
+        <li class="chapter " data-level="3.1.2" data-path="3_web_server_vs_application_server.html">
             
-                <a href="2_web_server_vs_application_server.html">
+                <a href="3_web_server_vs_application_server.html">
             
                     
                     Section 2.2: Web Server VS Application Server
@@ -176,12 +176,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.3" data-path="3_apache_and_laravel_as_examples.html">
+        <li class="chapter " data-level="3.1.3" data-path="4_web_server_application_server_interface.html">
             
-                <a href="3_apache_and_laravel_as_examples.html">
+                <a href="4_web_server_application_server_interface.html">
             
                     
-                    Section 2.3: Apache And Laravel As Examples
+                    Section 2.3: Web Server Application Server Interface
             
                 </a>
             
@@ -189,12 +189,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.1.4" data-path="4_why_use_both.html">
+        <li class="chapter active" data-level="3.1.4" data-path="5_application_server.html">
             
-                <a href="4_why_use_both.html">
+                <a href="5_application_server.html">
             
                     
-                    Section 2.4: Why Use Both
+                    Section 2.4: Application Server
             
                 </a>
             
@@ -896,7 +896,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Section 2.4: Why Use Both</a>
+        <a href="../.." >Section 2.4: Application Server</a>
     </h1>
 </div>
 
@@ -911,35 +911,25 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="why-use-both-a-web-server-apache-and-an-application-server-laravel-php-framework">Why Use Both a Web Server (Apache) and an Application Server (Laravel PHP Framework)?</h1>
-<p>If both a Web Server (for example Apache) and an Application Server (for example Laravel PHP Framework) can handle HTTP requests and respond back, why do we need them both? In other words, what can Apache do that the Laravel PHP Framework can&apos;t and vise versa?</p>
-<h2 id="apache-web-server">Apache Web Server</h2>
+                                <h2 id="25-application-server">2.5 Application Server</h2>
+<p></p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>Please note that an Application Server is broad term and its role depends on the framework or the script that is used on the server side.</p>
+<p>Below are some examples of Application Servers for different programming languages</p>
 <ul>
-<li><strong>Connection Handling</strong>: Apache is adept at handling a large number of simultaneous connections, which is essential for high-traffic websites.</li>
+<li>For <strong>Java</strong>: Apache Tomcat is an Application Server that acts as a JAVA servlets container environment, and it manages concurrency through the use of thread workers from a thread pool.</li>
 </ul>
 <ul>
-<li><strong>Load Balancing and Reverse Proxy</strong>: Apache can be configured as a reverse proxy and load balancer, distributing incoming requests across multiple application servers. This helps in scaling the application horizontally.</li>
+<li>For <strong>Python</strong>: Gunicorn (Green Unicorn) is a WSGI Application Server that handles concurrency through a pre-fork worker model. It utilizes multiple worker processes to handle concurrent requests efficiently.</li>
 </ul>
 <ul>
-<li><strong>Serving Static Content</strong>: Apache is highly efficient at serving static content such as HTML, CSS, and images. It can do this much faster and with lower resource usage compared to an application server like Laravel.</li>
+<li>For <strong>PHP</strong>: there is no standalone component known as an Application Server, However managing concurrency can be achieved with the use of a php process manager such as php-fpm (PHP FastCGI Process Manager)</li>
 </ul>
-<ul>
-<li><strong>Security Features</strong>: Apache provides a range of security features such as SSL/TLS encryption, access control, and protection against various types of attacks.</li>
-</ul>
-<h2 id="laravel-php-framework-application-server">Laravel PHP Framework (Application Server)</h2>
-<ul>
-<li><strong>Business Logic Processing</strong>: Laravel is designed to execute complex business logic, such as processing form data, interacting with databases, and generating dynamic content.</li>
-</ul>
-<ul>
-<li><strong>Framework Features</strong>: Laravel provides a rich set of features for web application development, including routing, authentication, ORM, and templating.</li>
-</ul>
-<ul>
-<li><strong>Customization and Flexibility</strong>: Laravel allows for greater customization and flexibility in building web applications compared to Apache, which is more focused on serving content.</li>
-</ul>
-<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>In a production environment a web application must be able to handle multiple HTTP requests and many of them are concurrent. This is where a Web Server like Apache shines as it takes the responsibility to digest and handle those multiple requests, assign them to the appropriate Application Server process and then serve the resulting response back efficiently. </p>
-<p>That is why we have Application Servers like Laravel PHP Framework always running behind a Web Server like Apache. As their role is more focused towards applying the business logic to the incoming requests.</p>
 </div></div><p></p>
-<p>how many http requests can a single application server proccess handle and what is its life cycle?</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><ul>
+<li>Please note that in some cases, a production-ready Application Server comes embedded in the framework. So it is a part of the executed code itself. An example of that is the <strong>ASP.NET</strong> framework that comes with the <strong>Kestrel</strong> embedded production-ready Application Server.</li>
+</ul>
+</div></div><p></p>
+<p></p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>Please note that I am talking about production-ready Application Servers and not Development Servers that comes shipped with most frameworks but can&apos;t handle concurrency.</p>
+</div></div><p></p>
 
                                 
                                 </section>
@@ -967,7 +957,7 @@
 
             
                 
-                <a href="3_apache_and_laravel_as_examples.html" class="navigation navigation-prev " aria-label="Previous page: Section 2.3: Apache And Laravel As Examples">
+                <a href="4_web_server_application_server_interface.html" class="navigation navigation-prev " aria-label="Previous page: Section 2.3: Web Server Application Server Interface">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -983,7 +973,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 2.4: Why Use Both","level":"3.1.4","depth":2,"next":{"title":"Chapter 3: Introduction to Laravel","level":"4.1","depth":1,"path":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/README.md","ref":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/README.md","articles":[{"title":"Section 3.1: What is Laravel","level":"4.1.1","depth":2,"path":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/1_what_is_laravel.md","ref":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/1_what_is_laravel.md","articles":[]},{"title":"Section 3.2: How Laravel Works under the Hood","level":"4.1.2","depth":2,"path":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/2_how_laravel_works_under_the_hood.md","ref":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/2_how_laravel_works_under_the_hood.md","articles":[]}]},"previous":{"title":"Section 2.3: Apache And Laravel As Examples","level":"3.1.3","depth":2,"path":"part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/3_apache_and_laravel_as_examples.md","ref":"part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/3_apache_and_laravel_as_examples.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","mermaid-newface","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["Laravel","Livewire","Vue.js"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Laravel Frontend Development","language":"en","gitbook":"*","description":"Beginners guide for frontend development in Laravel"},"file":{"path":"part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/4_why_use_both.md","mtime":"2023-06-19T17:48:30.728Z","type":"markdown"},"gitbook":{"version":"4.0.7","time":"2023-06-19T19:54:51.330Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 2.4: Application Server","level":"3.1.4","depth":2,"next":{"title":"Chapter 3: Introduction to Laravel","level":"4.1","depth":1,"path":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/README.md","ref":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/README.md","articles":[{"title":"Section 3.1: What is Laravel","level":"4.1.1","depth":2,"path":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/1_what_is_laravel.md","ref":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/1_what_is_laravel.md","articles":[]},{"title":"Section 3.2: How Laravel Works under the Hood","level":"4.1.2","depth":2,"path":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/2_how_laravel_works_under_the_hood.md","ref":"part_3_diving_deep_into_laravel/chapter_3_introduction_to_laravel/2_how_laravel_works_under_the_hood.md","articles":[]}]},"previous":{"title":"Section 2.3: Web Server Application Server Interface","level":"3.1.3","depth":2,"path":"part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/4_web_server_application_server_interface.md","ref":"part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/4_web_server_application_server_interface.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","mermaid-newface","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["Laravel","Livewire","Vue.js"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Laravel Frontend Development","language":"en","gitbook":"*","description":"Beginners guide for frontend development in Laravel"},"file":{"path":"part_2_understanding_web_applications/chapter_2_introduction_to_web_applications/5_application_server.md","mtime":"2023-06-20T02:37:31.327Z","type":"markdown"},"gitbook":{"version":"4.0.7","time":"2023-06-21T21:49:45.895Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

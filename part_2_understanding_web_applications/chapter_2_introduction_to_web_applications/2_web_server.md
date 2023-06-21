@@ -135,6 +135,40 @@ Starting from Apache 2.4, the default MPM is **mpm_event**.
 
 {% endhint %}
 
+---
+
+The following diagram represents ?...
+
+```mermaid
+
+graph LR;
+  Browser1[Browser Client 1] --> HttpdModule;
+  Browser2[Browser Client 2] --> HttpdModule;
+  Browser3[Browser Client 3] --> HttpdModule;
+  subgraph Apache[Apache HTTP Server]
+    style Apache fill:#ffffff00,stroke:#333;
+    HttpdModule[httpd Apache Listener] --> MPM;
+    subgraph MPM[Multi-Processing Module]
+        MasterProcess[Master Process] --> Pool;
+        subgraph Pool[Pool]
+            Worker1[Worker 1];
+            Worker2[Worker 2];
+            Worker3[Worker 3];
+        end
+    end
+  end
+  Worker1 --> FileSystem[File System];
+  Worker2 --> FileSystem;
+  Worker3 --> FileSystem;
+  FileSystem --> WelcomePage[public/welcome.html];
+  subgraph SourceCode[Application Source Code]
+    WelcomePage[public/welcome.html];
+  end
+
+```
+
+---
+
 ### Dynamic Content
 
 More than often we need our web application to provide content based on the specific user's provided data.
