@@ -145,23 +145,34 @@ graph LR;
   Browser1[Browser Client 1] --> HttpdModule;
   Browser2[Browser Client 2] --> HttpdModule;
   Browser3[Browser Client 3] --> HttpdModule;
+  Browser4[Browser Client 4] --> HttpdModule;
+  Browser5[Browser Client 5] --> HttpdModule;
   subgraph Apache[Apache HTTP Server]
     style Apache fill:#ffffff00,stroke:#333;
-    HttpdModule[httpd Apache Listener] --> MPM;
+    HttpdModule[httpd Apache Listener] -->|Forwards Request| Queue;
     subgraph MPM[Multi-Processing Module]
-        MasterProcess[Master Process] --> Pool;
+        style MPM fill:#f9f9f9,stroke:#333;
+        subgraph MasterProcess[Master Process]
+            style MasterProcess fill:#f9f9f9,stroke:#333;
+            Queue[Request Queue];
+        end
+        MasterProcess -->|Create| Pool;
+        Worker1 -. monitor .-> Queue;
         subgraph Pool[Pool]
+            direction TB
+            style Pool fill:#f9f9f9,stroke:#333;
             Worker1[Worker 1];
             Worker2[Worker 2];
             Worker3[Worker 3];
         end
     end
   end
-  Worker1 --> FileSystem[File System];
-  Worker2 --> FileSystem;
-  Worker3 --> FileSystem;
-  FileSystem --> WelcomePage[public/welcome.html];
+  Worker1 -->|Access| FileSystem[File System];
+  Worker2 -->|Access| FileSystem;
+  Worker3 -->|Access| FileSystem;
+  FileSystem -->|Retrieve| WelcomePage[public/welcome.html];
   subgraph SourceCode[Application Source Code]
+    style SourceCode fill:#f9f9f9,stroke:#333;
     WelcomePage[public/welcome.html];
   end
 
