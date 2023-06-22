@@ -137,44 +137,54 @@ Starting from Apache 2.4, the default MPM is **mpm_event**.
 
 ---
 
-The following diagram represents ?...
+The following diagram illustrates the flow of HTTP requests and responses in the Apache HTTP Server. It shows that the "httpd Apache Listener" functionality receives HTTP requests from browser clients, forwards them to the "Request Queue", and then the worker processes handle these requests. Once a worker process generates a response, it forwards it back to the "httpd Apache Listener", which then sends the HTTP response back to the browser client.
+
+This diagram visually represents the interaction between browser clients, the Apache HTTP Server, and its components, including the Master Process, Multi-Processing Module (MPM), Request Queue, and Worker Processes. The red links indicate the path of HTTP requests and responses.
 
 ```mermaid
 
-graph LR;
-  Browser1[Browser Client 1] --> HttpdModule;
-  Browser2[Browser Client 2] --> HttpdModule;
-  Browser3[Browser Client 3] --> HttpdModule;
-  Browser4[Browser Client 4] --> HttpdModule;
-  Browser5[Browser Client 5] --> HttpdModule;
-  subgraph Apache[Apache HTTP Server]
-    style Apache fill:#ffffff00,stroke:#333;
-    HttpdModule[httpd Apache Listener] -->|Forwards Request| Queue;
-    subgraph MPM[Multi-Processing Module]
-        style MPM fill:#f9f9f9,stroke:#333;
-        subgraph MasterProcess[Master Process]
-            style MasterProcess fill:#f9f9f9,stroke:#333;
-            Queue[Request Queue];
-        end
-        MasterProcess -->|Create| Pool;
-        Worker1 -. monitor .-> Queue;
+graph RL;
+  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
+  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
+  subgraph OS[OS]
+    style OS fill:#ffffff00,stroke:#333;
+    subgraph Apache["Apache HTTP Server (Master Process)"]
+        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
+        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
+        MP --> |monitor|Pool;
+        MP --> |start|HttpdModule;
+        MPM --> |to create|Pool;
+        style Apache fill:#f9f9f9,stroke:#333;
+        Queue[[Request Queue]];
+        MPM{{Multi-Processing Module}}
         subgraph Pool[Pool]
-            direction TB
+            direction TB;
             style Pool fill:#f9f9f9,stroke:#333;
-            Worker1[Worker 1];
-            Worker2[Worker 2];
-            Worker3[Worker 3];
+            Worker1("Worker 1 (Process)");
+            Worker2("Worker 2 (Process)");
+            Worker3("Worker 3 (Process)");
         end
+        Pool -. "watches" .-> Queue;
+    end
+    Worker1 -->|Access| FileSystem[File System];
+    Worker1 -->|Forwards Generated Response|HttpdModule;
+    Worker2 -->|Access| FileSystem;
+    Worker3 -->|Access| FileSystem;
+    FileSystem -->|Retrieve| WelcomePage[public/welcome.html];
+    subgraph SourceCode[Application Source Code]
+        style SourceCode fill:#f9f9f9,stroke:#333;
+        WelcomePage[public/welcome.html];
     end
   end
-  Worker1 -->|Access| FileSystem[File System];
-  Worker2 -->|Access| FileSystem;
-  Worker3 -->|Access| FileSystem;
-  FileSystem -->|Retrieve| WelcomePage[public/welcome.html];
-  subgraph SourceCode[Application Source Code]
-    style SourceCode fill:#f9f9f9,stroke:#333;
-    WelcomePage[public/welcome.html];
-  end
+  style HttpdModule fill:#85C1E9,stroke:#333;
+  style Queue fill:#F7DC6F,stroke:#333;
+  style Worker1 fill:#82E0CA,stroke:#333;
+  style Worker2 fill:#82E0CA,stroke:#333;
+  style Worker3 fill:#82E0CA,stroke:#333;
+  style FileSystem fill:#E59866,stroke:#333;
+  style SourceCode fill:#E59866,stroke:#333;
+  style MP fill:#82E0AA,stroke:#333;
+  linkStyle 0,2,7,9 stroke: red;
 
 ```
 
