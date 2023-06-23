@@ -322,11 +322,15 @@ This approach allows `mpm_event` to handle a larger number of concurrent connect
 
 ---
 
-<div style="background-color: aliceblue; padding: 20px; border-radius: 10px">
+<section style="background-color: aliceblue; padding: 20px; border-radius: 10px">
 
 <h3 style="color: grey; font-weight: 700;">Configuration</h3>
 
-The number of worker processes and threads created by Apache HTTP Server can be configured in the Apache configuration file, typically named `httpd.conf` or `apache2.conf`, depending on your system. The specific directives you need to modify depend on the Multi-Processing Module (MPM) you are using.
+</section>
+
+The number of worker processes and threads created by Apache HTTP Server can be configured in the Apache configuration file, typically named `httpd.conf` or `apache2.conf`, depending on your system.
+
+The specific directives you need to modify depend on the Multi-Processing Module (MPM) you are using.
 
 For the `mpm_worker` and `mpm_event` modules, you can use the following directives:
 
@@ -336,7 +340,9 @@ For the `mpm_worker` and `mpm_event` modules, you can use the following directiv
 
 - `ThreadsPerChild`: This directive sets the number of threads created by each worker process.
 
-Here's an example of how you might set these directives in your Apache configuration file:
+
+Example of an Apache configuration file:
+
 
 ```apache
 <IfModule mpm_worker_module>
@@ -350,11 +356,18 @@ Here's an example of how you might set these directives in your Apache configura
 </IfModule>
 ```
 
-In this example, Apache would start with 4 worker processes (due to `StartServers`), each with 25 threads (`ThreadsPerChild`). It would allow up to 16 worker processes (`ServerLimit`), and a maximum of 400 threads (`MaxRequestWorkers`), which means that if needed, Apache could scale up to 16 processes each with 25 threads to handle heavy load.
+In this example: 
+  * Apache would start with 4 worker processes (due to `StartServers`), 
+  * each with 25 threads (`ThreadsPerChild`). 
+  * It would allow up to 16 worker processes (`ServerLimit`).
+  * and a maximum of 400 threads (`MaxRequestWorkers`)
+  * which means that if needed, Apache could scale up to 16 processes each with 25 threads to handle heavy load.
 
-These settings should be adjusted according to your server's hardware capabilities and the nature of your workload. It's recommended to perform load testing to find the optimal settings for your situation.
+<section style="background-color: aliceblue; padding: 20px; border-radius: 10px">
 
-</div>
+These configuration should be adjusted according to the server's hardware capabilities and the nature of your workload. 
+
+</section>
 
 {% hint style="danger"%}
 
@@ -380,12 +393,14 @@ worker processes/threads will be terminated in case if they crash. But they will
 
 The maximum number of requests that a worker process or thread can handle in Apache HTTP Server is determined by several factors and configurations:
 
+
 * **Web Server Configuration:**
   * MaxConnectionsPerChild
   * ThreadsPerChild
   * MaxRequestWorkers
   * KeepAlive and MaxKeepAliveRequests
   * LimitRequestLine and LimitRequestFieldSize
+
 
 * **OS Configuration:**
   * File Descriptors: limit on the total number of file descriptors
@@ -395,12 +410,14 @@ The maximum number of requests that a worker process or thread can handle in Apa
   * Memory Management
   * Security Limits
 
+
 * **Hardware Resources:** 
   * CPU
   * Memory(RAM)
   * Disk I/O: SSD - HDD
   * Network Bandwidth
   * Hardware Concurrency: number of CPUs and number of CPU cores.
+
 
 {% endhint %}
 
