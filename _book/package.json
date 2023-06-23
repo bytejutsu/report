@@ -2,9 +2,11 @@
   "scripts": {
     "build": "honkit build",
     "serve": "honkit serve",
-    "generate": "honkit pdf ./ ./dhia_nabli_report.pdf"
+    "generate": "honkit pdf ./ ./dhia_nabli_report.pdf",
+    "deploy": "honkit build && gh-pages -d _book"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "honkit": "^4.0.7"
   },
   "dependencies": {
