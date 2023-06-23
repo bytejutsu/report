@@ -137,6 +137,8 @@ Starting from Apache 2.4, the default MPM is **mpm_event**.
 
 ---
 
+### mpm_prefork
+
 The following diagram illustrates the flow of HTTP requests and responses in the Apache HTTP Server. It shows that the "httpd Apache Listener" functionality receives HTTP requests from browser clients, forwards them to the "Request Queue", and then the worker processes handle these requests. Once a worker process generates a response, it forwards it back to the "httpd Apache Listener", which then sends the HTTP response back to the browser client.
 
 This diagram visually represents the interaction between browser clients, the Apache HTTP Server, and its components, including the Master Process, Multi-Processing Module (MPM), Request Queue, and Worker Processes. The red links indicate the path of HTTP requests and responses.
@@ -156,7 +158,7 @@ graph RL;
         MPM --> |to create|Pool;
         style Apache fill:#f9f9f9,stroke:#333;
         Queue[[Request Queue]];
-        MPM{{Multi-Processing Module}}
+        MPM{{"`Multi-Processing Module (**mpm_prefork**)`"}}
         subgraph Pool[Pool]
             direction TB;
             style Pool fill:#f9f9f9,stroke:#333;
@@ -186,9 +188,227 @@ graph RL;
   style MP fill:#82E0AA,stroke:#333;
   linkStyle 0,2,7,9 stroke: red;
 
+
 ```
 
+### mpm_worker
+
+```mermaid
+
+graph RL;
+  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
+  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
+  subgraph OS[OS]
+    style OS fill:#ffffff00,stroke:#333;
+    subgraph Apache["Apache HTTP Server (Master Process)"]
+        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
+        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
+        MP --> |monitor|Pool;
+        MP --> |start|HttpdModule;
+        MPM --> |to create|Pool;
+        style Apache fill:#f9f9f9,stroke:#333;
+        Queue[[Request Queue]];
+        MPM{{"`Multi-Processing Module (**mpm_worker**)`"}}
+        subgraph Pool[Pool]
+            direction TB;
+            style Pool fill:#f9f9f9,stroke:#333;
+            subgraph Worker1["Worker 1 (Process)"]
+                Thread1_1["Thread 1"]
+                Thread1_2["Thread 2"]
+            end
+            subgraph Worker2["Worker 2 (Process)"]
+                Thread2_1["Thread 1"]
+                Thread2_2["Thread 2"]
+            end
+            subgraph Worker3["Worker 3 (Process)"]
+                Thread3_1["Thread 1"]
+                Thread3_2["Thread 2"]
+            end
+        end
+        Pool -. "watches" .-> Queue;
+    end
+    Thread1_1 -->|Access| FileSystem[File System];
+    Thread1_1 -->|Forwards Generated Response|HttpdModule;
+    Thread2_1 -->|Access| FileSystem;
+    Thread3_1 -->|Access| FileSystem;
+    FileSystem -->|Retrieve| WelcomePage[public/welcome.html];
+    subgraph SourceCode[Application Source Code]
+        style SourceCode fill:#f9f9f9,stroke:#333;
+        WelcomePage[public/welcome.html];
+    end
+  end
+  style HttpdModule fill:#85C1E9,stroke:#333;
+  style Queue fill:#F7DC6F,stroke:#333;
+  style Worker1 fill:#82E0CA,stroke:#333;
+  style Worker2 fill:#82E0CA,stroke:#333;
+  style Worker3 fill:#82E0CA,stroke:#333;
+  style FileSystem fill:#E59866,stroke:#333;
+  style SourceCode fill:#E59866,stroke:#333;
+  style MP fill:#82E0AA,stroke:#333;
+  linkStyle 0,2,7,9 stroke: red;
+
+```
+
+The `mpm_worker` module uses multiple worker processes, each of which can handle many threads, with each thread handling one connection at a time. This model allows the server to handle multiple requests concurrently with fewer resources than a process-based model.
+
+### mpm_event
+
+```mermaid
+
+graph RL;
+  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
+  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
+  subgraph OS[OS]
+    style OS fill:#ffffff00,stroke:#333;
+    subgraph Apache["Apache HTTP Server (Master Process)"]
+        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
+        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
+        MP --> |monitor|Pool;
+        MP --> |start|HttpdModule;
+        MPM --> |to create|Pool;
+        style Apache fill:#f9f9f9,stroke:#333;
+        Queue[[Request Queue]];
+        MPM{{"`Multi-Processing Module (**mpm_event**)`"}}
+        subgraph Pool[Pool]
+            direction TB;
+            style Pool fill:#f9f9f9,stroke:#333;
+            subgraph Worker1["Worker 1 (Process)"]
+                Thread1_1["Worker Thread 1"] --> |Handoff| Thread1_2
+                Thread1_2["Supporting Thread 1"]
+            end
+            subgraph Worker2["Worker 2 (Process)"]
+                Thread2_1["Worker Thread 1"] --> |Handoff| Thread2_2
+                Thread2_2["Supporting Thread 1"]
+            end
+            subgraph Worker3["Worker 3 (Process)"]
+                Thread3_1["Worker Thread 1"] --> |Handoff| Thread3_2
+                Thread3_2["Supporting Thread 1"]
+            end
+        end
+        Pool -. "watches" .-> Queue;
+    end
+    Thread1_1 -->|Access| FileSystem[File System];
+    Thread1_1 -->|Forwards Generated Response|HttpdModule;
+    Thread2_1 -->|Access| FileSystem;
+    Thread3_1 -->|Access| FileSystem;
+    FileSystem -->|Retrieve| WelcomePage[public/welcome.html];
+    subgraph SourceCode[Application Source Code]
+        style SourceCode fill:#f9f9f9,stroke:#333;
+        WelcomePage[public/welcome.html];
+    end
+  end
+  style HttpdModule fill:#85C1E9,stroke:#333;
+  style Queue fill:#F7DC6F,stroke:#333;
+  style Worker1 fill:#82E0CA,stroke:#333;
+  style Worker2 fill:#82E0CA,stroke:#333;
+  style Worker3 fill:#82E0CA,stroke:#333;
+  style FileSystem fill:#E59866,stroke:#333;
+  style SourceCode fill:#E59866,stroke:#333;
+  style MP fill:#82E0AA,stroke:#333;
+  linkStyle 0,2,7,10,12 stroke: red;
+
+```
+
+In the context of the `mpm_event` module in Apache HTTP Server, "supporting threads" refers to threads that are used to handle certain parts of the request/response process, freeing up the main threads to handle other requests.
+
+
+In a typical web server setup, a "normal" thread (or worker thread) would handle the entire lifecycle of a client request, from accepting the connection, processing the request, sending the response, and finally closing the connection. This means that while the thread is waiting for network I/O (such as waiting for the full request to arrive or for the response to be fully sent), it can't do anything else.
+
+The `mpm_event` module improves upon this by using a different approach. When a client connection is first accepted, it's handled by a worker thread just like in `mpm_worker`. However, once the initial request has been processed and the response is being sent (or if the connection is simply being kept open for possible future requests), the connection is handed off to a separate "supporting" thread. This allows the worker thread to move on and handle other incoming requests.
+
+The supporting threads are part of a separate thread pool and are responsible for handling these "keep-alive" connections, waiting for new requests to come in on these connections, and if a new request does come in, the connection is passed back to a worker thread for processing.
+
+This approach allows `mpm_event` to handle a larger number of concurrent connections, as the worker threads are freed up to handle new requests instead of being tied up with long-lived connections. It's particularly beneficial for workloads where many connections are in the keep-alive state, waiting for new requests.
+
 ---
+
+<div style="background-color: aliceblue; padding: 20px; border-radius: 10px">
+
+<h3 style="color: grey; font-weight: 700;">Configuration</h3>
+
+The number of worker processes and threads created by Apache HTTP Server can be configured in the Apache configuration file, typically named `httpd.conf` or `apache2.conf`, depending on your system. The specific directives you need to modify depend on the Multi-Processing Module (MPM) you are using.
+
+For the `mpm_worker` and `mpm_event` modules, you can use the following directives:
+
+- `ServerLimit`: This directive sets the maximum configured value for `MaxRequestWorkers` for the lifetime of the Apache process.
+
+- `MaxRequestWorkers`: This directive sets the limit on the total number of simultaneous requests to be served. For `mpm_worker` and `mpm_event`, this is the total number of worker threads (i.e., the product of `ServerLimit` and `ThreadsPerChild`).
+
+- `ThreadsPerChild`: This directive sets the number of threads created by each worker process.
+
+Here's an example of how you might set these directives in your Apache configuration file:
+
+```apache
+<IfModule mpm_worker_module>
+    ServerLimit          16
+    StartServers         4
+    MinSpareThreads      25
+    MaxSpareThreads      75 
+    ThreadsPerChild      25
+    MaxRequestWorkers    400
+    MaxConnectionsPerChild 10000
+</IfModule>
+```
+
+In this example, Apache would start with 4 worker processes (due to `StartServers`), each with 25 threads (`ThreadsPerChild`). It would allow up to 16 worker processes (`ServerLimit`), and a maximum of 400 threads (`MaxRequestWorkers`), which means that if needed, Apache could scale up to 16 processes each with 25 threads to handle heavy load.
+
+These settings should be adjusted according to your server's hardware capabilities and the nature of your workload. It's recommended to perform load testing to find the optimal settings for your situation.
+
+</div>
+
+{% hint style="danger"%}
+
+#### Terminating workers (process/threads)
+
+worker processes/threads will be terminated in case if they crash. But they will also be terminated in the following scenarios: 
+
+* Idle Timeout: For the `mpm_worker` and `mpm_event modules`, the `MaxSpareThreads` directive sets an upper limit on the number of idle worker threads. If there are more idle threads than this limit, some of the idle threads will be terminated.
+
+* System Conditions: Worker processes or threads may also be terminated due to system conditions, such as out-of-memory situations, or system shutdown or reboot.
+
+{% endhint %}
+
+{% hint style="info" %}
+
+#### creating workers (process/threads)
+
+**MaxConnectionsPerChild** Limit Reached: For the `mpm_prefork`, `mpm_worker`, and `mpm_event` modules, the `MaxConnectionsPerChild` configuration directive sets a limit on the number of requests that a worker process should handle before it is terminated and a new process is created. This can be useful for mitigating memory leaks in third-party modules or in the Apache server itself. When a worker process reaches this limit, it will not accept new connections and will terminate after finishing its current request.
+
+{% endhint %}
+
+{% hint style="info" %}
+
+The maximum number of requests that a worker process or thread can handle in Apache HTTP Server is determined by several factors and configurations:
+
+* **Web Server Configuration:**
+  * MaxConnectionsPerChild
+  * ThreadsPerChild
+  * MaxRequestWorkers
+  * KeepAlive and MaxKeepAliveRequests
+  * LimitRequestLine and LimitRequestFieldSize
+
+* **OS Configuration:**
+  * File Descriptors: limit on the total number of file descriptors
+  * TCP/IP Stack Settings
+  * Network Interface Settings
+  * Process Limits
+  * Memory Management
+  * Security Limits
+
+* **Hardware Resources:** 
+  * CPU
+  * Memory(RAM)
+  * Disk I/O: SSD - HDD
+  * Network Bandwidth
+  * Hardware Concurrency: number of CPUs and number of CPU cores.
+
+{% endhint %}
+
+
+
+
+
+
 
 ### Dynamic Content
 
