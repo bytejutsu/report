@@ -141,7 +141,6 @@ The following diagram illustrates the flow of HTTP requests and responses in the
 
 This diagram visually represents the interaction between browser clients, the Apache HTTP Server, and its components, including the Master Process, Multi-Processing Module (MPM), Request Queue, and Worker Processes. The red links indicate the path of HTTP requests and responses.
 
-
 ```mermaid
 
 graph RL;
