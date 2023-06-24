@@ -465,6 +465,81 @@ Other than **mod_php** there is also:
 
 ----
 
+The following diagram illustrates ? 
+
+```mermaid
+
+graph RL;
+  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
+  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
+  subgraph OS[OS]
+    style OS fill:#ffffff00,stroke:#333;
+    subgraph Apache["Apache HTTP Server (Master Process)"]
+        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
+        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
+        MP --> |monitor|Pool;
+        MP --> |start|HttpdModule;
+        MPM --> |to create|Pool;
+        style Apache fill:#f9f9f9,stroke:#333;
+        Queue[[Request Queue]];
+        MPM{{"`Multi-Processing Module (**mpm_prefork**)`"}}
+        MODP{{"mod_php"}}
+        MP --> |loads at start|MODP
+        PI1 -. Inherited .-> MODP;
+        PI2 -. Inherited .-> MODP;
+        PI3 -. Inherited .-> MODP;
+        subgraph Pool[Pool]
+            direction TB;
+            style Pool fill:#f9f9f9,stroke:#333;
+            subgraph Worker1["Worker 1 (Process)"];
+                direction TB;
+                PI1("PHP Interpreter (PI):
+                    <hr>
+                    0.(PI) loads PHP script
+                    <hr>
+                    1.(PI) executes PHP script
+                    <hr>
+                    <span>2.worker process retrieves generated result and serves it back</span>
+                    <hr>
+                    3.(PI) cleans memory allocated for script
+                ");    
+            end
+            subgraph Worker2["Worker 2 (Process)"];
+                direction TB;
+                PI2("PHP Interpreter");
+            end
+            subgraph Worker3["Worker 3 (Process)"];
+                direction TB;
+                PI3("PHP Interpreter");
+            end
+        end
+        Pool -. "watches" .-> Queue;
+    end
+    Worker1 -->|Access| FileSystem[File System];
+    Worker1 -->|Forwards Generated Response|HttpdModule;
+    Worker2 -->|Access| FileSystem;
+    Worker3 -->|Access| FileSystem;
+    FileSystem -->|Retrieve| WelcomePage[public/index.php];
+    subgraph SourceCode[Application Source Code]
+        style SourceCode fill:#f9f9f9,stroke:#333;
+        WelcomePage[public/index.php];
+    end
+  end
+  style HttpdModule fill:#85C1E9,stroke:#333;
+  style Queue fill:#F7DC6F,stroke:#333;
+  style Worker1 fill:#82E0CA,stroke:#333;
+  style Worker2 fill:#82E0CA,stroke:#333;
+  style Worker3 fill:#82E0CA,stroke:#333;
+  style FileSystem fill:#E59866,stroke:#333;
+  style SourceCode fill:#E59866,stroke:#333;
+  style MP fill:#82E0AA,stroke:#333;
+  linkStyle 0,2,11,13 stroke: red;
+
+
+```
+
+---
+
 The following diagram shows how a Web Server uses a **script execution module** to generate a **dynamic** profile web page.
 
 ```mermaid
