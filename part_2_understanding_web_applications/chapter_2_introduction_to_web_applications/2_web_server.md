@@ -495,16 +495,7 @@ graph RL;
             style Pool fill:#f9f9f9,stroke:#333;
             subgraph Worker1["Worker 1 (Process)"];
                 direction TB;
-                PI1("PHP Interpreter (PI):
-                    <hr>
-                    0.(PI) loads PHP script
-                    <hr>
-                    1.(PI) executes PHP script
-                    <hr>
-                    <span>2.worker process retrieves generated result and serves it back</span>
-                    <hr>
-                    3.(PI) cleans memory allocated for script
-                ");    
+                PI1("PHP Interpreter (PI):<br>0.(PI) loads PHP script<br>1.(PI) executes PHP script<br>2.worker process retrieves generated result and serves it back<br>3.(PI) cleans memory allocated for script");    
             end
             subgraph Worker2["Worker 2 (Process)"];
                 direction TB;
