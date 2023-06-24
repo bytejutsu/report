@@ -12,8 +12,7 @@
     "chapter-fold",
     "hide-published-with",
     "hints",
-    "mermaid-newface",
-    "image-zoom"
+    "mermaid-newface"
   ],
   "pdf": {
     "pageNumbers": true,
