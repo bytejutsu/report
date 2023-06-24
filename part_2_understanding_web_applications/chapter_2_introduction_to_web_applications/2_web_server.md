@@ -608,6 +608,194 @@ The approach of using the **mod_php Script Execution Module** has its **Pros** a
 
 ### mod_cgi with mod_prefork
 
+```mermaid
+
+graph RL;
+  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
+  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
+  subgraph OS[OS]
+    style OS fill:#ffffff00,stroke:#333;
+    subgraph Apache["Apache HTTP Server (Master Process)"]
+        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
+        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
+        MP --> |monitor|Pool;
+        MP --> |start|HttpdModule;
+        MPM --> |to create|Pool;
+        style Apache fill:#f9f9f9,stroke:#333;
+        Queue[[Request Queue]];
+        MPM{{"`Multi-Processing Module (**mpm_prefork**)`"}}
+        MODP{{"mod_cgi"}}
+        MP --> |loads at start|MODP
+        subgraph Pool[Pool]
+            direction TB;
+            style Pool fill:#f9f9f9,stroke:#333;
+            Worker1("Worker 1 (Process)");
+                   
+            Worker2("Worker 2 (Process)");
+                
+            Worker3("Worker 3 (Process)");
+                
+        end
+        Pool -. "watches" .-> Queue;
+
+        subgraph CGI_Process["CGI Process"]
+            PI("PHP Interpreter");
+        end 
+
+        Worker1 -->|starts child process|CGI_Process;
+        Worker1 -->|passes HTTP Request|CGI_Process;
+        CGI_Process --> |sends Generated HTTP Response|Worker1;
+        Worker1 --> |terminates|CGI_Process;
+
+        
+    end
+    Worker1 -->|Access| FileSystem[File System];
+    Worker1 -->|Forwards Generated Response|HttpdModule;
+    Worker2 -->|Access| FileSystem;
+    Worker3 -->|Access| FileSystem;
+    FileSystem -->|Retrieve| WelcomePage[public/index.php];
+    subgraph SourceCode[Application Source Code]
+        style SourceCode fill:#f9f9f9,stroke:#333;
+        WelcomePage[public/index.php];
+    end
+  end
+  style HttpdModule fill:#85C1E9,stroke:#333;
+  style Queue fill:#F7DC6F,stroke:#333;
+  style Worker1 fill:#82E0CA,stroke:#333;
+  style Worker2 fill:#82E0CA,stroke:#333;
+  style Worker3 fill:#82E0CA,stroke:#333;
+  style FileSystem fill:#E59866,stroke:#333;
+  style SourceCode fill:#E59866,stroke:#333;
+  style MP fill:#82E0AA,stroke:#333;
+  linkStyle 0,2,8,10,11,14 stroke: red;
+
+```
+
+When Apache is configured to use `mod_cgi` and a worker process receives a HTTP request that requires the execution of a PHP script, the worker process will handle the request in the following way:
+
+1. The worker process will start a separate CGI process. This is a completely new process, separate from the worker process.
+
+
+2. The worker process passes the request information to the CGI process. This information includes the request method, the URL, any query string parameters, headers, and the body of the request, if applicable.
+
+
+3. The CGI process will then load the PHP interpreter, which will execute the PHP script. The PHP script has access to the request information via predefined variables.
+
+
+4. The PHP script generates a response, which is sent back to the CGI process. This response typically includes HTTP headers and a body, which is the output of the PHP script.
+
+
+5. The CGI process sends this response back to the worker process.
+
+
+6. The worker process then sends the response back to the client.
+
+
+7. After the response is sent, the CGI process is terminated. This means that for each request that requires the execution of a PHP script, a new CGI process is created and terminated.
+
+
+{% hint style="info" %}
+
+### mod_cgi caveat
+
+This is part of the reason why `CGI` can be less efficient than other methods like `mod_php` or `mod_fastcgi`. Each new request that requires script execution results in the creation of a new process, which can be resource-intensive. Once the script execution is complete and the response is sent, the CGI process is terminated.
+
+{% endhint %}
+
+---
+
+### mod_cgi with mod_worker/mod_event
+
+```mermaid
+
+graph RL;
+  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
+  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
+  subgraph OS[OS]
+    style OS fill:#ffffff00,stroke:#333;
+    subgraph Apache["Apache HTTP Server (Master Process)"]
+        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
+        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
+        MP --> |monitor|Pool;
+        MP --> |start|HttpdModule;
+        MPM --> |to create|Pool;
+        style Apache fill:#f9f9f9,stroke:#333;
+        Queue[[Request Queue]];
+        MPM{{"`Multi-Processing Module (**mpm_worker**)`"}}
+        MODP{{"mod_cgi"}}
+        MP --> |loads at start|MODP
+        subgraph Pool[Pool]
+            direction TB;
+            style Pool fill:#f9f9f9,stroke:#333;
+
+            subgraph Worker1["Worker 1 (Process)"];
+                Thread1_1("Thread 1");
+                Thread1_2("Thread 2");
+            end       
+            
+            subgraph Worker2["Worker 2 (Process)"];
+                Thread2_1("Thread 1");
+                Thread2_2("Thread 2");
+            end       
+
+            subgraph Worker3["Worker 3 (Process)"];
+                Thread3_1("Thread 1");
+                Thread3_2("Thread 2");
+            end       
+        end
+
+        subgraph CGI_Process["CGI Process"]
+            PI("PHP Interpreter");
+        end
+
+        Pool -. "watches" .-> Queue;
+
+        Thread1_1 -->|starts child process|CGI_Process;
+        Thread1_1 -->|passes HTTP Request|CGI_Process;
+        CGI_Process --> |sends Generated HTTP Response|Thread1_1;
+        Thread1_1 --> |terminates|CGI_Process;
+        
+    end
+    Thread1_1 -->|Access| FileSystem[File System];
+    Thread1_1 -->|Forwards Generated Response|HttpdModule;
+    FileSystem -->|Retrieve| WelcomePage[public/index.php];
+    subgraph SourceCode[Application Source Code]
+        style SourceCode fill:#f9f9f9,stroke:#333;
+        WelcomePage[public/index.php];
+    end
+  end
+  style HttpdModule fill:#85C1E9,stroke:#333;
+  style Queue fill:#F7DC6F,stroke:#333;
+  style Worker1 fill:#82E0CA,stroke:#333;
+  style Worker2 fill:#82E0CA,stroke:#333;
+  style Worker3 fill:#82E0CA,stroke:#333;
+  style FileSystem fill:#E59866,stroke:#333;
+  style SourceCode fill:#E59866,stroke:#333;
+  style MP fill:#82E0AA,stroke:#333;
+  linkStyle 0,2,8,10,11,14 stroke: red;
+
+```
+
+In the case of `mpm_worker`, it is the worker thread that handles the incoming HTTP request and accesses the `public/index.php` file.
+
+Here's a step-by-step breakdown:
+
+1. The Apache master process starts and initializes the `mpm_worker` module.
+
+2. The `mpm_worker` module creates a fixed number of worker processes. Each of these worker processes can handle many threads, and each thread can handle one connection at a time.
+
+3. When a request comes in that requires the execution of a PHP script (like "public/index.php"), one of the worker threads within a worker process is assigned to handle the request.
+
+4. This worker thread accesses the "public/index.php" file, reads its content, and if Apache is configured to use `mod_cgi`, it will spawn a separate CGI process to execute the PHP script.
+
+5. The CGI process executes the PHP script and generates a response, which is sent back to the worker thread.
+
+6. The worker thread then sends the response back to the client.
+
+So, while the worker process is the parent of the worker threads and provides the environment in which they run, it's the individual worker threads that are doing the work of handling requests, accessing files, and communicating with the CGI processes.
+
+---
+
 
 
 
