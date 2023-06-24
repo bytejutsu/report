@@ -465,7 +465,9 @@ Other than **mod_php** there is also:
 
 ----
 
-The following diagram illustrates ? 
+### using mod_php with mpm_prefork
+
+The following diagram illustrates the workflow of an Apache Web Server configured to use **mod_php** to execute PHP scripts and **mpm_prefork** to manage concurrency.
 
 ```mermaid
 
@@ -535,66 +537,63 @@ graph RL;
   style MP fill:#82E0AA,stroke:#333;
   linkStyle 0,2,11,13 stroke: red;
 
-
 ```
+
+0. When the Apache HTTP Server starts up, it loads all of its configured modules, including `mod_php`. This means that the PHP interpreter becomes part of the Apache server itself.
+
+1. Then, when the Apache master process creates child processes (using the `mpm_prefork` module or any other Multi-Processing Module), each child process inherits all the capabilities of the Apache server, including all its loaded modules. This means that each child process includes an embedded PHP interpreter, because it's part of the Apache server that the child process is a copy of.
+
+2. When the worker process needs to execute a PHP script then:
+
+  0. The PHP Interpreter (PI) loads the PHP script into memory
+
+  1. The PHP Interpreter (PI) executes the PHP script.
+
+  2. The Worker Process retrieves the generated result and serves it back.
+
+  3. The PHP Interpreter (PI) cleans the memory that it already allocated for the PHP script.
+
+{% hint style="tip" %}
+
+### Very Important
+
+Notice how the PHP script is loaded into memory, executed and then **cleaned out**.
+
+The PHP script can be an **entire web application's business logic**.
+
+For every different single HTTP request a new instance of the **web application** will be **loaded into memory**, **executed** and then **cleaned out**.
+
+Maybe the most important thing to take home from this section is that:
+
+Regardless of the Web Server implementation or its configuration: 
+
+A Web application doesn't persist state between HTTP requests.
+
+The HTTP Protocol is a stateless protocol by design. That means there is no way to associate two or more different HTTP requests with each other.
+
+The only way to achieve a persistent state in a Web Application is to use services that are based on the **OS System Calls**.
+
+Some of those services are: Database Service, Session Service, Cache Service ...
+
+{% endhint %}
 
 ---
 
-The following diagram shows how a Web Server uses a **script execution module** to generate a **dynamic** profile web page.
+### don't use mod_php with mpm_worker/mpm_event
 
-```mermaid
+{% hint style="danger" %}
 
-sequenceDiagram
-    participant Browser
-    box "Web Server Process"
-        participant WebServer as Web Server Core Module and Enabled Modules
-        participant SEM as Script Execution Module
-    end
-    participant ASC as Application Source Code
-    participant Database as Database Server Process
-    Browser->>WebServer: HTTP request for profile.html
-    WebServer->>ASC: Locate profile.html
-    Note over ASC: Contains multiple files
-    Note over ASC: including profile.html
-    WebServer->>SEM: Pass request if a script is inside profile.html
-    SEM->>Database: Query data (if needed)
-    SEM->>WebServer: Return generated HTML
-    WebServer->>Browser: HTTP response with HTML content
-    Browser->>Browser: Render the page
-    
-```
+**mod_php** is not thread-safe, meaning it can have issues when run in a multi-threaded environment like the one **mpm_worker** or **mpm_event** creates. This is because PHP extensions, which **mod_php** relies on, may not be designed to handle simultaneous threads and can behave unpredictably.
+
+So, if you switch Apache to use **mpm_worker** or **mpm_event**, it's generally recommended not to use **mod_php**. Instead, you would typically use a different method to process PHP scripts, such as **FastCGI** using **mod_fcgid** or **mod_proxy_fcgi** with **PHP-FPM (FastCGI Process Manager)**
+
+We will explain more about **FastCGI** and **PHP-FPM** later.
+
+{% endhint %}
 
 ---
 
-The following diagram describes the same interaction with Apache HTTP Server as a Web Server, PHP as the script language and mod_php as the Script Execution Module.
-
-```mermaid
-sequenceDiagram
-participant Browser
-box "Apache HTTP Server Process"
-participant Apache as Apache Core Module and Enabled Modules
-participant mod_php
-end
-participant ASC as Application Source Code
-participant Database as Database Server Process
-Browser->>Apache: HTTP request for profile.html
-Apache->>ASC: Locate profile.html
-Note over ASC: Contains multiple files
-Note over ASC: including profile.html
-Apache->>mod_php: Pass request if a PHP script is inside profile.html
-mod_php->>Database: Query data (if needed)
-mod_php->>Apache: Return generated HTML
-Apache->>Browser: HTTP response with HTML content
-Browser->>Browser: Render the page
-```
-
----
-
-
-### Aftermath
-
-
-The approach of using a **Script Execution Module** has its **Pros** and **Cons**. Let us analyse them in the case of **Apache HTTP Server** and **mod_php**.
+The approach of using the **mod_php Script Execution Module** has its **Pros** and **Cons**. Let us analyse them.
 
 #### Pros:
 
@@ -612,3 +611,12 @@ The approach of using a **Script Execution Module** has its **Pros** and **Cons*
 
 
 * **Security risks**: Running PHP within the Apache process raises potential security concerns. If a PHP script has a vulnerability, it could potentially affect the entire server and compromise its security. Careful consideration and security measures are necessary to mitigate these risks.
+
+
+## mod_cgi
+
+### mod_cgi with mod_prefork
+
+
+
+
