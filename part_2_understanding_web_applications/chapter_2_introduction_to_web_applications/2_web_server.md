@@ -693,15 +693,6 @@ When Apache is configured to use `mod_cgi` and a worker process receives a HTTP 
 
 7. After the response is sent, the CGI process is terminated. This means that for each request that requires the execution of a PHP script, a new CGI process is created and terminated.
 
-
-{% hint style="info" %}
-
-### mod_cgi caveat
-
-This is part of the reason why `CGI` can be less efficient than other methods like `mod_php` or `mod_fastcgi`. Each new request that requires script execution results in the creation of a new process, which can be resource-intensive. Once the script execution is complete and the response is sent, the CGI process is terminated.
-
-{% endhint %}
-
 ---
 
 ### mod_cgi with mod_worker/mod_event
@@ -776,26 +767,119 @@ graph RL;
 
 ```
 
-In the case of `mpm_worker`, it is the worker thread that handles the incoming HTTP request and accesses the `public/index.php` file.
+Steps:
 
-Here's a step-by-step breakdown:
+1. The Apache master process starts and initializes the `mpm_worker` or `mpm_event` module.
 
-1. The Apache master process starts and initializes the `mpm_worker` module.
 
-2. The `mpm_worker` module creates a fixed number of worker processes. Each of these worker processes can handle many threads, and each thread can handle one connection at a time.
+2. The `mpm_worker` or `mpm_event` module creates a fixed number of worker processes. Each of these worker processes can handle many threads, and each thread can handle one connection at a time.
+
 
 3. When a request comes in that requires the execution of a PHP script (like "public/index.php"), one of the worker threads within a worker process is assigned to handle the request.
 
+
 4. This worker thread accesses the "public/index.php" file, reads its content, and if Apache is configured to use `mod_cgi`, it will spawn a separate CGI process to execute the PHP script.
+
 
 5. The CGI process executes the PHP script and generates a response, which is sent back to the worker thread.
 
-6. The worker thread then sends the response back to the client.
 
-So, while the worker process is the parent of the worker threads and provides the environment in which they run, it's the individual worker threads that are doing the work of handling requests, accessing files, and communicating with the CGI processes.
+6. The worker thread then sends the response back to the client.
 
 ---
 
+{% hint style="info" %}
+
+### mod_cgi caveat
+
+This is part of the reason why `CGI` can be less efficient than other methods like `mod_php` or `mod_fastcgi`. Each new request that requires script execution results in the creation of a new process, which can be resource-intensive. Once the script execution is complete and the response is sent, the CGI process is terminated.
+
+{% endhint %}
+
+---
+
+### FastCGI
 
 
+The following diagram illustrates **mod_worker** with **mod_fastcgi**
 
+#### definition
+
+// todo: explain
+
+```mermaid
+
+graph RL;
+  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
+  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
+  subgraph OS[OS]
+    style OS fill:#ffffff00,stroke:#333;
+    subgraph Apache["Apache HTTP Server (Master Process)"]
+        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
+        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
+        MP --> |monitor|Pool;
+        MP --> |start|HttpdModule;
+        MPM --> |to create|Pool;
+        style Apache fill:#f9f9f9,stroke:#333;
+        Queue[[Request Queue]];
+        MPM{{"`Multi-Processing Module (**mpm_worker**)`"}}
+        MODP{{"mod_fastcgi"}}
+        MP --> |loads at start|MODP
+        subgraph Pool[Pool]
+            direction TB;
+            style Pool fill:#f9f9f9,stroke:#333;
+
+            subgraph Worker1["Worker 1 (Process)"];
+                Thread1_1("Thread 1");
+                Thread1_2("Thread 2");
+            end
+
+            subgraph Worker2["Worker 2 (Process)"];
+                Thread2_1("Thread 1");
+                Thread2_2("Thread 2");
+            end       
+        end
+
+        Pool -. "watches" .-> Queue;
+
+    end
+    Thread1_1 -->|Access| FileSystem[File System];
+    Thread1_1 -->|Forwards Generated Response|HttpdModule;
+    FileSystem -->|Retrieve| WelcomePage[public/index.php];
+    subgraph SourceCode[Application Source Code]
+        style SourceCode fill:#f9f9f9,stroke:#333;
+        WelcomePage[public/index.php];
+    end
+    subgraph FASTCGI_Process["FastCGI Service (Master Process)"]
+        FASTCGI_PROCESSS_MANAGER((("FASTCGI Process Manager")))
+        subgraph Pool2["Pool"]
+            subgraph FASTCGI_WORKER1 ["Worker 1 (Process)"]
+                PI0("PHP Interpreter");
+            end
+            subgraph FASTCGI_WORKER2["Worker 2 (Process)"]
+                PI1("PHP Interpreter");
+            end
+        end
+        
+        FASTCGI_PROCESSS_MANAGER --> |creates and monitors|Pool2;
+    end
+    Thread1_1 -->|FastCGI Protocol Request|FASTCGI_PROCESSS_MANAGER;
+  end
+      PI0 --> |FastCGI Protocol Response|Thread1_1;
+
+  style HttpdModule fill:#85C1E9,stroke:#333;
+  style Queue fill:#F7DC6F,stroke:#333;
+  style Worker1 fill:#82E0CA,stroke:#333;
+  style Worker2 fill:#82E0CA,stroke:#333;
+  style FASTCGI_WORKER1 fill:red;
+  style FASTCGI_WORKER2 fill:red;
+  style FileSystem fill:#E59866,stroke:#333;
+  style SourceCode fill:#E59866,stroke:#333;
+  style MP fill:#82E0AA,stroke:#333;
+  linkStyle 0,2,8,10,11,14 stroke: red;
+
+```
+
+// todo: explain
+
+---
