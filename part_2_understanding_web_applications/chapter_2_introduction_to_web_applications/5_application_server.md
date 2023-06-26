@@ -1,5 +1,9 @@
 ## 2.5 Application Server
 
+**Application Server**: The term "application server" often refers to a server that can process business logic, not just serve static or dynamic content. While Apache and Nginx are not full-fledged application servers like some others (for example, Tomcat for Java or Unicorn for Ruby), they can handle some application server-like tasks. For example, with the right modules, Apache can process PHP, Perl, or Python code, and Nginx can process JavaScript or Lua code. However, for more complex tasks, they typically pass requests off to a separate application server or process manager (like PHP-FPM for PHP).
+
+So, while Apache and Nginx are primarily web servers, they can take on some of the roles of an application server depending on the configuration and use case. However, they are not typically classified as full-fledged application servers.
+
 {% hint style="working" %}
 
 Please note that an Application Server is broad term and its role depends on the framework or the script that is used on the server side.
@@ -24,5 +28,7 @@ Below are some examples of Application Servers for different programming languag
 {% endhint %}
 
 {% hint style='danger'%}
-Please note that I am talking about production-ready Application Servers and not Development Servers that comes shipped with most frameworks but can't handle concurrency.
+
+Please note that I am talking about production-ready Application Servers and not Development Servers that comes shipped with most frameworks but can't handle concurrency efficiently.
+
 {% endhint %}
