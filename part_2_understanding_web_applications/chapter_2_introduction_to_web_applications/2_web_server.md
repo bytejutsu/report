@@ -800,12 +800,41 @@ This is part of the reason why `CGI` can be less efficient than other methods li
 
 ### FastCGI
 
+#### Why to use FastCGI over CGI?
+
+`mod_cgi` creates a new process for each request that requires script execution. This can be resource-intensive, especially under heavy load. In contrast, `mod_fastcgi` uses a pool of persistent processes (or threads, depending on the configuration) that can handle multiple requests over their lifetime. This can lead to significant performance improvements, as the overhead of process creation and destruction is avoided for each request.
+
+{% hint = "info" %}
+
+
+**Communication Protocol**: `mod_cgi` uses the standard CGI (Common Gateway Interface) protocol to communicate between the Apache server and the CGI process. This involves setting environment variables and using standard input and output. `mod_fastcgi`, on the other hand, uses the FastCGI protocol, which is a binary protocol designed for efficiency. FastCGI processes can also communicate with the server over a network, which is not possible with standard CGI.
+
+
+Because the FastCGI communication protocol uses sockets, the FastCGI application could be running on the same server or on a different server, depending on the configuration.
+
+
+**Compatibility**: `mod_cgi` can be used with any scripting language that can read from standard input, write to standard output, and access environment variables. `mod_fastcgi` requires the scripting language to have FastCGI support, which is common but not universal.
+
+
+{% endhint %}
+
+{% hint="info" %}
+
+Even if the FastCGI service is running on the same server as the Apache web server, they still communicate via sockets.
+
+In the context of web servers and FastCGI, a socket is a method for inter-process communication (IPC). It's a way for different processes to send data back and forth, even if they're running on the same machine.
+
+If the FastCGI service is running on the same machine as the Apache server, they would typically use Unix domain sockets for communication. Unix domain sockets are a feature of Unix-like operating systems that allow for high-performance communication between processes on the same machine.
+
+If the FastCGI service is running on a different machine, they would use network sockets (typically TCP/IP sockets) for communication. Network sockets allow for communication between processes on different machines over a network.
+
+So, regardless of whether the FastCGI service is on the same machine or a different machine, the Apache server and the FastCGI service communicate via sockets. The type of socket (Unix domain socket or network socket) depends on where the FastCGI service is running.
+
+{% endhint %}
+
 
 The following diagram illustrates **mod_worker** with **mod_fastcgi**
 
-#### definition
-
-// todo: explain
 
 ```mermaid
 
@@ -839,9 +868,7 @@ graph RL;
                 Thread2_2("Thread 2");
             end       
         end
-
         Pool -. "watches" .-> Queue;
-
     end
     Thread1_1 -->|Access| FileSystem[File System];
     Thread1_1 -->|Forwards Generated Response|HttpdModule;
@@ -865,7 +892,7 @@ graph RL;
     end
     Thread1_1 -->|FastCGI Protocol Request|FASTCGI_PROCESSS_MANAGER;
   end
-      PI0 --> |FastCGI Protocol Response|Thread1_1;
+    PI0 --> |FastCGI Protocol Response|Thread1_1;
 
   style HttpdModule fill:#85C1E9,stroke:#333;
   style Queue fill:#F7DC6F,stroke:#333;
@@ -876,10 +903,64 @@ graph RL;
   style FileSystem fill:#E59866,stroke:#333;
   style SourceCode fill:#E59866,stroke:#333;
   style MP fill:#82E0AA,stroke:#333;
-  linkStyle 0,2,8,10,11,14 stroke: red;
+  linkStyle 0,2,8,10,12,13,14 stroke: red;
 
 ```
 
-// todo: explain
+1. The Apache master process spawns worker processes as per the configuration of the `mpm_worker` module.
+
+
+2. Each of these worker processes can spawn multiple threads to handle incoming requests.
+
+
+3. When a worker thread receives a request that involves executing a PHP script, it communicates with the FastCGI Process Manager (FPM) using the FastCGI protocol. This communication is facilitated by the `mod_fastcgi` module.
+
+
+4. The FPM assigns a FastCGI process (which has an embedded PHP interpreter) to handle the request. The PHP script is executed within this FastCGI process, and the result is sent back to the worker thread.
+
+
+5. The worker thread then sends the result back to the client.
+
+
+{% hint = "info" %}
+
+The number of FastCGI processes that are created and how they are managed can be configured in the FPM configuration file. This allows for fine-tuning based on the expected load and available resources of the server.
+
+{% endhint %}
+
+
+The following diagram is a simplified version, that illustrates the interaction between the Apache Web Server and the FastCGI Process Manager (FPM):
+
+
+```mermaid
+
+sequenceDiagram
+  participant Browser as Browser Client
+  box grey Apache HTTP Server (Master Process)
+    participant ApacheMaster as Apache HTTP Server (Master Process)
+    participant ApacheWorkerProcess as Worker Process
+    participant ApacheWorkerThread as Worker Thread
+  end
+  box lightyellow FastCGI Process Manager (Master Process)
+    participant FastCGIProcess as FastCGI Process
+    participant FastCGIWorker as FastCGI Worker Process
+  end
+  participant FileSystem as File System  
+    
+  Browser->>ApacheMaster: Sends HTTP request
+  ApacheMaster->>ApacheWorkerProcess: Receives HTTP request
+  ApacheWorkerProcess->>ApacheWorkerThread: Hands off request
+  ApacheWorkerThread->>FastCGIProcess: Sends request via socket
+  FastCGIProcess->>FastCGIWorker: Hands off request
+  FastCGIWorker->>FileSystem: Reads file 'public/index.html'
+  FileSystem-->>FastCGIWorker: Returns file content
+  FastCGIWorker-->>FastCGIProcess: Sends executed result
+  FastCGIProcess-->>ApacheWorkerThread: Sends result via socket
+  ApacheWorkerThread-->>ApacheWorkerProcess: Sends result
+  ApacheWorkerProcess-->>ApacheMaster: Sends HTTP response
+  ApacheMaster-->>Browser: Returns HTTP response
+  
+
+```
 
 ---
