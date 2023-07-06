@@ -1,12 +1,12 @@
-<h1 style="text-align: center;">Frontend Development with Laravel</h1>
+<h1 style="text-align: center;">Modern Fullstack Web Application Development</h1>
 
-<h2 style="text-align: center;">Livewire vs Vue.js</h2>
+<h2 style="text-align: center;">Laravel & Vue.js</h2>
 
 ### Final Year Project Report
 
 ### Student: Dhia Eddine Nabli
 
-### Goal Degree: Bachelor
+### Degree Program: Bachelor of Science
 
 ### Academic Supervisor: Sleh Bouhari, UIT
 
