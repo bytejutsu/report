@@ -804,7 +804,7 @@ This is part of the reason why `CGI` can be less efficient than other methods li
 
 `mod_cgi` creates a new process for each request that requires script execution. This can be resource-intensive, especially under heavy load. In contrast, `mod_fastcgi` uses a pool of persistent processes (or threads, depending on the configuration) that can handle multiple requests over their lifetime. This can lead to significant performance improvements, as the overhead of process creation and destruction is avoided for each request.
 
-{% hint = "info" %}
+{% hint style= "info" %}
 
 
 **Communication Protocol**: `mod_cgi` uses the standard CGI (Common Gateway Interface) protocol to communicate between the Apache server and the CGI process. This involves setting environment variables and using standard input and output. `mod_fastcgi`, on the other hand, uses the FastCGI protocol, which is a binary protocol designed for efficiency. FastCGI processes can also communicate with the server over a network, which is not possible with standard CGI.
@@ -818,7 +818,7 @@ Because the FastCGI communication protocol uses sockets, the FastCGI application
 
 {% endhint %}
 
-{% hint="info" %}
+{% hint style="info" %}
 
 Even if the FastCGI service is running on the same server as the Apache web server, they still communicate via sockets.
 
@@ -922,7 +922,7 @@ graph RL;
 5. The worker thread then sends the result back to the client.
 
 
-{% hint = "info" %}
+{% hint style="info" %}
 
 The number of FastCGI processes that are created and how they are managed can be configured in the FPM configuration file. This allows for fine-tuning based on the expected load and available resources of the server.
 
@@ -967,3 +967,4 @@ sequenceDiagram
 
 ### PHP-FPM
 
+some text here
