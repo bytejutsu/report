@@ -123,12 +123,12 @@ The Apache HTTP Server Project offers modules like `mod_proxy` and `mod_proxy_ba
 
 Here's an example configuration that balances load between two application servers
 
-```
+```html
 
-<Proxy balancer://mycluster>
+  <Proxy balancer://mycluster>
     BalancerMember http://appserver1:8080
     BalancerMember http://appserver2:8080
-</Proxy>
+  </Proxy>
 
 ProxyPass /app balancer://mycluster
 

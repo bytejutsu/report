@@ -1,10 +1,10 @@
 {
   "variables": {},
-  "title": "Laravel Frontend Development",
-  "description": "Beginners guide for frontend development in Laravel",
+  "title": "",
+  "description": "",
   "authors": ["Dhia Eddine Nabli"],
   "copyright": "Dhia Eddine Nabli",
-  "keywords": ["Laravel","Livewire","Vue.js"],
+  "keywords": ["Laravel","Vue.js"],
   "language": "en",
   "hidepageheaders": [],
   "hidepagefooters": [],
