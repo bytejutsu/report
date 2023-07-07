@@ -1,1 +1,0 @@
-# 10.2 State Management in Livewire

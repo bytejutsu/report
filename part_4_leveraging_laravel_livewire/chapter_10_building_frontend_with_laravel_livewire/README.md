@@ -1,1 +1,0 @@
-# Chapter 10: Building Frontend with Laravel Livewire
