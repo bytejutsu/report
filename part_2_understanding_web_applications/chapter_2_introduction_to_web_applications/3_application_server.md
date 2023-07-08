@@ -123,18 +123,10 @@ The Apache HTTP Server Project offers modules like `mod_proxy` and `mod_proxy_ba
 
 Here's an example configuration that balances load between two application servers
 
-```html
+![img.png](./img.png)
 
-  <Proxy balancer://mycluster>
-    BalancerMember http://appserver1:8080
-    BalancerMember http://appserver2:8080
-  </Proxy>
 
-ProxyPass /app balancer://mycluster
-
-```
-
-In this example, `http://appserver1:8080` and `http://appserver2:8080` are the addresses of your application servers. Any requests to `http://your-apache-server/app` will be balanced between these two servers.
+`http://appserver1:8080` and `http://appserver2:8080` are the addresses of your application servers. Any requests to `http://your-apache-server/app` will be balanced between these two servers.
 
 ---
 
@@ -151,3 +143,6 @@ graph TB
   B -- "HTTP Response" --> A
 
 ```
+
+---
+
