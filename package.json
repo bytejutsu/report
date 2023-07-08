@@ -5,7 +5,7 @@
     "generate": "honkit pdf ./ ./dhia_nabli_report.pdf"
   },
   "devDependencies": {
-    "honkit": "^4.0.7"
+    "honkit": "^4.0.8"
   },
   "dependencies": {
     "ebook-convert": "^2.0.1",
