@@ -1,1 +1,0 @@
-## 13.2 Setting Up Inertia.js with Laravel and Vue.js

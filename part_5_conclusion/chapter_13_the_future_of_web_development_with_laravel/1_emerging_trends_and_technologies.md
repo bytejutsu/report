@@ -1,1 +1,0 @@
-## 15.1 Emerging Trends and Technologies

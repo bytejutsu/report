@@ -1,1 +1,0 @@
-# Chapter 12: Building Applications with Laravel Vue.js and Inertia.js
