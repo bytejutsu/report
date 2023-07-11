@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-        <title>Section 3.3: Background Tasks · GitBook</title>
+        <title>Section 3.2: Asynchronous Runtimes · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../chapter_4_client_side/" />
+    <link rel="next" href="3_concurrency_in_php.html" />
     
     
-    <link rel="prev" href="2_concurrency_in_php.html" />
+    <link rel="prev" href="1_concurrency.html" />
     
 
     </head>
@@ -200,7 +200,7 @@
                 <a href="./">
             
                     
-                    Chapter 3: Server-Side Non-Blocking
+                    Chapter 3: Achieveing a non-blocking behaviour
             
                 </a>
             
@@ -222,12 +222,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.2" data-path="2_concurrency_in_php.html">
+        <li class="chapter active" data-level="3.2.2" data-path="2_asynchronous_runtimes.html">
             
-                <a href="2_concurrency_in_php.html">
+                <a href="2_asynchronous_runtimes.html">
             
                     
-                    Section 3.2: Concurrency in PHP
+                    Section 3.2: Asynchronous Runtimes
             
                 </a>
             
@@ -235,12 +235,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2.3" data-path="3_background_tasks.html">
+        <li class="chapter " data-level="3.2.3" data-path="3_concurrency_in_php.html">
             
-                <a href="3_background_tasks.html">
+                <a href="3_concurrency_in_php.html">
             
                     
-                    Section 3.3: Background Tasks
+                    Section 3.3: Concurrency in PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="4_background_tasks.html">
+            
+                <a href="4_background_tasks.html">
+            
+                    
+                    Section 3.4: Background Tasks
             
                 </a>
             
@@ -414,7 +427,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Section 3.3: Background Tasks</a>
+        <a href="../.." >Section 3.2: Asynchronous Runtimes</a>
     </h1>
 </div>
 
@@ -429,7 +442,40 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="asynchronous-runtimes">Asynchronous Runtimes</h1>
+<h3 id="asynchronous-programming">Asynchronous Programming</h3>
+<p>Asynchronous programming is a programming paradigm that allows operations to run independently of the main program flow. This means that a program can continue executing while waiting for other tasks (like network requests or file I/O) to complete, rather than blocking the execution until those tasks finish.</p>
+<p>In synchronous programming, tasks are performed one at a time and in a specific order. If a task takes a long time to complete (such as a request to a slow server), the entire program waits and nothing else can happen. In contrast, asynchronous programming allows a program to start a long-running task and then move on to other tasks without waiting for the long-running task to complete.</p>
+<p>Asynchronous programming can lead to more efficient and responsive programs, especially in scenarios that involve high-latency operations such as web requests, file operations, or certain user interactions. However, it also introduces complexity, as programmers must carefully manage the execution of tasks and handle the results when they&apos;re ready.</p>
+<p>Asynchronous programming can be implemented in various ways, including callbacks, promises, async/await syntax, and event-driven programming. The specific approach depends on the language and the runtime environment.</p>
+<h3 id="asynchronous-runtimes">Asynchronous Runtimes</h3>
+<p>To achieve asynchronous behavior, the runtime environment typically needs to provide several key features related to data structures and concurrency. Here are some of them:</p>
+<ol>
+<li><strong>Event Loop</strong>: The event loop is a key component of many asynchronous runtimes. It&apos;s a loop that waits for events (like I/O completion or timer expiration) and dispatches them to the appropriate event handlers. The event loop allows the program to respond to external events while continuing to do other work.</li>
+</ol>
+<ol>
+<li><strong>Task Queue or Event Queue</strong>: This is a data structure used by the event loop. When an asynchronous operation is started, a task representing the operation is put into the queue. When the operation is complete, its result (or error) is handled by a callback function, which is also put into the queue. The event loop continuously checks the queue and processes tasks in the order they appear.</li>
+</ol>
+<ol>
+<li><strong>Threads or Processes</strong>: While many asynchronous systems are single-threaded (like Node.js), others use multiple threads or processes to handle asynchronous tasks. This allows them to take advantage of multiple CPU cores and perform true parallel execution. The runtime needs to provide mechanisms for creating, managing, and synchronizing these threads or processes.</li>
+</ol>
+<ol>
+<li><strong>Coroutines || Promises, Futures, or Similar Abstractions</strong>: These are data structures that represent the result of an asynchronous operation. They provide a way to attach callbacks (functions to be executed later) that handle the result when it&apos;s ready.</li>
+</ol>
+<p>These features together enable the creation of programs that can handle many tasks at once, without blocking on slow operations, leading to more responsive and efficient applications.</p>
+<p>The following diagram models a javascript runtime (a browser&apos;s tab), which is an asynchronous runtime.</p>
+<p><img src="javascript_runtime.png" alt="javascript_runtime"></p>
+<p><strong>call stack</strong>: runs on the main thread</p>
+<p><strong>web api</strong>: runs on a worker thread</p>
+<p>//todo complete here</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p><strong>javascript</strong>: is <strong>not an asynchronous</strong> programming language. Instead, its runtime browser/node.js gives it the ability to be asynchronous.</p>
+<p><strong>php</strong>: is <strong>not an asynchronous</strong> programming language. Instead, it uses extensions like pthread(deprecated) and the <strong>parallel</strong> library to be able to achieve concurrency.</p>
+<p><strong>C</strong>: is <strong>not an asynchronous</strong> programming language. As it needs the use of the POSIX pthread library to be able to achieve concurrency.</p>
+<p><strong>an asynchronous</strong> language technically is a language that natively supports concurrency without the need of a third party. An example of that is the <strong>erlang</strong> which supports concurrency by design.  </p>
+</div></div><p></p>
+<h3 id="limitations">Limitations</h3>
+<p>Asynchronous Programming is limited when it comes to running multiple agents for a simulation. As each agent has its own state it is better to use a worker thread for modeling the agent. However, a workaround for this problem when using an asynchronous runtime is to store each agent&apos;s state in the main thread and model each agent as an asynchronous function who gets its previous state as an input and after performing the operation it communicates its new state to the main thread again to update and keep track of it.</p>
+
                                 
                                 </section>
                             
@@ -456,12 +502,12 @@
 
             
                 
-                <a href="2_concurrency_in_php.html" class="navigation navigation-prev " aria-label="Previous page: Section 3.2: Concurrency in PHP">
+                <a href="1_concurrency.html" class="navigation navigation-prev " aria-label="Previous page: Section 3.1: Concurrency">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../chapter_4_client_side/" class="navigation navigation-next " aria-label="Next page: Chapter 4: Client Side">
+                <a href="3_concurrency_in_php.html" class="navigation navigation-next " aria-label="Next page: Section 3.3: Concurrency in PHP">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -472,7 +518,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 3.3: Background Tasks","level":"3.2.3","depth":2,"next":{"title":"Chapter 4: Client Side","level":"3.3","depth":1,"path":"part_2_fundamentals_of_web_apps/chapter_4_client_side/README.md","ref":"part_2_fundamentals_of_web_apps/chapter_4_client_side/README.md","articles":[]},"previous":{"title":"Section 3.2: Concurrency in PHP","level":"3.2.2","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_3_server_side_non_blocking/2_concurrency_in_php.md","ref":"part_2_fundamentals_of_web_apps/chapter_3_server_side_non_blocking/2_concurrency_in_php.md","articles":[]},"dir":"neutral"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["Laravel","Vue.js"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_2_fundamentals_of_web_apps/chapter_3_server_side_non_blocking/3_background_tasks.md","mtime":"2023-07-11T13:56:59.430Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-11T13:57:25.893Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 3.2: Asynchronous Runtimes","level":"3.2.2","depth":2,"next":{"title":"Section 3.3: Concurrency in PHP","level":"3.2.3","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/3_concurrency_in_php.md","ref":"part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/3_concurrency_in_php.md","articles":[]},"previous":{"title":"Section 3.1: Concurrency","level":"3.2.1","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/1_concurrency.md","ref":"part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/1_concurrency.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["Laravel","Vue.js"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/2_asynchronous_runtimes.md","mtime":"2023-07-11T20:29:27.795Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-11T20:29:45.992Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
