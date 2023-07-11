@@ -15,10 +15,11 @@
   * [Section 2.2: Web Server](part_2_fundamentals_of_web_apps/chapter_2_introduction_to_web_applications/2_web_server.md)
   * [Section 2.3: Application Server](part_2_fundamentals_of_web_apps/chapter_2_introduction_to_web_applications/3_application_server.md)
 
-* [Chapter 3: Server-Side Non-Blocking](part_2_fundamentals_of_web_apps/chapter_3_server_side_non_blocking/README.md)
-  * [Section 3.1: Concurrency](part_2_fundamentals_of_web_apps/chapter_3_server_side_non_blocking/1_concurrency.md)
-  * [Section 3.2: Concurrency in PHP](part_2_fundamentals_of_web_apps/chapter_3_server_side_non_blocking/2_concurrency_in_php.md)
-  * [Section 3.3: Background Tasks](part_2_fundamentals_of_web_apps/chapter_3_server_side_non_blocking/3_background_tasks.md)
+* [Chapter 3: Achieveing a non-blocking behaviour](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/README.md)
+  * [Section 3.1: Concurrency](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/1_concurrency.md)
+  * [Section 3.2: Asynchronous Runtimes](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/2_asynchronous_runtimes.md)
+  * [Section 3.3: Concurrency in PHP](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/3_concurrency_in_php.md)
+  * [Section 3.4: Background Tasks](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/4_background_tasks.md)
 
 * [Chapter 4: Client Side](part_2_fundamentals_of_web_apps/chapter_4_client_side/README.md)
 
