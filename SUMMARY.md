@@ -18,7 +18,7 @@
 * [Chapter 3: Achieveing a non-blocking behaviour](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/README.md)
   * [Section 3.1: Concurrency](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/1_concurrency.md)
   * [Section 3.2: Asynchronous Runtimes](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/2_asynchronous_runtimes.md)
-  * [Section 3.3: Concurrency in PHP](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/3_concurrency_in_web_apps.md)
+  * [Section 3.3: Concurrency in PHP Web Apps](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/3_concurrency_in_php_web_apps.md)
   * [Section 3.4: Background Tasks](part_2_fundamentals_of_web_apps/chapter_3_achieving_a_non_blocking_behaviour/4_background_tasks.md)
 
 * [Chapter 4: Client Side](part_2_fundamentals_of_web_apps/chapter_4_client_side/README.md)
