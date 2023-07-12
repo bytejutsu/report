@@ -49,7 +49,7 @@ The following diagram models a javascript runtime (a browser's tab), which is an
 
 **C**: is **not an asynchronous** programming language. As it needs the use of the POSIX pthread library to be able to achieve concurrency.
 
-**an asynchronous** language technically is a language that natively supports concurrency without the need of a third party. An example of that is the **erlang** which supports concurrency by design.  
+**an asynchronous** language technically is a language that natively supports concurrency without the need of a third party. An example of that are the **erlang** and **go** programming languages which support concurrency by design.  
 
 {% endhint %}
 
