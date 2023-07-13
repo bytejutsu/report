@@ -28,6 +28,55 @@ Concurrency in PHP can be achieved in several ways:
 
 2. **Multi-Threading**: PHP does not natively support multi-threading. However, the PHP extension pthreads provides a convenient and robust way of creating multi-threaded applications in PHP. It allows you to create, read, write, execute, and synchronize threads. The `parallel` extension in PHP provides a simple API for parallel computing, which is the simultaneous execution of multiple calculations or processes. It allows running a PHP code block asynchronously in a separate thread and then fetching the result when available.
 
+The following is a multi-threading in PHP example using the **pthreads** extension
+
+```php
+
+<?php
+
+class WorkerThread extends Thread
+{
+    private $workerId;
+
+    public function __construct($id)
+    {
+        $this->workerId = $id;
+    }
+
+    public function run()
+    {
+        echo "Worker $this->workerId running\n";
+        // Simulate some work being done
+        sleep(2);
+        echo "Worker $this->workerId completed\n";
+    }
+}
+
+// Create two worker threads
+$worker1 = new WorkerThread(1);
+$worker2 = new WorkerThread(2);
+
+// Start the threads
+$worker1->start();
+$worker2->start();
+
+// Join the threads
+$worker1->join();
+$worker2->join();
+
+?>
+
+
+```
+
+{% hint style="danger"%}
+
+As of PHP 7.4, the **pthreads** extension is no longer maintained and has been superseded by the **parallel** extension for multi-threading in PHP
+
+{% endhint %}
+
+The following is a multi-threading in PHP example using the **parallel** extension
+
 ```php
 
 <?php
@@ -139,7 +188,7 @@ echo "End of script\n";
 
 4. **Asynchronous Programming**: Asynchronous programming allows you to perform long-running tasks, such as I/O operations, without blocking the execution of the rest of your code. Libraries like ReactPHP, Amp, and Swoole provide tools for writing asynchronous code in PHP. Promises and futures are constructs used in concurrent programming to represent the result of a computation that may not have completed yet. Libraries like Guzzle's promises or ReactPHP's promises can be used to manage concurrency in PHP.
 
-example reactPHP
+example of asynchronous operations using **reactPHP** extension
 
 ```php
 <?php
@@ -167,8 +216,36 @@ $loop->run();
 ?>
 ```
 
-example amphp
+The following is the same example but using the **amphp** extension
 
 ```php
+<?php
 
+require 'vendor/autoload.php';
+
+use Amp\Loop;
+use function Amp\asyncCall;
+
+Loop::run(function () {
+    asyncCall(function () {
+        // Simulate an async I/O operation with a delay
+        yield Amp\delay(1000);
+        echo "Hello, world!\n";
+    });
+
+    echo "This will be output immediately.\n";
+});
+
+?>
 ```
+
+{% hint style="tip" %}
+
+with you use of coroutines are just functions that can pause/resume their execution.
+
+So technically you can achieve **concurrency in a single thread** using coroutines
+
+Amphp uses this approach as it utilizes a single thread and non-blocking async calls using coroutines
+
+{% endhint %}
+
