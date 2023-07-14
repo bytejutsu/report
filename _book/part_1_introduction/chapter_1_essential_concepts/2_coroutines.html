@@ -738,7 +738,53 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="12-coroutines">1.2 Coroutines</h2>
+<p><strong>Definition</strong>: a coroutine is an instance of suspendable computation. It is conceptually similar to a thread, in the sense that it takes a block of code to run that works concurrently with the rest of the code. However, a coroutine is not bound to any particular thread.</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><ol>
+<li><p>Coroutines are the smallest program unit <strong>That is not bound to a CPU</strong> that can run concurrently.  </p>
+</li>
+<li><p>With the use of coroutines you can achieve concurrency with a single thread.</p>
+</li>
+</ol>
+</div></div><p></p>
+<h3 id="the-original-and-general-use-of-coroutines">The original and general use of Coroutines</h3>
+<p>//todo</p>
+<h3 id="the-use-of-coroutines-in-asynchonous-programming">The use of Coroutines in Asynchonous Programming</h3>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>In asynchronous programming coroutines are just functions in the main thread that are tagged to be assigned to any other thread in the pool to be executed. It is a way to abstract threads and reduce the complexity of handling them since you don&apos;t interact with a thread directly instead you use coroutines from the main thread.</p>
+<p><strong>coroutines are mainly(but not only) used in asynchronous programming</strong></p>
+</div></div><p></p>
+<h4 id="a-coroutine-in-javascript-in-a-javascript-runtime">a coroutine in javascript (in a javascript runtime)</h4>
+<pre><code>let promise = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; resolve(&quot;Promise resolved!&quot;), 1000);
+});
 
+promise.then((value) =&gt; console.log(value));
+
+async function coroutine() {
+    let response = await fetch(&apos;https://api.github.com/users/octocat&apos;);
+    let data = await response.json();
+    console.log(data);
+}
+
+coroutine();
+</code></pre><h4 id="a-coroutine-in-php-using-the-swoole-extension">a coroutine in php using the swoole extension</h4>
+<pre><code><?php
+use Swoole\Coroutine;
+
+Coroutine\run(function () {
+    $client = new Swoole\Coroutine\Http\Client('api.github.com', 443, true);
+    $client->set([&apos;timeout&apos; =&gt; 1]);
+    $client-&gt;setHeaders([
+        &apos;Host&apos; =&gt; &quot;api.github.com&quot;,
+        &quot;User-Agent&quot; =&gt; &apos;Chrome/49.0.2587.3&apos;,
+        &apos;Accept&apos; =&gt; &apos;application/json&apos;,
+        &apos;Accept-Encoding&apos; =&gt; &apos;gzip&apos;,
+    ]);
+    $client-&gt;get(&apos;/users/octocat&apos;);
+
+    echo $client-&gt;body;
+});
+?&gt;
+</code></pre>
                                 
                                 </section>
                             
