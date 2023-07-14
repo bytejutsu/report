@@ -7,15 +7,15 @@
 ### Part 1: Introduction
 
 * [Chapter 1: Essential Concepts](part_1_introduction/chapter_1_essential_concepts/README.md)
-  * [Section 1.1: Closures](part_2_fundamentals_of_web_apps/chapter_1_essential_concepts/1_closures.md)
-  * [Section 1.2: Coroutines](part_2_fundamentals_of_web_apps/chapter_1_essential_concepts/2_coroutines.md)
-  * [Section 1.3: Generators](part_2_fundamentals_of_web_apps/chapter_1_essential_concepts/3_generators.md)
+  * [Section 1.1: Closures](part_1_introduction/chapter_1_essential_concepts/1_closures.md)
+  * [Section 1.2: Coroutines](part_1_introduction/chapter_1_essential_concepts/2_coroutines.md)
+  * [Section 1.3: Generators](part_1_introduction/chapter_1_essential_concepts/3_generators.md)
 
 * [Chapter 2: Concurrency](part_1_introduction/chapter_2_concurrency/README.md)
-  * [Section 2.1: Concurrency Overview](part_2_fundamentals_of_web_apps/chapter_2_concurrency/1_concurrency_overview.md)
-  * [Section 2.2: Asynchronous Runtimes](part_2_fundamentals_of_web_apps/chapter_2_concurrency/2_asynchronous_runtimes.md)
-  * [Section 2.3: Concurrency in PHP](part_2_fundamentals_of_web_apps/chapter_2_concurrency/3_concurrency_in_php.md)
-  * [Section 2.4: Concurrency in Javascript](part_2_fundamentals_of_web_apps/chapter_2_concurrency/4_concurrency_in_javascript.md)
+  * [Section 2.1: Concurrency Overview](part_1_introduction/chapter_2_concurrency/1_concurrency_overview.md)
+  * [Section 2.2: Asynchronous Runtimes](part_1_introduction/chapter_2_concurrency/2_asynchronous_runtimes.md)
+  * [Section 2.3: Concurrency in PHP](part_1_introduction/chapter_2_concurrency/3_concurrency_in_php.md)
+  * [Section 2.4: Concurrency in Javascript](part_1_introduction/chapter_2_concurrency/4_concurrency_in_javascript.md)
 
 ###  Part 2: Fundamentals of Web Apps
 
