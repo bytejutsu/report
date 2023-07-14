@@ -104,3 +104,13 @@ int main() {
 **That passed <span style="color:red">context</span> is how the innerFunction of a closure <span style="color:red">snapshots/captures</span> the variables it is accessing**
 
 {% endhint %}
+
+The following is a class diagram of how the example Closure struct is composed.
+
+```mermaid
+classDiagram
+    class Closure {
+        +int (*function)(void*, int)
+        +int outerVariable
+    }
+```
