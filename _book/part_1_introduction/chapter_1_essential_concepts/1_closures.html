@@ -738,6 +738,84 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="11-closures">1.1 Closures</h2>
+<p><strong>Definition:</strong> a closure is a function that has <ins>access</ins> to </p>
+<ol>
+<li>its <strong>own scope</strong></li>
+<li>the <strong>outer function&apos;s scope</strong> </li>
+<li>and the <strong>global scope</strong>. </li>
+</ol>
+<p>Closures are created <ins>whenever</ins> <strong>a variable</strong> that is defined <strong>outside</strong> the <strong>current scope</strong> is <ins>accessed</ins> from <strong>within some inner scope</strong>. </p>
+<p>They allow a function to access all the variables, as well as other functions, that are in scope <ins>when the function itself is declared</ins>.</p>
+<p></p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>When a closure is created, it takes a snapshot of all the variables it is accessing. In other words, the closure freezes in time the variable&apos;s values it is accessing, as it encapsulates the actual <strong>value</strong> of those variables and <strong>not their reference</strong>. So changing the values that a closure is accessing after its creation won&apos;t affect how the closure has been defined. </p>
+</div></div><p></p>
+<h3 id="closures-in-javascript">Closures in Javascript</h3>
+<p>Javascript supports the use of closures natively, so the following is an example of how to create and use a closure in javascript.</p>
+<pre><code class="lang-js">function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log(&apos;outerVariable:&apos;, outerVariable);
+        console.log(&apos;innerVariable:&apos;, innerVariable);
+    }
+}
+
+const newFunction = outerFunction(&apos;outside&apos;);
+newFunction(&apos;inside&apos;); // logs: outerVariable: outside, innerVariable: inside
+</code></pre>
+<h3 id="closures-in-php">Closures in PHP</h3>
+<p>PHP also supports the use of closures natively, so the following is an example of how to create and use a closure in PHP.</p>
+<pre><code class="lang-php">function outerFunction($outerVariable) {
+    return function($innerVariable) use ($outerVariable) {
+        echo &apos;outerVariable: &apos; . $outerVariable;
+        echo &apos;innerVariable: &apos; . $innerVariable;
+    };
+}
+
+$newFunction = outerFunction(&apos;outside&apos;);
+$newFunction(&apos;inside&apos;); // logs: outerVariable: outside, innerVariable: inside
+</code></pre>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Note how in contrast to javascript, where the use of variables from the parent scopes defines how the closure will be created on runtime.  </p>
+<p>in PHP, the <code>use</code> keyword is used to import variables from the parent scope into the closure. Otherwise, the closure won&apos;t be able to <ins>use</ins> the variable and its value inside the closure will be <code>undefined</code>.</p>
+</div></div><p></p>
+<h3 id="emulating-a-closure-in-c">Emulating a closure in C</h3>
+<p>C doesn&apos;t support the use of closures. But we can emulate a closure in C to learn more about how closures work under the hood.</p>
+<p>The following example is the same example as the previous two examples of a function returning a function that has a &quot;snapshoted&quot; access to its parent scopes&apos; variables.</p>
+<pre><code class="lang-c">#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int (*function)(void*, int);
+    int outerVariable;
+} Closure;
+
+int innerFunction(void* context, int innerVariable) {
+    Closure* c = (Closure*)context;
+    printf(&quot;outerVariable: %d\n&quot;, c-&gt;outerVariable);
+    printf(&quot;innerVariable: %d\n&quot;, innerVariable);
+    return 0;
+}
+
+Closure* outerFunction(int outerVariable) {
+    Closure* c = malloc(sizeof(Closure));
+    c-&gt;function = innerFunction;
+    c-&gt;outerVariable = outerVariable;
+    return c;
+}
+
+int main() {
+    Closure* c = outerFunction(5);
+    c-&gt;function(c, 10);  // prints: outerVariable: 5, innerVariable: 10
+    free(c);
+    return 0;
+}
+</stdlib.h></stdio.h></code></pre>
+<h4 id="observations">Observations</h4>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><ol>
+<li><p>Note how a closure is defined as a <strong>struct</strong> that <ins>points</ins> to the function but <ins>encapsulates</ins> the <strong>value</strong> of the outerVariable.</p>
+</li>
+<li><p>Note how the closure passes itself as the <strong>context</strong> <code>c-&gt;function(c,10)</code> for the innerFunction in order for it to be able to access the outerVariables value.</p>
+</li>
+</ol>
+<p><strong>That passed <span style="color:red">context</span> is how the innerFunction of a closure <span style="color:red">snapshots/captures</span> the variables it is accessing</strong></p>
+</div></div><p></p>
 
                                 
                                 </section>
