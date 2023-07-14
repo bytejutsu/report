@@ -1,4 +1,4 @@
-## 3.3 Concurrency in Web Apps
+## 2.3 Concurrency in PHP
 
 ### How to implement concurrency in PHP?
 
@@ -131,7 +131,7 @@ Main->>Main: Continue with rest of script
 
 **definition:** a coroutine is a function which its execution can be paused and resumed
 
-**coroutines** can be synchronous/single threaded or asynchronous/multi-threaded 
+**coroutines** can be synchronous/single threaded or asynchronous/multi-threaded
 
 {% endhint %}
 

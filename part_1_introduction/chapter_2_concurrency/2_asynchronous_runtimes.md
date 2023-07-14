@@ -1,4 +1,4 @@
-## 3.2 Asynchronous Runtimes
+## 2.2 Asynchronous Runtimes
 
 ### Asynchronous Programming
 
@@ -33,7 +33,7 @@ These features together enable the creation of programs that can handle many tas
 
 The following diagram models a javascript runtime (a browser's tab), which is an asynchronous runtime.
 
-![javascript_runtime](./javascript_runtime.png)
+![javascript_runtime](javascript_runtime.png)
 
 **call stack**: runs on the main thread
 
@@ -44,12 +44,12 @@ The following diagram models a javascript runtime (a browser's tab), which is an
 {% hint style="info" %}
 
 **javascript**: is **not an asynchronous** programming language. Instead, its runtime browser/node.js gives it the ability to be asynchronous.
- 
+
 **php**: is **not an asynchronous** programming language. Instead, it uses extensions like pthread(deprecated) and the **parallel** library to be able to achieve concurrency.
 
 **C**: is **not an asynchronous** programming language. As it needs the use of the POSIX pthread library to be able to achieve concurrency.
 
-**an asynchronous** language technically is a language that natively supports concurrency without the need of a third party. An example of that are the **erlang** and **go** programming languages which support concurrency by design.  
+**an asynchronous** language technically is a language that natively supports concurrency without the need of a third party. An example of that are the **erlang** and **go** programming languages which support concurrency by design.
 
 {% endhint %}
 

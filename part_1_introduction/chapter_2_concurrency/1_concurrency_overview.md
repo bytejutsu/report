@@ -1,6 +1,6 @@
-## 3.1 Concurrency
+## 2.1 Concurrency Overview
 
-### Definition: 
+### Definition:
 
 In programming, concurrency is the ability of <ins>two or more</ins> **instruction sequences** to be run out of order (**asynchronously**).
 
@@ -27,7 +27,7 @@ classDiagram
 * Two **instruction sequences** are said to be executed in **parallel** at a defined **time interval** if and only if this execution is **simultaneous**, meaning that during that time interval, each **instruction sequence** is assigned to a CPU's <ins>physical</ins> **core** and is being executed.
 
 
-* Two **instruction sequences** are said to be **"Interleaving-ly"** executed at a defined **time interval** if and only if, at that time interval there is a moment where **not** both **instruction sequences** are assigned to a CPU's <ins>physical</ins>  **core**, instead their execution is **time-sliced**, meaning the execution of one or both call stacks is being **interrupted** and then **resumed** by **dis-allocating** and **reallocating** a CPU's <ins>physical</ins> **core** to that instruction sequence one or more times.   
+* Two **instruction sequences** are said to be **"Interleaving-ly"** executed at a defined **time interval** if and only if, at that time interval there is a moment where **not** both **instruction sequences** are assigned to a CPU's <ins>physical</ins>  **core**, instead their execution is **time-sliced**, meaning the execution of one or both call stacks is being **interrupted** and then **resumed** by **dis-allocating** and **reallocating** a CPU's <ins>physical</ins> **core** to that instruction sequence one or more times.
 
 
 {% hint style="danger" %}
@@ -170,7 +170,7 @@ However, the performance improvement from hyper-threading is not the same as you
 
 ### Process
 
-**definition**: a process is an instance of a computer program that is being executed. A process is made up of **at least one** thread. 
+**definition**: a process is an instance of a computer program that is being executed. A process is made up of **at least one** thread.
 
 Processes provide a way to encapsulate resources and functionality, and they form the basis of modern multitasking, multi-user, and multi-processing systems. They can communicate with each other through various forms of inter-process communication (IPC), such as pipes, signals, sockets, shared memory, and others.
 
@@ -199,7 +199,7 @@ Here are the typical states in a process life-cycle:
 
 5. **Terminated (Completed)**: The process has finished execution and is removed from memory. It's either completed successfully or stopped due to an error.
 
-The following diagram shows the different process states and how each state maps to a different location of the process in terms of memory level   
+The following diagram shows the different process states and how each state maps to a different location of the process in terms of memory level
 
 ![process_life_cycle_states](./Process_states.svg)
 [source](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Process_states.svg/800px-Process_states.svg.png)
