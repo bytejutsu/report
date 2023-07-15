@@ -738,6 +738,52 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="61-the-scaffolding-of-a-laravel-app">6.1 The Scaffolding of a Laravel App</h2>
+<h3 id="lets-start-from-the-web-server">Let&apos;s start from the Web Server</h3>
+<p>The main role of a Web Server is to serve static files to which it has access.</p>
+<p>Examples of static files include HTML, CSS, JavaScript, and image files.</p>
+<p>In the scenario of a user interacting with a Web App. The user will be requesting HTML pages from the browser. The Web Server will try to serve the requested HTML page.</p>
+<p>Since the browser only understands <strong>HTML</strong>, <strong>CSS</strong> and <strong>Javascript</strong> then each HTML page will have its own:</p>
+<ul>
+<li>CSS embedded in the HTML or in a separate section inside that same HTML file in a <strong>style</strong> tag </li>
+<li>Javascript defined inside a <strong>script</strong> tag</li>
+</ul>
+<p>In this case the Web Server will only serve one file per request. The browser will be able to understand the entire served file, and it will not send additional requests.</p>
+<p>However, consider the following scenarios:</p>
+<ul>
+<li>when using javascript inside a <strong>script</strong> tag in an HTML page. There is a need to use predefined javascript libraries.</li>
+<li>when using css styling either <strong>embedded</strong> or in a <strong>style</strong> tag. There is a need to use predefined css.</li>
+</ul>
+<p>For this reason an HTML page has the ability to link external js or css resources using the <strong>link</strong> tag. Those resources can be local or remote/in the cloud.</p>
+<p>When a user requests an HTML page that references external files using the <strong>link</strong> tag:</p>
+<ol>
+<li>the browser will notice the referenced files</li>
+<li>the browser will first check for each referenced file:<ul>
+<li>if it has it already cached internally, <ul>
+<li>then it will directly use it to build the requested HTML page.</li>
+</ul>
+</li>
+<li>if the referenced file is not cached in the browser: <ul>
+<li><ol>
+<li>the browser will locate the referenced file:<ul>
+<li>if the referenced file is local:</li>
+<li>The browser sends an additional request to the same web server asking for the linked resources</li>
+<li>if the referenced file is remote:</li>
+<li>The browser sends an additional request to the specified remote location web server   </li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol>
+<li>the browser will then cache the new fetched file for later usage.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Technically each HTML page can use its specific resources css and js resources. And the browser will try to get those resources if the HTML page is requested and the browser doesn&apos;t have them.</p>
+<p>However, because web apps are mostly structured in a way that takes advantage of HTML components </p>
 
                                 
                                 </section>
