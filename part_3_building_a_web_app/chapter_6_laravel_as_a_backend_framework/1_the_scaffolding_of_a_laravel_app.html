@@ -738,6 +738,60 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="61-the-scaffolding-of-a-laravel-app">6.1 The Scaffolding of a Laravel App</h2>
+<h3 id="lets-start-from-the-web-server">Let&apos;s start from the Web Server</h3>
+<p>The main role of a Web Server is to serve static files to which it has access.</p>
+<p>Examples of static files include HTML, CSS, JavaScript, and image files.</p>
+<p>In the scenario of a user interacting with a Web App. The user will be requesting HTML pages from the browser. The Web Server will try to serve the requested HTML page.</p>
+<p>Since the browser only understands <strong>HTML</strong>, <strong>CSS</strong> and <strong>Javascript</strong> then each HTML page will have its own:</p>
+<ul>
+<li>CSS embedded in the HTML or in a separate section inside that same HTML file in a <strong>style</strong> tag </li>
+<li>Javascript defined inside a <strong>script</strong> tag</li>
+</ul>
+<p>In this case the Web Server will only serve one file per request. The browser will be able to understand the entire served file, and it will not send additional requests.</p>
+<p>However, consider the following scenarios:</p>
+<ul>
+<li>when using javascript inside a <strong>script</strong> tag in an HTML page. There is a need to use predefined javascript libraries.</li>
+<li>when using css styling either <strong>embedded</strong> or in a <strong>style</strong> tag. There is a need to use predefined css.</li>
+</ul>
+<p>For this reason an HTML page has the ability to link external js or css resources using the <strong>link</strong> tag. Those resources can be local or remote/in the cloud.</p>
+<p>When a user requests an HTML page that references external files using the <strong>link</strong> tag:</p>
+<ol>
+<li>the browser will notice the referenced files</li>
+<li>the browser will first check for each referenced file:<ul>
+<li>if it has it already cached internally, <ul>
+<li>then it will directly use it to build the requested HTML page.</li>
+</ul>
+</li>
+<li>if the referenced file is not cached in the browser: <ul>
+<li><ol>
+<li>the browser will locate the referenced file:<ul>
+<li>if the referenced file is local:</li>
+<li>The browser sends an additional request to the same web server asking for the linked resources</li>
+<li>if the referenced file is remote:</li>
+<li>The browser sends an additional request to the specified remote location web server   </li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol>
+<li>the browser will then cache the new fetched file for later usage.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Technically each HTML page can use its specific resources css and js resources. And the browser will try to get those resources if the HTML page is requested and the browser doesn&apos;t have them.</p>
+<p>However, because web apps are mostly structured in a way that takes advantage of reusing HTML components like the <strong>navigation section</strong> and the <strong>footer</strong>. Most web apps use a <strong>main layout</strong> HTML page from which the rest of HTML pages inherit the parent&apos;s layout (including the <strong>header tags</strong>).</p>
+<p>Because the HTML pages that inherit from the main layout will automatically also reference the css and javascript file that the main layout uses, this allows the entire web app to only rely on one shared </p>
+<p></p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>HTML doesn&apos;t support including external HTML files. For that you need to use javascript or PHP to be able to include the HTML programmatically.</p>
+</div></div><p></p>
+<p>//todo one js, one css, the rest is fetched from the cloud.</p>
+<p>//todo easier caching for the browser</p>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>asset bundler like vite, webpack, gulp ...</p>
+<p>laravel uses vite by default</p>
+</div></div><p></p>
 
                                 
                                 </section>
@@ -781,7 +835,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 6.1: The Scaffolding of a Laravel App","level":"4.1.1","depth":2,"next":{"title":"Section 6.2: Service Providers","level":"4.1.2","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},"previous":{"title":"Chapter 6: Laravel as a Backend Framework","level":"4.1","depth":1,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/README.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/README.md","articles":[{"title":"Section 6.1: The Scaffolding of a Laravel App","level":"4.1.1","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},{"title":"Section 6.2: Service Providers","level":"4.1.2","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},{"title":"Section 6.3: Facades","level":"4.1.3","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/3_facades.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/3_facades.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["Laravel","Vue.js"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","mtime":"2023-07-14T21:14:04.823Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-14T21:14:26.306Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 6.1: The Scaffolding of a Laravel App","level":"4.1.1","depth":2,"next":{"title":"Section 6.2: Service Providers","level":"4.1.2","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},"previous":{"title":"Chapter 6: Laravel as a Backend Framework","level":"4.1","depth":1,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/README.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/README.md","articles":[{"title":"Section 6.1: The Scaffolding of a Laravel App","level":"4.1.1","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},{"title":"Section 6.2: Service Providers","level":"4.1.2","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},{"title":"Section 6.3: Facades","level":"4.1.3","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/3_facades.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/3_facades.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["Laravel","Vue.js"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","mtime":"2023-07-15T13:49:21.177Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-15T13:49:58.407Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
