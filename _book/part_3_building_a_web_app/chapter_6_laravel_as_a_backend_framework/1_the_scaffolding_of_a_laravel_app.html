@@ -740,6 +740,16 @@
                                 <h2 id="61-the-scaffolding-of-a-laravel-app">6.1 The Scaffolding of a Laravel App</h2>
 <h3 id="lets-start-from-the-web-server">Let&apos;s start from the Web Server</h3>
 <p>The main role of a Web Server is to serve static files to which it has access.</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>To tell a web server which files it should serve, you need to configure it. The configuration process varies depending on the web server software you&apos;re using, but it generally involves the following steps:</p>
+<ol>
+<li><p><strong>Specify the Document Root</strong>: The document root is the directory where the web server looks for files to serve on your website. For example, if you&apos;re using Apache, you can set the document root in your <code>httpd.conf</code> file with the <code>DocumentRoot</code> directive.</p>
+</li>
+<li><p><strong>Set Directory Index</strong>: The directory index is a file that the web server will serve if a client requests a directory. By default, this is usually a file like <code>index.html</code> or <code>index.php</code>. You can set the directory index in your web server&apos;s configuration file.</p>
+</li>
+</ol>
+<p>//todo talk about the public directory!!!!!!!!!!!!!</p>
+</div></div><p></p>
+<p>//todo: show example of public directory with different html files</p>
 <p>Examples of static files include HTML, CSS, JavaScript, and image files.</p>
 <p>In the scenario of a user interacting with a Web App. The user will be requesting HTML pages from the browser. The Web Server will try to serve the requested HTML page.</p>
 <p>Since the browser only understands <strong>HTML</strong>, <strong>CSS</strong> and <strong>Javascript</strong> then each HTML page will have its own:</p>
@@ -747,13 +757,30 @@
 <li>CSS embedded in the HTML or in a separate section inside that same HTML file in a <strong>style</strong> tag </li>
 <li>Javascript defined inside a <strong>script</strong> tag</li>
 </ul>
+<p>Since the browser can interpret mainly <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, each HTML page will have its own:</p>
+<ul>
+<li>CSS embedded in the HTML or in a separate section inside that same HTML file in a <strong>style</strong> tag</li>
+<li>Javascript defined inside a <strong>script</strong> tag</li>
+</ul>
+<p>//todo: show example of html file with js/css tags</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>modern browsers can also handle other types of content like:</p>
+<ul>
+<li><strong>XML</strong>, <strong>JSON</strong>, <strong>SVG</strong>, <strong>WebP</strong>, </li>
+<li>and various <strong>media formats</strong> (audio, video). </li>
+</ul>
+<p>They also support </p>
+<ul>
+<li><strong>WebAssembly</strong>, a binary instruction format for a stack-based virtual machine.</li>
+</ul>
+</div></div><p></p>
 <p>In this case the Web Server will only serve one file per request. The browser will be able to understand the entire served file, and it will not send additional requests.</p>
 <p>However, consider the following scenarios:</p>
 <ul>
 <li>when using javascript inside a <strong>script</strong> tag in an HTML page. There is a need to use predefined javascript libraries.</li>
 <li>when using css styling either <strong>embedded</strong> or in a <strong>style</strong> tag. There is a need to use predefined css.</li>
 </ul>
-<p>For this reason an HTML page has the ability to link external js or css resources using the <strong>link</strong> tag. Those resources can be local or remote/in the cloud.</p>
+<p>For this reason, an HTML page can link external JS or CSS resources. CSS resources are linked using the <strong>link</strong> tag, and JS resources are linked using the <strong>script</strong> tag. These resources can be local or remote/in the cloud.</p>
+<h4 id="browser-and-linked-resources">Browser and linked resources</h4>
 <p>When a user requests an HTML page that references external files using the <strong>link</strong> tag:</p>
 <ol>
 <li>the browser will notice the referenced files</li>
@@ -782,8 +809,45 @@
 </ul>
 </li>
 </ol>
+<p>//todo: show diagram of this workflow</p>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>The caching behavior can be controlled by various HTTP headers, such as <code>Cache-Control</code>, <code>ETag</code>, and <code>Last-Modified</code>. </p>
+</div></div><p></p>
+<h4 id="including-html-files">including HTML files</h4>
 <p>Technically each HTML page can use its specific resources css and js resources. And the browser will try to get those resources if the HTML page is requested and the browser doesn&apos;t have them.</p>
-<p>However, because web apps are mostly structured in a way that takes advantage of HTML components </p>
+<p>However, because web apps are mostly structured in a way that takes advantage of reusing HTML components like the <strong>navigation section</strong> and the <strong>footer</strong>. Most web apps use a <strong>main layout</strong> HTML page from which the rest of HTML pages inherit the parent&apos;s layout (including the <strong>header tags</strong>).</p>
+<p>//todo: show diagram of how a html web app is structured using layouts and anchor links</p>
+<p></p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>HTML doesn&apos;t support including external HTML files. For that you need to use javascript or PHP to be able to include the HTML programmatically.</p>
+<p>Many modern front-end js frameworks and libraries (like React, Angular, Vue.js) build upon the ability to include HTML file using javascript to support component-based architecture.</p>
+<p>//todo: talk about the equivalent in php such as blade </p>
+</div></div><p></p>
+<p>//todo: talk how modern js frameworks minify the html skeleton to include just one root elements and then inject the html components as javascript (jsx)</p>
+<p>//todo: talk about how the same is done using blade php </p>
+<h4 id="asset-bundling">Asset Bundling</h4>
+<p>The HTML pages that inherit from the main layout will automatically also reference/share the css and javascript file(s) that the main layout uses. This allows:</p>
+<ul>
+<li>all the installed js libraries/packages to be bundled into one js file usually called <strong>app.js</strong></li>
+<li>all the css styling used across the app to be bundled into one css file usually called <strong>app.css</strong> </li>
+</ul>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>A tools that helps bundle the app&apos;s:</p>
+<ul>
+<li>javascript packages into one or multiple js files </li>
+<li>and the app&apos;s css into one or multiple css files </li>
+</ul>
+<p>is called an <strong>asset bundler</strong>.</p>
+<p>An <strong>asset bundler</strong> is a tool that helps bundle the app&apos;s JavaScript packages into one or multiple JS files and the app&apos;s CSS into one or multiple CSS files. This process not only combines files but also minifies and optimizes them, improving load time and performance.</p>
+<p>Examples of assset bundler are: <strong>vite</strong>, <strong>webpack</strong> and <strong>gulp</strong>.</p>
+<p>Laravel actually uses <strong>vite</strong> by default.</p>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p><strong>Reducing HTTP Requests</strong></p>
+<p>Each request for a resource (HTML, CSS, JS, images) is an HTTP request, and reducing these requests is one of the reasons bundling and minification are used.</p>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Please note that an asset bundler will only bundle JavaScript or CSS libraries that are installed locally in your app&apos;s development project. It will not bundle remotely referenced JS or CSS libraries. </p>
+<p>Those remote JS/CSS libraries will still need to be fetched by the browser from their specified remote location(s), which is usually a <strong>CDN</strong> (Content Delivery Network).</p>
+</div></div><p></p>
+<h3 id="php-for-dynamically-generated-html">PHP for dynamically generated HTML</h3>
+<p>//todo: talk about how php is necessary and took over to generate HTML, and thus we have index.php entry point</p>
+<p>//todo: talk about how the routing is no more resouce based but virtual</p>
+<p>//todo: talk about the entry points / vendor / packages / build .. of a classic php app</p>
 
                                 
                                 </section>
@@ -827,7 +891,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 6.1: The Scaffolding of a Laravel App","level":"4.1.1","depth":2,"next":{"title":"Section 6.2: Service Providers","level":"4.1.2","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},"previous":{"title":"Chapter 6: Laravel as a Backend Framework","level":"4.1","depth":1,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/README.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/README.md","articles":[{"title":"Section 6.1: The Scaffolding of a Laravel App","level":"4.1.1","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},{"title":"Section 6.2: Service Providers","level":"4.1.2","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},{"title":"Section 6.3: Facades","level":"4.1.3","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/3_facades.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/3_facades.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["Laravel","Vue.js"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","mtime":"2023-07-14T14:42:21.633Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-14T15:45:40.015Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 6.1: The Scaffolding of a Laravel App","level":"4.1.1","depth":2,"next":{"title":"Section 6.2: Service Providers","level":"4.1.2","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},"previous":{"title":"Chapter 6: Laravel as a Backend Framework","level":"4.1","depth":1,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/README.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/README.md","articles":[{"title":"Section 6.1: The Scaffolding of a Laravel App","level":"4.1.1","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},{"title":"Section 6.2: Service Providers","level":"4.1.2","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},{"title":"Section 6.3: Facades","level":"4.1.3","depth":2,"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/3_facades.md","ref":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/3_facades.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["Laravel","Vue.js"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_3_building_a_web_app/chapter_6_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","mtime":"2023-07-15T22:50:56.234Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-15T22:52:01.171Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
