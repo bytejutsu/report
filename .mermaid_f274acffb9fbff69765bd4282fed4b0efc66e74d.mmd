@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant B as Browser
+    participant S as Server
+    B->>S: Request HTML page
+    S-->>B: Send HTML page
+    B->>B: Parse HTML and find link/script tags
+    B->>B: Check cache for each referenced file
+    Note over B: If file is in cache and not expired, use it
+    B->>S: If file not in cache, request file from server
+    S-->>B: Send requested file
+    B->>B: Handle file (CSS blocks rendering, JS may block parsing)
+    B->>B: Cache the fetched file
+    B->>B: Continue parsing HTML
