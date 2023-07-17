@@ -427,7 +427,105 @@ This ability to manipulate the DOM/CSSOM is the basis that modern javascript fra
 
 {% hint style = "tip" %}
 
-//todo: talk about jsx as a view and how dom manipulation can be converted to jsx
+There are libraries that allow you to write HTML-like syntax directly in your JavaScript without needing to directly use the DOM/CSSOM. 
+
+Those libraries are just syntactic sugar over the DOM/CSSOM API.
+
+An example of those libraries is the **lit-html** library. So, using **lit-html** with our previous **nav.js** and **footer.js** components will look like the following:
+
+**nav.js**
+```text
+import { html, render } from 'lit-html';
+
+const nav = html`
+  <nav>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+`;
+
+// Insert nav into the DOM
+render(nav, document.getElementById('nav'));
+```
+
+**footer.js**
+```text
+import { html, render } from 'lit-html';
+
+const footer = html`
+  <footer>
+    <p>Copyright &copy; My Website</p>
+  </footer>
+`;
+
+// Insert footer into the DOM
+render(footer, document.getElementById('footer'));
+```
+
+**React.js** also uses a similar concept that utilizes **JSX**.
+
+**JSX** is a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript.
+
+**JSX** is often used in conjunction with the **ReactDOM**, which is a **virtual DOM** where the **JSX** is injected to. 
+
+**Vue**'s template syntax is a HTML-based syntax that is specific to **Vue.js**
+
+{% endhint %}
+
+So, now your project structure looks more like this.
+
+```text
+/mywebsite
+  /public
+    index.html
+    about.html
+    contact.html
+    /css
+      app.css
+    /js
+      app.js
+      nav.js
+      footer.js    
+  /config
+    config.txt
+```
+
+{% hint style = "tip" %}
+
+Now, all the js assets inside the js directory will be sent from the web server to the client in order for the javascript scripts of our website to function on the client-side.
+
+For that we need to reduce the number and size of those javascript files.
+
+In order to achieve that we use asset bundling. We bundle all our javascript components into one javascript file that defines all the js logic and components. This file will be then sent to the client.
+
+So with the use of asset bundling we can move our project components into a **src** directory that contains the components we define.
+
+Later on all the components in the **src** directory will be bundled and included in the **app.js** file
+
+{% endhint %}
+
+So, now your project structure looks more like this.
+
+```text
+/mywebsite
+  /public
+    index.html
+    about.html
+    contact.html
+    /css
+      app.css
+    /js
+      app.js
+  /src
+    nav.js
+    footer.js        
+  /config
+    config.txt
+```
+
+{% hint type = "info" %}
+
+We will talk more about asset bundling in the coming later.
 
 {% endhint %}
 
@@ -458,6 +556,43 @@ That is why a typical index.html file in a project where the vue.js 3 is used as
    </script>
 </body>
 </html>
+```
+
+#### Single Page Applications (SPAs)
+
+Now, because the entire application relies on one index.html page on which the **root component** is mounted. There is no need for additional pages.
+
+Every page can be seen as a component.
+
+Components can be nested using a parent-child relation. But how to navigate between pages as components?
+
+To navigate between pages as components you just replace the current page component with the designated page component using the DOM/CSSOM manipulation.
+
+Use don't request the destination page from the web server instead the browser manipulates the DOM/CSSOM to unmount the current page component and mount the new requested page component using the DOM/CSSOM API.
+
+So the use of the original **<a></a>** HTML tag is really obsolete since you are not requesting any HTML from the server. Instead, how the destination page component should look like is already defined using javascript in the **app.js** file that the web server sent you initially.
+
+To trigger this replacement of the current page component with the destination page component, most modern front-end javascript frameworks have a "Link" component that mimics the behaviour of a <a></a> HTML tag.
+
+The Link component can be thought of as a "button" that triggers a predefined DOM/CSSOM manipulation to replace a component. Usually that component acts as a separate page that will be replaced with another component  that also acts as a separate page. 
+
+So, now your project structure looks more like this.
+
+```text
+/mywebsite
+  /public
+    index.html
+    /css
+      app.css
+    /js
+      app.js
+  /src
+    nav.js
+    footer.js
+    about.js
+    contact.js     
+  /config
+    config.txt
 ```
 
 #### inserting HTML components using PHP
