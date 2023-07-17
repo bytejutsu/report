@@ -498,13 +498,83 @@ For that we need to reduce the number and size of those javascript files.
 
 In order to achieve that we use asset bundling. We bundle all our javascript components into one javascript file that defines all the js logic and components. This file will be then sent to the client.
 
-So with the use of asset bundling we can move our project components into a **src** directory that contains the components we define.
+So with the use of asset bundling we can move our project components into a **resources** directory that contains the components we define.
 
-Later on all the components in the **src** directory will be bundled and included in the **app.js** file
+Later on all the components in the **resources** directory will be bundled and included in the **app.js** file.
+
+In order to achieve this we provide the **import/export** functionalities provided by **ES6**
 
 {% endhint %}
 
-So, now your project structure looks more like this.
+So your project files will look like the following:
+
+**index.html**
+
+```text
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <script src="https://unpkg.com/lit-html"></script>
+</head>
+<body>
+    <div id="nav"></div>
+    
+    <h1>Click Me!</h1>
+    <p>This is a paragraph.</p>
+
+    <div id="footer"></div>
+    
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
+```
+
+**nav.js**
+
+```text
+import { html, render } from 'lit-html';
+
+const navTemplate = html`
+  <nav>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+`;
+
+export function createNav() {
+  const navContainer = document.getElementById('nav');
+  render(navTemplate, navContainer);
+}
+```
+
+**footer.js**
+```text
+import { html, render } from 'lit-html';
+
+const footerTemplate = html`
+  <footer>
+    <p>Copyright &copy; My Website</p>
+  </footer>
+`;
+
+export function createFooter() {
+  const footerContainer = document.getElementById('footer');
+  render(footerTemplate, footerContainer);
+}
+```
+
+**app.js**
+```text
+import { createNav } from '../resources/nav.js';
+import { createFooter } from '../resources/footer.js';
+
+createNav();
+createFooter();
+```
+
+Now your project structure looks more like this.
 
 ```text
 /mywebsite
@@ -516,7 +586,7 @@ So, now your project structure looks more like this.
       app.css
     /js
       app.js
-  /src
+  /resources
     nav.js
     footer.js        
   /config
@@ -586,7 +656,7 @@ So, now your project structure looks more like this.
       app.css
     /js
       app.js
-  /src
+  /resources
     nav.js
     footer.js
     about.js
@@ -594,11 +664,6 @@ So, now your project structure looks more like this.
   /config
     config.txt
 ```
-
-#### inserting HTML components using PHP
-
-//todo: talk about how the same is done using blade php 
-
 
 #### Asset Bundling
 
@@ -642,6 +707,67 @@ Please note that an asset bundler will only bundle JavaScript or CSS libraries t
 Those remote JS/CSS libraries will still need to be fetched by the browser from their specified remote location(s), which is usually a **CDN** (Content Delivery Network).
 
 {% endhint %}
+
+#### inserting HTML components using PHP
+
+In PHP, you can include other predefined PHP components that describe HTML using the PHP `include` statement. Like the following:
+
+**index.php**
+```text
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+    <?php include 'resources/nav.php'; ?>
+    
+    <h1>Click Me!</h1>
+    <p>This is a paragraph.</p>
+
+    <?php include 'resources/footer.php'; ?>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
+```
+
+**nav.php**
+```text
+<nav>
+    <a href="about.php">About</a>
+    <a href="contact.php">Contact</a>
+</nav>
+```
+
+**footer.php**
+```text
+<footer>
+    <p>Copyright &copy; My Website</p>
+</footer>
+```
+
+So, now your project structure would look similar to the following:
+
+```text
+/mywebsite
+  /public
+    index.php
+    /css
+      app.css
+    /js
+      app.js
+  /resources
+    nav.php
+    footer.php
+    about.php
+    contact.php     
+  /config
+    config.txt
+```
+
+//todo: talk about how the same is done using blade php
 
 ### PHP for dynamically generated HTML
 
