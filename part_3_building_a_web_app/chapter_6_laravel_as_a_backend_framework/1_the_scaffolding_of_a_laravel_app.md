@@ -54,30 +54,48 @@ The following, is an example of a HTML page using the **style** and **script** t
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Simple Page</title>
+    <title>My Website</title>
     <style>
+        nav {
+            background-color: #f8f9fa;
+            padding: 10px;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
         body {
             background-color: lightblue;
             font-family: Arial, sans-serif;
         }
-
         h1 {
             color: navy;
         }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="about.html">About</a> 
+        <a href="contact.html">Contact</a> 
+    </nav>
+    
     <h1>Click Me!</h1>
     <p style="color: red; font-size: 20px;">This is a paragraph.</p>
 
+    <footer>
+        <p>Copyright &copy; My Website</p>
+    </footer>
+    
     <script>
         document.querySelector("h1").addEventListener("click", function() {
-            alert("You clicked the heading!");
-        });
+        alert("You clicked the heading!");
     </script>
+});
 </body>
 </html>
-
 ```
 
 {% hint type="info" %}
@@ -106,31 +124,49 @@ The following example refactors the previous example to use external JS and CSS 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Simple Page</title>
+    <title>My Website</title>
     <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
+    <nav>
+        <a href="about.html">About</a> 
+        <a href="contact.html">Contact</a> 
+    </nav>
+    
     <h1>Click Me!</h1>
     <p>This is a paragraph.</p>
 
+    <footer>
+        <p>Copyright &copy; My Website</p>
+    </footer>
+    
     <script src="js/app.js"></script>
 </body>
 </html>
 ```
 **css/app.css**
 ```text
+nav {
+   background-color: #f8f9fa;
+   padding: 10px;
+}
+footer {
+   background-color: #f8f9fa;
+   padding: 10px;
+   position: fixed;
+   width: 100%;
+   bottom: 0;
+}
 body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
+   background-color: lightblue;
+   font-family: Arial, sans-serif;
 }
-
 h1 {
-    color: navy;
+   color: navy;
 }
-
 p {
-    color: red;
-    font-size: 20px;
+   color: red;
+   font-size: 20px;
 }
 ```
 
@@ -237,11 +273,27 @@ flowchart TB
 
 1. **no attribute**: block parsing and download js script. When finished downloading, execute the js script and resume parsing.
 
+Example **jQuery**:
+
+```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+```
 
 2. **async**: download js script asynchronously while parsing. When finished execute the js script and resume parsing.
 
+Example **D3.js**:
+
+```
+<script async src="https://d3js.org/d3.v6.min.js"></script>
+```
 
 3. **defer**: download js script asynchronously while parsing. But, don't execute js script until parsing is finished.
+
+Example **Vue.js**:
+
+```
+<script defer src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+```
 
 {% endhint %}
             
@@ -259,11 +311,156 @@ HTML doesn't support including external HTML files. For that you need to use jav
 
 Many modern front-end js frameworks and libraries (like React, Angular, Vue.js) build upon the ability to include HTML file using javascript to support component-based architecture.
 
+1. using **Javascript**: we can use the DOM/CSSOM API to inject HTML/CSS programmatically into the document on the client-side
+
+2. using **PHP**: we can craft the HTML that we want to send to the client programmatically.
+
 //todo: talk about the equivalent in php such as blade 
 
 {% endhint %}
 
-//todo: talk how modern js frameworks minify the html skeleton to include just one root elements and then inject the html components as javascript (jsx)
+#### inserting HTML components using javascript
+
+You can create HTML elements programmatically using JavaScript and then insert them into the DOM. Like the following example:
+
+```text
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+    <div id="nav"></div>
+    
+    <h1>Click Me!</h1>
+    <p>This is a paragraph.</p>
+
+    <div id="footer"></div>
+    
+    <script src="js/app.js"></script>
+    <script>
+        // Create nav element
+        var nav = document.createElement('nav');
+        var aboutLink = document.createElement('a');
+        aboutLink.href = 'about.html';
+        aboutLink.textContent = 'About';
+        var contactLink = document.createElement('a');
+        contactLink.href = 'contact.html';
+        contactLink.textContent = 'Contact';
+        nav.appendChild(aboutLink);
+        nav.appendChild(contactLink);
+
+        // Insert nav into the DOM
+        document.getElementById('nav').appendChild(nav);
+
+        // Create footer element
+        var footer = document.createElement('footer');
+        var copyright = document.createElement('p');
+        copyright.textContent = 'Copyright &copy; My Website';
+        footer.appendChild(copyright);
+
+        // Insert footer into the DOM
+        document.getElementById('footer').appendChild(footer);
+    </script>
+</body>
+</html>
+```
+
+You can reason about each included HTML element as a standalone javascript component, like the following:
+
+**nav.js**
+```text
+// Create nav element
+var nav = document.createElement('nav');
+var aboutLink = document.createElement('a');
+aboutLink.href = 'about.html';
+aboutLink.textContent = 'About';
+var contactLink = document.createElement('a');
+contactLink.href = 'contact.html';
+contactLink.textContent = 'Contact';
+nav.appendChild(aboutLink);
+nav.appendChild(contactLink);
+
+// Insert nav into the DOM
+document.getElementById('nav').appendChild(nav);
+```
+
+**footer.js**
+```text
+// Create footer element
+var footer = document.createElement('footer');
+var copyright = document.createElement('p');
+copyright.textContent = 'Copyright &copy; My Website';
+footer.appendChild(copyright);
+
+// Insert footer into the DOM
+document.getElementById('footer').appendChild(footer);
+```
+
+Then you include it as an HTML element with a matching script in the:
+
+**main.html**
+```text
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+    <div id="nav"></div>
+    
+    <h1>Click Me!</h1>
+    <p>This is a paragraph.</p>
+
+    <div id="footer"></div>
+    
+    <script src="js/app.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html>
+```
+
+This ability to manipulate the DOM/CSSOM is the basis that modern javascript frameworks are based on to provide a component based architecture where each component encapsulates its own **view**, **state** and **business logic**.
+
+{% hint style = "tip" %}
+
+//todo: talk about jsx as a view and how dom manipulation can be converted to jsx
+
+{% endhint %}
+
+Because the use of a component based architecture implies that there is a parent/child relation between components and thus the existence of a "first ancestor" component. This component is often referred as the **root component**.
+
+The **root component** is the first component that gets mounted into the DOM and serves as a start-point for the components' tree. So there is actually no use for using pure HTML other than mounting the **root component**.
+
+That is why a typical index.html file in a project where the vue.js 3 is used as a frontend library looks like the following:
+
+```text
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Vue.js 3 App</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+   <div id="app">{{ message }}</div>
+   
+   <script>
+     const { createApp } = Vue
+   
+     createApp({
+       setup() {
+         return {}
+       }
+     }).mount('#app')
+   </script>
+</body>
+</html>
+```
+
+#### inserting HTML components using PHP
 
 //todo: talk about how the same is done using blade php 
 
