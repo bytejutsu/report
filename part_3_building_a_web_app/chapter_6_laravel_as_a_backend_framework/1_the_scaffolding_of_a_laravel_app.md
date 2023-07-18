@@ -769,16 +769,136 @@ So, now your project structure would look similar to the following:
 
 //todo: talk about how the same is done using blade php
 
-### PHP for dynamically generated HTML
+### index.php as an entry point to the web app
 
-//todo: talk about how php is necessary and took over to generate HTML, and thus we have index.php entry point
+The role of a web app is not just to always return a <ins>static</ins> HTML **view**, instead it may return other kind of data formats like **json** and for that it may need to connect with the **database**, or it may need to forward the **HTTP Request** elsewhere and so on ...
 
-//todo: talk about how the routing is no more resouce based but virtual
+Because the **index.php** is by default the first file that gets executed when a client makes a request to your application, the **index.php** serves as an <span style="color: red; font-weight: bold">entry point</span> to the PHP application.
 
-{% hint type="" %}
+Some common things that the **index.php** file does are the following:
 
-//todo:talk about file-based routing vs virtual routing... Please note here how the **file based** routing. The server serves files that match the requested
+
+1. **Configuration and Initialization**: The `index.php` file is often responsible for setting up any necessary configuration and initialization for your application. This might include things like setting up error reporting, configuring session handling, loading configuration files, and initializing database connections.
+
+
+2. **Autoloading**: If your application uses classes, the `index.php` file might set up autoloading. Autoloading is a feature in PHP that allows you to automatically load classes as they are needed, rather than having to manually include them with `include` or `require`.
+
+
+3. **Routing**: In many modern PHP applications, the `index.php` file is responsible for handling routing. This means it determines what code to run based on the URL of the request. This is often done with the help of a routing library or a full-featured framework like Laravel or Symfony.
+
+
+4. **Output**: Finally, the `index.php` file is often responsible for sending the final output to the client. This might be a rendered HTML page, a JSON response, or some other type of content.
+
+
+Here's a very basic example of what an `index.php` file might look like:
+
+```php
+<?php
+// 1. Configuration and Initialization
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Load configuration
+$config = require __DIR__ . '/../config/config.php';
+
+// Connect to the database
+$db = new PDO($config['db_dsn'], $config['db_user'], $config['db_pass']);
+
+// 2. Autoloading: autoload necessary php classes here ...
+
+// 3. Routing
+$request = $_SERVER['REQUEST_URI'];
+
+switch ($request) {
+    case '/' :
+        require __DIR__ . '/../resources/views/welcome.php';
+        break;
+    case '/about' :
+        require __DIR__ . '/../resources/views/about.php';
+        break;
+    case '/contact' :
+        require __DIR__ . '/../resources/views/contact.php';
+        break;    
+    default:
+        require __DIR__ . '/../resources/views/404.php';
+        break;
+}
+
+// 4. Output
+// The output is handled by the included files above (home.php, about.php, 404.php)
+// Those files would contain the HTML (or other content) that you want to send to the client
+```
+
+{% hint type="info" %}
+
+In PHP, `__DIR__` is a magic constant that returns the directory of the file in which it is used. It's equivalent to calling `dirname(__FILE__)`.
+
+For example, if you have a file at `/var/www/html/mywebsite/public/index.php`, and inside `index.php` you have:
+
+```php
+echo __DIR__;
+```
+
+It will output:
+
+```
+/var/www/html/mywebsite/public
+```
 
 {% endhint %}
+
+
+{% hint type="danger" %}
+
+Key **differences** between **web server routing** and **application-level routing**:
+
+1. **Web Server Routing**: Web server routing is primarily **file-based**. When a request comes in, the web server looks at the URL and tries to find a file that matches that path in the file system. If it finds a match, it sends that file back as the response. This works well for static websites, where each URL corresponds to a specific HTML file.
+
+
+2. **PHP Web App Routing**: When a PHP application is involved, the routing process can become much more dynamic. Instead of mapping URLs directly to files, the application can interpret the URL and decide what action to take. This could involve loading different PHP scripts, calling different functions, or even generating completely new HTML content on the fly. This is often referred to as **"virtual"** routing, because the URLs don't necessarily correspond to actual files in the file system.
+
+Note that even when using a PHP application, the **initial routing** is still handled by the **web server**. The web server receives the HTTP request and then passes it to the appropriate PHP script (often `index.php`). From there, the PHP application takes over and performs its own routing based on the URL.
+
+{% endhint %}
+
+So, your project structure will look like this:
+
+```text
+/mywebsite
+  /public
+    index.php
+    /css
+      app.css
+    /js
+      app.js
+  /resources
+    /views
+      nav.php
+      footer.php
+      welcome.php
+      about.php
+      contact.php
+      404.php     
+  /config
+    config.php
+```
+
+The following diagram illustrates the life-cycle of a typical PHP application.
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant WebServer as Web Server
+    participant index.php
+    activate WebServer
+    Client->>WebServer: HTTP Request
+    WebServer->>index.php: Passes HTTP Request
+    activate index.php
+    index.php->>index.php: execute
+    index.php->>WebServer: HTTP Response
+    deactivate index.php
+    WebServer->>Client: HTTP Response
+```
 
 //todo: talk about the entry points / vendor / packages / build .. of a classic php app
