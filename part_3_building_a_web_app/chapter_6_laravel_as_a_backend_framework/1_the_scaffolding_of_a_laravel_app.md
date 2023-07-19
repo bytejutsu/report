@@ -182,9 +182,9 @@ $kernel = $app->make(Kernel::class);
 5. **Terminate The Application**: After the response has been sent to the client, the script calls the kernel's `terminate` method. This method is used to perform any final tasks after the response has been sent, such as committing database transactions or writing to log files.
 
 
-### The HTTP Kernel?
+### The HTTP Kernel
 
-to understand the following lines of code
+Ok, now let's try to reason backwards and try to understand the following lines of code:
 
 ```
 $response = $kernel->handle(
@@ -207,6 +207,10 @@ talk about kernel and middlewares
 why is the kernel created by the app instance? why not a standalone instance ?
 
 maybe because we want it to always be a singleton in our laravel app? and the app container can provide this functionality?
+
+if we want it to be always a singleton why not implement it using the singleton pattern and that's it?
+
+Maybe we want to declare some services classes without implementing the singleton pattern and then make them behave as a singleton in our app ?
 
 ### The app container
 
