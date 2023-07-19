@@ -194,6 +194,172 @@ $response = $kernel->handle(
 $kernel->terminate($request, $response);
 ```
 
+the Laravel's HTTP kernel is primarily responsible for handling incoming HTTP requests to the application. It is the central component that manages the request lifecycle in a Laravel application.
+
+To understand how the Laravel HTTP kernel works, we need to firstly start by analysing the code that `index.php` is **using**, namely, `Illuminate\Contracts\Http\Kernel`.
+
+### Analysing the `Illuminate\Contracts\Http\Kernel`:
+
+The following is the code of the `Kernel.php` file which is namespaced as `Illuminate\Contracts\Http\Kernel`:
+
+```
+<?php
+
+namespace Illuminate\Contracts\Http;
+
+interface Kernel
+{
+    /**
+     * Bootstrap the application for HTTP requests.
+     *
+     * @return void
+     */
+    public function bootstrap();
+
+    /**
+     * Handle an incoming HTTP request.
+     *
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function handle($request);
+
+    /**
+     * Perform any final actions for the request lifecycle.
+     *
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
+     * @param  \Symfony\Component\HttpFoundation\Response  $response
+     * @return void
+     */
+    public function terminate($request, $response);
+
+    /**
+     * Get the Laravel application instance.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application
+     */
+    public function getApplication();
+}
+```
+
+
+This code is the interface for the HTTP Kernel in Laravel. 
+
+An interface in PHP is a contract or a blueprint for a class. 
+
+It defines a set of methods that the class must implement. In this case, any class that implements the `Illuminate\Contracts\Http\Kernel` interface must define the methods `bootstrap()`, `handle()`, `terminate()`, and `getApplication()`.
+
+Here's what each method is intended to do:
+
+
+1. **`bootstrap()`**: This method is responsible for bootstrapping the application for HTTP requests. It doesn't take any parameters and doesn't return anything (`void`).
+
+2. **`handle($request)`**: This method is responsible for handling an incoming HTTP request. It takes a `Symfony\Component\HttpFoundation\Request` object as a parameter and returns a `Symfony\Component\HttpFoundation\Response` object.
+
+3. **`terminate($request, $response)`**: This method is responsible for performing any final actions for the request lifecycle. It takes a `Symfony\Component\HttpFoundation\Request` object and a `Symfony\Component\HttpFoundation\Response` object as parameters and doesn't return anything (`void`).
+
+4. **`getApplication()`**: This method is responsible for getting the Laravel application instance. It doesn't take any parameters and returns an `Illuminate\Contracts\Foundation\Application` object.
+
+
+### The <span style="color: red;">first question</span> that begs itself:
+
+How does the following line of code works?:
+
+```
+$kernel = $app->make(Kernel::class);
+```
+
+How is the `$app->make();` method able to instantiate the `Kernel` Interface using just its namespace as a string `Kernel::class`? 
+
+In PHP, you can't instantiate an interface. In order to instantiate an Interface you need to create a non-abstract class that implements that interface.
+
+
+### Short answer:
+
+Laravel's service container, a powerful tool for:
+
+- managing class dependencies and 
+- performing dependency injection.
+
+In Laravel, the `$app->make()` method is used to **resolve** a class out of the service container. 
+
+When you call `$app->make(Kernel::class)`, Laravel is not trying to instantiate the `Kernel` interface. Instead, it's looking for a concrete implementation of that interface that has been bound into the service container.
+
+Earlier in the `bootstrap/app.php` file, Laravel **binds** the `Kernel` interface to a concrete implementation:
+
+```php
+$app->singleton(
+    Illuminate\Contracts\Http\Kernel::class,
+    App\Http\Kernel::class
+);
+```
+
+This code tells Laravel: "Whenever someone asks for the `Kernel` interface, give them an instance of `App\Http\Kernel`."
+
+So, when you call `$app->make(Kernel::class)`, Laravel gives you an instance of `App\Http\Kernel`, which is a concrete class that implements the `Kernel` interface.
+
+This is a fundamental part of Laravel's service container and is key to how Laravel handles dependency injection. It allows you to depend on abstractions (like interfaces) in your code, while Laravel takes care of providing the correct implementation.
+
+{% hint style = "tip" %}
+
+In Laravel, the `$app` variable is not globally accessible in all PHP files by default. However, Laravel provides a variety of ways to access the application instance (and thus the service container) when you need it.
+
+1. **Dependency Injection**: Laravel's service container is primarily intended to be used with dependency injection. This means that instead of trying to access the `$app` variable directly, you type-hint the dependencies your class needs in its constructor, and Laravel will automatically inject them for you. This is the recommended way to access services in Laravel.
+
+//todo: provide an example here of type hinting using laravel's service container.
+
+//todo: maybe change the name of this . to type hinting + dependency injection... 
+
+2. **Facades**: Laravel's facades provide a "static" interface to classes that are available in the service container. Under the hood, facades use the service container to resolve the underlying class and proxy calls to it. For example, you can use the `App` facade to access the application instance anywhere in your code like this: `App::make('SomeClass')`.
+
+3. **Helpers**: Laravel provides a number of global helper functions that can be used to access various services. For example, the `app()` function can be used to access the service container. If you call `app('SomeClass')`, it will resolve 'SomeClass' out of the container.
+
+While these methods can be used to access the service container from anywhere in your code, it's generally recommended to use dependency injection where possible, as it makes your code more testable and easier to manage.
+
+{% endhint %}
+
+{% hint style = "info" %}
+
+Yes, that's correct! Laravel's facades provide a "static" interface to classes that are available in the service container. When you use `App::make('SomeClass')`, you're using the `App` facade to access the service container and resolve the `SomeClass` out of it.
+
+Under the hood, Laravel's facades use the service container to resolve the underlying class and proxy static method calls to it. This means that when you call a static method on a facade, Laravel is actually resolving the underlying class from the service container and calling the method on that instance.
+
+So in essence, when you use a facade, you're using the service container twice: once to resolve the facade itself, and once to resolve the class that the facade provides access to. This allows you to use complex services as if they were simple, static methods, while still benefiting from Laravel's powerful service container and dependency injection features.
+
+{% endhint %}
+
+### The <span style="color: red;">second question</span> that begs itself:
+
+//todo: main reason why is the laravel service container is needed? global provider?
+        second reason? automatic dependency injection?
+        third reason? singleton if needed? 
+        fourth reason? dependency management?
+
+
+
+
+
+//todo: make sure all the info in the following section between --- is not needed anymore and then delete it 
+
+---
+
+In Laravel, the `App\Http\Kernel` class implements this interface and provides the actual implementation for these methods. This interface is a contract that ensures the HTTP Kernel has the necessary methods to handle and terminate HTTP requests, bootstrap the application, and provide access to the application instance.
+
+
+
+
+
+
+
+The HTTP kernel extends the `Illuminate\Foundation\Http\Kernel` class and contains two primary methods: `handle()` and `terminate()`.
+
+
+The HTTP kernel also defines a list of HTTP middleware that all requests through the application must pass through before being handled by a route or controller. Middleware provide a convenient mechanism for filtering HTTP requests entering your application, such as verifying the user of your application is authenticated.
+
+
+
+
+
 reason backward and talk about the kernel's handle and terminate methods
 
 explore the kernels code and see what terminate does?
@@ -211,6 +377,8 @@ maybe because we want it to always be a singleton in our laravel app? and the ap
 if we want it to be always a singleton why not implement it using the singleton pattern and that's it?
 
 Maybe we want to declare some services classes without implementing the singleton pattern and then make them behave as a singleton in our app ?
+
+---
 
 ### The app container
 
