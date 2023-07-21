@@ -738,6 +738,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="63-facades">6.3 Facades</h2>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Laravel&apos;s facades provide a &quot;static&quot; interface to classes that are available in the service container. When you use <code>App::make(&apos;SomeClass&apos;)</code>, you&apos;re using the <code>App</code> facade to access the service container and resolve the <code>SomeClass</code> out of it.</p>
+<p>Under the hood, Laravel&apos;s facades use the service container to resolve the underlying class and proxy static method calls to it. This means that when you call a static method on a facade, Laravel is actually resolving the underlying class from the service container and calling the method on that instance.</p>
+<p>So in essence, when you use a facade, you&apos;re using the service container twice: </p>
+<ol>
+<li>once to resolve the facade itself, </li>
+<li>and once to resolve the class that the facade provides access to.</li>
+</ol>
+<p>This allows you to use complex services as if they were simple, static methods, while still benefiting from Laravel&apos;s powerful service container and dependency injection features..</p>
+</div></div><p></p>
 
                                 
                                 </section>

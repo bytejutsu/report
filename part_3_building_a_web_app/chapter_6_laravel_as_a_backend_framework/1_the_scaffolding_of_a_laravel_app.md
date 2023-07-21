@@ -276,10 +276,14 @@ In PHP, you can't instantiate an interface. In order to instantiate an Interface
 
 ### Short answer:
 
-Laravel's service container, a powerful tool for:
+<div style="display:flex; align-items:center; justify-content:center; border:5px solid black;">
+    <h1 style="color:red; margin-top: 0px;">Laravel Service Container</h1>
+</div>
 
-- managing class dependencies and 
-- performing dependency injection.
+**Definition:** The **Laravel Service Container**, also known as the **IoC (Inversion of Control)** container, is a powerful **tool** that has a variety of **key features** that help managing a Laravel application.
+
+The service container is essentially a <span style="color: red;">**box of objects (services)**</span> that the application needs to function. These services can be anything from database connections to mailer classes or custom-written services for your application. The container allows you to <span style="color: red; font-weight: bold">bind</span> these services into it, and then <span style="color: red; font-weight: bold">resolve</span> them out when you need them.
+
 
 In Laravel, the `$app->make()` method is used to **resolve** a class out of the service container. 
 
@@ -306,37 +310,85 @@ In Laravel, the `$app` variable is not globally accessible in all PHP files by d
 
 1. **Dependency Injection**: Laravel's service container is primarily intended to be used with dependency injection. This means that instead of trying to access the `$app` variable directly, you type-hint the dependencies your class needs in its constructor, and Laravel will automatically inject them for you. This is the recommended way to access services in Laravel.
 
-//todo: provide an example here of type hinting using laravel's service container.
+{% hint type = "tip" %}
 
-//todo: maybe change the name of this . to type hinting + dependency injection... 
+Most of the time, when we talk about **Dependency Injection** in the context of Laravel, we're typically referring to the <span style="color: red;">**Automatic**</span> **Dependency Injection** feature provided by Laravel's Service Container.
+
+**Dependency Injection** by **definition** is simply: a design pattern where an object's dependencies are provided to it, rather than the object having to create or find those dependencies itself. This can be done <span style="color: blue;">**Manually**</span>, by simply passing the dependencies to the object when it's **constructed**.
+
+The following is a classic example of manually injecting the `$database` **dependency** to the `$userRepository` object instance of the `UserRepository` class through its constructor `new UserRepository($database);`:
+
+```php
+$database = new Database();
+$userRepository = new UserRepository($database);
+
+$user = $userRepository->findUserById(1);
+```
+
+{% endhint %}
+
+The following is an example of using Laravel's service container dependency injection through type hinting:
+
+```PHP
+
+namespace App\Http\Controllers;
+
+use App\Services\UserService;
+
+class UserController extends Controller {
+    protected $userService;
+
+    public function __construct(UserService $userService) {
+        $this->userService = $userService;
+    }
+
+    public function show($id) {
+        $user = $this->userService->findUserById($id);
+
+        // Return a view or JSON response with the user data
+    }
+}
+
+```
+
+In this example, the `UserController` depends on the `UserService`. By type-hinting the `UserService` dependency in the `UserController`'s constructor, Laravel's service container will automatically resolve and inject it.
+
+---
 
 2. **Facades**: Laravel's facades provide a "static" interface to classes that are available in the service container. Under the hood, facades use the service container to resolve the underlying class and proxy calls to it. For example, you can use the `App` facade to access the application instance anywhere in your code like this: `App::make('SomeClass')`.
 
+---
+
 3. **Helpers**: Laravel provides a number of global helper functions that can be used to access various services. For example, the `app()` function can be used to access the service container. If you call `app('SomeClass')`, it will resolve 'SomeClass' out of the container.
 
-While these methods can be used to access the service container from anywhere in your code, it's generally recommended to use dependency injection where possible, as it makes your code more testable and easier to manage.
-
 {% endhint %}
 
-{% hint style = "info" %}
 
-Yes, that's correct! Laravel's facades provide a "static" interface to classes that are available in the service container. When you use `App::make('SomeClass')`, you're using the `App` facade to access the service container and resolve the `SomeClass` out of it.
+### Why use the Laravel Service Container ? 
 
-Under the hood, Laravel's facades use the service container to resolve the underlying class and proxy static method calls to it. This means that when you call a static method on a facade, Laravel is actually resolving the underlying class from the service container and calling the method on that instance.
+Technically, there is no ultimate main reason why we must use the Laravel Service Container as it is a tool that represents a set of key features that allow us to manage our Laravel application.
 
-So in essence, when you use a facade, you're using the service container twice: once to resolve the facade itself, and once to resolve the class that the facade provides access to. This allows you to use complex services as if they were simple, static methods, while still benefiting from Laravel's powerful service container and dependency injection features.
+That implies that every feature that the Laravel Service Container provides can also be achieved without the reliance on the Laravel Service Container.
 
-{% endhint %}
+However, as a software engineer, to push the Laravel Framework toward its **full potential** you must use its Service Container for the following reasons: 
 
-### The <span style="color: red;">second question</span> that begs itself:
-
-//todo: main reason why is the laravel service container is needed? global provider?
-        second reason? automatic dependency injection?
-        third reason? singleton if needed? 
-        fourth reason? dependency management?
+ **1.** The Laravel Service Container is an integral component of the Laravel Framework. From its very start the Laravel Framework uses its Service Container to <span style="color: red; font-weight: bold">bootstrap</span> the entire application.
 
 
+ **2.** The Laravel Service Container is an essential part of the Laravel framework, as many features of the Laravel Framework are <span style="color: red; font-weight: bold">built on top</span> of its Service Container.
 
+
+ **3.** The Laravel Service Container provides a number of features that make its usage almost <span style="color: red; font-weight: bold;">indispensable</span>. 
+
+
+The following are the most important features that the Laravel Service Container provides. The features are sorted from most important feature to less important feature by the criteria of frequent usage in common software engineering cases:
+
+
+
+
+
+
+---
 
 
 //todo: make sure all the info in the following section between --- is not needed anymore and then delete it 
