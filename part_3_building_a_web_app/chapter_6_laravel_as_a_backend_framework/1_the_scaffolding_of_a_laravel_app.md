@@ -384,8 +384,153 @@ However, as a software engineer, to push the Laravel Framework toward its **full
 The following are the most important features that the Laravel Service Container provides. The features are sorted from most important feature to less important feature by the criteria of frequent usage in common software engineering cases:
 
 
+1. **Automatic Dependency Injection**: The service container can automatically resolve dependencies when you type-hint them in a class constructor or method, reducing the need for manual instantiation and making your code cleaner and more maintainable.
 
+Example:
 
+```PHP
+// In your controller
+class UserController extends Controller
+{
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+    public function index()
+    {
+        $users = $this->userService->getAllUsers();
+        return view('users.index', ['users' => $users]);
+    }
+}
+```
+
+In this example, Laravel's service container will automatically resolve the `UserService` dependency when it instantiates the controller. This is useful in a real-world scenario where you need to fetch all users from a database and pass them to a view.
+
+---
+
+2. **Interface to Implementation Mapping**: The service container allows you to bind an interface to a specific implementation. This means you can type-hint an interface in your code, and Laravel will automatically inject the correct implementation.
+
+Example:
+
+```PHP
+use App\Contracts\EventPusher;
+use App\Services\RedisEventPusher;
+ 
+$this->app->bind(EventPusher::class, RedisEventPusher::class);
+```
+
+This statement tells the container that it should inject the RedisEventPusher when a class needs an implementation of EventPusher. Now we can type-hint the EventPusher interface in the constructor of a class that is resolved by the container.
+
+```PHP
+use App\Contracts\EventPusher;
+ 
+/**
+ * Create a new class instance.
+ */
+public function __construct(protected EventPusher $pusher) {}
+```
+
+---
+
+3. **Singletons and Instance Binding**: The service container allows you to bind a single instance of a service that will be returned on subsequent requests for that service. This is useful for services that maintain state or are expensive to create.
+
+Example
+
+```PHP
+use App\Services\Transistor;
+use App\Services\PodcastParser;
+use Illuminate\Contracts\Foundation\Application;
+ 
+$this->app->singleton(Transistor::class, function (Application $app) {
+    return new Transistor($app->make(PodcastParser::class));
+});
+```
+
+---
+
+4. **Global Availability**: The service container is globally available, which can be useful for accessing services in places where dependency injection isn't possible.
+
+Example:
+```PHP
+
+// In a route closure
+Route::get('/users', function () {
+    $userService = app('App\Services\UserService');
+
+    $users = $userService->getAllUsers();
+    return view('users.index', ['users' => $users]);
+});
+
+```
+
+The `app()` helper function provides global access to the service container. This is useful in a real-world scenario where you need to resolve a service in a place where dependency injection is not available, like a route closure.
+
+---
+
+5. **Contextual Binding**: The service container allows you to specify different implementations of a service to be injected into different areas of your application.
+
+Example
+
+```PHP
+$this->app->when(PhotoController::class)
+          ->needs(Filesystem::class)
+          ->give(function () {
+              return Storage::disk('local');
+          });
+ 
+$this->app->when([VideoController::class, UploadController::class])
+          ->needs(Filesystem::class)
+          ->give(function () {
+              return Storage::disk('s3');
+          });
+```
+
+---
+
+6. **Tagging**: The service container allows you to tag related services and then access all the services tagged with a particular tag.
+
+Example
+
+```PHP
+$this->app->bind(CpuReport::class, function () {
+    // ...
+});
+ 
+$this->app->bind(MemoryReport::class, function () {
+    // ...
+});
+ 
+$this->app->tag([CpuReport::class, MemoryReport::class], 'reports');
+```
+
+Once the services have been tagged, you may easily resolve them all via the container's tagged method
+
+```PHP
+$this->app->bind(ReportAnalyzer::class, function (Application $app) {
+    return new ReportAnalyzer($app->tagged('reports'));
+});
+```
+
+---
+
+7. **Extensibility**: The service container allows you to extend services that have been bound to the container, giving you an opportunity to add additional methods or wrap the service in a decorator.
+
+```PHP
+
+// In a service provider's boot method
+$this->app->extend('App\Services\UserService', function ($service, $app) {
+    // Wrap the $service in a decorator class
+    return new \App\Decorators\UserServiceDecorator($service);
+});
+
+```
+
+This wraps the `UserService` in a `UserServiceDecorator` whenever it is resolved out of the container. This is useful in a real-world scenario where you want to add behavior to a service without modifying its code. For example, you might want to add logging to all methods of a service.
+
+---
 
 
 ---
