@@ -569,11 +569,8 @@ talk about kernel and middlewares
 
 why is the kernel created by the app instance? why not a standalone instance ?
 
-maybe because we want it to always be a singleton in our laravel app? and the app container can provide this functionality?
 
-if we want it to be always a singleton why not implement it using the singleton pattern and that's it?
 
-Maybe we want to declare some services classes without implementing the singleton pattern and then make them behave as a singleton in our app ?
 
 ---
 
@@ -589,7 +586,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 $kernel = $app->make(Kernel::class);
 ```
 
-We take a loot at the **./bootstrap/app.php** file:
+We take a look at the **./bootstrap/app.php** file:
 
 ```
 <?php
@@ -650,3 +647,47 @@ return $app;
 ```
 
 ### Analysing the app.php code:
+
+Here's a breakdown of what the `app.php` does:
+
+1. **Create The Application**: The script starts by creating a new instance of `Illuminate\Foundation\Application`. This class is the main Laravel application instance and serves as the "glue" for all the components of Laravel. It's also the IoC container for the system, binding all of the various parts.
+
+
+2. **Bind Important Interfaces**: Next, the script binds some important interfaces into the container. These interfaces are the contracts that define the core services of Laravel. The `singleton` method is used to bind a single instance of the service to the container. This means that the same instance will be returned on subsequent calls into the container. The interfaces and their implementations that are bound here are:
+
+   - `Illuminate\Contracts\Http\Kernel` is bound to `App\Http\Kernel`. This is the HTTP kernel that handles incoming web requests.
+
+   - `Illuminate\Contracts\Console\Kernel` is bound to `App\Console\Kernel`. This is the console kernel that handles CLI commands.
+
+   - `Illuminate\Contracts\Debug\ExceptionHandler` is bound to `App\Exceptions\Handler`. This is the exception handler that handles exceptions thrown by the application.
+
+
+3. **Return The Application**: Finally, the script returns the application instance. This instance is given to the calling script (which is usually `public/index.php`), so it can separate the building of the instances from the actual running of the application and sending responses.
+
+
+The following is a diagram that illustrates how the `app.php` interacts with the different components in the initial bootstrapping of the application.  
+
+
+```mermaid
+sequenceDiagram
+    participant AppFile as app.php
+    participant Application as Application
+    participant HttpKernel as Http Kernel
+    participant ConsoleKernel as Console Kernel
+    participant ExceptionHandler as Exception Handler
+    AppFile->>Application: Creates new Application instance
+    Application-->>AppFile: Returns reference to Application instance
+    AppFile->>HttpKernel: use the app reference to Bind HTTP Kernel interface to Http Kernel implementation
+    AppFile->>ConsoleKernel: use the app reference to Bind Console Kernel interface to Console Kernel implementation
+    AppFile->>ExceptionHandler: use the app reference to Bind Exception Handler interface to Handler implementation
+```
+
+The following is a diagram that shows the structure of the Laravel Service Container after the `./bootstrap/app.php` script is run.
+
+```mermaid
+graph TB
+  app_php["app"] -- "References" --> app["Application Instance"]
+  app -- "Binds as Singleton" --> http_kernel["HTTP Kernel Service"]
+  app -- "Binds as Singleton" --> console_kernel["Console Kernel Service"]
+  app -- "Binds as Singleton" --> exception_handler["Exception Handler Service"]
+```
