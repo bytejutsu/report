@@ -682,7 +682,7 @@ sequenceDiagram
     AppFile->>ExceptionHandler: use the app reference to Bind Exception Handler interface to Handler implementation
 ```
 
-The following is a diagram that shows the structure of the Laravel Service Container after the `./bootstrap/app.php` script is run.
+The following, is a diagram that shows the structure of the Laravel Service Container after the `./bootstrap/app.php` script is run.
 
 ```mermaid
 graph TB
@@ -690,4 +690,158 @@ graph TB
   app -- "Binds as Singleton" --> http_kernel["HTTP Kernel Service"]
   app -- "Binds as Singleton" --> console_kernel["Console Kernel Service"]
   app -- "Binds as Singleton" --> exception_handler["Exception Handler Service"]
+```
+
+### Demystifying the HTTP Kernel:
+
+According to the Laravel documentation, **Taylor Otwell** says:
+
+> Think of the kernel as being a big black box that represents your entire application. Feed it HTTP requests and it will return HTTP responses.
+
+![HTTP Kernel](./HTTPKernel.drawio.png)
+
+Now let's take a deeper look of what the **HTTP Kernel** does:
+
+1. The kernel is constructed, which calls `syncMiddlewareToRouter()`.
+2. The `handle()` method is called, which calls `sendRequestThroughRouter()`.
+
+The following is a more accurate diagram of what the HTTP Kernel does.
+
+![HTTP Kernel2](./HTTPKernel2.drawio.png)
+
+Ok, now let's take a look of what the `sendRequestThroughRouter()` does:
+
+1. `sendRequestThroughRouter()` calls `bootstrap()`, which processes the <span style="color: red; font-weight: bold">array</span> of`$bootstrappers`.
+
+
+2. `sendRequestThroughRouter()` creates a pipeline and sends the request through the <span style="color: red; font-weight: bold">global</span> `$middleware` **stack**.
+
+
+3. The <span style="color: red; font-weight: bold;">router</span> dispatches the request to a route, which may use middleware from `$middlewareGroups`.
+
+
+The following is an important and more accurate representation of what happens inside the `sendRequestThroughRouter()` method:
+
+![sendRequestThroughRouter](./sendRequestThroughRouter.drawio.png)
+
+{% hint type = "info" %}
+
+The middlewares in the `$middleware` stack are <span style="color: red;">**global**</span> middlewares, meaning they are run on <span style="color:red; font-weight:bold;">every</span> HTTP request that your application handles, regardless of the route that the request is targeting.
+
+The middlewares in the `$middlewareGroups` are grouped middlewares, which can be **assigned to specific routes or groups of routes**. They are not applied globally to all requests, but <span style="color:red;">**only to the routes**</span> that specify that they should use that middleware group.
+
+{% endhint %}
+
+### Middleware
+
+**Definition:** Middleware acts as a bridge or intermediary between a request and a response.
+
+It is usually a function that encapsulates logic through which the HTTP request travels.
+
+From the Laravel Documentation:
+
+> Middleware provide a convenient mechanism for inspecting and filtering HTTP requests entering your application. For example, Laravel includes a middleware that verifies the user of your application is authenticated.
+
+**In Laravel:** a middleware is a `class` that defines a `handle` method with the following signature:
+
+```PHP
+public function handle(Request $request, Closure $next): Response
+{
+    return $next($request);
+}
+```
+
+**Note:** the `$next($request);` is mandatory at the end of the `handle` function call, so the `HTTP request` is passed to the **next** middleware. 
+
+**Creation:** in Laravel, you can use artisan to create a middleware like the following: `php artisan make:middleware CustomMiddlewareName`
+
+#### Global Middleware
+
+The global middlewares are defined in the `$middleware` property of your HTTP kernel:
+
+Here is an example:
+
+```PHP
+protected $middleware = [
+    \App\Http\Middleware\CheckForMaintenanceMode::class,
+    \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+    \App\Http\Middleware\TrimStrings::class,
+    \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+];
+```
+
+#### Middleware Groups
+
+In Laravel, you can define middleware groups in the HTTP Kernel. Here's an example:
+
+```PHP
+protected $middlewareGroups = [
+    'web' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        // ...
+    ],
+
+    'api' => [
+        'throttle:60,1',
+        'bindings',
+    ],
+
+    'admin' => [
+        \App\Http\Middleware\Authenticate::class,
+        \App\Http\Middleware\CheckAdmin::class,
+    ],
+];
+```
+
+You can then apply these middleware groups to different routes or groups of routes:
+
+```PHP
+Route::middleware('web')->get('/', function () {
+    // This route uses the 'web' middleware group.
+});
+
+Route::middleware('api')->get('/api/items', function () {
+    // This route uses the 'api' middleware group.
+});
+
+Route::middleware('admin')->get('/admin/dashboard', function () {
+    // This route uses the 'admin' middleware group.
+});
+```
+
+So, when a request comes in, it will go through the middleware of the group that is assigned to the route it's targeting. If it targets `/`, it will go through the `web` middleware. If it targets `/api/items`, it will go through the `api` middleware. If it targets `/admin/dashboard`, it will go through the `admin` middleware.
+
+{% hint type= "tip" %}
+
+In Laravel, you can define the routes that use the `web` middleware Group in the `routes/web.php` file without the need to specify `middleware('web')` for each route.
+
+Same with the routes that use the `api` middleware Group, they can be defined in the `routes/api.php` file without the need to specify `middleware('api')` for each route.
+
+This simplification is achieved which the help of the <span style="color:red;">**RouteServiceProvider**</span>
+
+In its `boot()` method the `RouterServiceProvider` groups the routes defined in both the `web.php` and `api.php` files. Prefixes them respectively with either `nothing` or the `api` path prefixes and then assigns to each group the group middleware `middleware('web')` or `middleware('api')` accordingly. Like the following:
+
+```PHP
+$this->routes(function () {
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/api.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/web.php'));
+        });
+```
+
+{% endhint %}
+
+#### Middleware for specific routes
+
+Middleware can be also used for only specific routes like the following:
+
+```PHP
+Route::get('admin/profile', function () {
+    // Your route logic here
+})->middleware('custom-middleware-name');
 ```
