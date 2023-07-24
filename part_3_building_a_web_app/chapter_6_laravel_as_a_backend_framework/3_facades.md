@@ -14,3 +14,27 @@ So in essence, when you use a facade, you're using the service container twice:
 This allows you to use complex services as if they were simple, static methods, while still benefiting from Laravel's powerful service container and dependency injection features..
 
 {% endhint %}
+
+### How Facades work
+
+>In a Laravel application, a facade is a class that **provides access** to an object <span style="color:red;">**from the container**</span>. 
+
+>The machinery that makes this work is in the Facade class. Laravel's facades, and any custom facades you create, will extend the base `Illuminate\Support\Facades\Facade` class.
+
+The Facade base class makes use of the `__callStatic()` **magic-method** to <span style="color:red;">**defer**</span> calls from your facade to an object resolved from the container.
+
+The following is an example:
+
+```PHP
+class Cache extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     */
+    protected static function getFacadeAccessor(): string
+    {
+        return 'cache';
+    }
+}
+```
+
