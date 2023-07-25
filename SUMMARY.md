@@ -48,7 +48,7 @@
   * [Section 7.2: State Management in Vue.js 3](part_3_building_a_web_app/chapter_7_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md)
   * [Section 7.3: Asset Bundling](part_3_building_a_web_app/chapter_7_vue_js_3_as_a_frontend_framework/3_asset_bundling.md)
 * [Chapter 8: Monolothic Architecture](part_3_building_a_web_app/chapter_8_monolithic_architecture/README.md)
-  * [Section 8.1: Inertia.js and Middleware](part_3_building_a_web_app/chapter_8_monolithic_architecture/1_inertiajs_and_middleware.md)
+  * [Section 8.1: Inertia.js and Middleware](part_3_building_a_web_app/chapter_8_monolithic_architecture/1_inertiajs.md)
 
 
 ### Part 4: Conclusion 
