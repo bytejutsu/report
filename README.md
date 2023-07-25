@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">Small-Scale Modern Web Applications</h1>
+<h1 style="text-align: center;">Small-Scale Real-Time Modern Web Applications</h1>
 
 <h2 style="text-align: center;">Laravel & Vue.js</h2>
 
