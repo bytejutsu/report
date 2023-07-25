@@ -532,48 +532,6 @@ This wraps the `UserService` in a `UserServiceDecorator` whenever it is resolved
 
 ---
 
-
----
-
-
-//todo: make sure all the info in the following section between --- is not needed anymore and then delete it 
-
----
-
-In Laravel, the `App\Http\Kernel` class implements this interface and provides the actual implementation for these methods. This interface is a contract that ensures the HTTP Kernel has the necessary methods to handle and terminate HTTP requests, bootstrap the application, and provide access to the application instance.
-
-
-
-
-
-
-
-The HTTP kernel extends the `Illuminate\Foundation\Http\Kernel` class and contains two primary methods: `handle()` and `terminate()`.
-
-
-The HTTP kernel also defines a list of HTTP middleware that all requests through the application must pass through before being handled by a route or controller. Middleware provide a convenient mechanism for filtering HTTP requests entering your application, such as verifying the user of your application is authenticated.
-
-
-
-
-
-reason backward and talk about the kernel's handle and terminate methods
-
-explore the kernels code and see what terminate does?
-
-what handle does?
-
-why the kernel has only two methods?
-
-talk about kernel and middlewares
-
-why is the kernel created by the app instance? why not a standalone instance ?
-
-
-
-
----
-
 ### The app container
 
 To get a grasp of how Laravel works we need to understand the main component of the Laravel framework. Which is the **app container**.
