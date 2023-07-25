@@ -1,0 +1,11 @@
+classDiagram
+  class ParentComponent {
+    -state: provided
+  }
+  class ChildComponent {
+  }
+  class GrandChildComponent {
+    -state: injected
+  }
+  ParentComponent --|> ChildComponent
+  ChildComponent --|> GrandChildComponent
