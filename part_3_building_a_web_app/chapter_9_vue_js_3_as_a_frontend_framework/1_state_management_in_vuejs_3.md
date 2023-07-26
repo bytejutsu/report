@@ -25,7 +25,7 @@ Only use this technique if you want to manage state in one component locally.
 {% endhint %}
 
 Example:
-```js
+```
 <script setup>
 import { ref } from 'vue';
 const count = ref(0);
@@ -45,7 +45,7 @@ Only use this technique if you want to communicate state between a parent, and i
 
 Example:
 
-```js
+```
 <!-- Child Component -->
 <script setup>
 import { ref } from 'vue';
@@ -84,7 +84,7 @@ Only use this technique if you want to communicate state between a parent, and a
 
 Example:
 
-```js
+```
 <!-- Parent Component -->
 <script setup>
 import { provide, ref } from 'vue';
@@ -124,7 +124,7 @@ Only use this technique if you want to **share** state between a parent, and a *
 
 {% endhint %}
 
-```js
+```
 <!-- Store -->
 <script setup>
 import { defineStore } from 'pinia';
@@ -190,7 +190,7 @@ Use this technique only if
 
 Example
 
-```js
+```
 <!-- Composable -->
 <script setup>
 import { ref } from 'vue';
@@ -237,7 +237,7 @@ Use this technique whenever possible to improve the experience of the user. Howe
 
 Example
 
-```js
+```PHP
 <script setup>
 import { ref, watch } from 'vue';
 const count = ref(localStorage.getItem('count') || 0);

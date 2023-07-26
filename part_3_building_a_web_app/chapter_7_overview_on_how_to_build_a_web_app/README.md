@@ -50,7 +50,7 @@ Since the browser can interpret mainly **HTML**, **CSS**, **JavaScript**, each H
 The following, is an example of a HTML page using the **style** and **script** tags. The example also show-cases the use of embedded css styling inside the p tag.
 
 **index.html**
-```text
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,7 +120,7 @@ For this reason, an HTML page can link external JS or CSS resources. CSS resourc
 The following example refactors the previous example to use external JS and CSS resources.
 
 **index.html**
-```text
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,7 +145,7 @@ The following example refactors the previous example to use external JS and CSS 
 </html>
 ```
 **css/app.css**
-```text
+```
 nav {
    background-color: #f8f9fa;
    padding: 10px;
@@ -171,7 +171,7 @@ p {
 ```
 
 **js/app.js**
-```text
+```
 document.querySelector("h1").addEventListener("click", function() {
     alert("You clicked the heading!");
 });
@@ -179,7 +179,7 @@ document.querySelector("h1").addEventListener("click", function() {
 
 So, now your project structure looks more like this.
 
-```text
+```
 /mywebsite
   /public
     index.html
@@ -275,7 +275,7 @@ flowchart TB
 
 Example **jQuery**:
 
-```
+```text
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 ```
 
@@ -283,7 +283,7 @@ Example **jQuery**:
 
 Example **D3.js**:
 
-```
+```text
 <script async src="https://d3js.org/d3.v6.min.js"></script>
 ```
 
@@ -291,7 +291,7 @@ Example **D3.js**:
 
 Example **Vue.js**:
 
-```
+```text
 <script defer src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 ```
 
@@ -323,7 +323,7 @@ Many modern front-end js frameworks and libraries (like React, Angular, Vue.js) 
 
 You can create HTML elements programmatically using JavaScript and then insert them into the DOM. Like the following example:
 
-```text
+```
 <!DOCTYPE html>
 <html>
 <head>

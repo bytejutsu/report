@@ -1,0 +1,708 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>Section 8.3: Facades · GitBook</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 4.0.8">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="4_the_rest.html" />
+    
+    
+    <link rel="prev" href="2_service_providers.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Cover
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 1: Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../part_1_introduction/chapter_1_overview/">
+            
+                <a href="../../part_1_introduction/chapter_1_overview/">
+            
+                    
+                    Chapter 1: Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../part_1_introduction/chapter_2_essential_concepts/">
+            
+                <a href="../../part_1_introduction/chapter_2_essential_concepts/">
+            
+                    
+                    Chapter 2: Essential Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../../part_1_introduction/chapter_2_essential_concepts/1_closures.html">
+            
+                <a href="../../part_1_introduction/chapter_2_essential_concepts/1_closures.html">
+            
+                    
+                    Section 2.1: Closures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../part_1_introduction/chapter_2_essential_concepts/2_coroutines.html">
+            
+                <a href="../../part_1_introduction/chapter_2_essential_concepts/2_coroutines.html">
+            
+                    
+                    Section 2.2: Coroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../../part_1_introduction/chapter_2_essential_concepts/3_generators.html">
+            
+                <a href="../../part_1_introduction/chapter_2_essential_concepts/3_generators.html">
+            
+                    
+                    Section 2.3: Generators
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../part_1_introduction/chapter_3_concurrency/">
+            
+                <a href="../../part_1_introduction/chapter_3_concurrency/">
+            
+                    
+                    Chapter 3: Concurrency
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../../part_1_introduction/chapter_3_concurrency/1_concurrency_overview.html">
+            
+                <a href="../../part_1_introduction/chapter_3_concurrency/1_concurrency_overview.html">
+            
+                    
+                    Section 3.1: Concurrency Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../../part_1_introduction/chapter_3_concurrency/2_asynchronous_runtimes.html">
+            
+                <a href="../../part_1_introduction/chapter_3_concurrency/2_asynchronous_runtimes.html">
+            
+                    
+                    Section 3.2: Asynchronous Runtimes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../../part_1_introduction/chapter_3_concurrency/3_concurrency_in_php.html">
+            
+                <a href="../../part_1_introduction/chapter_3_concurrency/3_concurrency_in_php.html">
+            
+                    
+                    Section 3.3: Concurrency in PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 2: Fundamentals of Web Apps</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/">
+            
+                <a href="../../part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/">
+            
+                    
+                    Chapter 4: Introduction to Web Applications
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/1_request_response_cycle.html">
+            
+                <a href="../../part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/1_request_response_cycle.html">
+            
+                    
+                    Section 4.1: Request Response Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/2_web_server.html">
+            
+                <a href="../../part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/2_web_server.html">
+            
+                    
+                    Section 4.2: Web Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/3_application_server.html">
+            
+                <a href="../../part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/3_application_server.html">
+            
+                    
+                    Section 4.3: Application Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/">
+            
+                <a href="../../part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/">
+            
+                    
+                    Chapter 5: Server Side Non-Blocking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.html">
+            
+                <a href="../../part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.html">
+            
+                    
+                    Section 5.1: Message Queues
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.html">
+            
+                <a href="../../part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.html">
+            
+                    
+                    Section 5.2: Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../../part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/">
+            
+                <a href="../../part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/">
+            
+                    
+                    Chapter 6: Real-Time Protocols
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 3: Building a Web App</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                <a href="../chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                    
+                    Chapter 7: Overview on how to Build a Web App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Chapter 8: Laravel as a Backend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="1_the_scaffolding_of_a_laravel_app.html">
+            
+                <a href="1_the_scaffolding_of_a_laravel_app.html">
+            
+                    
+                    Section 8.1: The Scaffolding of a Laravel App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="2_service_providers.html">
+            
+                <a href="2_service_providers.html">
+            
+                    
+                    Section 8.2: Service Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.2.3" data-path="3_facades.html">
+            
+                <a href="3_facades.html">
+            
+                    
+                    Section 8.3: Facades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="4_the_rest.html">
+            
+                <a href="4_the_rest.html">
+            
+                    
+                    Section 8.4: The Rest
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                <a href="../chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                    
+                    Chapter 9: Vue.js 3 as a Frontend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                <a href="../chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                    
+                    Section 9.1: State Management in Vue.js 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../chapter_10_monolithic_architecture/">
+            
+                <a href="../chapter_10_monolithic_architecture/">
+            
+                    
+                    Chapter 10: Monolothic Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 4: Conclusion</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../part_4_conclusion/chapter_11_takeaways/">
+            
+                <a href="../../part_4_conclusion/chapter_11_takeaways/">
+            
+                    
+                    Chapter 11: Takeaways
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 5: References</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../part_5_references/chapter_x_resources/">
+            
+                <a href="../../part_5_references/chapter_x_resources/">
+            
+                    
+                    Chapter x: Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Section 8.3: Facades</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="83-facades">8.3 Facades</h2>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Laravel&apos;s facades provide a &quot;static&quot; interface to classes that are available in the service container. When you use <code>App::make(&apos;SomeClass&apos;)</code>, you&apos;re using the <code>App</code> facade to access the service container and resolve the <code>SomeClass</code> out of it.</p>
+<p>Under the hood, Laravel&apos;s facades use the service container to resolve the underlying class and proxy static method calls to it. This means that when you call a static method on a facade, Laravel is actually resolving the underlying class from the service container and calling the method on that instance.</p>
+<p>So in essence, when you use a facade, you&apos;re using the service container twice: </p>
+<ol>
+<li>once to resolve the facade itself, </li>
+<li>and once to resolve the class that the facade provides access to.</li>
+</ol>
+<p>This allows you to use complex services as if they were simple, static methods, while still benefiting from Laravel&apos;s powerful service container and dependency injection features..</p>
+</div></div><p></p>
+<h3 id="how-facades-work">How Facades work</h3>
+<blockquote>
+<p>In a Laravel application, a facade is a class that <strong>provides access</strong> to an object <span style="color:red;"><strong>from the container</strong></span>. </p>
+<p>The machinery that makes this work is in the Facade class. Laravel&apos;s facades, and any custom facades you create, will extend the base <code>Illuminate\Support\Facades\Facade</code> class.</p>
+</blockquote>
+<p>The Facade base class makes use of the <code>__callStatic()</code> <strong>magic-method</strong> to <span style="color:red;"><strong>defer</strong></span> calls from your facade to an object resolved from the container.</p>
+<p>The following is an example:</p>
+<pre><code class="lang-PHP">class Cache extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     */
+    protected static function getFacadeAccessor(): string
+    {
+        return &apos;cache&apos;;
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2_service_providers.html" class="navigation navigation-prev " aria-label="Previous page: Section 8.2: Service Providers">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="4_the_rest.html" class="navigation navigation-next " aria-label="Next page: Section 8.4: The Rest">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Section 8.3: Facades","level":"4.2.3","depth":2,"next":{"title":"Section 8.4: The Rest","level":"4.2.4","depth":2,"path":"part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","ref":"part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","articles":[]},"previous":{"title":"Section 8.2: Service Providers","level":"4.2.2","depth":2,"path":"part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","mtime":"2023-07-26T09:03:18.286Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-26T09:07:28.128Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

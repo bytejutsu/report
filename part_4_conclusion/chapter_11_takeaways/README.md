@@ -94,8 +94,8 @@ You can clearly see the similarities between the following models:
 
 | Conway's Law                                                                                                                                            | Dhia Eddine Nabli                                                                                                                                                                            |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| > Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure. | The workflow of an organization designing software should inherit the structure of the runtime of its produced software, which itself mimics the work structure of its underlaying hardware. |
-| 1967                                                                                                                                            | 2023                                                                                                                                                                                         |
+| Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure. | The workflow of an organization designing software should inherit the structure of the runtime of its produced software, which itself mimics the work structure of its underlaying hardware. |
+| 1967                                                                                                                                                    | 2023                                                                                                                                                                                         |
 
 
 ## Future Insights

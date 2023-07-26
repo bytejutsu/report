@@ -59,7 +59,7 @@ What if we want an SPA experience without the need of creating a separate API?
 
 The following diagram illustrates how inertia.js interacts with a Laravel monolith through Ajax to create the SPA experience.
 
-```
+```mermaid
 sequenceDiagram
     participant User as User
     participant UI as UI
