@@ -600,8 +600,25 @@
 </ol>
 </div></div><p></p>
 <h3 id="the-original-and-general-use-of-coroutines">The original and general use of Coroutines</h3>
-<p>//todo</p>
-<h3 id="the-use-of-coroutines-in-asynchonous-programming">The use of Coroutines in Asynchonous Programming</h3>
+<p>The following is a pseudocode example for a producer-consumer simulation using coroutines.</p>
+<pre><code>var q := new queue
+
+coroutine produce
+    loop
+        while q is not full
+            create some new items
+            add the items to q
+        yield to consume
+
+coroutine consume
+    loop
+        while q is not empty
+            remove some items from q
+            use the items
+        yield to produce
+
+call produce
+</code></pre><h3 id="the-use-of-coroutines-in-asynchonous-programming">The use of Coroutines in Asynchonous Programming</h3>
 <p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>In asynchronous programming coroutines are just functions in the main thread that are tagged to be assigned to any other thread in the pool to be executed. It is a way to abstract threads and reduce the complexity of handling them since you don&apos;t interact with a thread directly instead you use coroutines from the main thread.</p>
 <p><strong>coroutines are mainly(but not only) used in asynchronous programming</strong></p>
 </div></div><p></p>
@@ -620,12 +637,12 @@ async function coroutine() {
 
 coroutine();
 </code></pre><h4 id="a-coroutine-in-php-using-the-swoole-extension">a coroutine in php using the swoole extension</h4>
-<pre><code><?php
+<pre><code>
 use Swoole\Coroutine;
 
 Coroutine\run(function () {
-    $client = new Swoole\Coroutine\Http\Client('api.github.com', 443, true);
-    $client->set([&apos;timeout&apos; =&gt; 1]);
+    $client = new Swoole\Coroutine\Http\Client(&apos;api.github.com&apos;, 443, true);
+    $client-&gt;set([&apos;timeout&apos; =&gt; 1]);
     $client-&gt;setHeaders([
         &apos;Host&apos; =&gt; &quot;api.github.com&quot;,
         &quot;User-Agent&quot; =&gt; &apos;Chrome/49.0.2587.3&apos;,
@@ -636,7 +653,6 @@ Coroutine\run(function () {
 
     echo $client-&gt;body;
 });
-?&gt;
 </code></pre>
                                 
                                 </section>

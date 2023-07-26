@@ -17,7 +17,7 @@ The main elements of the Asynchronous Runtime Pattern are:
 1. A task stack (exactly 1)
 2. An event-loop/watcher
 3. A task queue (1 or more)
-4. Workers (2 or more)
+4. Workers (1 or more)
 
 {% hint type = "info" %}
 
@@ -80,9 +80,9 @@ You can clearly see the similarities between the following models:
 |---------------------------------| 
 | ![nginx_model](./nginx_model.png) |
 
-| JS Runtime Model                          | 
-|-------------------------------------------| 
-| ![js_runtime](./js_runtime.png) |
+| JS Runtime Model                               | 
+|------------------------------------------------| 
+| ![javasript_runtime](./javascript_runtime.png) |
 
 | Scrum Model                               | 
 |-------------------------------------------| 

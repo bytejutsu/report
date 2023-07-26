@@ -12,7 +12,27 @@
 
 ### The original and general use of Coroutines
 
-//todo
+The following is a pseudocode example for a producer-consumer simulation using coroutines.
+
+```
+var q := new queue
+
+coroutine produce
+    loop
+        while q is not full
+            create some new items
+            add the items to q
+        yield to consume
+
+coroutine consume
+    loop
+        while q is not empty
+            remove some items from q
+            use the items
+        yield to produce
+
+call produce
+```
 
 ### The use of Coroutines in Asynchonous Programming
 
@@ -45,7 +65,7 @@ coroutine();
 #### a coroutine in php using the swoole extension
 
 ```
-<?php
+
 use Swoole\Coroutine;
 
 Coroutine\run(function () {
@@ -61,5 +81,5 @@ Coroutine\run(function () {
 
     echo $client->body;
 });
-?>
+
 ```

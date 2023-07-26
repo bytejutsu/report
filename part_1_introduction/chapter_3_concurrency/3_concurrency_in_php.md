@@ -9,7 +9,7 @@ Concurrency in PHP can be achieved in several ways:
 
 ```php
  
-<?php
+
     $pid = pcntl_fork();
 
     if ($pid == -1) {
@@ -22,7 +22,7 @@ Concurrency in PHP can be achieved in several ways:
          // we are the child
          echo "Child: I am the child process.\n";
     }
-?>
+
 
 ```
 
@@ -32,7 +32,7 @@ The following is a multi-threading in PHP example using the **pthreads** extensi
 
 ```php
 
-<?php
+
 
 class WorkerThread extends Thread
 {
@@ -64,7 +64,7 @@ $worker2->start();
 $worker1->join();
 $worker2->join();
 
-?>
+
 
 
 ```
@@ -79,7 +79,7 @@ The following is a multi-threading in PHP example using the **parallel** extensi
 
 ```php
 
-<?php
+
 
 // Check if the parallel extension is loaded
 if (!extension_loaded('parallel')) {
@@ -105,7 +105,7 @@ $future2->value();
 
 echo "All threads have completed.\n";
 
-?>
+
 
 ```
 
@@ -139,7 +139,7 @@ The following example illustrates single threaded coroutines using the native ph
 
 
 ```php
-<?php
+
 
 function integers() {
     $i = 0;
@@ -155,13 +155,13 @@ for ($i = 0; $i < 5; $i++) {
     $generator->next();
 }
 
-?>
+
 ```
 
 The following example illustrates concurrent coroutines using the swoole php extension
 
 ```php
-<?php
+
 
 Swoole\Coroutine::create(function () {
     $cid = Swoole\Coroutine::getCid();
@@ -183,7 +183,7 @@ Swoole\Coroutine::create(function () {
 
 echo "End of script\n";
 
-?>
+
 ```
 
 4. **Asynchronous Programming**: Asynchronous programming allows you to perform long-running tasks, such as I/O operations, without blocking the execution of the rest of your code. Libraries like ReactPHP, Amp, and Swoole provide tools for writing asynchronous code in PHP. Promises and futures are constructs used in concurrent programming to represent the result of a computation that may not have completed yet. Libraries like Guzzle's promises or ReactPHP's promises can be used to manage concurrency in PHP.
@@ -191,7 +191,7 @@ echo "End of script\n";
 example of asynchronous operations using **reactPHP** extension
 
 ```php
-<?php
+
 
 require 'vendor/autoload.php';
 
@@ -213,13 +213,13 @@ echo "This will be output immediately.\n";
 
 $loop->run();
 
-?>
+
 ```
 
 The following is the same example but using the **amphp** extension
 
 ```php
-<?php
+
 
 require 'vendor/autoload.php';
 
@@ -236,7 +236,7 @@ Loop::run(function () {
     echo "This will be output immediately.\n";
 });
 
-?>
+
 ```
 
 {% hint style="tip" %}

@@ -38,7 +38,9 @@ You will often hear people misusing the term **parallel** and referring to **Int
 
 #### Threads
 
-**definition**: A thread is the **smallest** and **only** unit of a program that can be **executed** **concurrently**
+**definition**: A Coroutine is the **smallest** unit of a program that can be **executed** **concurrently**
+
+**definition**: A thread is the **smallest** and **only** unit of a program that can be **bound** to a **CPU core**
 
 {% hint style = "info" %}
 
@@ -90,9 +92,6 @@ the sequence of instructions that a thread will execute must be contained inside
 
 {% endhint %}
 
-{% hint style="info" %}
-
-{% endhint %}
 
 ### Fibers
 

@@ -25,12 +25,13 @@ Only use this technique if you want to manage state in one component locally.
 {% endhint %}
 
 Example:
+
+(inside script setup tags)
+
 ```
-<script setup>
 import { ref } from 'vue';
 const count = ref(0);
 const increment = () => { count.value++ };
-</script>
 ```
 
 ### 2. **Props + Events**: 
@@ -45,14 +46,16 @@ Only use this technique if you want to communicate state between a parent, and i
 
 Example:
 
+(inside script setup tags)
 ```
 <!-- Child Component -->
-<script setup>
 import { ref } from 'vue';
 const props = defineProps(['value']);
 const emit = defineEmits(['update:value']);
 const updateValue = newValue => { emit('update:value', newValue) };
-</script>
+```
+
+```
 <!-- Parent Component -->
 <ChildComponent :value="parentValue" @update:value="parentValue = $event" />
 ```
@@ -76,7 +79,7 @@ classDiagram
 
 This is a way to pass data from a parent component to descendant components through a dependency injection mechanism, without going through intermediate components. This can be useful for avoiding prop drilling.
 
-{% hint type = "tip" %}
+{% hint type="tip" %}
 
 Only use this technique if you want to communicate state between a parent, and a **more than one** level nested child component. **In one occurrence**.
 
@@ -84,21 +87,36 @@ Only use this technique if you want to communicate state between a parent, and a
 
 Example:
 
+(inside script setup tags)
 ```
 <!-- Parent Component -->
-<script setup>
 import { provide, ref } from 'vue';
 const value = ref('Hello');
 provide('key', value);
-</script>
+```
+
+(inside script setup tags)
+```
 <!-- more than 1-level nested Child Component -->
-<script setup>
 import { inject } from 'vue';
 const value = inject('key');
-</script>
 ```
 
 The following is a class diagram illustration of the Parent Component providing its state. The Grad Child Component gets the Parent's state injected without the need of it passing through the Child component. 
+
+```mermaid
+classDiagram
+  class ParentComponent {
+    -state: provided
+  }
+  class ChildComponent {
+  }
+  class GrandChildComponent {
+    -state: injected
+  }
+  ParentComponent --|> ChildComponent
+  ChildComponent --|> GrandChildComponent
+```
 
 ```mermaid
 classDiagram
@@ -124,9 +142,9 @@ Only use this technique if you want to **share** state between a parent, and a *
 
 {% endhint %}
 
+(inside script setup tags)
 ```
 <!-- Store -->
-<script setup>
 import { defineStore } from 'pinia';
 export const useStore = defineStore({
   id: 'main',
@@ -135,21 +153,24 @@ export const useStore = defineStore({
     increment() { this.count++ }
   }
 });
-</script>
+```
+
+(inside script setup tags)
+```
 <!-- Component -->
-<script setup>
 import { useStore } from './store';
 const store = useStore();
 const count = store.count;
 const increment = store.increment;
-</script>
+```
+
+(inside script setup tags)
+```
 <!-- More than 1-level nested child Component -->
-<script setup>
-    import { useStore } from './store';
-    const store = useStore();
-    const count = store.count;
-    const increment = store.increment;
-</script>
+import { useStore } from './store';
+const store = useStore();
+const count = store.count;
+const increment = store.increment;
 ```
 
 The following is an example illustration of how different components nested in different levels can share a state defined in a Pinia store:
@@ -190,21 +211,22 @@ Use this technique only if
 
 Example
 
+(inside script setup tags)
 ```
 <!-- Composable -->
-<script setup>
 import { ref } from 'vue';
 export function useCounter() {
   const count = ref(0);
   const increment = () => { count.value++ };
   return { count, increment };
 }
-</script>
+```
+
+(inside script setup tags)
+```
 <!-- Component -->
-<script setup>
 import { useCounter } from './composables';
 const { count, increment } = useCounter();
-</script>
 ```
 
 {% hint type = "info" %}
@@ -237,11 +259,12 @@ Use this technique whenever possible to improve the experience of the user. Howe
 
 Example
 
-```PHP
-<script setup>
+(inside script setup tags)
+
+```
 import { ref, watch } from 'vue';
 const count = ref(localStorage.getItem('count') || 0);
 watch(count, newValue => { localStorage.setItem('count', newValue) });
 const increment = () => { count.value++ };
-</script>
 ```
+
