@@ -104,33 +104,7 @@ const value = inject('key');
 
 The following is a class diagram illustration of the Parent Component providing its state. The Grad Child Component gets the Parent's state injected without the need of it passing through the Child component. 
 
-```mermaid
-classDiagram
-  class ParentComponent {
-    -state: provided
-  }
-  class ChildComponent {
-  }
-  class GrandChildComponent {
-    -state: injected
-  }
-  ParentComponent --|> ChildComponent
-  ChildComponent --|> GrandChildComponent
-```
-
-```mermaid
-classDiagram
-  class ParentComponent {
-    -state: provided
-  }
-  class ChildComponent {
-  }
-  class GrandChildComponent {
-    -state: injected
-  }
-  ParentComponent --|> ChildComponent
-  ChildComponent --|> GrandChildComponent
-```
+![provide_inject](./vuejs-provide-inject.png)
 
 ### 4. **Shared State Store (Pinia)**: 
 

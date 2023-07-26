@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-        <title>Section 8.4: The Rest · GitBook</title>
+        <title>Section 8.2: Service Providers · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../chapter_9_vue_js_3_as_a_frontend_framework/" />
+    <link rel="next" href="3_facades.html" />
     
     
-    <link rel="prev" href="3_facades.html" />
+    <link rel="prev" href="1_the_scaffolding_of_a_laravel_app.html" />
     
 
     </head>
@@ -372,7 +372,7 @@
 
     
         
-        <li class="header">Part 3: Building a Web App</li>
+        <li class="header">Part 3: Building a Real-Time Web App</li>
         
         
     
@@ -416,7 +416,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.2" data-path="2_service_providers.html">
+        <li class="chapter active" data-level="4.2.2" data-path="2_service_providers.html">
             
                 <a href="2_service_providers.html">
             
@@ -442,7 +442,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.2.4" data-path="4_the_rest.html">
+        <li class="chapter " data-level="4.2.4" data-path="4_the_rest.html">
             
                 <a href="4_the_rest.html">
             
@@ -575,7 +575,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Section 8.4: The Rest</a>
+        <a href="../.." >Section 8.2: Service Providers</a>
     </h1>
 </div>
 
@@ -590,271 +590,60 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="84-the-rest">8.4 The Rest</h2>
-<p>The rest of Laravel framework is basically syntactic sugar built on top of:</p>
+                                <h2 id="82-service-providers">8.2 Service Providers</h2>
+<p>One of the <code>bootstrappers</code> that the <code>bootstrap()</code> method calls is the <code>BootProviders</code> <strong>bootstrapper</strong>.</p>
+<p><img src="BootProviders1.drawio.png" alt="BootProviders"></p>
+<p>The <code>Illuminate\Foundation\Bootstrap\BootProviders::class</code> is responsible for booting the service providers.</p>
+<p>The <code>BootProviders</code> bootstrapper calls the <code>boot()</code> method on the application&apos;s <code>ProviderRepository</code>. </p>
+<p>This <code>boot()</code> method is responsible for booting the service providers.</p>
+<p>The list of service providers to be booted is defined in the <code>config/app.php</code> file under the <code>providers</code> key. </p>
+<p>The <code>ProviderRepository</code> uses this list to instantiate each service provider and call its <code>register()</code> method, followed by its <code>boot()</code> method if it exists.</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>A <strong>Service Provider</strong> is a <strong>class</strong> that extends the <code>Illuminate\Support\ServiceProvider</code> <strong>class</strong>.</p>
+<p>A Service Provider can use the <strong>register()</strong> and <strong>boot()</strong> methods that it inherits from the abstract class <strong>ServiceProvider</strong> in order to define its behaviour.</p>
+<p><span style="color: red;"><strong>register()</strong></span>: </p>
+<blockquote>
+<p>Within the register method, you should only bind things into the service container.</p>
+</blockquote>
+<p><span style="color: red;"><strong>boot()</strong></span>: </p>
+<blockquote>
+<p>This method is called after all other service providers have been registered, meaning you have access to all other services that have been registered by the framework.</p>
+</blockquote>
+<p>Because every Service Provider extends the <strong>Service Provider</strong> abstract class, every Service Provider have access to the <span style="color: red;"><strong>$app</strong></span> property which provides access to the <span style="color:red; font-weight:bold;">service container</span>.</p>
+</div></div><p></p>
+<h3 id="registering-providers">Registering Providers</h3>
+<p>As we mentioned earlier, </p>
+<blockquote>
+<p>All service providers are registered in the <code>config/app.php</code> configuration file. This file contains a <code>providers</code> array where you can list the class names of your service providers.</p>
+</blockquote>
+<p>The following is the snippet of code of the default <code>providers</code> array that comes with a fresh Laravel install:</p>
+<pre><code class="lang-PHP">&apos;providers&apos; =&gt; ServiceProvider::defaultProviders()-&gt;merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+    ])-&gt;toArray(),
+</code></pre>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Based on the previous information it should be obvious that every Service Provider must:</p>
 <ol>
-<li>The Kernels</li>
-<li>The Service Container</li>
-<li>The Facades</li>
+<li>extend the <code>ServiceProvider</code> class</li>
+<li>be registered in the <code>providers</code> array</li>
 </ol>
-<div class="overflow-auto">
-<table>
-<thead>
-<tr>
-<th>Facade</th>
-<th>Class</th>
-<th>Service Container Binding</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>App</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Foundation/Application.html" target="_blank">Illuminate\Foundation\Application</a></td>
-<td><code>app</code></td>
-</tr>
-<tr>
-<td>Artisan</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Console/Kernel.html" target="_blank">Illuminate\Contracts\Console\Kernel</a></td>
-<td><code>artisan</code></td>
-</tr>
-<tr>
-<td>Auth</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Auth/AuthManager.html" target="_blank">Illuminate\Auth\AuthManager</a></td>
-<td><code>auth</code></td>
-</tr>
-<tr>
-<td>Auth (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Auth/Guard.html" target="_blank">Illuminate\Contracts\Auth\Guard</a></td>
-<td><code>auth.driver</code></td>
-</tr>
-<tr>
-<td>Blade</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/View/Compilers/BladeCompiler.html" target="_blank">Illuminate\View\Compilers\BladeCompiler</a></td>
-<td><code>blade.compiler</code></td>
-</tr>
-<tr>
-<td>Broadcast</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Broadcasting/Factory.html" target="_blank">Illuminate\Contracts\Broadcasting\Factory</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Broadcast (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Broadcasting/Broadcaster.html" target="_blank">Illuminate\Contracts\Broadcasting\Broadcaster</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Bus</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Bus/Dispatcher.html" target="_blank">Illuminate\Contracts\Bus\Dispatcher</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Cache</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Cache/CacheManager.html" target="_blank">Illuminate\Cache\CacheManager</a></td>
-<td><code>cache</code></td>
-</tr>
-<tr>
-<td>Cache (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Cache/Repository.html" target="_blank">Illuminate\Cache\Repository</a></td>
-<td><code>cache.store</code></td>
-</tr>
-<tr>
-<td>Config</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Config/Repository.html" target="_blank">Illuminate\Config\Repository</a></td>
-<td><code>config</code></td>
-</tr>
-<tr>
-<td>Cookie</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Cookie/CookieJar.html" target="_blank">Illuminate\Cookie\CookieJar</a></td>
-<td><code>cookie</code></td>
-</tr>
-<tr>
-<td>Crypt</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Encryption/Encrypter.html" target="_blank">Illuminate\Encryption\Encrypter</a></td>
-<td><code>encrypter</code></td>
-</tr>
-<tr>
-<td>Date</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Support/DateFactory.html" target="_blank">Illuminate\Support\DateFactory</a></td>
-<td><code>date</code></td>
-</tr>
-<tr>
-<td>DB</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Database/DatabaseManager.html" target="_blank">Illuminate\Database\DatabaseManager</a></td>
-<td><code>db</code></td>
-</tr>
-<tr>
-<td>DB (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Database/Connection.html" target="_blank">Illuminate\Database\Connection</a></td>
-<td><code>db.connection</code></td>
-</tr>
-<tr>
-<td>Event</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Events/Dispatcher.html" target="_blank">Illuminate\Events\Dispatcher</a></td>
-<td><code>events</code></td>
-</tr>
-<tr>
-<td>File</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Filesystem/Filesystem.html" target="_blank">Illuminate\Filesystem\Filesystem</a></td>
-<td><code>files</code></td>
-</tr>
-<tr>
-<td>Gate</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Auth/Access/Gate.html" target="_blank">Illuminate\Contracts\Auth\Access\Gate</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Hash</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Hashing/Hasher.html" target="_blank">Illuminate\Contracts\Hashing\Hasher</a></td>
-<td><code>hash</code></td>
-</tr>
-<tr>
-<td>Http</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Http/Client/Factory.html" target="_blank">Illuminate\Http\Client\Factory</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Lang</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Translation/Translator.html" target="_blank">Illuminate\Translation\Translator</a></td>
-<td><code>translator</code></td>
-</tr>
-<tr>
-<td>Log</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Log/LogManager.html" target="_blank">Illuminate\Log\LogManager</a></td>
-<td><code>log</code></td>
-</tr>
-<tr>
-<td>Mail</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Mail/Mailer.html" target="_blank">Illuminate\Mail\Mailer</a></td>
-<td><code>mailer</code></td>
-</tr>
-<tr>
-<td>Notification</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Notifications/ChannelManager.html" target="_blank">Illuminate\Notifications\ChannelManager</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Password</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html" target="_blank">Illuminate\Auth\Passwords\PasswordBrokerManager</a></td>
-<td><code>auth.password</code></td>
-</tr>
-<tr>
-<td>Password (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Auth/Passwords/PasswordBroker.html" target="_blank">Illuminate\Auth\Passwords\PasswordBroker</a></td>
-<td><code>auth.password.broker</code></td>
-</tr>
-<tr>
-<td>Pipeline (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Pipeline/Pipeline.html" target="_blank">Illuminate\Pipeline\Pipeline</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Queue</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Queue/QueueManager.html" target="_blank">Illuminate\Queue\QueueManager</a></td>
-<td><code>queue</code></td>
-</tr>
-<tr>
-<td>Queue (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Queue/Queue.html" target="_blank">Illuminate\Contracts\Queue\Queue</a></td>
-<td><code>queue.connection</code></td>
-</tr>
-<tr>
-<td>Queue (Base Class)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Queue/Queue.html" target="_blank">Illuminate\Queue\Queue</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Redirect</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Routing/Redirector.html" target="_blank">Illuminate\Routing\Redirector</a></td>
-<td><code>redirect</code></td>
-</tr>
-<tr>
-<td>Redis</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Redis/RedisManager.html" target="_blank">Illuminate\Redis\RedisManager</a></td>
-<td><code>redis</code></td>
-</tr>
-<tr>
-<td>Redis (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Redis/Connections/Connection.html" target="_blank">Illuminate\Redis\Connections\Connection</a></td>
-<td><code>redis.connection</code></td>
-</tr>
-<tr>
-<td>Request</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Http/Request.html" target="_blank">Illuminate\Http\Request</a></td>
-<td><code>request</code></td>
-</tr>
-<tr>
-<td>Response</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Routing/ResponseFactory.html" target="_blank">Illuminate\Contracts\Routing\ResponseFactory</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Response (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Http/Response.html" target="_blank">Illuminate\Http\Response</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Route</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Routing/Router.html" target="_blank">Illuminate\Routing\Router</a></td>
-<td><code>router</code></td>
-</tr>
-<tr>
-<td>Schema</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Database/Schema/Builder.html" target="_blank">Illuminate\Database\Schema\Builder</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Session</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Session/SessionManager.html" target="_blank">Illuminate\Session\SessionManager</a></td>
-<td><code>session</code></td>
-</tr>
-<tr>
-<td>Session (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Session/Store.html" target="_blank">Illuminate\Session\Store</a></td>
-<td><code>session.store</code></td>
-</tr>
-<tr>
-<td>Storage</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Filesystem/FilesystemManager.html" target="_blank">Illuminate\Filesystem\FilesystemManager</a></td>
-<td><code>filesystem</code></td>
-</tr>
-<tr>
-<td>Storage (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Filesystem/Filesystem.html" target="_blank">Illuminate\Contracts\Filesystem\Filesystem</a></td>
-<td><code>filesystem.disk</code></td>
-</tr>
-<tr>
-<td>URL</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Routing/UrlGenerator.html" target="_blank">Illuminate\Routing\UrlGenerator</a></td>
-<td><code>url</code></td>
-</tr>
-<tr>
-<td>Validator</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Validation/Factory.html" target="_blank">Illuminate\Validation\Factory</a></td>
-<td><code>validator</code></td>
-</tr>
-<tr>
-<td>Validator (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Validation/Validator.html" target="_blank">Illuminate\Validation\Validator</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>View</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/View/Factory.html" target="_blank">Illuminate\View\Factory</a></td>
-<td><code>view</code></td>
-</tr>
-<tr>
-<td>View (Instance)</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/View/View.html" target="_blank">Illuminate\View\View</a></td>
-<td> </td>
-</tr>
-<tr>
-<td>Vite</td>
-<td><a href="https://laravel.com/api/10.x/Illuminate/Foundation/Vite.html" target="_blank">Illuminate\Foundation\Vite</a></td>
-<td> </td>
-</tr>
-</tbody>
-</table>
-</div>
+</div></div><p></p>
+<h3 id="appserviceprovider">AppServiceProvider</h3>
+<p>Laravel comes shipped with an <strong>empty</strong> and already <strong>registered</strong> Service Provider called <code>AppServiceProvider</code>. In the <code>app/Providers</code> directory.</p>
+<p>Thus, the <code>AppServiceProvider</code> can be used to quickly <strong>register</strong> or <strong>boot</strong> services without the need of creating a standalone Service Provider and registering it.</p>
+<p>However, you can always create a standalone Service Provider and register it for a better <strong>Separation of Concerns</strong>.</p>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>In essence as a Laravel framework user, you can use the Service Providers to bind Services to the Laravel Service Container with a certain degree of control and without the need to interact directly with the initial bootstrapping of the application instance.</p>
+</div></div><p></p>
+
                                 
                                 </section>
                             
@@ -881,12 +670,12 @@
 
             
                 
-                <a href="3_facades.html" class="navigation navigation-prev " aria-label="Previous page: Section 8.3: Facades">
+                <a href="1_the_scaffolding_of_a_laravel_app.html" class="navigation navigation-prev " aria-label="Previous page: Section 8.1: The Scaffolding of a Laravel App">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../chapter_9_vue_js_3_as_a_frontend_framework/" class="navigation navigation-next " aria-label="Next page: Chapter 9: Vue.js 3 as a Frontend Framework">
+                <a href="3_facades.html" class="navigation navigation-next " aria-label="Next page: Section 8.3: Facades">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -897,7 +686,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 8.4: The Rest","level":"4.2.4","depth":2,"next":{"title":"Chapter 9: Vue.js 3 as a Frontend Framework","level":"4.3","depth":1,"path":"part_3_building_a_web_app/chapter_9_vue_js_3_as_a_frontend_framework/README.md","ref":"part_3_building_a_web_app/chapter_9_vue_js_3_as_a_frontend_framework/README.md","articles":[{"title":"Section 9.1: State Management in Vue.js 3","level":"4.3.1","depth":2,"path":"part_3_building_a_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md","ref":"part_3_building_a_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md","articles":[]}]},"previous":{"title":"Section 8.3: Facades","level":"4.2.3","depth":2,"path":"part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","ref":"part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","mtime":"2023-07-26T09:03:17.206Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-26T09:07:28.128Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 8.2: Service Providers","level":"4.2.2","depth":2,"next":{"title":"Section 8.3: Facades","level":"4.2.3","depth":2,"path":"part_3_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","ref":"part_3_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","articles":[]},"previous":{"title":"Section 8.1: The Scaffolding of a Laravel App","level":"4.2.1","depth":2,"path":"part_3_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_3_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"","language":"en","gitbook":"*","description":""},"file":{"path":"part_3_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","mtime":"2023-07-26T14:01:27.094Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-26T14:03:42.525Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
