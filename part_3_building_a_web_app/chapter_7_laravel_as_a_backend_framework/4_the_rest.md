@@ -1,4 +1,4 @@
-## 6.4 The Rest
+## 7.4 The Rest
 
 The rest of Laravel framework is basically syntactic sugar built on top of:
 

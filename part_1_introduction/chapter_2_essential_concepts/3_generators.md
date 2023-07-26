@@ -1,4 +1,4 @@
-## 1.3 Generators
+## 3.3 Generators
 
 **Definition:** Generators are a specific type of coroutine. Because they can be paused and resumed, generators allow the production of a sequence of results over time, rather than computing them at once and giving them back all at once.
 

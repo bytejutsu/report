@@ -1,4 +1,4 @@
-## 6.2 Service Providers
+## 7.2 Service Providers
 
 One of the `bootstrappers` that the `bootstrap()` method calls is the `BootProviders` **bootstrapper**.
 

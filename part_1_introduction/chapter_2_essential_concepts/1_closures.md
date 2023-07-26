@@ -1,4 +1,4 @@
-## 1.1 Closures
+## 2.1 Closures
 
 **Definition:** a closure is a function that has <ins>access</ins> to 
     

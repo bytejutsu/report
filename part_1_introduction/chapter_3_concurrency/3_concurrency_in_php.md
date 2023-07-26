@@ -1,4 +1,4 @@
-## 2.3 Concurrency in PHP
+## 3.3 Concurrency in PHP
 
 ### How to implement concurrency in PHP?
 

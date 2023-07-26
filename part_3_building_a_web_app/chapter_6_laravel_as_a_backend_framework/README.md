@@ -1,1 +1,0 @@
-# Chapter 6: Laravel as a Backend Framework

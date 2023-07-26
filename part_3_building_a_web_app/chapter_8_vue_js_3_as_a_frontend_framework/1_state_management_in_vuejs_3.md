@@ -1,4 +1,4 @@
-## 7.2 State Management in Vue.js 3
+## 8.1 State Management in Vue.js 3
 
 Vue.js 3 provides 6 essential state-management techniques/patterns that must be used in combination in order to unlock the full potential of the framework.
 

@@ -1,4 +1,4 @@
-## 6.1 The Scaffolding of a Laravel App
+## 7.1 The Scaffolding of a Laravel App
 
 ### index.php
 

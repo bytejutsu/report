@@ -1,4 +1,4 @@
-# Chapter 8: Monolithic Architecture
+# Chapter 9: Monolithic Architecture
 
 ## Monolith vs Microservices
 

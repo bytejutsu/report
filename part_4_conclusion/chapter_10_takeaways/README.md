@@ -1,4 +1,4 @@
-# Chapter 9: Takeaways
+# Chapter 10: Takeaways
 
 ## Observations
 

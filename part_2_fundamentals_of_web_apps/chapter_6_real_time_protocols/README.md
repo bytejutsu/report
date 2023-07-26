@@ -1,4 +1,4 @@
-# Chapter 4: Real-time Protocols
+# Chapter 6: Real-time Protocols
 
 ## 1. Websockets
 

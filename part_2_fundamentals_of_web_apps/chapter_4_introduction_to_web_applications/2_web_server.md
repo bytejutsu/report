@@ -1,4 +1,4 @@
-## 2.2 Web Server
+## 4.2 Web Server
 
 Now let's break down what actually happens inside the server. From now on we are going to omit the term server as it is a broad term, and we are going to use more specific terms like: **physical server**, **web server**, **application server** ...
 

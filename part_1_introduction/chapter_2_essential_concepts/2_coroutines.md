@@ -1,4 +1,4 @@
-## 1.2 Coroutines
+## 2.2 Coroutines
 
 **Definition**: a coroutine is an instance of suspendable computation. It is conceptually similar to a thread, in the sense that it takes a block of code to run that works concurrently with the rest of the code. However, a coroutine is not bound to any particular thread.
 

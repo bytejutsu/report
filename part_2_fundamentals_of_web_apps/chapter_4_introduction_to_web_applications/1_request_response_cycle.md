@@ -1,4 +1,4 @@
-## 2.1: Request-Response Cycle
+## 4.1: Request-Response Cycle
 
 Web applications work through a series of interactions between the client's **browser** and the application's **server**.
 
