@@ -32,19 +32,19 @@
 
 
 ### Part 3: Building a Web App
-
-* [Chapter 7: Laravel as a Backend Framework](part_3_building_a_web_app/chapter_7_laravel_as_a_backend_framework/README.md)
-  * [Section 7.1: The Scaffolding of a Laravel App](part_3_building_a_web_app/chapter_7_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md)
-  * [Section 7.2: Service Providers](part_3_building_a_web_app/chapter_7_laravel_as_a_backend_framework/2_service_providers.md)
-  * [Section 7.3: Facades](part_3_building_a_web_app/chapter_7_laravel_as_a_backend_framework/3_facades.md)
-  * [Section 7.4: The Rest](part_3_building_a_web_app/chapter_7_laravel_as_a_backend_framework/4_the_rest.md)
-* [Chapter 8: Vue.js 3 as a Frontend Framework](part_3_building_a_web_app/chapter_8_vue_js_3_as_a_frontend_framework/README.md)
-  * [Section 8.1: State Management in Vue.js 3](part_3_building_a_web_app/chapter_8_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md)
-* [Chapter 9: Monolothic Architecture](part_3_building_a_web_app/chapter_9_monolithic_architecture/README.md)
+* [Chapter 7: Overview on how to Build a Web App](part_3_building_a_web_app/chapter_7_overview_on_how_to_build_a_web_app/README.md)
+* [Chapter 8: Laravel as a Backend Framework](part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/README.md)
+  * [Section 8.1: The Scaffolding of a Laravel App](part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md)
+  * [Section 8.2: Service Providers](part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md)
+  * [Section 8.3: Facades](part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md)
+  * [Section 8.4: The Rest](part_3_building_a_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md)
+* [Chapter 9: Vue.js 3 as a Frontend Framework](part_3_building_a_web_app/chapter_9_vue_js_3_as_a_frontend_framework/README.md)
+  * [Section 9.1: State Management in Vue.js 3](part_3_building_a_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md)
+* [Chapter 10: Monolothic Architecture](part_3_building_a_web_app/chapter_10_monolithic_architecture/README.md)
 
 
 ### Part 4: Conclusion 
-* [Chapter 9: Takeaways](part_4_conclusion/chapter_9_takeaways/README.md)
+* [Chapter 11: Takeaways](part_4_conclusion/chapter_11_takeaways/README.md)
 
 ### Part 5: References
 * [Chapter x: Resources](part_5_references/chapter_x_resources/README.md)
