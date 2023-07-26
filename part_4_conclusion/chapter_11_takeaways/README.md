@@ -6,7 +6,7 @@
 
 While writing this report I noticed a pattern that repeats itself over and over. I call it the <span style="color:red;">**Asynchronous Runtime Pattern**</span>. If we want to categorize it this pattern would fall under the architectural/behavioural/structural patterns umbrella.
 
-{% hint type = "info" %}
+{% hint style="info" %}
 
 This Pattern can be categorized as **Architectural**, **Behavioural** and **Structural**
 
@@ -19,7 +19,7 @@ The main elements of the Asynchronous Runtime Pattern are:
 3. A task queue (1 or more)
 4. Workers (1 or more)
 
-{% hint type = "info" %}
+{% hint style="info" %}
 
 * The **task stack**: holds the tasks that need to be processed.
 * The **event-loop/watcher**: monitors the task stack and moves tasks to the task queue when appropriate.

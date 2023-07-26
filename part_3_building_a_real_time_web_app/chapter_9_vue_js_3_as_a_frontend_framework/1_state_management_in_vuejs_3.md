@@ -18,7 +18,7 @@ Assuming the usage of the **composition-api**, those 6 state-management techniqu
 
 This is the simplest form of state management in Vue.js. Each component has its own local state, managed with `ref` and `reactive` functions. The state is not shared with other components unless passed explicitly.
 
-{% hint type = "tip" %}
+{% hint style="tip" %}
 
 Only use this technique if you want to manage state in one component locally.
 
@@ -38,7 +38,7 @@ const increment = () => { count.value++ };
 
 This is a common pattern for parent-child component communication. The parent passes data to the child via props, and the child communicates changes to the parent via events.
 
-{% hint type = "tip" %}
+{% hint style="tip" %}
 
 Only use this technique if you want to communicate state between a parent, and it directly nested a child component.
 
@@ -79,7 +79,7 @@ classDiagram
 
 This is a way to pass data from a parent component to descendant components through a dependency injection mechanism, without going through intermediate components. This can be useful for avoiding prop drilling.
 
-{% hint type="tip" %}
+{% hint style="tip" %}
 
 Only use this technique if you want to communicate state between a parent, and a **more than one** level nested child component. **In one occurrence**.
 
@@ -136,7 +136,7 @@ classDiagram
 
 Pinia is a state management library for Vue.js that provides a centralized store for shared state. It's an alternative to Vuex and is designed to be more intuitive and flexible.
 
-{% hint type = "tip" %}
+{% hint style="tip" %}
 
 Only use this technique if you want to **share** state between a parent, and a **more than one** level nested child component. **In multiple occurrences**.
 
@@ -201,7 +201,7 @@ classDiagram
 
 Composables are reusable logic functions in Vue.js Composition API. They can be used to share stateful logic between components.
 
-{% hint type = "info" %}
+{% hint style="tip" %}
 
 Use this technique only if
 
@@ -229,7 +229,7 @@ import { useCounter } from './composables';
 const { count, increment } = useCounter();
 ```
 
-{% hint type = "info" %}
+{% hint style="tip" %}
 
 Composable can also be used in combination with a shared state store like Pinia:
 
@@ -251,7 +251,7 @@ In this example **useAuthStore** is a **Pinia** store, while **useLocalStorage**
 
 This is a way to persist state across browser sessions by storing it in the user's browser. This can be useful for things like remembering a user's preferences or saving the state of a form.
 
-{% hint type = "info" %}
+{% hint style="tip" %}
 
 Use this technique whenever possible to improve the experience of the user. However, this technique should be carefully used since it writes directly to the user's browser database.
 

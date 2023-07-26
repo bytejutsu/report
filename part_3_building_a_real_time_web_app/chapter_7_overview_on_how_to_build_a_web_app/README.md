@@ -7,7 +7,7 @@ The main role of a Web Server is to serve static files to which it has access.
 Examples of static files include HTML, CSS, JavaScript, and image files.
 
 
-{% hint type = "info" %}
+{% hint style="info" %}
 
 To tell a web server which files it should serve, you need to configure it. The configuration process varies depending on the web server software you're using, but it generally involves the following steps:
 
@@ -21,7 +21,7 @@ To tell a web server which files it should serve, you need to configure it. The 
 
 {% endhint %}
 
-{% hint type="tip" %}
+{% hint style="tip" %}
 
 When you set the `document root` of your web server to point to the `public` directory, the web server will serve these static files directly. Any request for a file path that matches the path of a file in the `public` directory will result in that file being sent to the client.
 

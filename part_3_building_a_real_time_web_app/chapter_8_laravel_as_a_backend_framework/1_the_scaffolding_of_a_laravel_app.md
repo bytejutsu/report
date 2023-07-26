@@ -682,7 +682,7 @@ The following is an important and more accurate representation of what happens i
 
 ![sendRequestThroughRouter](./sendRequestThroughRouter.drawio.png)
 
-{% hint type = "info" %}
+{% hint style = "info" %}
 
 The middlewares in the `$middleware` stack are <span style="color: red;">**global**</span> middlewares, meaning they are run on <span style="color:red; font-weight:bold;">every</span> HTTP request that your application handles, regardless of the route that the request is targeting.
 
@@ -771,7 +771,7 @@ Route::middleware('admin')->get('/admin/dashboard', function () {
 
 So, when a request comes in, it will go through the middleware of the group that is assigned to the route it's targeting. If it targets `/`, it will go through the `web` middleware. If it targets `/api/items`, it will go through the `api` middleware. If it targets `/admin/dashboard`, it will go through the `admin` middleware.
 
-{% hint type= "tip" %}
+{% hint style= "tip" %}
 
 In Laravel, you can define the routes that use the `web` middleware Group in the `routes/web.php` file without the need to specify `middleware('web')` for each route.
 

@@ -15,7 +15,7 @@ The list of service providers to be booted is defined in the `config/app.php` fi
 
 The `ProviderRepository` uses this list to instantiate each service provider and call its `register()` method, followed by its `boot()` method if it exists.
 
-{% hint type = "info" %}
+{% hint style = "info" %}
 
 A **Service Provider** is a **class** that extends the `Illuminate\Support\ServiceProvider` **class**.
 
@@ -58,7 +58,7 @@ The following is the snippet of code of the default `providers` array that comes
     ])->toArray(),
 ```
 
-{% hint type= "tip" %}
+{% hint style= "tip" %}
 
 Based on the previous information it should be obvious that every Service Provider must:
 
@@ -75,7 +75,7 @@ Thus, the `AppServiceProvider` can be used to quickly **register** or **boot** s
 
 However, you can always create a standalone Service Provider and register it for a better **Separation of Concerns**.
 
-{% hint type= "tip"%}
+{% hint style= "tip"%}
 
 In essence as a Laravel framework user, you can use the Service Providers to bind Services to the Laravel Service Container with a certain degree of control and without the need to interact directly with the initial bootstrapping of the application instance.
 

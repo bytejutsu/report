@@ -14,7 +14,7 @@ The following steps are how a Websockets connection is made:
 
 4. **Closing the Connection**: Either the client or the server can choose to close the WebSocket connection at any time. This is typically done by sending a close frame across the connection.
 
-{% hint type = "info" %}
+{% hint style="info" %}
 
 WebSockets is a protocol **separate** from HTTP, but it's designed to work over the same ports (80 and 443) and be compatible with existing network infrastructure.
 
@@ -75,7 +75,7 @@ sequenceDiagram
   User1->>User2: Close Connection
 ```
 
-{% hint type = "info" %}
+{% hint style="info" %}
 
 Because WebRTC is a peer to peer protocol. Usually the caller doesn't know enough information about the callee in order to be able to signal it and vise-versa.
 
