@@ -8,6 +8,6 @@
 
 ### Degree Program: Bachelor of Science
 
-### Academic Supervisor: Sleh Bouhari, UIT
+### Academic Supervisor: Slah Bouhari, UIT
 
 
