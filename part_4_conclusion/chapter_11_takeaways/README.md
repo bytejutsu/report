@@ -72,12 +72,12 @@ The following are some use-case examples that implement the Asynchronous Runtime
 
 You can clearly see the similarities between the following models:
 
-| Processor Model                   | 
-|-----------------------------------| 
-|  ![processor_model](./processor_model.svg)  |
+| Processor Model                           | 
+|-------------------------------------------| 
+| ![processor_model](./processor_model.svg) |
 
-| Nginx Web Server Model          | 
-|---------------------------------| 
+| Nginx Web Server Model            | 
+|-----------------------------------| 
 | ![nginx_model](./nginx_model.png) |
 
 | JS Runtime Model                               | 
