@@ -29,6 +29,7 @@
   * [Section 5.2: Events](part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md)
 
 * [Chapter 6: Real-Time Protocols](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/README.md)
+  * [Section 6.1: Websocket Server](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/1_websocket_server.md)
 
 
 ### Part 3: Building a Real-Time Web App
