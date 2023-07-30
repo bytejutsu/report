@@ -39,12 +39,43 @@ sequenceDiagram
   C->>C: Update page
 ```
 
-### 
+### Client and Websocket Server
 
-#### Connect to the Websocket Server
+#### Step 1: The Client connects to the Websocket Server
 
-for that we use **Pusher.js**
+for that the client can use **Pusher.js**:
 
-#### Listen to the Websocket Server 
+Pusher.js is a JavaScript library provided by Pusher to facilitate communication with a Pusher WebSocket server. This includes establishing a connection with the server, subscribing to channels, and receiving real-time updates.
 
-for that we use Laravel **Echo.js**
+Example of initializing **Echo.js** using **Pusher.js**
+
+```
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
+ 
+window.Pusher = Pusher;
+ 
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: import.meta.env.VITE_PUSHER_APP_KEY,
+    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
+    forceTLS: true
+});
+```
+
+#### Step 2: The Client listens to the Websocket Server 
+
+For that the client can use Laravel **Echo.js**:
+
+Laravel Echo, on the other hand, is a JavaScript library provided by Laravel that simplifies subscribing to channels and listening for event broadcasts in your Laravel application. It can use several drivers for this, one of which is Pusher.
+
+When used with the Pusher driver, Laravel Echo uses the Pusher.js library under the hood to communicate with the Pusher server. Therefore, Laravel Echo is an abstraction over Pusher.js (or other real-time libraries, depending on the driver you choose), providing a consistent API for subscribing to channels and handling event broadcasts, regardless of the underlying driver being used.
+
+Example of using **Echo.js**
+
+```
+Echo.private(`chat.${roomId}`)
+    .whisper('typing', {
+        name: this.user.name
+    });
+```
