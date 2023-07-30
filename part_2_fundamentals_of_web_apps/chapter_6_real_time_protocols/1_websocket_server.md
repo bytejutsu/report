@@ -29,15 +29,21 @@ sequenceDiagram
    A WebSocket server can either be a standalone process running on the same operating system as the web server (like the Laravel Websockets package) or it could be a separate service running elsewhere (like Pusher). The WebSocket server's role is to manage these long-lived WebSocket connections, handling incoming messages and broadcasting messages to clients.
 
 ```mermaid
-sequenceDiagram
-  participant WS as WebSocket Server
-  participant OS as Operating System
-  participant P as Pusher
-  WS->>OS: Run as standalone process
-  WS->>P: Run as separate service
-  Note over WS: Manage WebSocket connections
-  WS-->>WS: Handle incoming messages
-  WS-->>WS: Broadcast messages to clients
+graph TB
+  subgraph OS1["OS"]
+    WS1["WebSocket Server"]
+    HS1["HTTP Web Server"]
+  end
+```
+
+```mermaid
+graph TB
+  subgraph OS1["OS"]
+    HS1["HTTP Web Server"]
+  end
+  subgraph OS2["OS"]
+    WS1["WebSocket Server"]
+  end
 ```
 
 3. **Laravel Applications and WebSocket Connections**:
@@ -64,13 +70,14 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-  participant L as Laravel Application
+  participant C as Client
   participant WS as WebSocket Server
+  participant L as Laravel Application
   participant E as Event
   L->>E: Dispatch event
-  E->>WS: Event heard by WebSocket server
-  WS-->>WS: Broadcast relevant data to clients
   Note over L: Laravel application instance terminates
+  E-->>WS: Event heard by WebSocket Server
+  WS-->>C: Broadcast relevant data to clients
 ```
 
 5. **WebSocket Servers and Clients**:
@@ -92,16 +99,22 @@ sequenceDiagram
 6. **Clients Sending Messages to WebSocket Server**:
 
 
-   There are scenarios where the client might also send messages to the WebSocket server. A notable example is Google Docs. As users type and make changes to a document, those changes are sent to the server over the WebSocket connection, allowing other users to see the changes in real time. The server then processes these changes and sends updates to other connected clients.
+   There are scenarios where the client might also send messages to the WebSocket server. A notable example is Google Docs. 
+
+   As users type and make changes to a document, those changes are sent to the WebSocket server over the WebSocket connection. The WebSocket server then broadcasts these changes to all other clients connected to the same document. Each client application would have the logic to handle these updates and apply them to the document in real-time. This allows all users to see changes as they happen.
+
+   There's still server-side application logic involved, but it's primarily for handling more permanent changes like saving the final version of the document, handling authentication, managing users, and similar tasks. These operations would typically be performed via traditional HTTP requests to the server, and are separate from the real-time, collaborative aspect of the application facilitated by the WebSocket connection. 
 
 ```mermaid
 sequenceDiagram
-  participant C as Client
+  participant C1 as Client 1
+  participant C2 as Client 2
   participant WS as WebSocket Server
   participant HS as HTTP Web Server
-  C->>WS: Send WebSocket message
-  WS->>HS: Process message
-  HS->>WS: Send updates
-  WS-->>C: Receive WebSocket updates
+  C1->>WS: Send changes over WebSocket
+  WS-->>C2: Broadcast changes
+  C2->>C2: Apply changes in real-time
+  C1->>HS: Send HTTP request for permanent changes
+  HS-->>C1: Respond with HTTP response
 ```
 
