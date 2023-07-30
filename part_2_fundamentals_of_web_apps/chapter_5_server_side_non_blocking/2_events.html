@@ -623,6 +623,77 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="52-events">5.2 Events</h2>
+<p>In this section, we will provide an overview of what events are in the context of Laravel and why they are useful. </p>
+<ol>
+<li>Events provide a simple observer implementation, allowing you to subscribe and listen for various events in your application.</li>
+</ol>
+<ol>
+<li>They serve as a great way to decouple various aspects of your application, as the event object can be used to share data between the event listeners.</li>
+</ol>
+<ol>
+<li>They can be used for tasks like sending notifications, firing off jobs to queues, writing to logs and more.</li>
+</ol>
+<h3 id="understanding-laravel-events">Understanding Laravel Events</h3>
+<ol>
+<li><p>Events in Laravel can be classified into two main categories: persistent events and request-specific events.</p>
+<ul>
+<li><p>Persistent events are those that persist between subsequent HTTP requests. A good example of these are job events, which may be processed in the background and not within the lifecycle of a single HTTP request.</p>
+</li>
+<li><p>Request-specific events are those that occur within the lifespan of a single HTTP request. They get fired and handled during a single HTTP request and do not persist across multiple requests.</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>Event classes are typically stored in the <code>app/Events</code> directory.</li>
+</ol>
+<ol>
+<li>Events can be broadcast over websockets to provide real-time updates to your application&apos;s users.</li>
+</ol>
+<ol>
+<li>Laravel&apos;s event broadcasting allows you to broadcast your server-side Laravel events to your client-side JavaScript application.</li>
+</ol>
+<h3 id="creating-events">Creating Events</h3>
+<ol>
+<li>Creating an event using <code>php artisan make:event EventName</code>.</li>
+</ol>
+<ol>
+<li>Explain the structure of the generated event class.</li>
+</ol>
+<ol>
+<li>Show an example of defining event and setting data on it.</li>
+</ol>
+<h3 id="event-listeners">Event Listeners</h3>
+<p>An Event Listeners listens to a particular event and performs an action when that event is fired.</p>
+<ol>
+<li>Creating a listener using <code>php artisan make:listener ListenerName --event=EventName</code>.</li>
+</ol>
+<ol>
+<li>Explain the structure of the generated listener class.</li>
+</ol>
+<ol>
+<li>Show an example of how to set up a listener to respond to an event.</li>
+</ol>
+<h3 id="event-subscribers">Event Subscribers</h3>
+<p>Event Subscribers are classes that may subscribe to multiple events from within the class itself.</p>
+<p>This can provide a way to keep related listener logic grouped together.</p>
+<p>To use an Event Subscriber we need to:</p>
+<ol>
+<li>Firstly create an event subscriber.</li>
+</ol>
+<ol>
+<li>Secondly register the event subscriber.</li>
+</ol>
+<p>Todo: Give examples of when using an event subscriber might be preferable to individual listeners.</p>
+<h3 id="broadcasting-events">Broadcasting Events</h3>
+<p>To broadcast events using Laravel, we need to: </p>
+<ol>
+<li>Firstly to configure Laravel to use a broadcasting service like Pusher or Laravel Websockets in the <code>.env</code> file and the <code>config/broadcasting.php</code> file.</li>
+</ol>
+<ol>
+<li>Secondly to mark an event as &quot;broadcastable&quot; by implementing the <code>ShouldBroadcast</code> or <code>ShouldBroadcastNow</code> interfaces.</li>
+</ol>
+<p>This takes us to the next chapter where we talk about websockets and the websocket server.</p>
 
                                 
                                 </section>
@@ -666,7 +737,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 5.2: Events","level":"3.2.2","depth":2,"next":{"title":"Chapter 6: Real-Time Protocols","level":"3.3","depth":1,"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/README.md","ref":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/README.md","articles":[{"title":"Section 6.1: Websocket Server","level":"3.3.1","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/1_websocket_server.md","ref":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/1_websocket_server.md","articles":[]},{"title":"Section 6.2: Websocket Client","level":"3.3.2","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/2_websocket_client.md","ref":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/2_websocket_client.md","articles":[]}]},"previous":{"title":"Section 5.1: Message Queues","level":"3.2.1","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","mtime":"2023-07-30T16:02:20.358Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-30T16:02:35.168Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 5.2: Events","level":"3.2.2","depth":2,"next":{"title":"Chapter 6: Real-Time Protocols","level":"3.3","depth":1,"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/README.md","ref":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/README.md","articles":[{"title":"Section 6.1: Websocket Server","level":"3.3.1","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/1_websocket_server.md","ref":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/1_websocket_server.md","articles":[]},{"title":"Section 6.2: Websocket Client","level":"3.3.2","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/2_websocket_client.md","ref":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/2_websocket_client.md","articles":[]}]},"previous":{"title":"Section 5.1: Message Queues","level":"3.2.1","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","mtime":"2023-07-30T17:55:34.633Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-30T17:55:56.659Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
