@@ -54,9 +54,66 @@ classDiagram
 
 - Persistent events are those that persist between subsequent HTTP requests. A good example of these are job events, which may be processed in the background and not within the lifecycle of a single HTTP request.
 
+The following diagram illustrates how Job Event use the Database shared resource to persist between subsequent HTTP Requests:
+
+```mermaid
+sequenceDiagram
+  participant Client
+  participant Server as New Laravel Application Instance
+  participant Database
+  participant Queue as Message Queue
+  participant Job
+  Client->>Server: HTTP request (start job)
+  activate Server
+  Server->>Database: Create Job record (status: processing)
+  Server->>Queue: Add job to the queue
+  Server-->>Client: Return Job id
+  deactivate Server
+  Note over Client: Client stores the Job id temporarily
+  Queue->>Job: Dispatch job
+  Job->>Database: Update Job status (started, error, completed)
+  Note over Client: Client periodically polls for job status
+  Client->>Server: HTTP request (get job status)
+  activate Server
+  Server->>Database: Listens to Database Job status
+  Server-->>Client: Return Job status
+  deactivate Server
+```
+
+in the sequence diagram:
+
+1. The Client sends an HTTP request to start a job. This request is received by a new instance of the Laravel application on the Web Server.
+2. The Laravel application creates a Job record in the Database with a status of 'processing'.
+3. The Laravel application adds the job to the Message Queue.
+4. The Laravel application returns the Job id to the Client and then the instance is deactivated.
+5. The Client stores the Job id temporarily. This is important because the Client will need this id to check the status of the job later.
+6. The Message Queue dispatches the job to be processed.
+7. The Job updates its status in the Database. This could be 'started', 'error', or 'completed' depending on the progress of the job.
+8. The Client periodically polls for the job status by sending HTTP requests to the Web Server.
+9. A new instance of the Laravel application is activated to handle each of these requests. It listens to the Database for changes in the Job status.
+10. The Laravel application returns the Job status to the Client and then the instance is deactivated.
+
 
 - Request-specific events are those that occur within the lifespan of a single HTTP request. They get fired and handled during a single HTTP request and do not persist across multiple requests.
 
+The following is a sequence diagram for request-specific events that get listened to synchronously and do not persist between subsequent HTTP requests:
+
+```mermaid
+sequenceDiagram
+  participant Client
+  participant Server as New Laravel Application Instance
+  participant Event
+  participant Listener
+  Client->>Server: HTTP request
+  activate Server
+  Server->>Event: Dispatch event
+  Event->>Listener: Event is listened to synchronously
+  Listener-->>Server: Listener handles event
+  Server-->>Client: Return response
+  deactivate Server
+```
+
+Both the Event and the Listener are part of the Laravel Application instance.
  
 2. Event classes are typically stored in the `app/Events` directory.
 
@@ -243,9 +300,21 @@ To broadcast events using Laravel, we need to:
 2. Secondly to mark an event as "broadcastable" by implementing the `ShouldBroadcast` or `ShouldBroadcastNow` interfaces. Like the following:
 
 ```
-class OrderShipmentStatusUpdated implements ShouldBroadcastNow
+class OrderShipmentStatusUpdated implements ShouldBroadcast
 {
-    // ...
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $order;
+
+    public function __construct($order)
+    {
+        $this->order = $order;
+    }
+
+    public function broadcastOn()
+    {
+        return new Channel('orders');
+    }
 }
 ```
 
