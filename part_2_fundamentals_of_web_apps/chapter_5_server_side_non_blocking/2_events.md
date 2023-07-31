@@ -69,7 +69,7 @@ classDiagram
 
 ### Creating Events
 
-In Laravel we can create an Event using the artisan command `php artisan make:event EventName`.
+In Laravel, we can create an Event using the artisan command `php artisan make:event EventName`.
 
 Like the following example:
 
@@ -122,7 +122,7 @@ OrderShipped::dispatch($order);
 An Event Listeners listens to a particular event and performs an action when that event is fired.
 
 
-To create an Event Listener for an already defined Event we can use the artisan command `php artisan make:listener ListenerName --event=EventName`.
+1. To create an Event Listener for an already defined Event we can use the artisan command `php artisan make:listener ListenerName --event=EventName`.
 
 Like the following example:
 
@@ -144,26 +144,91 @@ class SendShipmentNotification
 }
 ```
 
+2. next you need to register the Event Listener. This typically can be achieved using the `$listen` array in the `EventServiceProvider`, like the following:
+
+```
+use App\Events\OrderShipped;
+use App\Listeners\SendShipmentNotification;
+ 
+/**
+ * The event listener mappings for the application.
+ *
+ * @var array<class-string, array<int, class-string>>
+ */
+protected $listen = [
+    OrderShipped::class => [
+        SendShipmentNotification::class,
+    ],
+];
+```
 
 ### Event Subscribers
 
 
-Event Subscribers are classes that may subscribe to multiple events from within the class itself.
+An event subscriber is a class that may subscribe to multiple events from within the class itself, allowing you to define several event handlers within a single class. Subscribers classes have a `subscribe` method, which is passed an event dispatcher instance, allowing the subscriber to register multiple event listeners.
+
+The following is a basic example of an event subscriber:
 
 
-This can provide a way to keep related listener logic grouped together.
+```php
+namespace App\Listeners;
+
+class UserEventSubscriber
+{
+    /**
+     * Handle user login events.
+     */
+    public function handleUserLogin($event) {}
+
+    /**
+     * Handle user logout events.
+     */
+    public function handleUserLogout($event) {}
+
+    /**
+     * Register the listeners for the subscriber.
+     *
+     * @param  Illuminate\Events\Dispatcher  $events
+     */
+    public function subscribe($events)
+    {
+        $events->listen(
+            'Illuminate\Auth\Events\Login',
+            'App\Listeners\UserEventSubscriber@handleUserLogin'
+        );
+
+        $events->listen(
+            'Illuminate\Auth\Events\Logout',
+            'App\Listeners\UserEventSubscriber@handleUserLogout'
+        );
+    }
+}
+```
 
 
-To use an Event Subscriber we need to:
+In this example, the `UserEventSubscriber` is subscribing to the `Login` and `Logout` events. When these events are dispatched, the `handleUserLogin` and `handleUserLogout` methods are called, respectively.
 
 
-1. Firstly create an event subscriber.
- 
-
-2. Secondly register the event subscriber.
+**Why use an event subscriber over an event listener?**
 
 
-Todo: Give examples of when using an event subscriber might be preferable to individual listeners.
+1. **Organization**: If you have a lot of related events, it can be more organized to group their listeners into a single class, rather than having many different listener classes.
+
+
+2. **Flexibility**: Subscribers can listen for multiple events, whereas a single event listener class listens for a single event. This can reduce the amount of code you need to write if multiple events should trigger similar functionality.
+
+
+3. **Dynamic Listener Registration**: Subscribers can programmatically determine whether to listen to an event or not, or even which method to call, since the subscribing is done in the subscriber's `subscribe` method at runtime. This is not possible with static event listeners, which are registered in the `EventServiceProvider`.
+
+
+Just like an Event Listener you need to register the Event Subscriber in the `EventServiceProvider`:
+
+
+```php
+protected $subscribe = [
+    'App\Listeners\UserEventSubscriber',
+];
+```
 
 
 ### Broadcasting Events
