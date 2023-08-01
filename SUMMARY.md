@@ -25,7 +25,7 @@
   * [Section 4.3: Application Server](part_2_fundamentals_of_web_apps/chapter_4_introduction_to_web_applications/3_application_server.md)
 
 * [Chapter 5: Server Side Non-Blocking](part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/README.md)
-  * [Section 5.1: Message Queues](part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.md)
+  * [Section 5.1: Background Jobs](part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_background_jobs.md)
   * [Section 5.2: Events](part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md)
 
 * [Chapter 6: Real-Time Protocols](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/README.md)
