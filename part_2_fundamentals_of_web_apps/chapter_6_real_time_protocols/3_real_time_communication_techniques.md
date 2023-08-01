@@ -8,7 +8,14 @@ The following are common techniques used to facilitate real-time communication b
 - **Cons**: Inefficient, as it can lead to unnecessary requests when there's no new data, and latency in receiving updates if the polling interval is too long.
 
 ```mermaid
-
+sequenceDiagram
+  participant Client
+  participant Server
+  Client->>Server: HTTP request (check for updates)
+  Server-->>Client: HTTP response (no updates)
+  Note over Client: Wait for polling interval
+  Client->>Server: HTTP request (check for updates)
+  Server-->>Client: HTTP response (updates available)
 ```
 
 ### 2. Server-Sent Events (SSE)
@@ -17,7 +24,13 @@ The following are common techniques used to facilitate real-time communication b
 - **Cons**: Unidirectional (server to client only), and not supported by all browsers.
 
 ```mermaid
-
+sequenceDiagram
+  participant Client
+  participant Server
+  Client->>Server: HTTP request (open connection for updates)
+  Server-->>Client: HTTP response (connection established)
+  Note over Server: When updates are available
+  Server-->>Client: Send updates
 ```
 
 ### 3. WebSockets
@@ -26,7 +39,14 @@ The following are common techniques used to facilitate real-time communication b
 - **Cons**: More complex to implement; requires a specific protocol (though many libraries are available to simplify this).
 
 ```mermaid
-
+sequenceDiagram
+  participant Client
+  participant Server
+  Client->>Server: HTTP request (open WebSocket connection)
+  Server-->>Client: HTTP response (WebSocket connection established)
+  Note over Client,Server: Bidirectional communication
+  Client->>Server: Send message
+  Server-->>Client: Send message
 ```
 
 ### 4. Push Notifications
@@ -35,5 +55,13 @@ The following are common techniques used to facilitate real-time communication b
 - **Cons**: Requires integration with platform-specific services; may have privacy implications.
 
 ```mermaid
-
+sequenceDiagram
+  participant Client
+  participant Server
+  participant PushService as Push Notification Service
+  Client->>Server: HTTP request (subscribe for push notifications)
+  Server->>PushService: Register Client for push notifications
+  Note over Server: When updates are available
+  Server->>PushService: Send push notification
+  PushService-->>Client: Deliver push notification
 ```
