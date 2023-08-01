@@ -31,6 +31,7 @@
 * [Chapter 6: Real-Time Protocols](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/README.md)
   * [Section 6.1: Websocket Server](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/1_websocket_server.md)
   * [Section 6.2: Websocket Client](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/2_websocket_client.md)
+  * [Section 6.3: Real-Time Communication Techniques](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/3_real_time_communication_techniques.md)
 
 
 ### Part 3: Building a Real-Time Web App
