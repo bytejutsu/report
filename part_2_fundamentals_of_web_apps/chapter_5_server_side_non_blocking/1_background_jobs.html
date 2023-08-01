@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-        <title>Section 5.1: Message Queues · Small-Scale Real-Time Modern Web Applications</title>
+        <title>Section 5.1: Background Jobs · Small-Scale Real-Time Modern Web Applications</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -325,12 +325,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="3.2.1" data-path="1_message_queues.html">
+        <li class="chapter active" data-level="3.2.1" data-path="1_background_jobs.html">
             
-                <a href="1_message_queues.html">
+                <a href="1_background_jobs.html">
             
                     
-                    Section 5.1: Message Queues
+                    Section 5.1: Background Jobs
             
                 </a>
             
@@ -620,7 +620,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Section 5.1: Message Queues</a>
+        <a href="../.." >Section 5.1: Background Jobs</a>
     </h1>
 </div>
 
@@ -635,7 +635,22 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="51-message-queues">5.1 Message Queues</h2>
+                                <h2 id="51-background-jobs">5.1 Background Jobs</h2>
+<h3 id="introduction-to-background-jobs-in-laravel">Introduction to Background Jobs in Laravel</h3>
+<p>In any web application, there are tasks that require a significant amount of time to process and complete. These tasks, if executed during a normal request/response cycle, can lead to a poor user experience as they have to wait for these tasks to complete. This is where background jobs come in.</p>
+<p>Background jobs in Laravel allow you to defer the processing of a time-consuming task, such as sending an email, until a later time. This significantly speeds up web requests to your application as the user doesn&apos;t have to wait for these tasks to complete. Instead, these tasks are handled in the background, allowing the application to continue processing other tasks.</p>
+<p><img src="https://showme.redstarplugin.com/d/nhPfML1J" alt="Background Jobs in Laravel"></p>
+<p><a href="https://showme.redstarplugin.com/d/nhPfML1J" target="_blank">You can view this diagram in a new tab.</a></p>
+<p><a href="https://showme.redstarplugin.com/s/kzIH0I2r" target="_blank">You can edit this diagram online if you want to make any changes.</a></p>
+<h3 id="asynchronous-execution-of-background-jobs">Asynchronous Execution of Background Jobs</h3>
+<p>One of the key features of background jobs in Laravel is their ability to run asynchronously. But what does this mean?</p>
+<p>When a job is dispatched in Laravel, it&apos;s stored in a jobs table and then added to a task queue. These queues are not part of the main application flow, meaning they can operate independently and don&apos;t block the user&apos;s interaction with the application.</p>
+<p>Worker threads, which are separate processes, are responsible for picking up and executing jobs from this queue. These worker threads run in the background, hence the term &quot;background jobs&quot;. This asynchronous processing allows the main application to continue processing other tasks without waiting for the job to complete.</p>
+<h3 id="queues-and-message-queues">Queues and Message Queues</h3>
+<p>In Laravel, a queue is an abstract concept that can be implemented in various ways, including using a database or message queue services. Queues help manage and prioritize jobs, ensuring that each job is processed in the order it was received and that no job is processed more than once.</p>
+<p>Message queues are services that implement a priority queue. They are designed to handle high traffic and to decouple your application, allowing for efficient management of jobs. Laravel supports different types of queues, including database, Redis, and various message queue services like RabbitMQ, AWS SQS, etc.</p>
+<h3 id="job-events">Job Events</h3>
+<p>Job events in Laravel provide hooks into the Laravel queue&apos;s job processing system. These events, such as <code>Queue::before</code>, <code>Queue::after</code>, and <code>Queue::failing</code>, allow you to perform actions before a job is processed, after it has processed, or when a job fails. This can be particularly useful for debugging or logging purposes.</p>
 
                                 
                                 </section>
@@ -679,7 +694,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 5.1: Message Queues","level":"3.2.1","depth":2,"next":{"title":"Section 5.2: Events","level":"3.2.2","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","articles":[]},"previous":{"title":"Chapter 5: Server Side Non-Blocking","level":"3.2","depth":1,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/README.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/README.md","articles":[{"title":"Section 5.1: Message Queues","level":"3.2.1","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.md","articles":[]},{"title":"Section 5.2: Events","level":"3.2.2","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_message_queues.md","mtime":"2023-08-01T10:59:54.673Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-08-01T11:00:16.648Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 5.1: Background Jobs","level":"3.2.1","depth":2,"next":{"title":"Section 5.2: Events","level":"3.2.2","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","articles":[]},"previous":{"title":"Chapter 5: Server Side Non-Blocking","level":"3.2","depth":1,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/README.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/README.md","articles":[{"title":"Section 5.1: Background Jobs","level":"3.2.1","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_background_jobs.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_background_jobs.md","articles":[]},{"title":"Section 5.2: Events","level":"3.2.2","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","ref":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_background_jobs.md","mtime":"2023-08-01T11:48:14.129Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-08-01T11:48:33.539Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
