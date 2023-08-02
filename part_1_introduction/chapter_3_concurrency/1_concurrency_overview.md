@@ -40,7 +40,7 @@ You will often hear people misusing the term **parallel** and referring to **Int
 
 **definition**: A Coroutine is the **smallest** unit of a program that can be **executed** **concurrently**
 
-**definition**: A thread is the **smallest** and **only** unit of a program that can be **bound** to a **CPU core**
+**definition**: Using a thread is the **most concise** and **only** way to **bind** a set of instructions to a **CPU core**
 
 {% hint style = "info" %}
 
