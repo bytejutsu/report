@@ -1,5 +1,17 @@
 # Chapter 6: Real-time Protocols And Techniques
 
+The following is an overview of the WebSocket and WebRTC protocols in the "protocols tree": 
+
+```mermaid
+graph TB
+  IP["IP Protocol (Network Layer)"]
+  IP --> TCP["TCP Protocol (Transport Layer)"]
+  TCP --> HTTP["HTTP Protocol (Application Layer)"]
+  TCP --> WS["WebSocket Protocol (Application Layer)"]
+  IP --> UDP["UDP Protocol (Transport Layer)"]
+  UDP --> WRTC["WebRTC Protocol (Application Layer)"]
+```
+
 ## 1. Websockets
 
 WebSockets is a communication protocol that provides **full-duplex** communication between a client and a server over a **long-lived connection**. It's commonly used in web applications to enable **real-time** features like chat, live updates, and interactive games. 
