@@ -17,11 +17,8 @@ To achieve asynchronous behavior, the runtime environment typically needs to pro
 
 
 1. **Event Loop**: The event loop is a key component of many asynchronous runtimes. It's a loop that waits for events (like I/O completion or timer expiration) and dispatches them to the appropriate event handlers. The event loop allows the program to respond to external events while continuing to do other work.
-
 2. **Task Queue or Event Queue**: This is a data structure used by the event loop. When an asynchronous operation is started, a task representing the operation is put into the queue. When the operation is complete, its result (or error) is handled by a callback function, which is also put into the queue. The event loop continuously checks the queue and processes tasks in the order they appear.
-
 3. **Threads or Processes**: While many asynchronous systems are single-threaded (like Node.js), others use multiple threads or processes to handle asynchronous tasks. This allows them to take advantage of multiple CPU cores and perform true parallel execution. The runtime needs to provide mechanisms for creating, managing, and synchronizing these threads or processes.
-
 4. **Coroutines || Promises, Futures, or Similar Abstractions**: These are data structures that represent the result of an asynchronous operation. They provide a way to attach callbacks (functions to be executed later) that handle the result when it's ready.
 
 
