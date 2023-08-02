@@ -648,7 +648,62 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h2 id="64-ajax">6.4 AJAX</h2>
+<p><strong>Definition</strong>: AJAX stands for Asynchronous JavaScript and XML.</p>
+<p>It is a set of web development techniques using many web technologies on the client-side to create asynchronous web applications.</p>
+<p>With AJAX, web applications can send and retrieve data from a server asynchronously (in the background) without interfering with the display and behavior of the existing page.</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Please note that while the name includes &quot;XML,&quot; modern implementations commonly utilize JSON instead, as it&apos;s more flexible and easier to work with. AJAX can work with other formats as well, like HTML or even plain text.</p>
+<p>So technically, AJAX is now more like <strong>AJAJ</strong> since JSON is the most common format to communicate data other than HTML between the client and the web server.</p>
+</div></div><p></p>
+<p>Here&apos;s a basic overview of how AJAX works:</p>
+<ol>
+<li>An event occurs in a web page (like a button is clicked).</li>
+<li>A JavaScript function is triggered which makes an HTTP request. This could be done using <code>XMLHttpRequest</code>, <code>fetch()</code>, <code>axios</code>, or other methods.</li>
+<li>The server processes the request.</li>
+<li>The server sends a response back to the web page.</li>
+<li>The response is read by JavaScript.</li>
+<li>Proper action (like page update) is performed by JavaScript.</li>
+</ol>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>There are 3 main ways to initiate and receive an HTTP Request/Response from the client in Javascript:</p>
+<ol>
+<li><code>XMLHTTPRequest</code> Object</li>
+<li><code>fetch()</code> API</li>
+<li><code>axios</code> Module</li>
+</ol>
+<p>Both <code>XMLHTTPRequest</code> Object and the <code>fetch()</code> API come integrated in most Javascript Runtimes, However, the <code>XMLHTTPRequest</code> Object method is not officially deprecated, but it&apos;s considered somewhat in comparison to the <code>fetch()</code> API, which provide more powerful and flexible ways to make HTTP requests.</p>
+<p><code>axios</code> on the other hand is a separate library that requires installation. <code>axios</code> offer additional features and improvements over the <code>fetch()</code> API, such as automatic JSON data transformation and client-side protection against XSRF.</p>
+</div></div><p></p>
+<p>The following example uses the <code>XMLHttpRequest</code> object to make an AJAX request:</p>
+<pre><code class="lang-javascript">var xhr = new XMLHttpRequest();
+xhr.open(&quot;GET&quot;, &apos;https://api.example.com/data&apos;, true);
+xhr.onreadystatechange = function () {
+  if (xhr.readyState == 4 &amp;&amp; xhr.status == 200)
+    console.log(JSON.parse(xhr.responseText));
+}
+xhr.send();
+</code></pre>
+<p>The following example uses the <code>fetch()</code> API to make an AJAX request:</p>
+<pre><code class="lang-javascript">fetch(&apos;https://api.example.com/data&apos;, {
+  method: &apos;GET&apos;, 
+})
+.then(response =&gt; response.json())
+.then(data =&gt; console.log(data))
+.catch((error) =&gt; {
+  console.error(&apos;Error:&apos;, error);
+});
+</code></pre>
+<p>The following example uses the <code>axios</code> module to make an AJAX request:</p>
+<pre><code class="lang-javascript">axios.get(&apos;https://api.example.com/data&apos;)
+.then(function (response) {
+  console.log(response.data);
+})
+.catch(function (error) {
+  console.log(error);
+});
+</code></pre>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Note how because we can initiate an HTTP request from the browser programmatically and also define programmatically what operations to perform with the respective HTTP response, AJAX provides a better user experience and omits the need of browser page refreshes. </p>
+</div></div><p></p>
+
                                 
                                 </section>
                             
@@ -691,7 +746,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 6.4: Ajax","level":"3.3.4","depth":2,"next":{"title":"Chapter 7: Overview on how to Build a Web App","level":"4.1","depth":1,"path":"part_3_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/README.md","ref":"part_3_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/README.md","articles":[]},"previous":{"title":"Section 6.3: Real-Time Communication Techniques","level":"3.3.3","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md","ref":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md","articles":[]},"dir":"neutral"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/4_ajax.md","mtime":"2023-08-02T14:26:54.313Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-08-02T14:27:10.037Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 6.4: Ajax","level":"3.3.4","depth":2,"next":{"title":"Chapter 7: Overview on how to Build a Web App","level":"4.1","depth":1,"path":"part_3_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/README.md","ref":"part_3_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/README.md","articles":[]},"previous":{"title":"Section 6.3: Real-Time Communication Techniques","level":"3.3.3","depth":2,"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md","ref":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","mermaid-newface"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"mermaid-newface":{"theme":"neutral"},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"mermaid-newface":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/4_ajax.md","mtime":"2023-08-02T15:12:14.892Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-08-02T15:12:34.292Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
