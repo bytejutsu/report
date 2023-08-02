@@ -29,11 +29,19 @@ The following diagram models a javascript runtime (a browser's tab), which is an
 
 ![javascript_runtime](javascript_runtime.png)
 
-**call stack**: runs on the main thread
+**Javascript Engine**: not modeled in the diagram, runs on the main-thread an uses both the **call-stack** and the **Heap** data structures.
 
-**web api**: runs on a worker thread
+**Web APIs**: provide a set of Web API, each Web API provide a set of Tasks, those Tasks are then assigned to a Pool of threads which is managed by the browser.
 
-//todo complete here
+**TaskQueue + MicrotaskQueue**: Are managed by the Event Loop.
+
+**Event Loop**: Part of the main-thread. The Event Loop is theoretically "constantly running" but it only gets active when the call stack is empty and the javascript engine becomes idle. That is why both the Javascript Engine and the infinite Event Loop are able to operate together on a single main-thread.
+
+{% hint style="info" %}
+
+The number of threads that the browser associates to the thread pool of a javascript application is variable and does depend on the number of web-api features/tasks/web-works that the app uses.
+
+{% endhint %}
 
 {% hint style="info" %}
 
