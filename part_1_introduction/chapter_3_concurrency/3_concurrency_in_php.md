@@ -5,7 +5,7 @@
 Concurrency in PHP can be achieved in several ways:
 
 
-1. **Child Processes**: PHP supports the creation of child processes using the `pcntl_fork()` function. This function creates a new process by duplicating the current process. The child process can then run concurrently with the parent process.
+- **Child Processes**: PHP supports the creation of child processes using the `pcntl_fork()` function. This function creates a new process by duplicating the current process. The child process can then run concurrently with the parent process.
 
 ```php
  
@@ -26,7 +26,7 @@ Concurrency in PHP can be achieved in several ways:
 
 ```
 
-2. **Multi-Threading**: PHP does not natively support multi-threading. However, the PHP extension pthreads provides a convenient and robust way of creating multi-threaded applications in PHP. It allows you to create, read, write, execute, and synchronize threads. The `parallel` extension in PHP provides a simple API for parallel computing, which is the simultaneous execution of multiple calculations or processes. It allows running a PHP code block asynchronously in a separate thread and then fetching the result when available.
+- **Multi-Threading**: PHP does not natively support multi-threading. However, the PHP extension pthreads provides a convenient and robust way of creating multi-threaded applications in PHP. It allows you to create, read, write, execute, and synchronize threads. The `parallel` extension in PHP provides a simple API for parallel computing, which is the simultaneous execution of multiple calculations or processes. It allows running a PHP code block asynchronously in a separate thread and then fetching the result when available.
 
 The following is a multi-threading in PHP example using the **pthreads** extension
 
@@ -125,7 +125,7 @@ Main->>Main: Continue with rest of script
 
 ```
 
-3. **Generators and Coroutines**: PHP 5.5 introduced generators, which allow you to write code that uses `yield` to generate a sequence of values. This can be used to implement simple coroutines, which can be used to manage concurrency.
+- **Generators and Coroutines**: PHP 5.5 introduced generators, which allow you to write code that uses `yield` to generate a sequence of values. This can be used to implement simple coroutines, which can be used to manage concurrency.
 
 {% hint style="info" %}
 
@@ -186,7 +186,7 @@ echo "End of script\n";
 
 ```
 
-4. **Asynchronous Programming**: Asynchronous programming allows you to perform long-running tasks, such as I/O operations, without blocking the execution of the rest of your code. Libraries like ReactPHP, Amp, and Swoole provide tools for writing asynchronous code in PHP. Promises and futures are constructs used in concurrent programming to represent the result of a computation that may not have completed yet. Libraries like Guzzle's promises or ReactPHP's promises can be used to manage concurrency in PHP.
+- **Asynchronous Programming**: Asynchronous programming allows you to perform long-running tasks, such as I/O operations, without blocking the execution of the rest of your code. Libraries like ReactPHP, Amp, and Swoole provide tools for writing asynchronous code in PHP. Promises and futures are constructs used in concurrent programming to represent the result of a computation that may not have completed yet. Libraries like Guzzle's promises or ReactPHP's promises can be used to manage concurrency in PHP.
 
 example of asynchronous operations using **reactPHP** extension
 
