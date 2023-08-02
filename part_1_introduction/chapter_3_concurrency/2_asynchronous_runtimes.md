@@ -29,7 +29,7 @@ The following diagram models a javascript runtime (a browser's tab), which is an
 
 ![javascript_runtime](javascript_runtime.png)
 
-**Javascript Engine**: not modeled in the diagram, runs on the main-thread an uses both the **call-stack** and the **Heap** data structures.
+**Javascript Engine**: runs on the main-thread an uses both the **call-stack** and the **Heap** data structures.
 
 **Web APIs**: provide a set of Web API, each Web API provide a set of Tasks, those Tasks are then assigned to a Pool of threads which is managed by the browser.
 
