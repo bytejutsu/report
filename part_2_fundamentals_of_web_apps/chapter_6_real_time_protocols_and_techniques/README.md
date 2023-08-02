@@ -1,4 +1,4 @@
-# Chapter 6: Real-time Protocols
+# Chapter 6: Real-time Protocols And Techniques
 
 ## 1. Websockets
 

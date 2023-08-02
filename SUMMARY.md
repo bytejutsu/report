@@ -28,10 +28,11 @@
   * [Section 5.1: Background Jobs](part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/1_background_jobs.md)
   * [Section 5.2: Events](part_2_fundamentals_of_web_apps/chapter_5_server_side_non_blocking/2_events.md)
 
-* [Chapter 6: Real-Time Protocols](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/README.md)
-  * [Section 6.1: Websocket Server](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/1_websocket_server.md)
-  * [Section 6.2: Websocket Client](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/2_websocket_client.md)
-  * [Section 6.3: Real-Time Communication Techniques](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols/3_real_time_communication_techniques.md)
+* [Chapter 6: Real-Time Protocols And Techniques](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/README.md)
+  * [Section 6.1: Websocket Server](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/1_websocket_server.md)
+  * [Section 6.2: Websocket Client](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/2_websocket_client.md)
+  * [Section 6.3: Real-Time Communication Techniques](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md)
+  * [Section 6.4: Ajax](part_2_fundamentals_of_web_apps/chapter_6_real_time_protocols_and_techniques/4_ajax.md)
 
 
 ### Part 3: Building a Real-Time Web App
