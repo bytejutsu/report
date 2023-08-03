@@ -251,7 +251,7 @@ Here's what each method is intended to do:
 4. **`getApplication()`**: This method is responsible for getting the Laravel application instance. It doesn't take any parameters and returns an `Illuminate\Contracts\Foundation\Application` object.
 
 
-### The <span style="color: red;">first question</span> that begs itself:
+### The <span style="color: red;">question</span> that begs itself:
 
 How does the following line of code works?:
 
