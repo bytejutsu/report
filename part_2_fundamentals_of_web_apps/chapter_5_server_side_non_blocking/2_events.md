@@ -3,7 +3,7 @@
 In this section, we will provide an overview of what events are in the context of Laravel and why they are useful. 
 
 
-1. Events provide a simple implementation of the observer design pattern, allowing you to subscribe and listen for various events in your application.
++ Events provide a simple implementation of the observer design pattern, allowing you to subscribe and listen for various events in your application.
 
 The following diagram represents how the Observer Pattern typically works:
 
@@ -33,16 +33,14 @@ sequenceDiagram
     Event->>Listener2: notify()
 ```
 
-2. They serve as a great way to decouple various aspects of your application, as the event object can be used to share data between the event listeners.
-
++ They serve as a great way to decouple various aspects of your application, as the event object can be used to share data between the event listeners.
  
-3. They can be used for tasks like sending notifications, firing off jobs to queues, writing to logs and more.
-
++ They can be used for tasks like sending notifications, firing off jobs to queues, writing to logs and more.
 
 ### Understanding Laravel Events
  
 
-1. Events in Laravel can be classified into two main categories: persistent events and request-specific events.
++ Events in Laravel can be classified into two main categories: persistent events and request-specific events.
 
 ```mermaid
 classDiagram
@@ -115,13 +113,13 @@ sequenceDiagram
 
 Both the Event and the Listener are part of the Laravel Application instance.
  
-2. Event classes are typically stored in the `app/Events` directory.
++ Event classes are typically stored in the `app/Events` directory.
 
  
-3. Events can be broadcast over websockets to provide real-time updates to your application's users.
++ Events can be broadcast over websockets to provide real-time updates to your application's users.
 
  
-4. Laravel's event broadcasting allows you to broadcast your server-side Laravel events to your client-side JavaScript application.
++ Laravel's event broadcasting allows you to broadcast your server-side Laravel events to your client-side JavaScript application.
 
 
 ### Creating Events
@@ -179,7 +177,7 @@ OrderShipped::dispatch($order);
 An Event Listeners listens to a particular event and performs an action when that event is fired.
 
 
-1. To create an Event Listener for an already defined Event we can use the artisan command `php artisan make:listener ListenerName --event=EventName`.
++ To create an Event Listener for an already defined Event we can use the artisan command `php artisan make:listener ListenerName --event=EventName`.
 
 Like the following example:
 
@@ -201,7 +199,7 @@ class SendShipmentNotification
 }
 ```
 
-2. next you need to register the Event Listener. This typically can be achieved using the `$listen` array in the `EventServiceProvider`, like the following:
++ next you need to register the Event Listener. This typically can be achieved using the `$listen` array in the `EventServiceProvider`, like the following:
 
 ```
 use App\Events\OrderShipped;
@@ -270,16 +268,10 @@ In this example, the `UserEventSubscriber` is subscribing to the `Login` and `Lo
 
 
 1. **Organization**: If you have a lot of related events, it can be more organized to group their listeners into a single class, rather than having many different listener classes.
-
-
 2. **Flexibility**: Subscribers can listen for multiple events, whereas a single event listener class listens for a single event. This can reduce the amount of code you need to write if multiple events should trigger similar functionality.
-
-
 3. **Dynamic Listener Registration**: Subscribers can programmatically determine whether to listen to an event or not, or even which method to call, since the subscribing is done in the subscriber's `subscribe` method at runtime. This is not possible with static event listeners, which are registered in the `EventServiceProvider`.
 
-
 Just like an Event Listener you need to register the Event Subscriber in the `EventServiceProvider`:
-
 
 ```php
 protected $subscribe = [
@@ -295,8 +287,6 @@ To broadcast events using Laravel, we need to:
 
 
 1. Firstly to configure Laravel to use a broadcasting service like Pusher or Laravel Websockets in the `.env` file and the `config/broadcasting.php` file.
-
-
 2. Secondly to mark an event as "broadcastable" by implementing the `ShouldBroadcast` or `ShouldBroadcastNow` interfaces. Like the following:
 
 ```
