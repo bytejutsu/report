@@ -111,13 +111,13 @@ In this diagram:
 
 Let's break down the steps that `index.php` performs and see which section of the `index.php` code is responsible for which step:
 
-1. Define LARAVEL_START
+1 Define LARAVEL_START
 
 ```
 define('LARAVEL_START', microtime(true));
 ```
 
-2. Check If The Application Is Under Maintenance
+2 Check If The Application Is Under Maintenance
 
 ```
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
@@ -125,13 +125,13 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 }
 ```
  
-3. Register The Auto Loader
+3 Register The Auto Loader
 
 ```
 require __DIR__.'/../vendor/autoload.php';
 ```
  
-4. Run The Application
+4 Run The Application
 
 ```
 $app = require_once __DIR__.'/../bootstrap/app.php';
@@ -139,7 +139,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 $kernel = $app->make(Kernel::class);
 ```
  
-5. Sends an HTTP response back to the web server
+5 Sends an HTTP response back to the web server
 
 ```
 $response = $kernel->handle(
@@ -147,7 +147,7 @@ $response = $kernel->handle(
 )->send();
 ```
  
-6. Terminate The Application
+6 Terminate The Application
 
 ```
 $kernel->terminate($request, $response);
@@ -156,14 +156,8 @@ $kernel->terminate($request, $response);
 ### Explaining the index.php code sections
 
 1. **Define LARAVEL_START**: This line sets a constant that holds the timestamp of when the script started. This can be used for profiling and debugging.
-
-
 2. **Check If The Application Is Under Maintenance**: Laravel provides a maintenance mode that can be activated with the `php artisan down` command. When in maintenance mode, Laravel will display a custom view to all requests into your application. This can be used when you are updating your server or installing a new feature and you don't want users to see errors or experience downtime.
-
-
 3. **Register The Auto Loader**: This part of the script loads Composer's autoloader. Composer is a tool for dependency management in PHP, and its autoloader automatically loads PHP classes when they're needed, so you don't have to manually include them.
-
-
 4. **Run The Application**: This section does the actual work of handling the incoming HTTP request and sending a response.
 
 
@@ -179,7 +173,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 $kernel = $app->make(Kernel::class);
 ```
 
-5. **Terminate The Application**: After the response has been sent to the client, the script calls the kernel's `terminate` method. This method is used to perform any final tasks after the response has been sent, such as committing database transactions or writing to log files.
+5 **Terminate The Application**: After the response has been sent to the client, the script calls the kernel's `terminate` method. This method is used to perform any final tasks after the response has been sent, such as committing database transactions or writing to log files.
 
 
 ### The HTTP Kernel
@@ -251,13 +245,9 @@ It defines a set of methods that the class must implement. In this case, any cla
 
 Here's what each method is intended to do:
 
-
 1. **`bootstrap()`**: This method is responsible for bootstrapping the application for HTTP requests. It doesn't take any parameters and doesn't return anything (`void`).
-
 2. **`handle($request)`**: This method is responsible for handling an incoming HTTP request. It takes a `Symfony\Component\HttpFoundation\Request` object as a parameter and returns a `Symfony\Component\HttpFoundation\Response` object.
-
 3. **`terminate($request, $response)`**: This method is responsible for performing any final actions for the request lifecycle. It takes a `Symfony\Component\HttpFoundation\Request` object and a `Symfony\Component\HttpFoundation\Response` object as parameters and doesn't return anything (`void`).
-
 4. **`getApplication()`**: This method is responsible for getting the Laravel application instance. It doesn't take any parameters and returns an `Illuminate\Contracts\Foundation\Application` object.
 
 
@@ -308,7 +298,7 @@ This is a fundamental part of Laravel's service container and is key to how Lara
 
 In Laravel, the `$app` variable is not globally accessible in all PHP files by default. However, Laravel provides a variety of ways to access the application instance (and thus the service container) when you need it.
 
-1. **Dependency Injection**: Laravel's service container is primarily intended to be used with dependency injection. This means that instead of trying to access the `$app` variable directly, you type-hint the dependencies your class needs in its constructor, and Laravel will automatically inject them for you. This is the recommended way to access services in Laravel.
+1 **Dependency Injection**: Laravel's service container is primarily intended to be used with dependency injection. This means that instead of trying to access the `$app` variable directly, you type-hint the dependencies your class needs in its constructor, and Laravel will automatically inject them for you. This is the recommended way to access services in Laravel.
 
 {% hint type = "tip" %}
 
@@ -355,11 +345,11 @@ In this example, the `UserController` depends on the `UserService`. By type-hint
 
 ---
 
-2. **Facades**: Laravel's facades provide a "static" interface to classes that are available in the service container. Under the hood, facades use the service container to resolve the underlying class and proxy calls to it. For example, you can use the `App` facade to access the application instance anywhere in your code like this: `App::make('SomeClass')`.
+2 **Facades**: Laravel's facades provide a "static" interface to classes that are available in the service container. Under the hood, facades use the service container to resolve the underlying class and proxy calls to it. For example, you can use the `App` facade to access the application instance anywhere in your code like this: `App::make('SomeClass')`.
 
 ---
 
-3. **Helpers**: Laravel provides a number of global helper functions that can be used to access various services. For example, the `app()` function can be used to access the service container. If you call `app('SomeClass')`, it will resolve 'SomeClass' out of the container.
+3 **Helpers**: Laravel provides a number of global helper functions that can be used to access various services. For example, the `app()` function can be used to access the service container. If you call `app('SomeClass')`, it will resolve 'SomeClass' out of the container.
 
 {% endhint %}
 
@@ -373,18 +363,13 @@ That implies that every feature that the Laravel Service Container provides can 
 However, as a software engineer, to push the Laravel Framework toward its **full potential** you must use its Service Container for the following reasons: 
 
  **1.** The Laravel Service Container is an integral component of the Laravel Framework. From its very start the Laravel Framework uses its Service Container to <span style="color: red; font-weight: bold">bootstrap</span> the entire application.
-
-
  **2.** The Laravel Service Container is an essential part of the Laravel framework, as many features of the Laravel Framework are <span style="color: red; font-weight: bold">built on top</span> of its Service Container.
-
-
  **3.** The Laravel Service Container provides a number of features that make its usage almost <span style="color: red; font-weight: bold;">indispensable</span>. 
-
 
 The following are the most important features that the Laravel Service Container provides. The features are sorted from most important feature to less important feature by the criteria of frequent usage in common software engineering cases:
 
 
-1. **Automatic Dependency Injection**: The service container can automatically resolve dependencies when you type-hint them in a class constructor or method, reducing the need for manual instantiation and making your code cleaner and more maintainable.
+1 **Automatic Dependency Injection**: The service container can automatically resolve dependencies when you type-hint them in a class constructor or method, reducing the need for manual instantiation and making your code cleaner and more maintainable.
 
 Example:
 
@@ -411,7 +396,7 @@ In this example, Laravel's service container will automatically resolve the `Use
 
 ---
 
-2. **Interface to Implementation Mapping**: The service container allows you to bind an interface to a specific implementation. This means you can type-hint an interface in your code, and Laravel will automatically inject the correct implementation.
+2 **Interface to Implementation Mapping**: The service container allows you to bind an interface to a specific implementation. This means you can type-hint an interface in your code, and Laravel will automatically inject the correct implementation.
 
 Example:
 
@@ -435,7 +420,7 @@ public function __construct(protected EventPusher $pusher) {}
 
 ---
 
-3. **Singletons and Instance Binding**: The service container allows you to bind a single instance of a service that will be returned on subsequent requests for that service. This is useful for services that maintain state or are expensive to create.
+3 **Singletons and Instance Binding**: The service container allows you to bind a single instance of a service that will be returned on subsequent requests for that service. This is useful for services that maintain state or are expensive to create.
 
 Example
 
@@ -451,7 +436,7 @@ $this->app->singleton(Transistor::class, function (Application $app) {
 
 ---
 
-4. **Global Availability**: The service container is globally available, which can be useful for accessing services in places where dependency injection isn't possible.
+4 **Global Availability**: The service container is globally available, which can be useful for accessing services in places where dependency injection isn't possible.
 
 Example:
 ```PHP
@@ -470,7 +455,7 @@ The `app()` helper function provides global access to the service container. Thi
 
 ---
 
-5. **Contextual Binding**: The service container allows you to specify different implementations of a service to be injected into different areas of your application.
+5 **Contextual Binding**: The service container allows you to specify different implementations of a service to be injected into different areas of your application.
 
 Example
 
@@ -490,7 +475,7 @@ $this->app->when([VideoController::class, UploadController::class])
 
 ---
 
-6. **Tagging**: The service container allows you to tag related services and then access all the services tagged with a particular tag.
+6 **Tagging**: The service container allows you to tag related services and then access all the services tagged with a particular tag.
 
 Example
 
@@ -516,7 +501,7 @@ $this->app->bind(ReportAnalyzer::class, function (Application $app) {
 
 ---
 
-7. **Extensibility**: The service container allows you to extend services that have been bound to the container, giving you an opportunity to add additional methods or wrap the service in a decorator.
+7 **Extensibility**: The service container allows you to extend services that have been bound to the container, giving you an opportunity to add additional methods or wrap the service in a decorator.
 
 ```PHP
 
@@ -609,8 +594,6 @@ return $app;
 Here's a breakdown of what the `app.php` does:
 
 1. **Create The Application**: The script starts by creating a new instance of `Illuminate\Foundation\Application`. This class is the main Laravel application instance and serves as the "glue" for all the components of Laravel. It's also the IoC container for the system, binding all of the various parts.
-
-
 2. **Bind Important Interfaces**: Next, the script binds some important interfaces into the container. These interfaces are the contracts that define the core services of Laravel. The `singleton` method is used to bind a single instance of the service to the container. This means that the same instance will be returned on subsequent calls into the container. The interfaces and their implementations that are bound here are:
 
    - `Illuminate\Contracts\Http\Kernel` is bound to `App\Http\Kernel`. This is the HTTP kernel that handles incoming web requests.
@@ -618,10 +601,7 @@ Here's a breakdown of what the `app.php` does:
    - `Illuminate\Contracts\Console\Kernel` is bound to `App\Console\Kernel`. This is the console kernel that handles CLI commands.
 
    - `Illuminate\Contracts\Debug\ExceptionHandler` is bound to `App\Exceptions\Handler`. This is the exception handler that handles exceptions thrown by the application.
-
-
 3. **Return The Application**: Finally, the script returns the application instance. This instance is given to the calling script (which is usually `public/index.php`), so it can separate the building of the instances from the actual running of the application and sending responses.
-
 
 The following is a diagram that illustrates how the `app.php` interacts with the different components in the initial bootstrapping of the application.  
 
@@ -670,11 +650,7 @@ The following is a more accurate diagram of what the HTTP Kernel does.
 Ok, now let's take a look of what the `sendRequestThroughRouter()` does:
 
 1. `sendRequestThroughRouter()` calls `bootstrap()`, which processes the <span style="color: red; font-weight: bold">array</span> of`$bootstrappers`.
-
-
 2. `sendRequestThroughRouter()` creates a pipeline and sends the request through the <span style="color: red; font-weight: bold">global</span> `$middleware` **stack**.
-
-
 3. The <span style="color: red; font-weight: bold;">router</span> dispatches the request to a route, which may use middleware from `$middlewareGroups`.
 
 
