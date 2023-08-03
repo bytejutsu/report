@@ -102,24 +102,12 @@ sequenceDiagram
 
 In a typical messaging app scenario the following occurs:
 
-
    1. When a user sends a message, the client makes an HTTP POST request to the web server. The payload of the request contains the message content and any other necessary information.
-
-
    2. The web server routes the request to the Laravel application, which processes the request. This includes storing the message in the database and maybe other business logic.
-
-
    3. After storing the message, the Laravel application dispatches an event to signify that a new message has been created.
-
-
    4. The WebSocket server, which could be Laravel Websockets or Pusher or something similar, is listening for this event. When it hears the event, it broadcasts a message to all connected clients with the details of the new message.
-
-
    5. The clients receive this message over their WebSocket connections. They handle the message by updating the user interface to display the new message.
-
-
    6. The original HTTP request from step 1 is responded to, indicating success or failure to the client that sent the message.
-
 
 ```mermaid
 sequenceDiagram
