@@ -28,6 +28,8 @@ sequenceDiagram
 
 A WebSocket server can either be a standalone process running on the same operating system as the web server (like the Laravel Websockets package) or it could be a separate service running elsewhere (like Pusher). The WebSocket server's role is to manage these long-lived WebSocket connections, handling incoming messages and broadcasting messages to clients.
 
+The following is a diagram of the WebSocket Server running as process in the same OS as the Web Server:
+
 ```mermaid
 graph TB
   subgraph OS1["OS"]
@@ -35,6 +37,8 @@ graph TB
     HS1["HTTP Web Server"]
   end
 ```
+
+The following is a diagram of the WebSocket Server and the Web Server each running on a different OS:
 
 ```mermaid
 graph TB
