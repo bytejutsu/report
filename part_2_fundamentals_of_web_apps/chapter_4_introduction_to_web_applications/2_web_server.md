@@ -531,17 +531,11 @@ graph RL;
 ```
 
 0. When the Apache HTTP Server starts up, it loads all of its configured modules, including `mod_php`. This means that the PHP interpreter becomes part of the Apache server itself.
-
 1. Then, when the Apache master process creates child processes (using the `mpm_prefork` module or any other Multi-Processing Module), each child process inherits all the capabilities of the Apache server, including all its loaded modules. This means that each child process includes an embedded PHP interpreter, because it's part of the Apache server that the child process is a copy of.
-
 2. When the worker process needs to execute a PHP script then:
-
   0. The PHP Interpreter (PI) loads the PHP script into memory
-
   1. The PHP Interpreter (PI) executes the PHP script.
-
   2. The Worker Process retrieves the generated result and serves it back.
-
   3. The PHP Interpreter (PI) cleans the memory that it already allocated for the PHP script.
 
 {% hint style="tip" %}
@@ -674,23 +668,11 @@ graph RL;
 When Apache is configured to use `mod_cgi` and a worker process receives a HTTP request that requires the execution of a PHP script, the worker process will handle the request in the following way:
 
 1. The worker process will start a separate CGI process. This is a completely new process, separate from the worker process.
-
-
 2. The worker process passes the request information to the CGI process. This information includes the request method, the URL, any query string parameters, headers, and the body of the request, if applicable.
-
-
 3. The CGI process will then load the PHP interpreter, which will execute the PHP script. The PHP script has access to the request information via predefined variables.
-
-
 4. The PHP script generates a response, which is sent back to the CGI process. This response typically includes HTTP headers and a body, which is the output of the PHP script.
-
-
 5. The CGI process sends this response back to the worker process.
-
-
 6. The worker process then sends the response back to the client.
-
-
 7. After the response is sent, the CGI process is terminated. This means that for each request that requires the execution of a PHP script, a new CGI process is created and terminated.
 
 ---
@@ -770,20 +752,10 @@ graph RL;
 Steps:
 
 1. The Apache master process starts and initializes the `mpm_worker` or `mpm_event` module.
-
-
 2. The `mpm_worker` or `mpm_event` module creates a fixed number of worker processes. Each of these worker processes can handle many threads, and each thread can handle one connection at a time.
-
-
 3. When a request comes in that requires the execution of a PHP script (like "public/index.php"), one of the worker threads within a worker process is assigned to handle the request.
-
-
 4. This worker thread accesses the "public/index.php" file, reads its content, and if Apache is configured to use `mod_cgi`, it will spawn a separate CGI process to execute the PHP script.
-
-
 5. The CGI process executes the PHP script and generates a response, which is sent back to the worker thread.
-
-
 6. The worker thread then sends the response back to the client.
 
 ---
@@ -908,17 +880,9 @@ graph RL;
 ```
 
 1. The Apache master process spawns worker processes as per the configuration of the `mpm_worker` module.
-
-
 2. Each of these worker processes can spawn multiple threads to handle incoming requests.
-
-
 3. When a worker thread receives a request that involves executing a PHP script, it communicates with the FastCGI Process Manager (FPM) using the FastCGI protocol. This communication is facilitated by the `mod_fastcgi` module.
-
-
 4. The FPM assigns a FastCGI process (which has an embedded PHP interpreter) to handle the request. The PHP script is executed within this FastCGI process, and the result is sent back to the worker thread.
-
-
 5. The worker thread then sends the result back to the client.
 
 
@@ -972,13 +936,9 @@ PHP-FPM, which stands for "PHP FastCGI Process Manager", is an alternative PHP F
 The following are some key points about PHP-FPM:
 
 1. **Process Management**: PHP-FPM maintains a pool of worker processes ready to serve PHP scripts. This pool can be dynamically managed, meaning PHP-FPM can create or kill worker processes based on demand. This is more efficient than creating a new process for each request, as some other models do.
-
 2. **Adaptive Process Spawning**: PHP-FPM can adjust the number of worker processes it spawns based on the load on the server. This helps optimize resource usage.
-
 3. **Performance**: PHP-FPM is designed to be high performance, and it can serve PHP scripts faster than traditional CGI-based methods.
-
 4. **Compatibility**: PHP-FPM works well with popular web servers like Nginx and Apache.
-
 5. **Emergency Restart**: PHP-FPM can automatically restart if it encounters an unrecoverable error, which can help maintain availability.
 
 {% hint style="info" %}
@@ -986,8 +946,6 @@ The following are some key points about PHP-FPM:
 When running multiple PHP applications on a single Apache HTTP Server, you have a couple of options with PHP-FPM:
 
 1. **Single PHP-FPM pool**: You can run all your applications through a single PHP-FPM pool. In this case, PHP-FPM manages all the applications. However, all applications would share the same pool of worker processes. This means they would also share the same user and group, and the same performance settings. This could potentially lead to security and resource allocation issues if one application is busier or requires different settings than the others.
-
-
 2. **Multiple PHP-FPM pools**: You can create a separate PHP-FPM pool for each application. This is the more flexible and secure approach. Each application would have its own pool of worker processes, and you could set different performance settings and run each pool under a different user and group. This isolates the applications from each other, which can be beneficial for security and resource allocation.
 
 {% endhint %}
