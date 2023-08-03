@@ -61,17 +61,9 @@ A basic structure of an HTTP request looks like the following:
 Let's break it down:
 
 1. **Method:** This is the HTTP method, such as GET, POST, PUT, DELETE, etc. The method indicates the desired action to be performed on the resource.
-
-
 2. **URL:** This is the Uniform Resource Locator (URL) which identifies the resource on which to apply the method.
-
-
 3. **Version:** This is the HTTP version (for example, HTTP/1.1 or HTTP/2).
-
-
 4. **Headers:** These are optional and provide additional parameters for the request. They can include fields like Host, User-Agent, Content-Type, etc.
-
-
 5. **Body:** This is also optional and is used with methods like POST or PUT to send data to the server. The body could contain data like form inputs, JSON data, etc.
 
 Here's an example of an HTTP POST request:
@@ -97,22 +89,11 @@ The body of the request contains the actual data being sent to the server.
 There are several ways to send information through an HTTP request:
 
 1. **URL Parameters:** These are included directly in the URL, typically after a "?" and separated by "&". They are often used in GET requests to pass additional data to the server.
-
-
 2. **Path Parameters:** These are included in the path portion of the URL. They are often used to identify a specific resource or a group of resources.
-
-
 3. **HTTP Headers:** Headers can contain additional information about the request or the client making the request. Examples include the "Content-Type" header (which specifies the media type of the resource), the "Authorization" header (which carries authentication credentials), and the "User-Agent" header (which provides information about the client).
-
-
 4. **Request Body:** The body of the request is used to send data to the server. This is typically used with POST, PUT, and PATCH requests. The data can be in various formats, such as form data or JSON.
-
-
 5. **Cookies:** Cookies are used to store user-specific information on the client side, which the server can request to maintain state between different HTTP requests from the same client.
-
-
 6. **HTTP Methods:** The HTTP method itself (GET, POST, PUT, DELETE, etc.) can convey information to the server about what action to perform.
-
 
 Here's an example of a POST request that includes URL parameters, path parameters, headers, a request body, and a cookie:
 
