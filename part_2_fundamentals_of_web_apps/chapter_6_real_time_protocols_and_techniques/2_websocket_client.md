@@ -4,21 +4,11 @@ In a Laravel application providing real-time updates (like live sports scores), 
 
 Here's a general breakdown:
 
-
 1. When the user first visits your website, their browser makes an HTTP request to your Laravel application. The Laravel application processes this request, generates an HTTP response (containing HTML, CSS, JavaScript, etc.), and sends it back to the client. This is the normal request-response cycle of a web application, and once the response is sent, the Laravel application's work for that request is done.
-
-
 2. The HTML and JavaScript sent to the client includes code to establish a WebSocket connection back to your server. This connection is made to the WebSocket server, which could be a separate service like Pusher, or your own WebSocket server provided by the Laravel Websockets package. Once this connection is established, it remains open, allowing for real-time communication between the server and the client.
-
-
 3. When an update happens (like a change in the sports score), the Laravel application broadcasts an event. If you're using the Laravel Websockets package, this might be done via the `broadcast` function in Laravel, which sends the event to the WebSocket server.
-
-
 4. The WebSocket server then pushes this update to all connected clients in real time.
-
-
 5. The JavaScript running in the user's browser receives this update from the WebSocket server, and updates the page accordingly.
-
 
 During this process, the Laravel application does not stay running in between HTTP requests. It simply handles each request (whether that's an initial page load, or a task to update a sports score), sends a response (or broadcasts an event), and then its work for that request is done.
 

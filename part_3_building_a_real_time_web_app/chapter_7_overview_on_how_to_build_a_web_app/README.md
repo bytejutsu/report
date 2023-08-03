@@ -12,11 +12,7 @@ Examples of static files include HTML, CSS, JavaScript, and image files.
 To tell a web server which files it should serve, you need to configure it. The configuration process varies depending on the web server software you're using, but it generally involves the following steps:
 
 1. **Specify the Document Root**: The document root is the directory where the web server looks for files to serve on your website. For example, if you're using Apache, you can set the document root in your `httpd.conf` file with the `DocumentRoot` directive.
-
-
 2. **Public Directory**: The **public** directory in a web project is a convention used in many web development frameworks and platforms. It's the directory that is intended to hold all files that are directly accessible by clients (like web browsers). This includes static files such as HTML, CSS, JavaScript, and images.
-
-
 3. **Set Directory Index**: The directory index is a file that the web server will serve if a client requests a directory. By default, this is usually a file like `index.html` or `index.php`. You can set the directory index in your web server's configuration file.
 
 {% endhint %}
@@ -198,26 +194,17 @@ So, now your project structure looks more like this.
 When a user requests an HTML page that references external files using the **link** or **script** tag:
 
 1. **The browser parses the HTML**: When a user requests an HTML page, the browser begins by parsing the HTML. As it encounters **link** or **script** tags that reference external files, it prepares to fetch these resources.
-
-
 2. **The browser checks its cache**: For each referenced file, the browser checks its cache to see if the file is already stored. If it is, and the cache is not expired, the browser uses the cached version. This saves the time and bandwidth that would be used in fetching the file from the server.
-
-
 3. **The browser fetches the file**: If the file is not in the cache, or if the cached version is expired, the browser sends a request to fetch the file. This could be from the same server (for local resources) or a different server (for remote resources).
-
-
 4. **The browser handles different types of files differently**:
     - For CSS files: The browser will block rendering until the CSS file is fetched and parsed. This is because CSS can affect the layout and appearance of the page, and the browser wants to avoid "flash of unstyled content".
     - For JavaScript files: The behavior depends on where the script is placed and whether the `async` or `defer` attributes are used. By default (if the script tag is in the head), the browser will block HTML parsing until the script is fetched and executed. If the `async` attribute is used, the script will be fetched in parallel to the HTML parsing and executed as soon as it's available. If the `defer` attribute is used, the script will be fetched in parallel and executed after the HTML is fully parsed.
-
 5. **The browser caches the file**: After fetching the file, the browser stores it in its cache for future use. This makes subsequent requests for the same file faster.
-
 {% hint style = "tip" %}
 
 The caching behavior can be controlled by various HTTP headers, such as `Cache-Control`, `ETag`, and `Last-Modified`.
 
 {% endhint%}
-
 6. **The browser continues parsing the HTML**: After the external file is handled, the browser continues parsing the rest of the HTML. If it encounters additional external files, it repeats the process for each one.
 
 The following diagram shows the communication between the client and the server.
@@ -271,7 +258,7 @@ flowchart TB
 
 {% hint type = "tip" %}
 
-1. **no attribute**: block parsing and download js script. When finished downloading, execute the js script and resume parsing.
++ **no attribute**: block parsing and download js script. When finished downloading, execute the js script and resume parsing.
 
 Example **jQuery**:
 
@@ -279,7 +266,7 @@ Example **jQuery**:
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 ```
 
-2. **async**: download js script asynchronously while parsing. When finished execute the js script and resume parsing.
++ **async**: download js script asynchronously while parsing. When finished execute the js script and resume parsing.
 
 Example **D3.js**:
 
@@ -287,7 +274,7 @@ Example **D3.js**:
 <script async src="https://d3js.org/d3.v6.min.js"></script>
 ```
 
-3. **defer**: download js script asynchronously while parsing. But, don't execute js script until parsing is finished.
++ **defer**: download js script asynchronously while parsing. But, don't execute js script until parsing is finished.
 
 Example **Vue.js**:
 
@@ -303,8 +290,6 @@ Technically each HTML page can use its specific resources css and js resources. 
 
 However, because web apps are mostly structured in a way that takes advantage of reusing HTML components like the **navigation section** and the **footer**. Most web apps use a **main layout** HTML page from which the rest of HTML pages inherit the parent's layout (including the **header tags**).
 
-//todo: show diagram of how a html web app is structured using layouts and anchor links
-
 {% hint style="danger" %}
 
 HTML doesn't support including external HTML files. For that you need to use javascript or PHP to be able to include the HTML programmatically.
@@ -314,8 +299,6 @@ Many modern front-end js frameworks and libraries (like React, Angular, Vue.js) 
 1. using **Javascript**: we can use the DOM/CSSOM API to inject HTML/CSS programmatically into the document on the client-side
 
 2. using **PHP**: we can craft the HTML that we want to send to the client programmatically.
-
-//todo: talk about the equivalent in php such as blade
 
 {% endhint %}
 
@@ -767,8 +750,6 @@ So, now your project structure would look similar to the following:
     config.txt
 ```
 
-//todo: talk about how the same is done using blade php
-
 ### index.php as an entry point to the web app
 
 The role of a web app is not just to always return a <ins>static</ins> HTML **view**, instead it may return other kind of data formats like **json** and for that it may need to connect with the **database**, or it may need to forward the **HTTP Request** elsewhere and so on ...
@@ -777,18 +758,10 @@ Because the **index.php** is by default the first file that gets executed when a
 
 Some common things that the **index.php** file does are the following:
 
-
 1. **Configuration and Initialization**: The `index.php` file is often responsible for setting up any necessary configuration and initialization for your application. This might include things like setting up error reporting, configuring session handling, loading configuration files, and initializing database connections.
-
-
 2. **Autoloading**: If your application uses classes, the `index.php` file might set up autoloading. Autoloading is a feature in PHP that allows you to automatically load classes as they are needed, rather than having to manually include them with `include` or `require`.
-
-
 3. **Routing**: In many modern PHP applications, the `index.php` file is responsible for handling routing. This means it determines what code to run based on the URL of the request. This is often done with the help of a routing library or a full-featured framework like Laravel or Symfony.
-
-
 4. **Output**: Finally, the `index.php` file is often responsible for sending the final output to the client. This might be a rendered HTML page, a JSON response, or some other type of content.
-
 
 Here's a very basic example of what an `index.php` file might look like:
 
@@ -854,8 +827,6 @@ It will output:
 Key **differences** between **web server routing** and **application-level routing**:
 
 1. **Web Server Routing**: Web server routing is primarily **file-based**. When a request comes in, the web server looks at the URL and tries to find a file that matches that path in the file system. If it finds a match, it sends that file back as the response. This works well for static websites, where each URL corresponds to a specific HTML file.
-
-
 2. **PHP Web App Routing**: When a PHP application is involved, the routing process can become much more dynamic. Instead of mapping URLs directly to files, the application can interpret the URL and decide what action to take. This could involve loading different PHP scripts, calling different functions, or even generating completely new HTML content on the fly. This is often referred to as **"virtual"** routing, because the URLs don't necessarily correspond to actual files in the file system.
 
 Note that even when using a PHP application, the **initial routing** is still handled by the **web server**. The web server receives the HTTP request and then passes it to the appropriate PHP script (often `index.php`). From there, the PHP application takes over and performs its own routing based on the URL.
