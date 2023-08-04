@@ -362,9 +362,11 @@ That implies that every feature that the Laravel Service Container provides can 
 
 However, as a software engineer, to push the Laravel Framework toward its **full potential** you must use its Service Container for the following reasons: 
 
- **1.** The Laravel Service Container is an integral component of the Laravel Framework. From its very start the Laravel Framework uses its Service Container to <span style="color: red; font-weight: bold">bootstrap</span> the entire application.
- **2.** The Laravel Service Container is an essential part of the Laravel framework, as many features of the Laravel Framework are <span style="color: red; font-weight: bold">built on top</span> of its Service Container.
- **3.** The Laravel Service Container provides a number of features that make its usage almost <span style="color: red; font-weight: bold;">indispensable</span>. 
+**1.** The Laravel Service Container is an integral component of the Laravel Framework. From its very start the Laravel Framework uses its Service Container to <span style="color: red; font-weight: bold">bootstrap</span> the entire application.
+
+**2.** The Laravel Service Container is an essential part of the Laravel framework, as many features of the Laravel Framework are <span style="color: red; font-weight: bold">built on top</span> of its Service Container.
+
+**3.** The Laravel Service Container provides a number of features that make its usage almost <span style="color: red; font-weight: bold;">indispensable</span>. 
 
 The following are the most important features that the Laravel Service Container provides. The features are sorted from most important feature to less important feature by the criteria of frequent usage in common software engineering cases:
 
