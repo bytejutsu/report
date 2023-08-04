@@ -103,9 +103,6 @@ You can clearly see the similarities between the following models:
 ### Keep An Eye On
 
 1. **AdonisJS**:
-
-AdonisJS is a Node.js framework that is heavily inspired by Laravel. In my opinion Node.js and its ecosystem are still not ready for production level applications on the server-side as of 2023. However, Node.js on the server side is gaining large adoption and faster growth that lead to the emergence of production level frameworks like AdonisJS that may make the JS fullstack in a production level a reality. So it is worth checking up on that.   
-
+AdonisJS is a Node.js framework that is heavily inspired by Laravel. In my opinion Node.js and its ecosystem are still not ready for production level applications on the server-side as of 2023. However, Node.js on the server side is gaining large adoption and faster growth that lead to the emergence of production level frameworks like AdonisJS that may make the JS fullstack in a production level a reality. So it is worth checking up on that.
 2. **WebAssembly**:
-
 Considering its **Performance** and **Portability** WebAssembly has the potential to significantly impact the future of web development and beyond. Therefore, it's important for developers to keep an eye on this technology.
