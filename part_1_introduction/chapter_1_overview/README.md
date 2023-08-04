@@ -4,7 +4,7 @@
 
 In the digital age, the demand for real-time web applications has surged, driven by the need for instant communication and constant feedback. This shift is transforming the landscape of web applications, making real-time features such as real-time updates, push notifications, instant messaging, and live chat essential components of modern web applications.
 
-The advent of high-speed network technology has made cyberspace a hub for communication, information sharing, education, business transactions, and social relationships. A [survey](http://iisit.org/Vol6/IISITv6p113-126Chou651.pdf) in Taiwan revealed that the use of instant messaging (IM) has become the third most frequently accessed online activity, with 66% of online users using at least one type of IM program for communication.
+The advent of high-speed network technology has made cyberspace a hub for communication, information sharing, education, business transactions, and social relationships. A [survey](http://iisit.org/Vol6/IISITv6p113-126Chou651.pdf) [^1] in Taiwan revealed that the use of instant messaging (IM) has become the third most frequently accessed online activity, with 66% of online users using at least one type of IM program for communication.
 
 Real-time web applications have found their place in various industries and use cases. For instance, real-time communication has become a staple in many applications, providing users with instant feedback and enhancing their overall experience. In the field of robotics, real-time feedback from explorer robots has proven invaluable, allowing for immediate adjustments and improvements.
 
@@ -47,5 +47,7 @@ pie title Top visited 20 Websites in 2023
 
 In the following chapters, we will delve deeper into the specifics of real-time web applications, exploring their features, benefits, challenges, and the technologies that make them possible.
 
+---
 
+[^1]: survey resource: http://iisit.org/Vol6/IISITv6p113-126Chou651.pdf
 

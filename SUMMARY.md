@@ -49,6 +49,3 @@
 
 ### Part 4: Conclusion 
 * [Chapter 11: Takeaways](part_4_conclusion/chapter_11_takeaways/README.md)
-
-### Part 5: References
-* [Chapter x: Resources](part_5_references/chapter_x_resources/README.md)
