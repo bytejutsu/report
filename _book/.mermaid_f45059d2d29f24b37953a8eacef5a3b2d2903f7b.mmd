@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant Client as Client
+    participant Server as Server
+    loop Polling
+        Client->>Server: AJAX request
+        Server-->>Client: Response
+        Note over Client: Wait for interval
+    end

@@ -1,0 +1,9 @@
+sequenceDiagram
+  participant C as Client
+  participant WS as WebSocket Server
+  participant L as Laravel Application
+  participant E as Event
+  L->>E: Dispatch event
+  Note over L: Laravel application instance terminates
+  E-->>WS: Event heard by WebSocket Server
+  WS-->>C: Broadcast relevant data to clients

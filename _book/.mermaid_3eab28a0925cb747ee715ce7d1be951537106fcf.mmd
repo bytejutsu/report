@@ -1,0 +1,5 @@
+graph TB
+  app_php["app"] -- "References" --> app["Application Instance"]
+  app -- "Binds as Singleton" --> http_kernel["HTTP Kernel Service"]
+  app -- "Binds as Singleton" --> console_kernel["Console Kernel Service"]
+  app -- "Binds as Singleton" --> exception_handler["Exception Handler Service"]

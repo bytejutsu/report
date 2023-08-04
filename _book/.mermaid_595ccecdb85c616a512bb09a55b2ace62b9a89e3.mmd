@@ -1,0 +1,9 @@
+
+sequenceDiagram
+    participant Browser as Browser (Client)
+    participant WebApp as WebApp (Server/Client)
+    participant Database as Database (Server)
+    Browser->>WebApp: HTTP Request
+    WebApp->>Database: Query Request
+    Database-->>WebApp: Query Response
+    WebApp-->>Browser: HTTP Response

@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant Browser
+    participant Server
+
+    Browser->>Server: HTTP Request for welcome.html
+    Server->>Browser: HTTP Response (welcome.html)
+    Browser->>Server: HTTP Request for app.css
+    Server->>Browser: HTTP Response (app.css)
+    Browser->>Server: HTTP Request for app.js
+    Server->>Browser: HTTP Response (app.js)

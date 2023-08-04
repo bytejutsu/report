@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant AppFile as app.php
+    participant Application as Application
+    participant HttpKernel as Http Kernel
+    participant ConsoleKernel as Console Kernel
+    participant ExceptionHandler as Exception Handler
+    AppFile->>Application: Creates new Application instance
+    Application-->>AppFile: Returns reference to Application instance
+    AppFile->>HttpKernel: use the app reference to Bind HTTP Kernel interface to Http Kernel implementation
+    AppFile->>ConsoleKernel: use the app reference to Bind Console Kernel interface to Console Kernel implementation
+    AppFile->>ExceptionHandler: use the app reference to Bind Exception Handler interface to Handler implementation

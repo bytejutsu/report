@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> New
+    New --> Runnable : Start
+    Runnable --> Running : Scheduler Dispatch
+    Running --> Runnable : Scheduler Switch
+    Running --> Terminated : Exit
+    Running --> Blocked : Wait for resource
+    Blocked --> Runnable : Resource available
+    Terminated --> [*]

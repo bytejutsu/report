@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant C as Client
+  participant WS as WebSocket Server
+  participant HS as HTTP Web Server
+  C->>HS: Send HTTP request
+  HS-->>C: Send HTTP response
+  HS->>WS: Broadcast message to clients
+  WS-->>C: Receive WebSocket message

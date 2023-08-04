@@ -1,0 +1,15 @@
+sequenceDiagram
+  participant User1 as Caller
+  participant User2 as Callee
+  User1->>User1: getUserMedia()
+  User1->>User1: new RTCPeerConnection()
+  User1->>User1: createOffer()
+  User1->>User2: Send offer via signaling
+  User2->>User2: new RTCPeerConnection()
+  User2->>User2: createAnswer()
+  User2->>User1: Send answer via signaling
+  User1->>User1: ICE Candidate Exchange
+  User2->>User2: ICE Candidate Exchange
+  User1->>User2: Establish P2P connection
+  User1->>User2: Data Transfer
+  User1->>User2: Close Connection

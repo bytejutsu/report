@@ -1,0 +1,19 @@
+classDiagram
+  class PiniaStore {
+    -state: shared
+  }
+  class ComponentA {
+    -state: PiniaStore.state
+  }
+  class ComponentB {
+    -state: PiniaStore.state
+  }
+  class ComponentC {
+    -state: PiniaStore.state
+  }
+  class ComponentD {
+    -state: PiniaStore.state
+  }
+  ComponentA --|> ComponentB
+  ComponentA --|> ComponentC
+  ComponentC --|> ComponentD

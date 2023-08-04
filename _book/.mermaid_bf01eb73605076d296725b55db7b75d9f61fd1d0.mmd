@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant User as User
+    participant UI as UI
+    participant APIBackend as API (Monolith)
+    User ->> UI: Interacts
+    UI->>APIBackend: AJAX Request
+    APIBackend-->>UI: Response
+    UI ->> UI: Updates UI

@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant U as User
+  participant DJ as Job Dispatcher
+  participant Q as Queue
+  participant JE as Job Events
+  participant WT as Worker Thread
+  U->>DJ: Dispatches Job
+  DJ->>Q: Adds Job to Queue
+  Q->>JE: Triggers Queue::before Event
+  WT->>Q: Picks up Job from Queue
+  WT->>WT: Executes Job
+  Q->>JE: Triggers Queue::after Event
+  Note over WT,JE: If Job Fails
+  Q->>JE: Triggers Queue::failing Event

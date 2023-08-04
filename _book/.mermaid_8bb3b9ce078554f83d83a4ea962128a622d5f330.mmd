@@ -1,0 +1,26 @@
+flowchart TB
+    start[start] --> parse[parse HTML]
+    parse --> execfinishedasync[execute async js scripts that finished downloading]
+    execfinishedasync --> reference
+    reference{Browser encounters file reference?}
+    reference -- No --> eof{is EOF?} 
+    eof -- Yes --> exdefscr[execute defered js scripts]
+    exdefscr --> End[End]
+    eof -- No -->render[render HTML]
+    render --> parse
+    reference -- Yes --> decision1{Is file CSS?}
+    decision1 -- Yes --> action1[Browser fetches CSS file]
+    action1 -- Browser blocks rendering until CSS is applied --> parse
+    decision1 -- No --> decision2{Is file JS?}
+    decision2 -- Yes --> async{async?}
+    async -- Yes --> dnldwhlpars[download js while parsing]
+    async -- No --> defer{defer?}
+    defer -- Yes --> dnldwhlpars
+    dnldwhlpars --> parse
+    defer -- No --> stpprsdnld[stop parsing and download js]
+    stpprsdnld --> dnldcomplt{download complete?}
+    dnldcomplt -- No --> wait[wait]
+    wait --> dnldcomplt
+    dnldcomplt -- Yes --> execjs[execute js script]
+    execjs --> parse
+    decision2 -- No --> parse

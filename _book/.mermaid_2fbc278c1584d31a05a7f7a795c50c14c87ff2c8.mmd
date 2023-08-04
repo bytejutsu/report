@@ -1,0 +1,26 @@
+
+sequenceDiagram
+  participant Browser as Browser Client
+  box grey Apache HTTP Server (Master Process)
+    participant ApacheMaster as Apache HTTP Server (Master Process)
+    participant ApacheWorkerProcess as Worker Process
+    participant ApacheWorkerThread as Worker Thread
+  end
+  box lightyellow FastCGI Process Manager (Master Process)
+    participant FastCGIProcess as FastCGI Process
+    participant FastCGIWorker as FastCGI Worker Process
+  end
+  participant FileSystem as File System  
+
+  Browser->>ApacheMaster: Sends HTTP request
+  ApacheMaster->>ApacheWorkerProcess: Receives HTTP request
+  ApacheWorkerProcess->>ApacheWorkerThread: Hands off request
+  ApacheWorkerThread->>FastCGIProcess: Sends request via socket
+  FastCGIProcess->>FastCGIWorker: Hands off request
+  FastCGIWorker->>FileSystem: Reads file 'public/index.html'
+  FileSystem-->>FastCGIWorker: Returns file content
+  FastCGIWorker-->>FastCGIProcess: Sends executed result
+  FastCGIProcess-->>ApacheWorkerThread: Sends result via socket
+  ApacheWorkerThread-->>ApacheWorkerProcess: Sends result
+  ApacheWorkerProcess-->>ApacheMaster: Sends HTTP response
+  ApacheMaster-->>Browser: Returns HTTP response

@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant C as Client
+  participant WS as Web Server
+  participant L as Laravel Application
+  participant DB as Database
+  participant E as Event
+  participant WSS as WebSocket Server
+  C->>WS: HTTP POST request
+  WS->>L: Route request
+  L->>DB: Store message
+  L->>E: Dispatch event
+  E->>WSS: Event heard by WebSocket server
+  WSS-->>C: Broadcast message to clients
+  WS-->>C: Respond to HTTP request

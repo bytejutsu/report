@@ -1,0 +1,10 @@
+sequenceDiagram
+  participant C as Client
+  participant WS as WebSocket Server
+  participant L as Laravel Application
+  C->>WS: Establish WebSocket connection
+  C->>L: Send HTTP request
+  L->>L: Process request
+  L-->>C: Send HTTP response
+  L->>WS: Dispatch event
+  WS-->>C: Broadcast message
