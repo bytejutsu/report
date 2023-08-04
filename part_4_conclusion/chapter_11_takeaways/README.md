@@ -72,21 +72,21 @@ The following are some use-case examples that implement the Asynchronous Runtime
 
 You can clearly see the similarities between the following models:
 
-| Processor Model                           | 
-|-------------------------------------------| 
-| ![processor_model](./processor_model.svg) |
+| Processor Model                                                              | 
+|------------------------------------------------------------------------------| 
+| <img src="./processor_model.svg" alt="processor_model" width=400 height=400> |
 
-| Nginx Web Server Model            | 
-|-----------------------------------| 
-| ![nginx_model](./nginx_model.png) |
+| Nginx Web Server Model                                               | 
+|----------------------------------------------------------------------| 
+| <img src="./nginx_model.png" alt="nginx_model" width=400 height=400> |
 
-| JS Runtime Model                               | 
-|------------------------------------------------| 
-| ![javasript_runtime](./javascript_runtime.png) |
+| JS Runtime Model                                                                 | 
+|----------------------------------------------------------------------------------| 
+| <img src="./javascript_runtime.png" alt="js_runtime_model" width=400 height=400> |
 
-| Scrum Model                               | 
-|-------------------------------------------| 
-| ![scurm_process](./scrum_process.svg.png) |
+| Scrum Model                                                                        | 
+|------------------------------------------------------------------------------------| 
+| <img src="./scrum_process.svg.png" alt="scrum_process_model" width=400 height=400> |
 
 
 ### Personal Thoughts 
