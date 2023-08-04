@@ -74,7 +74,7 @@ You can clearly see the similarities between the following models:
 
 | Processor Model                           | 
 |-------------------------------------------| 
-| ![processor_model](./processor_model.svg) |
+| ![processor_model](./processor_model.png) |
 
 | Nginx Web Server Model            | 
 |-----------------------------------| 
