@@ -4,8 +4,8 @@
 
 ### Part 1: Introduction
 
-* [Abstract](part_1_introduction/abstract/README.md)
-* [General Introduction](part_1_introduction/chapter_1_general_context/README.md)
+* [Abstract](part_1_introduction/0_abstract/README.md)
+* [General Introduction](part_1_introduction/1_general_introduction/README.md)
 * [Chapter 1: General Context](part_1_introduction/chapter_1_general_context/README.md)
 
 ### Part 2: Analysis And Conception 
