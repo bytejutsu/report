@@ -1,1 +1,0 @@
-# Chapter 8: Laravel as a Backend Framework
