@@ -1,3 +1,3 @@
-# Abstract
+<div style="text-align: center; font-size: 18px; font-weight: bold; margin-top: 16px">Abstract</div>
 
 This project delves into the development of two distinct web applications: an invoicing tool tailored for small businesses and individuals, and a real-time messaging platform. Both applications were designed with a focus on enhancing user experience, emphasizing real-time functionalities and efficient business processes. The invoicing application streamlines invoice generation with features like automatic VAT calculation and background processing, while the messaging app facilitates instant communication between users. Developed using the Agile methodology, specifically Scrum, the project employed a range of tools including Git, Laravel, Node.js, and WebSockets. The culmination of this work not only resulted in two functional web applications but also provided insights into the challenges and intricacies of real-time web application development.
