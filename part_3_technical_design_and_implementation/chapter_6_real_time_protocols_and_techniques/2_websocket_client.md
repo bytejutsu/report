@@ -14,20 +14,7 @@ During this process, the Laravel application does not stay running in between HT
 
 The WebSocket server is responsible for maintaining the long-lived connections with each client, and for pushing updates to those clients as they happen. But the Laravel application itself still works on a per-request basis, processing each request and then terminating. It doesn't stay running in between requests, even though the client maintains a long-lived connection to the WebSocket server.
 
-```mermaid
-sequenceDiagram
-  participant C as Client
-  participant WS as WebSocket Server
-  participant L as Laravel Application
-  C->>L: HTTP request
-  L-->>C: HTTP response (HTML, CSS, JS)
-  Note over C: JS received knows how to reach the Websocket Server
-  C->>WS: Establish WebSocket connection
-  L->>WS: Broadcast event on update
-  WS-->>C: Push update to client
-  Note over C: JS received knows how to listen to the Websocket Server
-  C->>C: Update page
-```
+![img_10.png](img_10.png)
 
 ### Client and Websocket Server
 
@@ -39,7 +26,7 @@ Pusher.js is a JavaScript library provided by Pusher to facilitate communication
 
 Example of initializing **Echo.js** using **Pusher.js**
 
-```
+```javascript
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
  
@@ -63,7 +50,7 @@ When used with the Pusher driver, Laravel Echo uses the Pusher.js library under 
 
 Example of using **Echo.js**
 
-```
+```javascript
 Echo.private(`chat.${roomId}`)
     .whisper('typing', {
         name: this.user.name

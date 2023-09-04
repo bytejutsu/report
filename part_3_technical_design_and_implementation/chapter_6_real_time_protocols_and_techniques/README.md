@@ -2,15 +2,7 @@
 
 The following is an overview of the WebSocket and WebRTC protocols in the "protocols tree": 
 
-```mermaid
-graph TB
-  IP["IP Protocol (Network Layer)"]
-  IP --> TCP["TCP Protocol (Transport Layer)"]
-  TCP --> HTTP["HTTP Protocol (Application Layer)"]
-  TCP --> WS["WebSocket Protocol (Application Layer)"]
-  IP --> UDP["UDP Protocol (Transport Layer)"]
-  UDP --> WRTC["WebRTC Protocol (Application Layer)"]
-```
+![img_3.png](img_3.png)
 
 ## 1. Websockets
 
@@ -32,19 +24,7 @@ WebSockets is a protocol **separate** from HTTP, but it's designed to work over 
 
 {% endhint %}
 
-```mermaid
-sequenceDiagram
-  participant Client
-  participant Server
-  Client->>Server: HTTP Request (Upgrade: websocket)
-  Server-->>Client: HTTP Response (101 Switching Protocols)
-  Note over Client,Server: Handshake Complete
-  Client->>Server: WebSocket Message
-  Server-->>Client: WebSocket Message
-  Note over Client,Server: Data Transfer
-  Client->>Server: Close Connection
-  Server-->>Client: Acknowledge Close
-```
+![img_2.png](img_2.png)
 
 ## 2. WebRTC
 
@@ -69,23 +49,7 @@ Here's a simplified explanation of how it works:
 8. **Closing the Connection**: Either peer can choose to close the connection at any time.
 
 
-```mermaid
-sequenceDiagram
-  participant User1 as Caller
-  participant User2 as Callee
-  User1->>User1: getUserMedia()
-  User1->>User1: new RTCPeerConnection()
-  User1->>User1: createOffer()
-  User1->>User2: Send offer via signaling
-  User2->>User2: new RTCPeerConnection()
-  User2->>User2: createAnswer()
-  User2->>User1: Send answer via signaling
-  User1->>User1: ICE Candidate Exchange
-  User2->>User2: ICE Candidate Exchange
-  User1->>User2: Establish P2P connection
-  User1->>User2: Data Transfer
-  User1->>User2: Close Connection
-```
+![img_1.png](img_1.png)
 
 {% hint style="info" %}
 
@@ -97,25 +61,4 @@ For this reason, in real-world applications, there is typically a signaling serv
 
 The following diagram illustrates a more practical use-case where a signaling server is involved to help exchange information between the caller and callee.
 
-```mermaid
-sequenceDiagram
-  participant Caller as Caller
-  participant SignalingServer as Signaling Server
-  participant Callee as Callee
-  Caller->>Caller: getUserMedia()
-  Caller->>Caller: new RTCPeerConnection()
-  Caller->>Caller: createOffer()
-  Caller->>SignalingServer: Send offer via signaling
-  SignalingServer->>Callee: Forward offer
-  Callee->>Callee: new RTCPeerConnection()
-  Callee->>Callee: createAnswer()
-  Callee->>SignalingServer: Send answer via signaling
-  SignalingServer->>Caller: Forward answer
-  Caller->>SignalingServer: ICE Candidate Exchange
-  SignalingServer->>Callee: Forward ICE Candidates
-  Callee->>SignalingServer: ICE Candidate Exchange
-  SignalingServer->>Caller: Forward ICE Candidates
-  Caller->>Callee: Establish P2P connection
-  Caller->>Callee: Data Transfer
-  Caller->>Callee: Close Connection
-```
+![img.png](img.png)

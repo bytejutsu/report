@@ -7,76 +7,27 @@ In this section, we will provide an overview of what events are in the context o
 
 The following diagram represents how the Observer Pattern typically works:
 
-```mermaid
-sequenceDiagram
-    participant Subject as Subject
-    participant Observer1 as Observer1
-    participant Observer2 as Observer2
-    Observer1->>Subject: subscribe()
-    Observer2->>Subject: subscribe()
-    Note over Subject,Observer2: Event occurs
-    Subject->>Observer1: notify()
-    Subject->>Observer2: notify()
-```
+![img_4.png](img_4.png)
 
 The following diagram shows how the Observer Pattern is implemented in the context of Laravel terminology:
 
-```mermaid
-sequenceDiagram
-    participant Event as Event
-    participant Listener1 as Listener1
-    participant Listener2 as Listener2
-    Listener1->>Event: subscribe()
-    Listener2->>Event: subscribe()
-    Note over Event,Listener2: Event occurs
-    Event->>Listener1: notify()
-    Event->>Listener2: notify()
-```
+![img_3.png](img_3.png)
 
 + They serve as a great way to decouple various aspects of your application, as the event object can be used to share data between the event listeners.
  
 + They can be used for tasks like sending notifications, firing off jobs to queues, writing to logs and more.
 
 ### Understanding Laravel Events
- 
 
 + Events in Laravel can be classified into two main categories: persistent events and request-specific events.
-
-```mermaid
-classDiagram
-    class Event {
-    }
-    Event <|-- PersistentEvent
-    Event <|-- RequestSpecificEvent
-```    
+ 
+![img_2.png](img_2.png)
 
 - Persistent events are those that persist between subsequent HTTP requests. A good example of these are job events, which may be processed in the background and not within the lifecycle of a single HTTP request.
 
 The following diagram illustrates how Job Event use the Database shared resource to persist between subsequent HTTP Requests:
 
-```mermaid
-sequenceDiagram
-  participant Client
-  participant Server as New Laravel Application Instance
-  participant Database
-  participant Queue as Message Queue
-  participant Job
-  Client->>Server: HTTP request (start job)
-  activate Server
-  Server->>Database: Create Job record (status: processing)
-  Server->>Queue: Add job to the queue
-  Server-->>Client: Return Job id
-  deactivate Server
-  Note over Client: Client stores the Job id temporarily
-  Queue->>Job: Dispatch job
-  Job->>Database: Update Job status (started, error, completed)
-  Note over Client: Client periodically polls for job status
-  Client->>Server: HTTP request (get job status)
-  activate Server
-  Server->>Database: Listens to Database Job status
-  Server-->>Client: Return Job status
-  deactivate Server
-```
+![img_1.png](img_1.png)
 
 in the sequence diagram:
 
@@ -96,20 +47,7 @@ in the sequence diagram:
 
 The following is a sequence diagram for request-specific events that get listened to synchronously and do not persist between subsequent HTTP requests:
 
-```mermaid
-sequenceDiagram
-  participant Client
-  participant Server as New Laravel Application Instance
-  participant Event
-  participant Listener
-  Client->>Server: HTTP request
-  activate Server
-  Server->>Event: Dispatch event
-  Event->>Listener: Event is listened to synchronously
-  Listener-->>Server: Listener handles event
-  Server-->>Client: Return response
-  deactivate Server
-```
+![img.png](img.png)
 
 Both the Event and the Listener are part of the Laravel Application instance.
  
@@ -134,7 +72,7 @@ php artisan make:event OrderShipped
  
 This would generate an `OrderShipped` Event where we can define data inside it and use it like the following:
 
-```mermaid
+```PHP
 namespace App\Events;
 
 use App\Models\Order;
@@ -162,13 +100,13 @@ class OrderShipped
 
 To dispatch the created event we can use the `event` helper function like the following:
 
-```
+```PHP
 event(new OrderShipped($order));
 ```
 
 or the `dispatch` method on the Event itself like the following:
 
-```
+```PHP
 OrderShipped::dispatch($order);
 ```
 
@@ -189,7 +127,7 @@ This will create a `SendShipmentNotification` class with a `handle` method where
 
 Like the following:
 
-```
+```PHP
 class SendShipmentNotification 
 {
     public function handle(OrderShipped $event)
@@ -201,7 +139,7 @@ class SendShipmentNotification
 
 + next you need to register the Event Listener. This typically can be achieved using the `$listen` array in the `EventServiceProvider`, like the following:
 
-```
+```PHP
 use App\Events\OrderShipped;
 use App\Listeners\SendShipmentNotification;
  
@@ -225,7 +163,7 @@ An event subscriber is a class that may subscribe to multiple events from within
 The following is a basic example of an event subscriber:
 
 
-```php
+```PHP
 namespace App\Listeners;
 
 class UserEventSubscriber
@@ -289,7 +227,7 @@ To broadcast events using Laravel, we need to:
 1. Firstly to configure Laravel to use a broadcasting service like Pusher or Laravel Websockets in the `.env` file and the `config/broadcasting.php` file.
 2. Secondly to mark an event as "broadcastable" by implementing the `ShouldBroadcast` or `ShouldBroadcastNow` interfaces. Like the following:
 
-```
+```PHP
 class OrderShipmentStatusUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;

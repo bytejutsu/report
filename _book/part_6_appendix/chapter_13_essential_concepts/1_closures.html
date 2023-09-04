@@ -1,0 +1,891 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>Section 13.1: Closures · Small-Scale Real-Time Modern Web Applications</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 4.0.8">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2_coroutines.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Cover
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 1: Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../part_1_introduction/0_abstract/">
+            
+                <a href="../../part_1_introduction/0_abstract/">
+            
+                    
+                    Abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../part_1_introduction/1_general_introduction/">
+            
+                <a href="../../part_1_introduction/1_general_introduction/">
+            
+                    
+                    General Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../part_1_introduction/chapter_1_general_context/">
+            
+                <a href="../../part_1_introduction/chapter_1_general_context/">
+            
+                    
+                    Chapter 1: General Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 2: Analysis And Conception</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                    
+                    Chapter 2: Project Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                    
+                    Chapter 3: Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 3: Technical Design And Implementation</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../part_3_technical_design_and_implementation/chapter_4_client_server_architecture/">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_4_client_server_architecture/">
+            
+                    
+                    Chapter 4: Client Server Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../part_3_technical_design_and_implementation/chapter_4_client_server_architecture/1_request_response_cycle.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_4_client_server_architecture/1_request_response_cycle.html">
+            
+                    
+                    Section 4.1: Request Response Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../part_3_technical_design_and_implementation/chapter_4_client_server_architecture/2_web_server.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_4_client_server_architecture/2_web_server.html">
+            
+                    
+                    Section 4.2: Web Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../part_3_technical_design_and_implementation/chapter_4_client_server_architecture/3_application_server.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_4_client_server_architecture/3_application_server.html">
+            
+                    
+                    Section 4.3: Application Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/">
+            
+                    
+                    Chapter 5: Server Side Non-Blocking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/1_background_jobs.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/1_background_jobs.html">
+            
+                    
+                    Section 5.1: Background Jobs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/2_events.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/2_events.html">
+            
+                    
+                    Section 5.2: Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/">
+            
+                    
+                    Chapter 6: Real-Time Protocols And Techniques
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                    
+                    Section 6.1: Websocket Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                    
+                    Section 6.2: Websocket Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                    
+                    Section 6.3: Real-Time Communication Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.html">
+            
+                <a href="../../part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.html">
+            
+                    
+                    Section 6.4: Ajax
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 4: Building a Real-Time Web App</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                    
+                    Chapter 7: Overview on how to Build a Web App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                    
+                    Chapter 8: Laravel as a Backend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                    
+                    Section 8.1: The Scaffolding of a Laravel App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                    
+                    Section 8.2: Service Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                    
+                    Section 8.3: Facades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                    
+                    Section 8.4: The Rest
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                    
+                    Chapter 9: Vue.js 3 as a Frontend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                    
+                    Section 9.1: State Management in Vue.js 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                    
+                    Chapter 10: Monolothic Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 5: Conclusion</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                <a href="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                    
+                    Chapter 11: Takeaways
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                <a href="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                    
+                    Chapter 12: General Conclusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 6: Appendix</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Chapter 13: Essential Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="7.1.1" data-path="1_closures.html">
+            
+                <a href="1_closures.html">
+            
+                    
+                    Section 13.1: Closures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="2_coroutines.html">
+            
+                <a href="2_coroutines.html">
+            
+                    
+                    Section 13.2: Coroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="3_generators.html">
+            
+                <a href="3_generators.html">
+            
+                    
+                    Section 13.3: Generators
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../chapter_14_concurrency/">
+            
+                <a href="../chapter_14_concurrency/">
+            
+                    
+                    Chapter 14: Concurrency
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../chapter_14_concurrency/1_concurrency_overview.html">
+            
+                <a href="../chapter_14_concurrency/1_concurrency_overview.html">
+            
+                    
+                    Section 14.1: Concurrency Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                <a href="../chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                    
+                    Section 14.2: Asynchronous Runtimes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                <a href="../chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                    
+                    Section 14.3: Concurrency in PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../chapter_15_webography/">
+            
+                <a href="../chapter_15_webography/">
+            
+                    
+                    Chapter 15: Webography
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Section 13.1: Closures</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="21-closures">2.1 Closures</h2>
+<p><strong>Definition:</strong> a closure is a function that has <ins>access</ins> to </p>
+<ol>
+<li>its <strong>own scope</strong></li>
+<li>the <strong>outer function&apos;s scope</strong> </li>
+<li>and the <strong>global scope</strong>. </li>
+</ol>
+<p>Closures are created <ins>whenever</ins> <strong>a variable</strong> that is defined <strong>outside</strong> the <strong>current scope</strong> is <ins>accessed</ins> from <strong>within some inner scope</strong>. </p>
+<p>They allow a function to access all the variables, as well as other functions, that are in scope <ins>when the function itself is declared</ins>.</p>
+<p></p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>When a closure is created, it takes a snapshot of all the variables it is accessing. In other words, the closure freezes in time the variable&apos;s values it is accessing, as it encapsulates the actual <strong>value</strong> of those variables and <strong>not their reference</strong>. So changing the values that a closure is accessing after its creation won&apos;t affect how the closure has been defined. </p>
+</div></div><p></p>
+<h3 id="closures-in-javascript">Closures in Javascript</h3>
+<p>Javascript supports the use of closures natively, so the following is an example of how to create and use a closure in javascript.</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outerFunction</span>(<span class="hljs-params">outerVariable</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innerFunction</span>(<span class="hljs-params">innerVariable</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;outerVariable:&apos;</span>, outerVariable);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;innerVariable:&apos;</span>, innerVariable);
+    }
+}
+
+<span class="hljs-keyword">const</span> newFunction = outerFunction(<span class="hljs-string">&apos;outside&apos;</span>);
+newFunction(<span class="hljs-string">&apos;inside&apos;</span>); <span class="hljs-comment">// logs: outerVariable: outside, innerVariable: inside</span>
+</code></pre>
+<h3 id="closures-in-php">Closures in PHP</h3>
+<p>PHP also supports the use of closures natively, so the following is an example of how to create and use a closure in PHP.</p>
+<pre><code class="lang-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outerFunction</span>(<span class="hljs-params"><span class="hljs-variable">$outerVariable</span></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$innerVariable</span></span>) <span class="hljs-keyword">use</span> (<span class="hljs-params"><span class="hljs-variable">$outerVariable</span></span>) </span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;outerVariable: &apos;</span> . <span class="hljs-variable">$outerVariable</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;innerVariable: &apos;</span> . <span class="hljs-variable">$innerVariable</span>;
+    };
+}
+
+<span class="hljs-variable">$newFunction</span> = outerFunction(<span class="hljs-string">&apos;outside&apos;</span>);
+<span class="hljs-variable">$newFunction</span>(<span class="hljs-string">&apos;inside&apos;</span>); <span class="hljs-comment">// logs: outerVariable: outside, innerVariable: inside</span>
+</code></pre>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Note how in contrast to javascript, where the use of variables from the parent scopes defines how the closure will be created on runtime.  </p>
+<p>in PHP, the <code>use</code> keyword is used to import variables from the parent scope into the closure. Otherwise, the closure won&apos;t be able to <ins>use</ins> the variable and its value inside the closure will be <code>undefined</code>.</p>
+</div></div><p></p>
+<h3 id="emulating-a-closure-in-c">Emulating a closure in C</h3>
+<p>C doesn&apos;t support the use of closures. But we can emulate a closure in C to learn more about how closures work under the hood.</p>
+<p>The following example is the same example as the previous two examples of a function returning a function that has a &quot;snapshoted&quot; access to its parent scopes&apos; variables.</p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> {</span>
+    <span class="hljs-keyword">int</span> (*function)(<span class="hljs-keyword">void</span>*, <span class="hljs-keyword">int</span>);
+    <span class="hljs-keyword">int</span> outerVariable;
+} Closure;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">innerFunction</span><span class="hljs-params">(<span class="hljs-keyword">void</span>* context, <span class="hljs-keyword">int</span> innerVariable)</span> </span>{
+    Closure* c = (Closure*)context;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;outerVariable: %d\n&quot;</span>, c-&gt;outerVariable);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;innerVariable: %d\n&quot;</span>, innerVariable);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function">Closure* <span class="hljs-title">outerFunction</span><span class="hljs-params">(<span class="hljs-keyword">int</span> outerVariable)</span> </span>{
+    Closure* c = <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(Closure));
+    c-&gt;function = innerFunction;
+    c-&gt;outerVariable = outerVariable;
+    <span class="hljs-keyword">return</span> c;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    Closure* c = outerFunction(<span class="hljs-number">5</span>);
+    c-&gt;function(c, <span class="hljs-number">10</span>);  <span class="hljs-comment">// prints: outerVariable: 5, innerVariable: 10</span>
+    <span class="hljs-built_in">free</span>(c);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4 id="observations">Observations</h4>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><ol>
+<li><p>Note how a closure is defined as a <strong>struct</strong> that <ins>points</ins> to the function but <ins>encapsulates</ins> the <strong>value</strong> of the outerVariable.</p>
+</li>
+<li><p>Note how the closure passes itself as the <strong>context</strong> <code>c-&gt;function(c,10)</code> for the innerFunction in order for it to be able to access the outerVariables value.</p>
+</li>
+</ol>
+<p><strong>That passed <span style="color:red">context</span> is how the innerFunction of a closure <span style="color:red">snapshots/captures</span> the variables it is accessing</strong></p>
+</div></div><p></p>
+<p>The following is a class diagram of how the example Closure struct is composed.</p>
+<p><a href="https://mermaid.live/edit#pako:eNpdjzsOwjAMhq8SeWpLT9AVGJmQGFAWk7gQKY2r1EFCVe9O-qAD_2L783sEw5agAeNxGE4OnxE7HVTWQtTR85AiqXGFsw4uiCqqNgUjjkNZvNnZqlYZl39VnITiDaPDh6c1N0ENHcUOnc1rl7Ea5EUdaWiya6nF5EWDDnMpJuHrJxhoJCaqIfUWhbZDoWnRDzs9Wyccd0hLeNn-m00NPYY7869x-gLfEFP3" target="_blank"><img src="https://mermaid.ink/img/pako:eNpdjzsOwjAMhq8SeWpLT9AVGJmQGFAWk7gQKY2r1EFCVe9O-qAD_2L783sEw5agAeNxGE4OnxE7HVTWQtTR85AiqXGFsw4uiCqqNgUjjkNZvNnZqlYZl39VnITiDaPDh6c1N0ENHcUOnc1rl7Ea5EUdaWiya6nF5EWDDnMpJuHrJxhoJCaqIfUWhbZDoWnRDzs9Wyccd0hLeNn-m00NPYY7869x-gLfEFP3?type=png" alt></a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Chapter 13: Essential Concepts">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2_coroutines.html" class="navigation navigation-next " aria-label="Next page: Section 13.2: Coroutines">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Section 13.1: Closures","level":"7.1.1","depth":2,"next":{"title":"Section 13.2: Coroutines","level":"7.1.2","depth":2,"path":"part_6_appendix/chapter_13_essential_concepts/2_coroutines.md","ref":"part_6_appendix/chapter_13_essential_concepts/2_coroutines.md","articles":[]},"previous":{"title":"Chapter 13: Essential Concepts","level":"7.1","depth":1,"path":"part_6_appendix/chapter_13_essential_concepts/README.md","ref":"part_6_appendix/chapter_13_essential_concepts/README.md","articles":[{"title":"Section 13.1: Closures","level":"7.1.1","depth":2,"path":"part_6_appendix/chapter_13_essential_concepts/1_closures.md","ref":"part_6_appendix/chapter_13_essential_concepts/1_closures.md","articles":[]},{"title":"Section 13.2: Coroutines","level":"7.1.2","depth":2,"path":"part_6_appendix/chapter_13_essential_concepts/2_coroutines.md","ref":"part_6_appendix/chapter_13_essential_concepts/2_coroutines.md","articles":[]},{"title":"Section 13.3: Generators","level":"7.1.3","depth":2,"path":"part_6_appendix/chapter_13_essential_concepts/3_generators.md","ref":"part_6_appendix/chapter_13_essential_concepts/3_generators.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_6_appendix/chapter_13_essential_concepts/1_closures.md","mtime":"2023-09-04T21:10:44.073Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-04T22:09:34.291Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

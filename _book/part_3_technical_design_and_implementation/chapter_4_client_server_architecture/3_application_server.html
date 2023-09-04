@@ -1,0 +1,895 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>Section 4.3: Application Server · Small-Scale Real-Time Modern Web Applications</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 4.0.8">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_5_server_side_non_blocking/" />
+    
+    
+    <link rel="prev" href="2_web_server.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Cover
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 1: Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../part_1_introduction/0_abstract/">
+            
+                <a href="../../part_1_introduction/0_abstract/">
+            
+                    
+                    Abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../part_1_introduction/1_general_introduction/">
+            
+                <a href="../../part_1_introduction/1_general_introduction/">
+            
+                    
+                    General Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../part_1_introduction/chapter_1_general_context/">
+            
+                <a href="../../part_1_introduction/chapter_1_general_context/">
+            
+                    
+                    Chapter 1: General Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 2: Analysis And Conception</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                    
+                    Chapter 2: Project Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                    
+                    Chapter 3: Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 3: Technical Design And Implementation</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Chapter 4: Client Server Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="1_request_response_cycle.html">
+            
+                <a href="1_request_response_cycle.html">
+            
+                    
+                    Section 4.1: Request Response Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="2_web_server.html">
+            
+                <a href="2_web_server.html">
+            
+                    
+                    Section 4.2: Web Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.3" data-path="3_application_server.html">
+            
+                <a href="3_application_server.html">
+            
+                    
+                    Section 4.3: Application Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../chapter_5_server_side_non_blocking/">
+            
+                <a href="../chapter_5_server_side_non_blocking/">
+            
+                    
+                    Chapter 5: Server Side Non-Blocking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../chapter_5_server_side_non_blocking/1_background_jobs.html">
+            
+                <a href="../chapter_5_server_side_non_blocking/1_background_jobs.html">
+            
+                    
+                    Section 5.1: Background Jobs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../chapter_5_server_side_non_blocking/2_events.html">
+            
+                <a href="../chapter_5_server_side_non_blocking/2_events.html">
+            
+                    
+                    Section 5.2: Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter_6_real_time_protocols_and_techniques/">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/">
+            
+                    
+                    Chapter 6: Real-Time Protocols And Techniques
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../chapter_6_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                    
+                    Section 6.1: Websocket Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../chapter_6_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                    
+                    Section 6.2: Websocket Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                    
+                    Section 6.3: Real-Time Communication Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../chapter_6_real_time_protocols_and_techniques/4_ajax.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/4_ajax.html">
+            
+                    
+                    Section 6.4: Ajax
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 4: Building a Real-Time Web App</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                    
+                    Chapter 7: Overview on how to Build a Web App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                    
+                    Chapter 8: Laravel as a Backend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                    
+                    Section 8.1: The Scaffolding of a Laravel App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                    
+                    Section 8.2: Service Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                    
+                    Section 8.3: Facades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                    
+                    Section 8.4: The Rest
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                    
+                    Chapter 9: Vue.js 3 as a Frontend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                    
+                    Section 9.1: State Management in Vue.js 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                    
+                    Chapter 10: Monolothic Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 5: Conclusion</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                <a href="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                    
+                    Chapter 11: Takeaways
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                <a href="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                    
+                    Chapter 12: General Conclusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 6: Appendix</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../part_6_appendix/chapter_13_essential_concepts/">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/">
+            
+                    
+                    Chapter 13: Essential Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../../part_6_appendix/chapter_13_essential_concepts/1_closures.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/1_closures.html">
+            
+                    
+                    Section 13.1: Closures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../../part_6_appendix/chapter_13_essential_concepts/2_coroutines.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/2_coroutines.html">
+            
+                    
+                    Section 13.2: Coroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../../part_6_appendix/chapter_13_essential_concepts/3_generators.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/3_generators.html">
+            
+                    
+                    Section 13.3: Generators
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../part_6_appendix/chapter_14_concurrency/">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/">
+            
+                    
+                    Chapter 14: Concurrency
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../../part_6_appendix/chapter_14_concurrency/1_concurrency_overview.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/1_concurrency_overview.html">
+            
+                    
+                    Section 14.1: Concurrency Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../../part_6_appendix/chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                    
+                    Section 14.2: Asynchronous Runtimes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../../part_6_appendix/chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                    
+                    Section 14.3: Concurrency in PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../part_6_appendix/chapter_15_webography/">
+            
+                <a href="../../part_6_appendix/chapter_15_webography/">
+            
+                    
+                    Chapter 15: Webography
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Section 4.3: Application Server</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="43-application-server">4.3 Application Server</h2>
+<p><strong>Application Server</strong>: The term &quot;application server&quot; often refers to a server that can process business logic, not just serve static or dynamic content. While Apache and Nginx are not full-fledged application servers like some others (for example, Tomcat for Java or Unicorn for Ruby), they can handle some application server-like tasks. For example, with the right modules, Apache can process PHP, Perl, or Python code, and Nginx can process JavaScript or Lua code. However, for more complex tasks, they typically pass requests off to a separate application server or process manager (like PHP-FPM for PHP).</p>
+<p>So, while Apache and Nginx are primarily web servers, they can take on some roles of an application server depending on the configuration and use case. However, they are not typically classified as full-fledged application servers.</p>
+<p></p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>Please note that an Application Server is broad term and its role depends on the framework or the script that is used on the server side.</p>
+<p>Below are some examples of Application Servers for different programming languages</p>
+<ul>
+<li>For <strong>Java</strong>: Apache Tomcat is an Application Server that acts as a JAVA servlets container environment, and it manages concurrency through the use of thread workers from a thread pool.</li>
+</ul>
+<ul>
+<li>For <strong>Python</strong>: Gunicorn (Green Unicorn) is a WSGI Application Server that handles concurrency through a pre-fork worker model. It utilizes multiple worker processes to handle concurrent requests efficiently.</li>
+</ul>
+<ul>
+<li>For <strong>PHP</strong>: there is no standalone component known as an Application Server, However managing concurrency can be achieved with the use of a php process manager such as php-fpm (PHP FastCGI Process Manager)</li>
+</ul>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><ul>
+<li>Please note that in some cases, a production-ready Application Server comes embedded in the framework. So it is a part of the executed code itself. An example of that is the <strong>ASP.NET</strong> framework that comes with the <strong>Kestrel</strong> embedded production-ready Application Server.</li>
+</ul>
+</div></div><p></p>
+<p></p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>Please note that I am talking about production-ready Application Servers and not Development Servers that comes shipped with most frameworks but can&apos;t handle concurrency efficiently.</p>
+</div></div><p></p>
+<h2 id="23-web-server-vs-application-server">2.3 Web Server vs Application Server</h2>
+<p>Web Server and Application Server are both components used in web applications, they work in conjunction but serve different purposes. Let&apos;s compare them:</p>
+<h3 id="web-server">Web Server</h3>
+<ul>
+<li><strong>Primary Function</strong>: A Web Server is primarily responsible for handling HTTP requests and responses. It serves static content like HTML, CSS, Javascript and images to the client&apos;s browser.</li>
+</ul>
+<ul>
+<li><strong>Processing</strong>: Web Servers do not execute any business logic. They mainly deal with the delivery of web pages to the client&apos;s browser.</li>
+</ul>
+<ul>
+<li><strong>Examples</strong>: Apache HTTP Server, Nginx, Microsoft Internet Information Services (IIS).</li>
+</ul>
+<ul>
+<li><strong>Scalability</strong>: Web Servers are generally more scalable and are used to handle the high volume of traffic.</li>
+</ul>
+<ul>
+<li><strong>Communication</strong>:<ul>
+<li>Web Servers communicate directly with the client&apos;s browser</li>
+<li>and can also act as a reverse proxy server for Application Servers.</li>
+</ul>
+</li>
+</ul>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><ul>
+<li>Different Application Servers can run behind a Web Server.</li>
+<li>Each Application Server will be mapped to a different port.</li>
+<li>Most Web Servers by default listen on the default HTTP port 80 or HTTPS port 443.</li>
+</ul>
+</div></div><p></p>
+<h3 id="application-server">Application Server</h3>
+<ul>
+<li><strong>Primary Function</strong>: An Application Server is designed to run web applications and execute business logic of the web application, such as processing form data, interacting with databases, and generating dynamic content.</li>
+</ul>
+<ul>
+<li><strong>Functionality</strong>: When the Web Server forwards a request to the Application Server, the Application Server processes the request by running the appropriate scripts. It may interact with a database, perform calculations, or carry out other business logic.</li>
+</ul>
+<ul>
+<li><strong>Response Generation</strong>: After processing, an Application Server generates an HTTP response, usually in the form of HTML or JSON, and sends it back to the Web Server, which in turn sends it to the client&apos;s browser.</li>
+</ul>
+<ul>
+<li><strong>Examples</strong>:Apache Tomcat, WildFly, Unicorn, Gunicorn, Kestrel.</li>
+</ul>
+<ul>
+<li><strong>Scalability</strong>: Application Servers are generally less scalable compared to web servers and are used for more resource-intensive operations.</li>
+</ul>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Both Web Servers and Application Servers are typically two different processes that operate independently on top of a Physical Server&apos;s operating system</p>
+</div></div><p></p>
+<hr>
+<p>The following is a sequence diagram that visually represents the interactions between the client&apos;s browser, Web Server process, and Application Server process</p>
+<p><img src="img_15.png" alt="img_15.png"></p>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Please keep in mind that the above scenario represents the typical use-case. All the Processes including the browser can operate on the same OS (in the case of a local environment) or each Processes can operate on a different OS (in the case of a distributed system)</p>
+</div></div><p></p>
+<hr>
+<h3 id="more-than-one-application-server">more than one application server</h3>
+<p>It is possible for an Apache web server to act as both a reverse proxy and a load balancer for more than one application server.</p>
+<p>As a reverse proxy, Apache can accept client requests and forward them to one or more backend servers. This can help to hide the existence and characteristics of an origin server or servers.</p>
+<p>As a load balancer, Apache can distribute incoming requests across multiple backend servers to balance the load and ensure no single server becomes overwhelmed. This can help to increase the capacity and reliability of the applications.</p>
+<p>The Apache HTTP Server Project offers modules like <code>mod_proxy</code> and <code>mod_proxy_balancer</code> which provide these functionalities. You can configure these modules to manage multiple application servers.</p>
+<p>Here&apos;s an example configuration that balances load between two application servers</p>
+<p><img src="img.png" alt="img.png"></p>
+<p><code>http://appserver1:8080</code> and <code>http://appserver2:8080</code> are the addresses of your application servers. Any requests to <code>http://your-apache-server/app</code> will be balanced between these two servers.</p>
+<hr>
+<p>Here is a diagram that illustrates the example:</p>
+<p><img src="img_16.png" alt="img_16.png"></p>
+<hr>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2_web_server.html" class="navigation navigation-prev " aria-label="Previous page: Section 4.2: Web Server">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_5_server_side_non_blocking/" class="navigation navigation-next " aria-label="Next page: Chapter 5: Server Side Non-Blocking">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Section 4.3: Application Server","level":"4.1.3","depth":2,"next":{"title":"Chapter 5: Server Side Non-Blocking","level":"4.2","depth":1,"path":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/README.md","ref":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/README.md","articles":[{"title":"Section 5.1: Background Jobs","level":"4.2.1","depth":2,"path":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/1_background_jobs.md","ref":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/1_background_jobs.md","articles":[]},{"title":"Section 5.2: Events","level":"4.2.2","depth":2,"path":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/2_events.md","ref":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/2_events.md","articles":[]}]},"previous":{"title":"Section 4.2: Web Server","level":"4.1.2","depth":2,"path":"part_3_technical_design_and_implementation/chapter_4_client_server_architecture/2_web_server.md","ref":"part_3_technical_design_and_implementation/chapter_4_client_server_architecture/2_web_server.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_3_technical_design_and_implementation/chapter_4_client_server_architecture/3_application_server.md","mtime":"2023-09-04T21:51:05.818Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-04T22:09:34.291Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

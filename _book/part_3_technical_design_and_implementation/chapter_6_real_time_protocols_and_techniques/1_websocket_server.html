@@ -1,0 +1,846 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>Section 6.1: Websocket Server · Small-Scale Real-Time Modern Web Applications</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 4.0.8">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2_websocket_client.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Cover
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 1: Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../part_1_introduction/0_abstract/">
+            
+                <a href="../../part_1_introduction/0_abstract/">
+            
+                    
+                    Abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../part_1_introduction/1_general_introduction/">
+            
+                <a href="../../part_1_introduction/1_general_introduction/">
+            
+                    
+                    General Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../part_1_introduction/chapter_1_general_context/">
+            
+                <a href="../../part_1_introduction/chapter_1_general_context/">
+            
+                    
+                    Chapter 1: General Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 2: Analysis And Conception</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                    
+                    Chapter 2: Project Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                    
+                    Chapter 3: Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 3: Technical Design And Implementation</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../chapter_4_client_server_architecture/">
+            
+                <a href="../chapter_4_client_server_architecture/">
+            
+                    
+                    Chapter 4: Client Server Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../chapter_4_client_server_architecture/1_request_response_cycle.html">
+            
+                <a href="../chapter_4_client_server_architecture/1_request_response_cycle.html">
+            
+                    
+                    Section 4.1: Request Response Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../chapter_4_client_server_architecture/2_web_server.html">
+            
+                <a href="../chapter_4_client_server_architecture/2_web_server.html">
+            
+                    
+                    Section 4.2: Web Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../chapter_4_client_server_architecture/3_application_server.html">
+            
+                <a href="../chapter_4_client_server_architecture/3_application_server.html">
+            
+                    
+                    Section 4.3: Application Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../chapter_5_server_side_non_blocking/">
+            
+                <a href="../chapter_5_server_side_non_blocking/">
+            
+                    
+                    Chapter 5: Server Side Non-Blocking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../chapter_5_server_side_non_blocking/1_background_jobs.html">
+            
+                <a href="../chapter_5_server_side_non_blocking/1_background_jobs.html">
+            
+                    
+                    Section 5.1: Background Jobs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../chapter_5_server_side_non_blocking/2_events.html">
+            
+                <a href="../chapter_5_server_side_non_blocking/2_events.html">
+            
+                    
+                    Section 5.2: Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Chapter 6: Real-Time Protocols And Techniques
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="4.3.1" data-path="1_websocket_server.html">
+            
+                <a href="1_websocket_server.html">
+            
+                    
+                    Section 6.1: Websocket Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="2_websocket_client.html">
+            
+                <a href="2_websocket_client.html">
+            
+                    
+                    Section 6.2: Websocket Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="3_real_time_communication_techniques.html">
+            
+                <a href="3_real_time_communication_techniques.html">
+            
+                    
+                    Section 6.3: Real-Time Communication Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="4_ajax.html">
+            
+                <a href="4_ajax.html">
+            
+                    
+                    Section 6.4: Ajax
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 4: Building a Real-Time Web App</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                    
+                    Chapter 7: Overview on how to Build a Web App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                    
+                    Chapter 8: Laravel as a Backend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                    
+                    Section 8.1: The Scaffolding of a Laravel App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                    
+                    Section 8.2: Service Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                    
+                    Section 8.3: Facades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                    
+                    Section 8.4: The Rest
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                    
+                    Chapter 9: Vue.js 3 as a Frontend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                    
+                    Section 9.1: State Management in Vue.js 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                    
+                    Chapter 10: Monolothic Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 5: Conclusion</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                <a href="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                    
+                    Chapter 11: Takeaways
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                <a href="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                    
+                    Chapter 12: General Conclusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 6: Appendix</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../part_6_appendix/chapter_13_essential_concepts/">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/">
+            
+                    
+                    Chapter 13: Essential Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../../part_6_appendix/chapter_13_essential_concepts/1_closures.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/1_closures.html">
+            
+                    
+                    Section 13.1: Closures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../../part_6_appendix/chapter_13_essential_concepts/2_coroutines.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/2_coroutines.html">
+            
+                    
+                    Section 13.2: Coroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../../part_6_appendix/chapter_13_essential_concepts/3_generators.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/3_generators.html">
+            
+                    
+                    Section 13.3: Generators
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../part_6_appendix/chapter_14_concurrency/">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/">
+            
+                    
+                    Chapter 14: Concurrency
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../../part_6_appendix/chapter_14_concurrency/1_concurrency_overview.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/1_concurrency_overview.html">
+            
+                    
+                    Section 14.1: Concurrency Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../../part_6_appendix/chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                    
+                    Section 14.2: Asynchronous Runtimes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../../part_6_appendix/chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                    
+                    Section 14.3: Concurrency in PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../part_6_appendix/chapter_15_webography/">
+            
+                <a href="../../part_6_appendix/chapter_15_webography/">
+            
+                    
+                    Chapter 15: Webography
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Section 6.1: Websocket Server</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="61-websocket-server">6.1 Websocket Server</h2>
+<p>WebSocket servers provide a powerful tool for building real-time, interactive web applications. While they operate alongside traditional web servers, they serve a distinctly different role and enable new kinds of user experiences.</p>
+<p>They do so while maintaining the fundamental principles of server-side web development, like the request-response cycle of HTTP and the short-lived nature of individual application instances.</p>
+<h3 id="the-need-of-websocket-servers-and-their-role">The Need of WebSocket Servers and Their Role:</h3>
+<p>WebSockets provide a protocol for real-time, bidirectional communication between a client (typically a web browser) and a server. This is in contrast to the HTTP protocol, which is unidirectional - the client sends a request and the server sends back a response. WebSockets, on the other hand, keep the connection open, allowing data to be sent back and forth as needed. This is crucial for applications that require real-time updates, such as chat apps, live sports updates, and collaborative editing tools.</p>
+<p><img src="img_18.png" alt="img_18.png"></p>
+<h3 id="websocket-server-process">WebSocket Server Process:</h3>
+<p>A WebSocket server can either be a standalone process running on the same operating system as the web server (like the Laravel Websockets package) or it could be a separate service running elsewhere (like Pusher). The WebSocket server&apos;s role is to manage these long-lived WebSocket connections, handling incoming messages and broadcasting messages to clients.</p>
+<p>The following is a diagram of the WebSocket Server running as process in the same OS as the Web Server:</p>
+<p><img src="img_17.png" alt="img_17.png"></p>
+<p>The following is a diagram of the WebSocket Server and the Web Server each running on a different OS:</p>
+<p><img src="img_16.png" alt="img_16.png"></p>
+<h3 id="laravel-applications-and-websocket-connections">Laravel Applications and WebSocket Connections:</h3>
+<p>While a WebSocket connection between a client and the WebSocket server is long-lived, a Laravel application still adheres to its typical lifecycle: it receives an HTTP request, sends back an HTTP response, and then terminates. The presence of a WebSocket server doesn&apos;t change this fundamental aspect of the Laravel application.</p>
+<p><img src="img_15.png" alt="img_15.png"></p>
+<h3 id="laravel-application-communication-with-websocket-server">Laravel Application Communication with WebSocket Server:</h3>
+<p>In a typical scenario, the Laravel application doesn&apos;t communicate directly with the WebSocket server, but rather communicates through events. When something happens in a Laravel application that should be broadcast to clients (for example, a new message is added in a chat app), the application dispatches an event. This event is heard by the WebSocket server, which then broadcasts the relevant data to all connected clients. All of this is done while maintaining the short-lived nature of the Laravel application instance.</p>
+<p><img src="img_14.png" alt="img_14.png"></p>
+<h3 id="websocket-servers-and-clients">WebSocket Servers and Clients:</h3>
+<p>In most scenarios, it&apos;s the WebSocket server that is actively pushing messages to the clients. The clients typically interact with the server via standard HTTP requests to access and modify resources. For example, in a chat application, a new message is sent to the server via an HTTP request. The server then broadcasts this message to other connected clients using the WebSocket connection.</p>
+<p><img src="img_13.png" alt="img_13.png"></p>
+<p>In a typical messaging app scenario the following occurs:</p>
+<ol>
+<li>When a user sends a message, the client makes an HTTP POST request to the web server. The payload of the request contains the message content and any other necessary information.</li>
+<li>The web server routes the request to the Laravel application, which processes the request. This includes storing the message in the database and maybe other business logic.</li>
+<li>After storing the message, the Laravel application dispatches an event to signify that a new message has been created.</li>
+<li>The WebSocket server, which could be Laravel Websockets or Pusher or something similar, is listening for this event. When it hears the event, it broadcasts a message to all connected clients with the details of the new message.</li>
+<li>The clients receive this message over their WebSocket connections. They handle the message by updating the user interface to display the new message.</li>
+<li>The original HTTP request from step 1 is responded to, indicating success or failure to the client that sent the message.</li>
+</ol>
+<p><img src="img_12.png" alt="img_12.png"></p>
+<h3 id="clients-sending-messages-to-websocket-server">Clients Sending Messages to WebSocket Server:</h3>
+<p>There are scenarios where the client might also send messages to the WebSocket server. A notable example is Google Docs. </p>
+<p>As users type and make changes to a document, those changes are sent to the WebSocket server over the WebSocket connection. The WebSocket server then broadcasts these changes to all other clients connected to the same document. Each client application would have the logic to handle these updates and apply them to the document in real-time. This allows all users to see changes as they happen.</p>
+<p>There&apos;s still server-side application logic involved, but it&apos;s primarily for handling more permanent changes like saving the final version of the document, handling authentication, managing users, and similar tasks. These operations would typically be performed via traditional HTTP requests to the server, and are separate from the real-time, collaborative aspect of the application facilitated by the WebSocket connection. </p>
+<p><img src="img_11.png" alt="img_11.png"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Chapter 6: Real-Time Protocols And Techniques">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2_websocket_client.html" class="navigation navigation-next " aria-label="Next page: Section 6.2: Websocket Client">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Section 6.1: Websocket Server","level":"4.3.1","depth":2,"next":{"title":"Section 6.2: Websocket Client","level":"4.3.2","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/2_websocket_client.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/2_websocket_client.md","articles":[]},"previous":{"title":"Chapter 6: Real-Time Protocols And Techniques","level":"4.3","depth":1,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/README.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/README.md","articles":[{"title":"Section 6.1: Websocket Server","level":"4.3.1","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/1_websocket_server.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/1_websocket_server.md","articles":[]},{"title":"Section 6.2: Websocket Client","level":"4.3.2","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/2_websocket_client.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/2_websocket_client.md","articles":[]},{"title":"Section 6.3: Real-Time Communication Techniques","level":"4.3.3","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md","articles":[]},{"title":"Section 6.4: Ajax","level":"4.3.4","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/1_websocket_server.md","mtime":"2023-09-04T22:07:00.564Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-04T22:09:34.291Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

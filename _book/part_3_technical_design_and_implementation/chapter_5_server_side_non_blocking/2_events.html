@@ -1,0 +1,1004 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>Section 5.2: Events · Small-Scale Real-Time Modern Web Applications</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 4.0.8">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_6_real_time_protocols_and_techniques/" />
+    
+    
+    <link rel="prev" href="1_background_jobs.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Cover
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 1: Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../part_1_introduction/0_abstract/">
+            
+                <a href="../../part_1_introduction/0_abstract/">
+            
+                    
+                    Abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../part_1_introduction/1_general_introduction/">
+            
+                <a href="../../part_1_introduction/1_general_introduction/">
+            
+                    
+                    General Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../part_1_introduction/chapter_1_general_context/">
+            
+                <a href="../../part_1_introduction/chapter_1_general_context/">
+            
+                    
+                    Chapter 1: General Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 2: Analysis And Conception</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                    
+                    Chapter 2: Project Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                    
+                    Chapter 3: Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 3: Technical Design And Implementation</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../chapter_4_client_server_architecture/">
+            
+                <a href="../chapter_4_client_server_architecture/">
+            
+                    
+                    Chapter 4: Client Server Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../chapter_4_client_server_architecture/1_request_response_cycle.html">
+            
+                <a href="../chapter_4_client_server_architecture/1_request_response_cycle.html">
+            
+                    
+                    Section 4.1: Request Response Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../chapter_4_client_server_architecture/2_web_server.html">
+            
+                <a href="../chapter_4_client_server_architecture/2_web_server.html">
+            
+                    
+                    Section 4.2: Web Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../chapter_4_client_server_architecture/3_application_server.html">
+            
+                <a href="../chapter_4_client_server_architecture/3_application_server.html">
+            
+                    
+                    Section 4.3: Application Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Chapter 5: Server Side Non-Blocking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="1_background_jobs.html">
+            
+                <a href="1_background_jobs.html">
+            
+                    
+                    Section 5.1: Background Jobs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.2.2" data-path="2_events.html">
+            
+                <a href="2_events.html">
+            
+                    
+                    Section 5.2: Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter_6_real_time_protocols_and_techniques/">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/">
+            
+                    
+                    Chapter 6: Real-Time Protocols And Techniques
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../chapter_6_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                    
+                    Section 6.1: Websocket Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../chapter_6_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                    
+                    Section 6.2: Websocket Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                    
+                    Section 6.3: Real-Time Communication Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../chapter_6_real_time_protocols_and_techniques/4_ajax.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/4_ajax.html">
+            
+                    
+                    Section 6.4: Ajax
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 4: Building a Real-Time Web App</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                    
+                    Chapter 7: Overview on how to Build a Web App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                    
+                    Chapter 8: Laravel as a Backend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                    
+                    Section 8.1: The Scaffolding of a Laravel App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                    
+                    Section 8.2: Service Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                    
+                    Section 8.3: Facades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                    
+                    Section 8.4: The Rest
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                    
+                    Chapter 9: Vue.js 3 as a Frontend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                    
+                    Section 9.1: State Management in Vue.js 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                    
+                    Chapter 10: Monolothic Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 5: Conclusion</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                <a href="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                    
+                    Chapter 11: Takeaways
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                <a href="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                    
+                    Chapter 12: General Conclusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 6: Appendix</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../part_6_appendix/chapter_13_essential_concepts/">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/">
+            
+                    
+                    Chapter 13: Essential Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../../part_6_appendix/chapter_13_essential_concepts/1_closures.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/1_closures.html">
+            
+                    
+                    Section 13.1: Closures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../../part_6_appendix/chapter_13_essential_concepts/2_coroutines.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/2_coroutines.html">
+            
+                    
+                    Section 13.2: Coroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../../part_6_appendix/chapter_13_essential_concepts/3_generators.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/3_generators.html">
+            
+                    
+                    Section 13.3: Generators
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../part_6_appendix/chapter_14_concurrency/">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/">
+            
+                    
+                    Chapter 14: Concurrency
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../../part_6_appendix/chapter_14_concurrency/1_concurrency_overview.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/1_concurrency_overview.html">
+            
+                    
+                    Section 14.1: Concurrency Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../../part_6_appendix/chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                    
+                    Section 14.2: Asynchronous Runtimes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../../part_6_appendix/chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                    
+                    Section 14.3: Concurrency in PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../part_6_appendix/chapter_15_webography/">
+            
+                <a href="../../part_6_appendix/chapter_15_webography/">
+            
+                    
+                    Chapter 15: Webography
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Section 5.2: Events</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="52-events">5.2 Events</h2>
+<p>In this section, we will provide an overview of what events are in the context of Laravel and why they are useful. </p>
+<ul>
+<li>Events provide a simple implementation of the observer design pattern, allowing you to subscribe and listen for various events in your application.</li>
+</ul>
+<p>The following diagram represents how the Observer Pattern typically works:</p>
+<p><img src="img_4.png" alt="img_4.png"></p>
+<p>The following diagram shows how the Observer Pattern is implemented in the context of Laravel terminology:</p>
+<p><img src="img_3.png" alt="img_3.png"></p>
+<ul>
+<li><p>They serve as a great way to decouple various aspects of your application, as the event object can be used to share data between the event listeners.</p>
+</li>
+<li><p>They can be used for tasks like sending notifications, firing off jobs to queues, writing to logs and more.</p>
+</li>
+</ul>
+<h3 id="understanding-laravel-events">Understanding Laravel Events</h3>
+<ul>
+<li>Events in Laravel can be classified into two main categories: persistent events and request-specific events.</li>
+</ul>
+<p><img src="img_2.png" alt="img_2.png"></p>
+<ul>
+<li>Persistent events are those that persist between subsequent HTTP requests. A good example of these are job events, which may be processed in the background and not within the lifecycle of a single HTTP request.</li>
+</ul>
+<p>The following diagram illustrates how Job Event use the Database shared resource to persist between subsequent HTTP Requests:</p>
+<p><img src="img_1.png" alt="img_1.png"></p>
+<p>in the sequence diagram:</p>
+<ol>
+<li>The Client sends an HTTP request to start a job. This request is received by a new instance of the Laravel application on the Web Server.</li>
+<li>The Laravel application creates a Job record in the Database with a status of &apos;processing&apos;.</li>
+<li>The Laravel application adds the job to the Message Queue.</li>
+<li>The Laravel application returns the Job id to the Client and then the instance is deactivated.</li>
+<li>The Client stores the Job id temporarily. This is important because the Client will need this id to check the status of the job later.</li>
+<li>The Message Queue dispatches the job to be processed.</li>
+<li>The Job updates its status in the Database. This could be &apos;started&apos;, &apos;error&apos;, or &apos;completed&apos; depending on the progress of the job.</li>
+<li>The Client periodically polls for the job status by sending HTTP requests to the Web Server.</li>
+<li>A new instance of the Laravel application is activated to handle each of these requests. It listens to the Database for changes in the Job status.</li>
+<li>The Laravel application returns the Job status to the Client and then the instance is deactivated.</li>
+</ol>
+<ul>
+<li>Request-specific events are those that occur within the lifespan of a single HTTP request. They get fired and handled during a single HTTP request and do not persist across multiple requests.</li>
+</ul>
+<p>The following is a sequence diagram for request-specific events that get listened to synchronously and do not persist between subsequent HTTP requests:</p>
+<p><img src="img.png" alt="img.png"></p>
+<p>Both the Event and the Listener are part of the Laravel Application instance.</p>
+<ul>
+<li>Event classes are typically stored in the <code>app/Events</code> directory.</li>
+</ul>
+<ul>
+<li>Events can be broadcast over websockets to provide real-time updates to your application&apos;s users.</li>
+</ul>
+<ul>
+<li>Laravel&apos;s event broadcasting allows you to broadcast your server-side Laravel events to your client-side JavaScript application.</li>
+</ul>
+<h3 id="creating-events">Creating Events</h3>
+<p>In Laravel, we can create an Event using the artisan command <code>php artisan make:event EventName</code>.</p>
+<p>Like the following example:</p>
+<pre><code>php artisan make:event OrderShipped
+</code></pre><p>This would generate an <code>OrderShipped</code> Event where we can define data inside it and use it like the following:</p>
+<pre><code class="lang-PHP"><span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Events</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Models</span>\<span class="hljs-title">Order</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Events</span>\<span class="hljs-title">Dispatchable</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Queue</span>\<span class="hljs-title">SerializesModels</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OrderShipped</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">Dispatchable</span>, <span class="hljs-title">SerializesModels</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-variable">$order</span>;
+
+    <span class="hljs-comment">/**
+     * Create a new event instance.
+     *
+     * <span class="hljs-doctag">@param</span>  Order  $order
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">Order <span class="hljs-variable">$order</span></span>)
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;order = <span class="hljs-variable">$order</span>;
+    }
+}
+</code></pre>
+<p>To dispatch the created event we can use the <code>event</code> helper function like the following:</p>
+<pre><code class="lang-PHP">event(<span class="hljs-keyword">new</span> OrderShipped(<span class="hljs-variable">$order</span>));
+</code></pre>
+<p>or the <code>dispatch</code> method on the Event itself like the following:</p>
+<pre><code class="lang-PHP">OrderShipped::dispatch(<span class="hljs-variable">$order</span>);
+</code></pre>
+<h3 id="event-listeners">Event Listeners</h3>
+<p>An Event Listeners listens to a particular event and performs an action when that event is fired.</p>
+<ul>
+<li>To create an Event Listener for an already defined Event we can use the artisan command <code>php artisan make:listener ListenerName --event=EventName</code>.</li>
+</ul>
+<p>Like the following example:</p>
+<pre><code>php artisan make:listener SendShipmentNotification --event=OrderShipped
+</code></pre><p>This will create a <code>SendShipmentNotification</code> class with a <code>handle</code> method where we can define how to handle the fired Event.</p>
+<p>Like the following:</p>
+<pre><code class="lang-PHP"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SendShipmentNotification</span> 
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span>(<span class="hljs-params">OrderShipped <span class="hljs-variable">$event</span></span>)
+    </span>{
+        <span class="hljs-comment">// Access the order using $event-&gt;order...</span>
+    }
+}
+</code></pre>
+<ul>
+<li>next you need to register the Event Listener. This typically can be achieved using the <code>$listen</code> array in the <code>EventServiceProvider</code>, like the following:</li>
+</ul>
+<pre><code class="lang-PHP"><span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Events</span>\<span class="hljs-title">OrderShipped</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Listeners</span>\<span class="hljs-title">SendShipmentNotification</span>;
+
+<span class="hljs-comment">/**
+ * The event listener mappings for the application.
+ *
+ * <span class="hljs-doctag">@var</span> array&lt;class-string, array&lt;int, class-string&gt;&gt;
+ */</span>
+<span class="hljs-keyword">protected</span> <span class="hljs-variable">$listen</span> = [
+    OrderShipped::class =&gt; [
+        SendShipmentNotification::class,
+    ],
+];
+</code></pre>
+<h3 id="event-subscribers">Event Subscribers</h3>
+<p>An event subscriber is a class that may subscribe to multiple events from within the class itself, allowing you to define several event handlers within a single class. Subscribers classes have a <code>subscribe</code> method, which is passed an event dispatcher instance, allowing the subscriber to register multiple event listeners.</p>
+<p>The following is a basic example of an event subscriber:</p>
+<pre><code class="lang-PHP"><span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Listeners</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserEventSubscriber</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Handle user login events.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleUserLogin</span>(<span class="hljs-params"><span class="hljs-variable">$event</span></span>) </span>{}
+
+    <span class="hljs-comment">/**
+     * Handle user logout events.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleUserLogout</span>(<span class="hljs-params"><span class="hljs-variable">$event</span></span>) </span>{}
+
+    <span class="hljs-comment">/**
+     * Register the listeners for the subscriber.
+     *
+     * <span class="hljs-doctag">@param</span>  Illuminate\Events\Dispatcher  $events
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subscribe</span>(<span class="hljs-params"><span class="hljs-variable">$events</span></span>)
+    </span>{
+        <span class="hljs-variable">$events</span>-&gt;listen(
+            <span class="hljs-string">&apos;Illuminate\Auth\Events\Login&apos;</span>,
+            <span class="hljs-string">&apos;App\Listeners\UserEventSubscriber@handleUserLogin&apos;</span>
+        );
+
+        <span class="hljs-variable">$events</span>-&gt;listen(
+            <span class="hljs-string">&apos;Illuminate\Auth\Events\Logout&apos;</span>,
+            <span class="hljs-string">&apos;App\Listeners\UserEventSubscriber@handleUserLogout&apos;</span>
+        );
+    }
+}
+</code></pre>
+<p>In this example, the <code>UserEventSubscriber</code> is subscribing to the <code>Login</code> and <code>Logout</code> events. When these events are dispatched, the <code>handleUserLogin</code> and <code>handleUserLogout</code> methods are called, respectively.</p>
+<p><strong>Why use an event subscriber over an event listener?</strong></p>
+<ol>
+<li><strong>Organization</strong>: If you have a lot of related events, it can be more organized to group their listeners into a single class, rather than having many different listener classes.</li>
+<li><strong>Flexibility</strong>: Subscribers can listen for multiple events, whereas a single event listener class listens for a single event. This can reduce the amount of code you need to write if multiple events should trigger similar functionality.</li>
+<li><strong>Dynamic Listener Registration</strong>: Subscribers can programmatically determine whether to listen to an event or not, or even which method to call, since the subscribing is done in the subscriber&apos;s <code>subscribe</code> method at runtime. This is not possible with static event listeners, which are registered in the <code>EventServiceProvider</code>.</li>
+</ol>
+<p>Just like an Event Listener you need to register the Event Subscriber in the <code>EventServiceProvider</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-variable">$subscribe</span> = [
+    <span class="hljs-string">&apos;App\Listeners\UserEventSubscriber&apos;</span>,
+];
+</code></pre>
+<h3 id="broadcasting-events">Broadcasting Events</h3>
+<p>To broadcast events using Laravel, we need to: </p>
+<ol>
+<li>Firstly to configure Laravel to use a broadcasting service like Pusher or Laravel Websockets in the <code>.env</code> file and the <code>config/broadcasting.php</code> file.</li>
+<li>Secondly to mark an event as &quot;broadcastable&quot; by implementing the <code>ShouldBroadcast</code> or <code>ShouldBroadcastNow</code> interfaces. Like the following:</li>
+</ol>
+<pre><code class="lang-PHP"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OrderShipmentStatusUpdated</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ShouldBroadcast</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">Dispatchable</span>, <span class="hljs-title">InteractsWithSockets</span>, <span class="hljs-title">SerializesModels</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-variable">$order</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-variable">$order</span></span>)
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;order = <span class="hljs-variable">$order</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">broadcastOn</span>(<span class="hljs-params"></span>)
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Channel(<span class="hljs-string">&apos;orders&apos;</span>);
+    }
+}
+</code></pre>
+<p>This takes us to the next chapter where we talk about websockets and the websocket server.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1_background_jobs.html" class="navigation navigation-prev " aria-label="Previous page: Section 5.1: Background Jobs">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_6_real_time_protocols_and_techniques/" class="navigation navigation-next " aria-label="Next page: Chapter 6: Real-Time Protocols And Techniques">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Section 5.2: Events","level":"4.2.2","depth":2,"next":{"title":"Chapter 6: Real-Time Protocols And Techniques","level":"4.3","depth":1,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/README.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/README.md","articles":[{"title":"Section 6.1: Websocket Server","level":"4.3.1","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/1_websocket_server.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/1_websocket_server.md","articles":[]},{"title":"Section 6.2: Websocket Client","level":"4.3.2","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/2_websocket_client.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/2_websocket_client.md","articles":[]},{"title":"Section 6.3: Real-Time Communication Techniques","level":"4.3.3","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.md","articles":[]},{"title":"Section 6.4: Ajax","level":"4.3.4","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.md","articles":[]}]},"previous":{"title":"Section 5.1: Background Jobs","level":"4.2.1","depth":2,"path":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/1_background_jobs.md","ref":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/1_background_jobs.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_3_technical_design_and_implementation/chapter_5_server_side_non_blocking/2_events.md","mtime":"2023-09-04T21:37:55.747Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-04T22:09:34.291Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

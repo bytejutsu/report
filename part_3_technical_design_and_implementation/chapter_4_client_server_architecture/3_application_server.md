@@ -88,20 +88,7 @@ Both Web Servers and Application Servers are typically two different processes t
 
 The following is a sequence diagram that visually represents the interactions between the client's browser, Web Server process, and Application Server process
 
-```mermaid
-sequenceDiagram
-    participant Client as Client Browser
-    box "OS" #D9EAD3
-        participant WebServer as Web Server Process
-        participant ApplicationServer as Application Server Process
-    end
-    Client->>WebServer: Send HTTP request
-    WebServer->>ApplicationServer: Forward request to Application Server (if dynamic content)
-    ApplicationServer->>ApplicationServer: Process business logic
-    ApplicationServer->>WebServer: Send HTTP response
-    WebServer->>Client: Forward HTTP response to Client
-    Client->>Client: Render content on screen
-```
+![img_15.png](img_15.png)
 
 {% hint style="tip" %}
 
@@ -132,17 +119,7 @@ Here's an example configuration that balances load between two application serve
 
 Here is a diagram that illustrates the example:
 
-```mermaid
-
-graph TB
-  A["Client"] -- "HTTP Request" --> B["Apache Load Balancer"]
-  B -- "HTTP Request" --> C["Application Server 1"]
-  B -- "HTTP Request" --> D["Application Server 2"]
-  C -- "HTTP Response" --> B
-  D -- "HTTP Response" --> B
-  B -- "HTTP Response" --> A
-
-```
+![img_16.png](img_16.png)
 
 ---
 

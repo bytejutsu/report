@@ -30,18 +30,7 @@ This process is sometimes referred to as the **request-response cycle**. It's th
 
 The following sequence diagram describes the interaction between the browser and the server in case of a user visiting a web application for the first time.
 
-```mermaid
-sequenceDiagram
-    participant Browser
-    participant Server
-
-    Browser->>Server: HTTP Request for welcome.html
-    Server->>Browser: HTTP Response (welcome.html)
-    Browser->>Server: HTTP Request for app.css
-    Server->>Browser: HTTP Response (app.css)
-    Browser->>Server: HTTP Request for app.js
-    Server->>Browser: HTTP Response (app.js)
-```
+![img_3.png](img_3.png)
 
 ---
 
@@ -211,15 +200,4 @@ For example, consider a web application that fetches data from a database server
 
 The following is a diagram that illustrates that specific scenario:
 
-```mermaid
-
-sequenceDiagram
-    participant Browser as Browser (Client)
-    participant WebApp as WebApp (Server/Client)
-    participant Database as Database (Server)
-    Browser->>WebApp: HTTP Request
-    WebApp->>Database: Query Request
-    Database-->>WebApp: Query Response
-    WebApp-->>Browser: HTTP Response
-
-```
+![img_2.png](img_2.png)

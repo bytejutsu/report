@@ -1,0 +1,1098 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>Section 4.2: Web Server · Small-Scale Real-Time Modern Web Applications</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 4.0.8">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="3_application_server.html" />
+    
+    
+    <link rel="prev" href="1_request_response_cycle.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Cover
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 1: Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../part_1_introduction/0_abstract/">
+            
+                <a href="../../part_1_introduction/0_abstract/">
+            
+                    
+                    Abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../part_1_introduction/1_general_introduction/">
+            
+                <a href="../../part_1_introduction/1_general_introduction/">
+            
+                    
+                    General Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../part_1_introduction/chapter_1_general_context/">
+            
+                <a href="../../part_1_introduction/chapter_1_general_context/">
+            
+                    
+                    Chapter 1: General Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 2: Analysis And Conception</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_2_project_structure/">
+            
+                    
+                    Chapter 2: Project Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                <a href="../../part_2_analysis_and_conception/chapter_3_tools/">
+            
+                    
+                    Chapter 3: Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 3: Technical Design And Implementation</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Chapter 4: Client Server Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="1_request_response_cycle.html">
+            
+                <a href="1_request_response_cycle.html">
+            
+                    
+                    Section 4.1: Request Response Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.2" data-path="2_web_server.html">
+            
+                <a href="2_web_server.html">
+            
+                    
+                    Section 4.2: Web Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="3_application_server.html">
+            
+                <a href="3_application_server.html">
+            
+                    
+                    Section 4.3: Application Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../chapter_5_server_side_non_blocking/">
+            
+                <a href="../chapter_5_server_side_non_blocking/">
+            
+                    
+                    Chapter 5: Server Side Non-Blocking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../chapter_5_server_side_non_blocking/1_background_jobs.html">
+            
+                <a href="../chapter_5_server_side_non_blocking/1_background_jobs.html">
+            
+                    
+                    Section 5.1: Background Jobs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../chapter_5_server_side_non_blocking/2_events.html">
+            
+                <a href="../chapter_5_server_side_non_blocking/2_events.html">
+            
+                    
+                    Section 5.2: Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter_6_real_time_protocols_and_techniques/">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/">
+            
+                    
+                    Chapter 6: Real-Time Protocols And Techniques
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../chapter_6_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                    
+                    Section 6.1: Websocket Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../chapter_6_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                    
+                    Section 6.2: Websocket Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                    
+                    Section 6.3: Real-Time Communication Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../chapter_6_real_time_protocols_and_techniques/4_ajax.html">
+            
+                <a href="../chapter_6_real_time_protocols_and_techniques/4_ajax.html">
+            
+                    
+                    Section 6.4: Ajax
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 4: Building a Real-Time Web App</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/">
+            
+                    
+                    Chapter 7: Overview on how to Build a Web App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/">
+            
+                    
+                    Chapter 8: Laravel as a Backend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                    
+                    Section 8.1: The Scaffolding of a Laravel App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                    
+                    Section 8.2: Service Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.html">
+            
+                    
+                    Section 8.3: Facades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                    
+                    Section 8.4: The Rest
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/">
+            
+                    
+                    Chapter 9: Vue.js 3 as a Frontend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.html">
+            
+                    
+                    Section 9.1: State Management in Vue.js 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                <a href="../../part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/">
+            
+                    
+                    Chapter 10: Monolothic Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 5: Conclusion</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                <a href="../../part_5_conclusion/chapter_11_takeaways/">
+            
+                    
+                    Chapter 11: Takeaways
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                <a href="../../part_5_conclusion/chapter_12_general_conclusion/">
+            
+                    
+                    Chapter 12: General Conclusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part 6: Appendix</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../part_6_appendix/chapter_13_essential_concepts/">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/">
+            
+                    
+                    Chapter 13: Essential Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../../part_6_appendix/chapter_13_essential_concepts/1_closures.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/1_closures.html">
+            
+                    
+                    Section 13.1: Closures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../../part_6_appendix/chapter_13_essential_concepts/2_coroutines.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/2_coroutines.html">
+            
+                    
+                    Section 13.2: Coroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../../part_6_appendix/chapter_13_essential_concepts/3_generators.html">
+            
+                <a href="../../part_6_appendix/chapter_13_essential_concepts/3_generators.html">
+            
+                    
+                    Section 13.3: Generators
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../part_6_appendix/chapter_14_concurrency/">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/">
+            
+                    
+                    Chapter 14: Concurrency
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../../part_6_appendix/chapter_14_concurrency/1_concurrency_overview.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/1_concurrency_overview.html">
+            
+                    
+                    Section 14.1: Concurrency Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../../part_6_appendix/chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/2_asynchronous_runtimes.html">
+            
+                    
+                    Section 14.2: Asynchronous Runtimes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../../part_6_appendix/chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                <a href="../../part_6_appendix/chapter_14_concurrency/3_concurrency_in_php.html">
+            
+                    
+                    Section 14.3: Concurrency in PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../part_6_appendix/chapter_15_webography/">
+            
+                <a href="../../part_6_appendix/chapter_15_webography/">
+            
+                    
+                    Chapter 15: Webography
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Section 4.2: Web Server</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="42-web-server">4.2 Web Server</h2>
+<p>Now let&apos;s break down what actually happens inside the server. From now on we are going to omit the term server as it is a broad term, and we are going to use more specific terms like: <strong>physical server</strong>, <strong>web server</strong>, <strong>application server</strong> ...</p>
+<p>The part that is actually responsible for listening to the incoming HTTP Requests and generating HTTP Responses is the <strong>Web Server</strong>.</p>
+<p>A <strong>Web Server</strong> is a computer software that accepts HTTP requests and is able to serve back HTTP responses. So more specifically a <strong>Web Server</strong> is a <strong>Process</strong> that operates on top of an <strong>Operating System</strong>.
+The <strong>OS</strong> is installed on a <strong>Physical Server</strong>.</p>
+<p>So a <strong>browser</strong> requesting a <strong>web application</strong> is more accurately represented like the following:</p>
+<h2 id><img src="img_4.png" alt="img_4.png"></h2>
+<p><strong>A Web Server&apos;s Primary Function</strong>: is to handle HTTP requests and responses. It serves <strong>static</strong> content like HTML, CSS, Javascript and images to the client&apos;s browser.</p>
+<p>So an even more accurate representation of a <strong>browser</strong> requesting a <strong>Web Server</strong> is the following:</p>
+<p><img src="img_5.png" alt="img_5.png"></p>
+<hr>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Web Servers allow you to specify the location of the <strong>Application Source Code</strong> in their configuration. </p>
+<p>Example:</p>
+<p>in <strong>Apache HTTP Server</strong> you specify the location using the <code>DocumentRoot</code> directive inside the <code>httpd.conf</code> file. </p>
+<p>Like the following example: <code>DocumentRoot /var/www/html</code></p>
+<p>It&apos;s important to note that Web Servers like Apache require appropriate file system permissions to access the files it serves.</p>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><h3 id="web-server-modules">Web Server Modules</h3>
+<p>Web Server <strong>modules</strong> are extensions that add functionality to the Web Server. They allow you to customize and extend the capabilities of the server without modifying the core code.</p>
+</div></div><p></p>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Apache HTTP Server has a modular architecture, which means that features are separated into individual modules that can be loaded or unloaded as needed. This makes Apache highly flexible and adaptable to various use cases.</p>
+<p>Apache modules can be classified as the following: <strong>Core Modules</strong>, <strong>Shared Modules</strong>, <strong>MPMs (Multi-Processing Modules)</strong>, <strong>Handler Modules</strong>, <strong>Filter Modules</strong>, <strong>Security Modules</strong>, <strong>Rewrite and Alias Modules</strong>, <strong>Proxy Modules</strong>, <strong>Logging and Monitoring Modules</strong>, <strong>Authentication and Authorization Modules</strong>.</p>
+<p>To enable or disable modules, you can use the <code>a2enmod</code> and <code>a2dismod</code> commands (on Debian-based systems) or edit the Apache configuration files directly.</p>
+</div></div><p></p>
+<h3 id="mpm-multi-processing-module">MPM Multi-Processing Module</h3>
+<p>A web application must be able to handle multiple requests simultaneously. Therefore, Apache HTTP Server version 2.0 introduced the <strong>MPM (Multi-Processing Module)</strong></p>
+<p>Prior to Apache 2.0, the Apache server used a single process model called the <code>mpm_prefork</code> module.</p>
+<h4 id="mpms">MPMs</h4>
+<p>There are different MPMs available in Apache, each implementing different strategies for managing concurrency. Some commonly used MPMs include:</p>
+<ul>
+<li><strong>Prefork MPM</strong>: This MPM follows a non-threaded approach and creates multiple worker processes, each capable of handling a single connection at a time. It provides excellent stability and isolation between processes but can consume more memory due to the overhead of separate processes.</li>
+</ul>
+<ul>
+<li><strong>Worker MPM</strong>: The Worker MPM is a hybrid model that combines processes and threads. It creates multiple worker processes, each containing multiple threads. Each thread handles an individual connection, allowing for higher concurrency and reduced memory usage compared to the Prefork MPM.</li>
+</ul>
+<ul>
+<li><strong>Event MPM</strong>: The Event MPM is similar to the Worker MPM but introduces a more efficient event-driven architecture. It utilizes a small number of threads to handle a large number of connections, using event notifications to efficiently manage concurrency and reduce resource usage.</li>
+</ul>
+<hr>
+<p>The following is a diagram that represents different implementations of the MPM and how they differ.</p>
+<p><img src="img_6.png" alt="img_6.png"></p>
+<hr>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>For Apache 2.2 and earlier versions, the default MPM is <strong>mpm_prefork</strong>.</p>
+<p>Starting from Apache 2.4, the default MPM is <strong>mpm_event</strong>.</p>
+</div></div><p></p>
+<hr>
+<h3 id="mpmprefork">mpm_prefork</h3>
+<p>The following diagram illustrates the flow of HTTP requests and responses in the Apache HTTP Server. It shows that the &quot;httpd Apache Listener&quot; functionality receives HTTP requests from browser clients, forwards them to the &quot;Request Queue&quot;, and then the worker processes handle these requests. Once a worker process generates a response, it forwards it back to the &quot;httpd Apache Listener&quot;, which then sends the HTTP response back to the browser client.</p>
+<p>This diagram visually represents the interaction between browser clients, the Apache HTTP Server, and its components, including the Master Process, Multi-Processing Module (MPM), Request Queue, and Worker Processes. The red links indicate the path of HTTP requests and responses.</p>
+<p><img src="img_7.png" alt="img_7.png"></p>
+<h3 id="mpmworker">mpm_worker</h3>
+<p><img src="img_8.png" alt="img_8.png"></p>
+<p>The <code>mpm_worker</code> module uses multiple worker processes, each of which can handle many threads, with each thread handling one connection at a time. This model allows the server to handle multiple requests concurrently with fewer resources than a process-based model.</p>
+<h3 id="mpmevent">mpm_event</h3>
+<p><img src="img_9.png" alt="img_9.png"></p>
+<p>In the context of the <code>mpm_event</code> module in Apache HTTP Server, &quot;supporting threads&quot; refers to threads that are used to handle certain parts of the request/response process, freeing up the main threads to handle other requests.</p>
+<p>In a typical web server setup, a &quot;normal&quot; thread (or worker thread) would handle the entire lifecycle of a client request, from accepting the connection, processing the request, sending the response, and finally closing the connection. This means that while the thread is waiting for network I/O (such as waiting for the full request to arrive or for the response to be fully sent), it can&apos;t do anything else.</p>
+<p>The <code>mpm_event</code> module improves upon this by using a different approach. When a client connection is first accepted, it&apos;s handled by a worker thread just like in <code>mpm_worker</code>. However, once the initial request has been processed and the response is being sent (or if the connection is simply being kept open for possible future requests), the connection is handed off to a separate &quot;supporting&quot; thread. This allows the worker thread to move on and handle other incoming requests.</p>
+<p>The supporting threads are part of a separate thread pool and are responsible for handling these &quot;keep-alive&quot; connections, waiting for new requests to come in on these connections, and if a new request does come in, the connection is passed back to a worker thread for processing.</p>
+<p>This approach allows <code>mpm_event</code> to handle a larger number of concurrent connections, as the worker threads are freed up to handle new requests instead of being tied up with long-lived connections. It&apos;s particularly beneficial for workloads where many connections are in the keep-alive state, waiting for new requests.</p>
+<hr>
+<section style="background-color: aliceblue; padding: 20px; border-radius: 10px">
+
+<h3 style="color: grey; font-weight: 700;" id="configuration">Configuration</h3>
+
+</section>
+
+<p>The number of worker processes and threads created by Apache HTTP Server can be configured in the Apache configuration file, typically named <code>httpd.conf</code> or <code>apache2.conf</code>, depending on your system.</p>
+<p>The specific directives you need to modify depend on the Multi-Processing Module (MPM) you are using.</p>
+<p>For the <code>mpm_worker</code> and <code>mpm_event</code> modules, you can use the following directives:</p>
+<ul>
+<li><p><code>ServerLimit</code>: This directive sets the maximum configured value for <code>MaxRequestWorkers</code> for the lifetime of the Apache process.</p>
+</li>
+<li><p><code>MaxRequestWorkers</code>: This directive sets the limit on the total number of simultaneous requests to be served. For <code>mpm_worker</code> and <code>mpm_event</code>, this is the total number of worker threads (i.e., the product of <code>ServerLimit</code> and <code>ThreadsPerChild</code>).</p>
+</li>
+<li><p><code>ThreadsPerChild</code>: This directive sets the number of threads created by each worker process.</p>
+</li>
+</ul>
+<p>Example of an Apache configuration file:</p>
+<pre><code class="lang-apache"><span class="hljs-section">&lt;IfModule mpm_worker_module&gt;</span>
+    <span class="hljs-attribute">ServerLimit</span>          <span class="hljs-number">16</span>
+    <span class="hljs-attribute">StartServers</span>         <span class="hljs-number">4</span>
+    <span class="hljs-attribute">MinSpareThreads</span>      <span class="hljs-number">25</span>
+    <span class="hljs-attribute">MaxSpareThreads</span>      <span class="hljs-number">75</span> 
+    <span class="hljs-attribute">ThreadsPerChild</span>      <span class="hljs-number">25</span>
+    <span class="hljs-attribute">MaxRequestWorkers</span>    <span class="hljs-number">400</span>
+    <span class="hljs-attribute">MaxConnectionsPerChild</span> <span class="hljs-number">10000</span>
+<span class="hljs-section">&lt;/IfModule&gt;</span>
+</code></pre>
+<p>In this example: </p>
+<ul>
+<li>Apache would start with 4 worker processes (due to <code>StartServers</code>), </li>
+<li>each with 25 threads (<code>ThreadsPerChild</code>). </li>
+<li>It would allow up to 16 worker processes (<code>ServerLimit</code>).</li>
+<li>and a maximum of 400 threads (<code>MaxRequestWorkers</code>)</li>
+<li>which means that if needed, Apache could scale up to 16 processes each with 25 threads to handle heavy load.</li>
+</ul>
+<section style="background-color: aliceblue; padding: 20px; border-radius: 10px">
+
+These configuration should be adjusted according to the server&apos;s hardware capabilities and the nature of your workload. 
+
+</section>
+
+<p></p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><h4 id="terminating-workers-processthreads">Terminating workers (process/threads)</h4>
+<p>worker processes/threads will be terminated in case if they crash. But they will also be terminated in the following scenarios: </p>
+<ul>
+<li><p>Idle Timeout: For the <code>mpm_worker</code> and <code>mpm_event modules</code>, the <code>MaxSpareThreads</code> directive sets an upper limit on the number of idle worker threads. If there are more idle threads than this limit, some of the idle threads will be terminated.</p>
+</li>
+<li><p>System Conditions: Worker processes or threads may also be terminated due to system conditions, such as out-of-memory situations, or system shutdown or reboot.</p>
+</li>
+</ul>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><h4 id="creating-workers-processthreads">creating workers (process/threads)</h4>
+<p><strong>MaxConnectionsPerChild</strong> Limit Reached: For the <code>mpm_prefork</code>, <code>mpm_worker</code>, and <code>mpm_event</code> modules, the <code>MaxConnectionsPerChild</code> configuration directive sets a limit on the number of requests that a worker process should handle before it is terminated and a new process is created. This can be useful for mitigating memory leaks in third-party modules or in the Apache server itself. When a worker process reaches this limit, it will not accept new connections and will terminate after finishing its current request.</p>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>The maximum number of requests that a worker process or thread can handle in Apache HTTP Server is determined by several factors and configurations:</p>
+<ul>
+<li><strong>Web Server Configuration:</strong><ul>
+<li>MaxConnectionsPerChild</li>
+<li>ThreadsPerChild</li>
+<li>MaxRequestWorkers</li>
+<li>KeepAlive and MaxKeepAliveRequests</li>
+<li>LimitRequestLine and LimitRequestFieldSize</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>OS Configuration:</strong><ul>
+<li>File Descriptors: limit on the total number of file descriptors</li>
+<li>TCP/IP Stack Settings</li>
+<li>Network Interface Settings</li>
+<li>Process Limits</li>
+<li>Memory Management</li>
+<li>Security Limits</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Hardware Resources:</strong> <ul>
+<li>CPU</li>
+<li>Memory(RAM)</li>
+<li>Disk I/O: SSD - HDD</li>
+<li>Network Bandwidth</li>
+<li>Hardware Concurrency: number of CPUs and number of CPU cores.</li>
+</ul>
+</li>
+</ul>
+</div></div><p></p>
+<h3 id="dynamic-content">Dynamic Content</h3>
+<p>More than often we need our web application to provide content based on the specific user&apos;s provided data.</p>
+<p>It is impossible to store all possible combinations of all the possible users that may interact with our application as static content since this would result in an infinite amount of static files.</p>
+<p>To solve this problem we need to <strong>generate</strong> the file (for example a html page) based on data that the user provided. If this data changes the generated content will change accordingly and hence the name <strong>dynamic content</strong> as opposed to <strong>static content</strong> that never changes.</p>
+<p>To perform the <strong>generation</strong> of a <strong>dynamic content</strong> a <strong>script</strong> needs to be executed. This <strong>script</strong> specifies how this content is going to be generated.</p>
+<p>As said before the <strong>primary function</strong> of a <strong>Web Server</strong> is to serve <strong>static</strong> assets. But <strong>Web Servers</strong>&apos; functionality can be extended through the use of <strong>modules</strong>.</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p><strong>Handler Modules</strong>: These modules handle specific types of content. For example, <strong>mod_php</strong> handles <strong>PHP scripts</strong>, <code>mod_cgi</code> handles CGI scripts, and <code>mod_dav</code> handles <code>WebDAV</code> publishing.</p>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p><strong>mod_php</strong>: is a module for the Apache HTTP server that enables the server to process PHP scripts. It is one of the ways to run PHP scripts on a web server.</p>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Other than <strong>mod_php</strong> there is also:</p>
+<p><strong>mod_python</strong>: is an Apache HTTP Server module that allows the execution of Python code within the Apache web server process. The <strong>mod_python</strong> is deprecated and now replaced with <strong>mod_wsgi</strong></p>
+<p><strong>mod_jserv</strong>: also known as Apache JServ Protocol (AJP), is an Apache module designed to enable communication between the Apache HTTP Server and Java applications running in a separate Java Virtual Machine (JVM). However, <strong>mod_jserv</strong> is an older technology and has been largely replaced by the Apache Tomcat Connector (mod_jk) and the Apache Tomcat Native Connector (mod_proxy_ajp) for integrating Apache with Java applications</p>
+</div></div><p></p>
+<hr>
+<h3 id="using-modphp-with-mpmprefork">using mod_php with mpm_prefork</h3>
+<p>The following diagram illustrates the workflow of an Apache Web Server configured to use <strong>mod_php</strong> to execute PHP scripts and <strong>mpm_prefork</strong> to manage concurrency.</p>
+<p><img src="img_10.png" alt="img_10.png"></p>
+<ol>
+<li>When the Apache HTTP Server starts up, it loads all of its configured modules, including <code>mod_php</code>. This means that the PHP interpreter becomes part of the Apache server itself.</li>
+<li>Then, when the Apache master process creates child processes (using the <code>mpm_prefork</code> module or any other Multi-Processing Module), each child process inherits all the capabilities of the Apache server, including all its loaded modules. This means that each child process includes an embedded PHP interpreter, because it&apos;s part of the Apache server that the child process is a copy of.</li>
+<li>When the worker process needs to execute a PHP script then:<ol>
+<li>The PHP Interpreter (PI) loads the PHP script into memory</li>
+<li>The PHP Interpreter (PI) executes the PHP script.</li>
+<li>The Worker Process retrieves the generated result and serves it back.</li>
+<li>The PHP Interpreter (PI) cleans the memory that it already allocated for the PHP script.</li>
+</ol>
+</li>
+</ol>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><h3 id="very-important">Very Important</h3>
+<p>Notice how the PHP script is loaded into memory, executed and then <strong>cleaned out</strong>.</p>
+<p>The PHP script can be an <strong>entire web application&apos;s business logic</strong>.</p>
+<p>For every different single HTTP request a new instance of the <strong>web application</strong> will be <strong>loaded into memory</strong>, <strong>executed</strong> and then <strong>cleaned out</strong>.</p>
+<p>Maybe the most important thing to take home from this section is that:</p>
+<p>Regardless of the Web Server implementation or its configuration: </p>
+<p>A Web application doesn&apos;t persist state between HTTP requests.</p>
+<p>The HTTP Protocol is a stateless protocol by design. That means there is no way to associate two or more different HTTP requests with each other.</p>
+<p>The only way to achieve a persistent state in a Web Application is to use services that are based on the <strong>OS System Calls</strong>.</p>
+<p>Some of those services are: Database Service, Session Service, Cache Service ...</p>
+</div></div><p></p>
+<hr>
+<h3 id="dont-use-modphp-with-mpmworkermpmevent">don&apos;t use mod_php with mpm_worker/mpm_event</h3>
+<p></p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p><strong>mod_php</strong> is not thread-safe, meaning it can have issues when run in a multi-threaded environment like the one <strong>mpm_worker</strong> or <strong>mpm_event</strong> creates. This is because PHP extensions, which <strong>mod_php</strong> relies on, may not be designed to handle simultaneous threads and can behave unpredictably.</p>
+<p>So, if you switch Apache to use <strong>mpm_worker</strong> or <strong>mpm_event</strong>, it&apos;s generally recommended not to use <strong>mod_php</strong>. Instead, you would typically use a different method to process PHP scripts, such as <strong>FastCGI</strong> using <strong>mod_fcgid</strong> or <strong>mod_proxy_fcgi</strong> with <strong>PHP-FPM (FastCGI Process Manager)</strong></p>
+<p>We will explain more about <strong>FastCGI</strong> and <strong>PHP-FPM</strong> later.</p>
+</div></div><p></p>
+<hr>
+<p>The approach of using the <strong>mod_php Script Execution Module</strong> has its <strong>Pros</strong> and <strong>Cons</strong>. Let us analyse them.</p>
+<h4 id="pros">Pros:</h4>
+<ul>
+<li><strong>Ease Of Integration</strong>: mod_php integrates tightly with Apache. Once enabled, PHP scripts can be executed without additional setup, making it convenient for developers.</li>
+</ul>
+<ul>
+<li><strong>Performance</strong>: mod_php is highly optimized for performance because it runs PHP code directly within the Apache server process. This eliminates the need for launching separate PHP processes for each request, resulting in faster execution compared to CGI or FastCGI approaches.</li>
+</ul>
+<h4 id="cons">Cons:</h4>
+<ul>
+<li><strong>Limited scalability</strong>: mod_php is not ideal for high-traffic websites or applications with a heavy load. As each Apache worker process handles both serving static files and executing PHP scripts, scaling PHP applications may require scaling the entire Apache server, which can be resource-intensive.</li>
+</ul>
+<ul>
+<li><strong>Lack of process isolation</strong>: Since mod_php runs PHP code within the Apache process, there is no strict process isolation. If a PHP script crashes or consumes excessive resources, it can affect the stability and performance of the entire server.</li>
+</ul>
+<ul>
+<li><strong>Security risks</strong>: Running PHP within the Apache process raises potential security concerns. If a PHP script has a vulnerability, it could potentially affect the entire server and compromise its security. Careful consideration and security measures are necessary to mitigate these risks.</li>
+</ul>
+<h2 id="modcgi">mod_cgi</h2>
+<h3 id="modcgi-with-modprefork">mod_cgi with mod_prefork</h3>
+<p><img src="img_11.png" alt="img_11.png"></p>
+<p>When Apache is configured to use <code>mod_cgi</code> and a worker process receives a HTTP request that requires the execution of a PHP script, the worker process will handle the request in the following way:</p>
+<ol>
+<li>The worker process will start a separate CGI process. This is a completely new process, separate from the worker process.</li>
+<li>The worker process passes the request information to the CGI process. This information includes the request method, the URL, any query string parameters, headers, and the body of the request, if applicable.</li>
+<li>The CGI process will then load the PHP interpreter, which will execute the PHP script. The PHP script has access to the request information via predefined variables.</li>
+<li>The PHP script generates a response, which is sent back to the CGI process. This response typically includes HTTP headers and a body, which is the output of the PHP script.</li>
+<li>The CGI process sends this response back to the worker process.</li>
+<li>The worker process then sends the response back to the client.</li>
+<li>After the response is sent, the CGI process is terminated. This means that for each request that requires the execution of a PHP script, a new CGI process is created and terminated.</li>
+</ol>
+<hr>
+<h3 id="modcgi-with-modworkermodevent">mod_cgi with mod_worker/mod_event</h3>
+<p><img src="img_12.png" alt="img_12.png"></p>
+<p>Steps:</p>
+<ol>
+<li>The Apache master process starts and initializes the <code>mpm_worker</code> or <code>mpm_event</code> module.</li>
+<li>The <code>mpm_worker</code> or <code>mpm_event</code> module creates a fixed number of worker processes. Each of these worker processes can handle many threads, and each thread can handle one connection at a time.</li>
+<li>When a request comes in that requires the execution of a PHP script (like &quot;public/index.php&quot;), one of the worker threads within a worker process is assigned to handle the request.</li>
+<li>This worker thread accesses the &quot;public/index.php&quot; file, reads its content, and if Apache is configured to use <code>mod_cgi</code>, it will spawn a separate CGI process to execute the PHP script.</li>
+<li>The CGI process executes the PHP script and generates a response, which is sent back to the worker thread.</li>
+<li>The worker thread then sends the response back to the client.</li>
+</ol>
+<hr>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><h3 id="modcgi-caveat">mod_cgi caveat</h3>
+<p>This is part of the reason why <code>CGI</code> can be less efficient than other methods like <code>mod_php</code> or <code>mod_fastcgi</code>. Each new request that requires script execution results in the creation of a new process, which can be resource-intensive. Once the script execution is complete and the response is sent, the CGI process is terminated.</p>
+</div></div><p></p>
+<hr>
+<h3 id="fastcgi">FastCGI</h3>
+<h4 id="why-to-use-fastcgi-over-cgi">Why to use FastCGI over CGI?</h4>
+<p><code>mod_cgi</code> creates a new process for each request that requires script execution. This can be resource-intensive, especially under heavy load. In contrast, <code>mod_fastcgi</code> uses a pool of persistent processes (or threads, depending on the configuration) that can handle multiple requests over their lifetime. This can lead to significant performance improvements, as the overhead of process creation and destruction is avoided for each request.</p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p><strong>Communication Protocol</strong>: <code>mod_cgi</code> uses the standard CGI (Common Gateway Interface) protocol to communicate between the Apache server and the CGI process. This involves setting environment variables and using standard input and output. <code>mod_fastcgi</code>, on the other hand, uses the FastCGI protocol, which is a binary protocol designed for efficiency. FastCGI processes can also communicate with the server over a network, which is not possible with standard CGI.</p>
+<p>Because the FastCGI communication protocol uses sockets, the FastCGI application could be running on the same server or on a different server, depending on the configuration.</p>
+<p><strong>Compatibility</strong>: <code>mod_cgi</code> can be used with any scripting language that can read from standard input, write to standard output, and access environment variables. <code>mod_fastcgi</code> requires the scripting language to have FastCGI support, which is common but not universal.</p>
+</div></div><p></p>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Even if the FastCGI service is running on the same server as the Apache web server, they still communicate via sockets.</p>
+<p>In the context of web servers and FastCGI, a socket is a method for inter-process communication (IPC). It&apos;s a way for different processes to send data back and forth, even if they&apos;re running on the same machine.</p>
+<p>If the FastCGI service is running on the same machine as the Apache server, they would typically use Unix domain sockets for communication. Unix domain sockets are a feature of Unix-like operating systems that allow for high-performance communication between processes on the same machine.</p>
+<p>If the FastCGI service is running on a different machine, they would use network sockets (typically TCP/IP sockets) for communication. Network sockets allow for communication between processes on different machines over a network.</p>
+<p>So, regardless of whether the FastCGI service is on the same machine or a different machine, the Apache server and the FastCGI service communicate via sockets. The type of socket (Unix domain socket or network socket) depends on where the FastCGI service is running.</p>
+</div></div><p></p>
+<p>The following diagram illustrates <strong>mod_worker</strong> with <strong>mod_fastcgi</strong></p>
+<p><img src="img_13.png" alt="img_13.png"></p>
+<ol>
+<li>The Apache master process spawns worker processes as per the configuration of the <code>mpm_worker</code> module.</li>
+<li>Each of these worker processes can spawn multiple threads to handle incoming requests.</li>
+<li>When a worker thread receives a request that involves executing a PHP script, it communicates with the FastCGI Process Manager (FPM) using the FastCGI protocol. This communication is facilitated by the <code>mod_fastcgi</code> module.</li>
+<li>The FPM assigns a FastCGI process (which has an embedded PHP interpreter) to handle the request. The PHP script is executed within this FastCGI process, and the result is sent back to the worker thread.</li>
+<li>The worker thread then sends the result back to the client.</li>
+</ol>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>The number of FastCGI processes that are created and how they are managed can be configured in the FPM configuration file. This allows for fine-tuning based on the expected load and available resources of the server.</p>
+</div></div><p></p>
+<p>The following diagram is a simplified version, that illustrates the interaction between the Apache Web Server and the FastCGI Process Manager (FPM):</p>
+<p><img src="img_14.png" alt="img_14.png"></p>
+<hr>
+<h3 id="php-fpm">PHP-FPM</h3>
+<p>PHP-FPM, which stands for &quot;PHP FastCGI Process Manager&quot;, is an alternative PHP FastCGI implementation with some additional features useful for sites of any size, especially busier sites. It&apos;s designed to handle some of the shortcomings of other FastCGI implementations with respect to PHP.</p>
+<p>The following are some key points about PHP-FPM:</p>
+<ol>
+<li><strong>Process Management</strong>: PHP-FPM maintains a pool of worker processes ready to serve PHP scripts. This pool can be dynamically managed, meaning PHP-FPM can create or kill worker processes based on demand. This is more efficient than creating a new process for each request, as some other models do.</li>
+<li><strong>Adaptive Process Spawning</strong>: PHP-FPM can adjust the number of worker processes it spawns based on the load on the server. This helps optimize resource usage.</li>
+<li><strong>Performance</strong>: PHP-FPM is designed to be high performance, and it can serve PHP scripts faster than traditional CGI-based methods.</li>
+<li><strong>Compatibility</strong>: PHP-FPM works well with popular web servers like Nginx and Apache.</li>
+<li><strong>Emergency Restart</strong>: PHP-FPM can automatically restart if it encounters an unrecoverable error, which can help maintain availability.</li>
+</ol>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>When running multiple PHP applications on a single Apache HTTP Server, you have a couple of options with PHP-FPM:</p>
+<ol>
+<li><strong>Single PHP-FPM pool</strong>: You can run all your applications through a single PHP-FPM pool. In this case, PHP-FPM manages all the applications. However, all applications would share the same pool of worker processes. This means they would also share the same user and group, and the same performance settings. This could potentially lead to security and resource allocation issues if one application is busier or requires different settings than the others.</li>
+<li><strong>Multiple PHP-FPM pools</strong>: You can create a separate PHP-FPM pool for each application. This is the more flexible and secure approach. Each application would have its own pool of worker processes, and you could set different performance settings and run each pool under a different user and group. This isolates the applications from each other, which can be beneficial for security and resource allocation.</li>
+</ol>
+</div></div><p></p>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Note here how the PHP-FPM as a separate process is responsible for processing business the business logic of the application. Which makes the Apache HTTP Server play the role of a load balancer and reverse proxy and delegates the role of processing the business logic to a separate process. This separation of concerns is what differentiates a Web Server from an Application Server    </p>
+</div></div><p></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1_request_response_cycle.html" class="navigation navigation-prev " aria-label="Previous page: Section 4.1: Request Response Cycle">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="3_application_server.html" class="navigation navigation-next " aria-label="Next page: Section 4.3: Application Server">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Section 4.2: Web Server","level":"4.1.2","depth":2,"next":{"title":"Section 4.3: Application Server","level":"4.1.3","depth":2,"path":"part_3_technical_design_and_implementation/chapter_4_client_server_architecture/3_application_server.md","ref":"part_3_technical_design_and_implementation/chapter_4_client_server_architecture/3_application_server.md","articles":[]},"previous":{"title":"Section 4.1: Request Response Cycle","level":"4.1.1","depth":2,"path":"part_3_technical_design_and_implementation/chapter_4_client_server_architecture/1_request_response_cycle.md","ref":"part_3_technical_design_and_implementation/chapter_4_client_server_architecture/1_request_response_cycle.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"livereload":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_3_technical_design_and_implementation/chapter_4_client_server_architecture/2_web_server.md","mtime":"2023-09-04T21:49:22.412Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-04T22:09:34.291Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

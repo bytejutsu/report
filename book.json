@@ -12,8 +12,7 @@
     "chapter-fold",
     "hide-published-with",
     "hints",
-    "theme-creative",
-    "mermaid-newface"
+    "theme-creative"
   ],
   "pdf": {
     "pageNumbers": true,
@@ -26,9 +25,6 @@
     "asciidoc": {
       "numbered": {},
       "chapter-fold":{},
-      "mermaid-newface": {
-        "theme": "neutral"
-      },
       "hints": {
         "info": "fa fa-info-circle",
         "tip": "fa fa-mortar-board",

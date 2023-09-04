@@ -6,14 +6,7 @@ In any web application, there are tasks that require a significant amount of tim
 
 Background jobs in Laravel allow you to defer the processing of a time-consuming task, such as sending an email, until a later time. This significantly speeds up web requests to your application as the user doesn't have to wait for these tasks to complete. Instead, these tasks are handled in the background, allowing the application to continue processing other tasks.
 
-```mermaid
-graph TB
-  U["User"] -- "Dispatches Job" --> DJ["Job Dispatcher"]
-  DJ -- "Adds Job to" --> JT["Jobs Table"]
-  DJ -- "Adds Job to" --> TQ["Task Queue"]
-  WT["Worker Thread"] -- "Picks up Job from" --> TQ
-  WT -- "Executes Job" --> EJ["Executed Job"]
-```
+![img_8.png](img_8.png)
 
 ### Asynchronous Execution of Background Jobs
 
@@ -23,19 +16,7 @@ When a job is dispatched in Laravel, it's stored in a jobs table and then added 
 
 Worker threads, which are separate processes, are responsible for picking up and executing jobs from this queue. These worker threads run in the background, hence the term "background jobs". This asynchronous processing allows the main application to continue processing other tasks without waiting for the job to complete.
 
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant DJ as Job Dispatcher
-  participant JT as Jobs Table
-  participant TQ as Task Queue
-  participant WT as Worker Thread
-  U->>DJ: Dispatches Job
-  DJ->>JT: Adds Job to Jobs Table
-  DJ->>TQ: Adds Job to Task Queue
-  WT->>TQ: Picks up Job from Task Queue
-  WT->>WT: Executes Job
-```
+![img_7.png](img_7.png)
 
 ### Job Queues 
 
@@ -43,34 +24,13 @@ In Laravel, a job queue is an abstract concept that can be implemented in variou
 
 Message queues are services that implement a priority queue. They are designed to handle high traffic and to decouple your application, allowing for efficient management of jobs. Laravel supports different types of queues, including database, Redis, and various message queue services like RabbitMQ, AWS SQS, etc.
 
-```mermaid
-classDiagram
-  Queue <|.. DatabaseQueue
-  Queue <|.. RedisQueue
-  Queue <|.. RabbitMQ
-  Queue <|.. AWSSQS
-```
+![img_6.png](img_6.png)
 
 ### Job Events
 
 Job events in Laravel provide hooks into the Laravel queue's job processing system. These events, such as `Queue::before`, `Queue::after`, and `Queue::failing`, allow you to perform actions before a job is processed, after it has processed, or when a job fails. This can be particularly useful for debugging or logging purposes.
 
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant DJ as Job Dispatcher
-  participant Q as Queue
-  participant JE as Job Events
-  participant WT as Worker Thread
-  U->>DJ: Dispatches Job
-  DJ->>Q: Adds Job to Queue
-  Q->>JE: Triggers Queue::before Event
-  WT->>Q: Picks up Job from Queue
-  WT->>WT: Executes Job
-  Q->>JE: Triggers Queue::after Event
-  Note over WT,JE: If Job Fails
-  Q->>JE: Triggers Queue::failing Event
-```
+![img_5.png](img_5.png)
 
 {% hint style="tip" %}
 

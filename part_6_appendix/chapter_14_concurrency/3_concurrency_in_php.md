@@ -77,10 +77,7 @@ As of PHP 7.4, the **pthreads** extension is no longer maintained and has been s
 
 The following is a multi-threading in PHP example using the **parallel** extension
 
-```php
-
-
-
+```PHP
 // Check if the parallel extension is loaded
 if (!extension_loaded('parallel')) {
     exit('The parallel extension is not installed');
@@ -104,26 +101,9 @@ $future1->value();
 $future2->value();
 
 echo "All threads have completed.\n";
-
-
-
 ```
 
-```mermaid
-
-sequenceDiagram
-Participant Main as Main Thread
-Participant Runtime1 as Worker Thread 1
-Participant Runtime2 as Worker Thread 2
-Main->>Runtime1: Start
-Main->>Runtime2: Start
-Runtime1->>Runtime1: Run function
-Runtime2->>Runtime2: Run function
-Runtime1-->>Main: Complete
-Runtime2-->>Main: Complete
-Main->>Main: Continue with rest of script
-
-```
+[![](https://mermaid.ink/img/pako:eNptkUFrwzAMhf-K8Dk9JEcfetl2LIy1MBi-CFtZzGI5c2TGKP3vc9omLFtOlp-_Jxm9s7LRkdJqpM9MbOnR43vCYPgZk3jrB2SBA3oGHG_nqUuEbg28ZBYfqJ6g15g-KN0xqDfB5j_YGJ7a7_b7uZmGoxTrX71Z9BlceUoFbWYrPvKCNCv7JlLvCjNN0vAQw9CT0C_7xtv9V7NcQM4EX146SDQKxBZGm_wgqlKBUkDvyp7PhgGMko4CGaVL6ajF3ItRhi8FxSzx-M1WaUmZKpUHhzLHonSL_bioT85LTItI1-vhFug110qVrb_FOBsvP2cGr9g?type=png)](https://mermaid.live/edit#pako:eNptkUFrwzAMhf-K8Dk9JEcfetl2LIy1MBi-CFtZzGI5c2TGKP3vc9omLFtOlp-_Jxm9s7LRkdJqpM9MbOnR43vCYPgZk3jrB2SBA3oGHG_nqUuEbg28ZBYfqJ6g15g-KN0xqDfB5j_YGJ7a7_b7uZmGoxTrX71Z9BlceUoFbWYrPvKCNCv7JlLvCjNN0vAQw9CT0C_7xtv9V7NcQM4EX146SDQKxBZGm_wgqlKBUkDvyp7PhgGMko4CGaVL6ajF3ItRhi8FxSzx-M1WaUmZKpUHhzLHonSL_bioT85LTItI1-vhFug110qVrb_FOBsvP2cGr9g)
 
 - **Generators and Coroutines**: PHP 5.5 introduced generators, which allow you to write code that uses `yield` to generate a sequence of values. This can be used to implement simple coroutines, which can be used to manage concurrency.
 
@@ -138,9 +118,7 @@ Main->>Main: Continue with rest of script
 The following example illustrates single threaded coroutines using the native php generators
 
 
-```php
-
-
+```PHP
 function integers() {
     $i = 0;
     while (true) {
@@ -154,15 +132,11 @@ for ($i = 0; $i < 5; $i++) {
     echo $generator->current(), "\n";
     $generator->next();
 }
-
-
 ```
 
 The following example illustrates concurrent coroutines using the swoole php extension
 
-```php
-
-
+```PHP
 Swoole\Coroutine::create(function () {
     $cid = Swoole\Coroutine::getCid();
     echo "Start coroutine $cid\n";
@@ -182,17 +156,13 @@ Swoole\Coroutine::create(function () {
 });
 
 echo "End of script\n";
-
-
 ```
 
 - **Asynchronous Programming**: Asynchronous programming allows you to perform long-running tasks, such as I/O operations, without blocking the execution of the rest of your code. Libraries like ReactPHP, Amp, and Swoole provide tools for writing asynchronous code in PHP. Promises and futures are constructs used in concurrent programming to represent the result of a computation that may not have completed yet. Libraries like Guzzle's promises or ReactPHP's promises can be used to manage concurrency in PHP.
 
 example of asynchronous operations using **reactPHP** extension
 
-```php
-
-
+```PHP
 require 'vendor/autoload.php';
 
 use React\EventLoop\Factory;
@@ -212,15 +182,11 @@ $coroutine = Coroutine\create($asyncFunction(1.0));
 echo "This will be output immediately.\n";
 
 $loop->run();
-
-
 ```
 
 The following is the same example but using the **amphp** extension
 
-```php
-
-
+```PHP
 require 'vendor/autoload.php';
 
 use Amp\Loop;
@@ -235,8 +201,6 @@ Loop::run(function () {
 
     echo "This will be output immediately.\n";
 });
-
-
 ```
 
 {% hint style="tip" %}

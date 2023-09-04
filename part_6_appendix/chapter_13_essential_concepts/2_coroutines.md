@@ -46,7 +46,7 @@ In asynchronous programming coroutines are just functions in the main thread tha
 
 #### a coroutine in javascript (in a javascript runtime)
 
-```
+```javascript
 let promise = new Promise((resolve, reject) => {
     setTimeout(() => resolve("Promise resolved!"), 1000);
 });
@@ -64,8 +64,7 @@ coroutine();
 
 #### a coroutine in php using the swoole extension
 
-```
-
+```php
 use Swoole\Coroutine;
 
 Coroutine\run(function () {
@@ -81,5 +80,4 @@ Coroutine\run(function () {
 
     echo $client->body;
 });
-
 ```

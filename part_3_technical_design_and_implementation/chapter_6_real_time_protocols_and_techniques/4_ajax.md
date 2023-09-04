@@ -27,18 +27,7 @@ Here's a basic overview of how AJAX works:
 
 The following is a diagram that shows how an AJAX Request/Response works:
 
-```mermaid
-sequenceDiagram
-    participant User as Client Browser
-    participant JS as Client JavaScript
-    participant Server as Web Server
-    User->>JS: Event (button click)
-    JS->>Server: HTTP request
-    Server->>Server: Process request
-    Server-->>JS: Send response
-    JS->>JS: Read response
-    JS-->>User: Update page
-```
+![img_5.png](img_5.png)
 
 {% hint style = "tip" %}
 
@@ -125,16 +114,7 @@ Here's a basic overview of how AJAX and polling can be used together:
 
 The following diagram shows how AJAX Polling works:
 
-```mermaid
-sequenceDiagram
-    participant Client as Client
-    participant Server as Server
-    loop Polling
-        Client->>Server: AJAX request
-        Server-->>Client: Response
-        Note over Client: Wait for interval
-    end
-```
+![img_4.png](img_4.png)
 
 This can give the **illusion** of real-time communication by keeping the client's display updated with the latest data from the server. 
 

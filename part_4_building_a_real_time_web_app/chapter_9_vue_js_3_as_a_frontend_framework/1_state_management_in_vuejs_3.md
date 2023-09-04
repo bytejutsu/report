@@ -28,7 +28,7 @@ Example:
 
 (inside script setup tags)
 
-```
+```javascript
 import { ref } from 'vue';
 const count = ref(0);
 const increment = () => { count.value++ };
@@ -62,18 +62,7 @@ const updateValue = newValue => { emit('update:value', newValue) };
 
 The following is a class diagram of a parent component and its direct child component communicating with props and events. The parent passes props **down** to the child component and the child component emits events **up** to the parent.
 
-```mermaid
-classDiagram
-  class ParentComponent {
-    -props: passed to ChildComponent
-    +handleEvent(): void
-  }
-  class ChildComponent {
-    -props: received from ParentComponent
-    +emitEvent(): void
-  }
-  ParentComponent --|> ChildComponent
-```
+[![](https://mermaid.ink/img/pako:eNptULFOxTAM_BXLE4j2BzKwPN6IhMSGsli1SyMlcZSmldCj_05aShEVk-3z-c66G3bKggY7T-P45Og9U7ARYJvhhbLEctGQNNYGbusKoE1Z02ggVY4wFIXL4DwfvG_Ww0CRvVznitzdG5jV8bpZfvX_np3ls3Ti5mrQZw3nX3YPCa7873D-vW0_H0-G2GCQHMhxTWAzt1gGCWLR1Jalp8kXizYulUpT0deP2KEpeZIGp8RUZM8MTU9-PNAru6L5AGUbn_eo19Jgovim-nO4fAE6GIhn?type=png)](https://mermaid.live/edit#pako:eNptULFOxTAM_BXLE4j2BzKwPN6IhMSGsli1SyMlcZSmldCj_05aShEVk-3z-c66G3bKggY7T-P45Og9U7ARYJvhhbLEctGQNNYGbusKoE1Z02ggVY4wFIXL4DwfvG_Ww0CRvVznitzdG5jV8bpZfvX_np3ls3Ti5mrQZw3nX3YPCa7873D-vW0_H0-G2GCQHMhxTWAzt1gGCWLR1Jalp8kXizYulUpT0deP2KEpeZIGp8RUZM8MTU9-PNAru6L5AGUbn_eo19Jgovim-nO4fAE6GIhn)
 
 ### 3. **Provide + Inject**: 
 
@@ -149,27 +138,7 @@ const increment = store.increment;
 
 The following is an example illustration of how different components nested in different levels can share a state defined in a Pinia store:
 
-```mermaid
-classDiagram
-  class PiniaStore {
-    -state: shared
-  }
-  class ComponentA {
-    -state: PiniaStore.state
-  }
-  class ComponentB {
-    -state: PiniaStore.state
-  }
-  class ComponentC {
-    -state: PiniaStore.state
-  }
-  class ComponentD {
-    -state: PiniaStore.state
-  }
-  ComponentA --|> ComponentB
-  ComponentA --|> ComponentC
-  ComponentC --|> ComponentD
-```
+[![](https://mermaid.ink/img/pako:eNqdUUsKwjAQvUqYdesBshC0dSkI7iSboZnaQJOUJF1I7d1NS22roIirZN5neMProLCSgENRo_e5wqtDLQxj48xOyig8B-uIdQPKWOoDBuLMV-hIDli_yDOrG2vIhN27fFm0GZFPxv2_xuxfY_6zcXVdmt63q9Bf2eyFzd7YHBLQ5DQqGVsYowgIFWkSwONXUoltHQQI00cptsGeb6YAHlxLCbSNjBGn3oCXWPsZPUgVr5hBGsfjVPfwJNCguVj7NPYPZ_a0ew?type=png)](https://mermaid.live/edit#pako:eNqdUUsKwjAQvUqYdesBshC0dSkI7iSboZnaQJOUJF1I7d1NS22roIirZN5neMProLCSgENRo_e5wqtDLQxj48xOyig8B-uIdQPKWOoDBuLMV-hIDli_yDOrG2vIhN27fFm0GZFPxv2_xuxfY_6zcXVdmt63q9Bf2eyFzd7YHBLQ5DQqGVsYowgIFWkSwONXUoltHQQI00cptsGeb6YAHlxLCbSNjBGn3oCXWPsZPUgVr5hBGsfjVPfwJNCguVj7NPYPZ_a0ew)
 
 ### 5. **Using Composables**: 
 
@@ -235,7 +204,7 @@ Example
 
 (inside script setup tags)
 
-```
+```javascript
 import { ref, watch } from 'vue';
 const count = ref(localStorage.getItem('count') || 0);
 watch(count, newValue => { localStorage.setItem('count', newValue) });

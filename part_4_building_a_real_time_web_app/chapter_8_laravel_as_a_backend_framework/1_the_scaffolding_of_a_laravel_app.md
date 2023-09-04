@@ -4,7 +4,7 @@
 
 The following is the code of the Laravel 10.x **index.php** file.
 
-```text
+```PHP
 
 <?php
 
@@ -78,23 +78,7 @@ First observation: the length of each comment line in each comment block is **3 
 
 The following is a sequence diagram that describes the interaction between the client, the web server, and Laravel's `index.php`:
 
-```mermaid
-sequenceDiagram
-    participant Client
-    participant WebServer as Web Server
-    participant index.php
-    Client->>WebServer: HTTP Request
-    WebServer->>index.php: Passes HTTP Request
-    activate index.php
-    index.php->>index.php: Define LARAVEL_START
-    index.php->>index.php: Check If The Application Is Under Maintenance
-    index.php->>index.php: Register The Auto Loader
-    index.php->>index.php: Run The Application
-    index.php->>WebServer: HTTP Response
-    index.php->>index.php: Terminate The Application
-    deactivate index.php
-    WebServer->>Client: HTTP Response
-```
+[![](https://mermaid.ink/img/pako:eNp9Ul1rwjAU_SuXPLv9gD4IRYUJCtJ2G4zCuGtubVh7kyWpbIj_fanVslm1T7035yOcnL0otCQRCUdfLXFBc4Vbi03OED6D1qtCGWQPs1oR-_H-lT5SsjuygK4boJ_GQMWSvh9NZfqjXu9hOh0EInjKsg0k3U3cyWk4DMBBIIINOkfuCh4Lr3bo6dJtGP_rzKlUTLCKk_hlsXpPszjJ7hJmFRWfsCwhqwhiY2pVoFeaYengOcAsrFGxJ8aQ5V2lhLbK-UA4KrVew0qjPAd3i9TypfMYPw7UGc3u_nUyso3iLrmr-pJuJfv3hfo3vbAVE9EEcVQy1GzfkXLhK2ooF1H4lVRiW_tc5HwIUAxJpD9ciMjbliaiNTKYnlopohJrN2wXUnlthyUdx3Xf52OtJyI0703rM_HwC1_lARs?type=png)](https://mermaid.live/edit#pako:eNp9Ul1rwjAU_SuXPLv9gD4IRYUJCtJ2G4zCuGtubVh7kyWpbIj_fanVslm1T7035yOcnL0otCQRCUdfLXFBc4Vbi03OED6D1qtCGWQPs1oR-_H-lT5SsjuygK4boJ_GQMWSvh9NZfqjXu9hOh0EInjKsg0k3U3cyWk4DMBBIIINOkfuCh4Lr3bo6dJtGP_rzKlUTLCKk_hlsXpPszjJ7hJmFRWfsCwhqwhiY2pVoFeaYengOcAsrFGxJ8aQ5V2lhLbK-UA4KrVew0qjPAd3i9TypfMYPw7UGc3u_nUyso3iLrmr-pJuJfv3hfo3vbAVE9EEcVQy1GzfkXLhK2ooF1H4lVRiW_tc5HwIUAxJpD9ciMjbliaiNTKYnlopohJrN2wXUnlthyUdx3Xf52OtJyI0703rM_HwC1_lARs)
 
 In this diagram:
 
@@ -533,7 +517,7 @@ $kernel = $app->make(Kernel::class);
 
 We take a look at the **./bootstrap/app.php** file:
 
-```
+```PHP
 <?php
 
 /*
@@ -607,30 +591,11 @@ Here's a breakdown of what the `app.php` does:
 
 The following is a diagram that illustrates how the `app.php` interacts with the different components in the initial bootstrapping of the application.  
 
-
-```mermaid
-sequenceDiagram
-    participant AppFile as app.php
-    participant Application as Application
-    participant HttpKernel as Http Kernel
-    participant ConsoleKernel as Console Kernel
-    participant ExceptionHandler as Exception Handler
-    AppFile->>Application: Creates new Application instance
-    Application-->>AppFile: Returns reference to Application instance
-    AppFile->>HttpKernel: use the app reference to Bind HTTP Kernel interface to Http Kernel implementation
-    AppFile->>ConsoleKernel: use the app reference to Bind Console Kernel interface to Console Kernel implementation
-    AppFile->>ExceptionHandler: use the app reference to Bind Exception Handler interface to Handler implementation
-```
+[![](https://mermaid.ink/img/pako:eNqFU8FOwzAM_ZUo540PyGESjKFJaBKCnVAvVuOySKkTEleApv07ydp1bQdbT7X97Gc_x3tZOo1SyYifDVKJjwY-AtQFifR5CGxK44FY3Hv_ZCwKiAK8v_M7_yfGmhLYOMq4gXmJXTP7ZwyENkOzJVrzErp0FJ3FM7pz_Juw-i7RZ9o1kLYYck7vE52zTevGmi8Wg26VWAYExigIv0ZTGYoMSaY--RSZtxVyLSVekZtAUQSsMGRVBbvrZboezqIo0cSUtsOs9rjQgyEt1tvtSzd_qsYYKmijAyWFqb3FGokHOziTjWS9xTeWfEw5jV1lne7mFvHF3ibjnpwTUjmTNYYajE6Pe5-bKGQiqbGQKv1qrKCxXMiCDgkKDbu3Hyql4tDgTDZep_V3tyBVBTb23pU27ELvxKO5aa_oeEwzmR7hu3OnxMMv4Ko1EQ?type=png)](https://mermaid.live/edit#pako:eNqFU8FOwzAM_ZUo540PyGESjKFJaBKCnVAvVuOySKkTEleApv07ydp1bQdbT7X97Gc_x3tZOo1SyYifDVKJjwY-AtQFifR5CGxK44FY3Hv_ZCwKiAK8v_M7_yfGmhLYOMq4gXmJXTP7ZwyENkOzJVrzErp0FJ3FM7pz_Juw-i7RZ9o1kLYYck7vE52zTevGmi8Wg26VWAYExigIv0ZTGYoMSaY--RSZtxVyLSVekZtAUQSsMGRVBbvrZboezqIo0cSUtsOs9rjQgyEt1tvtSzd_qsYYKmijAyWFqb3FGokHOziTjWS9xTeWfEw5jV1lne7mFvHF3ibjnpwTUjmTNYYajE6Pe5-bKGQiqbGQKv1qrKCxXMiCDgkKDbu3Hyql4tDgTDZep_V3tyBVBTb23pU27ELvxKO5aa_oeEwzmR7hu3OnxMMv4Ko1EQ)
 
 The following, is a diagram that shows the structure of the Laravel Service Container after the `./bootstrap/app.php` script is run.
 
-```mermaid
-graph TB
-  app_php["app"] -- "References" --> app["Application Instance"]
-  app -- "Binds as Singleton" --> http_kernel["HTTP Kernel Service"]
-  app -- "Binds as Singleton" --> console_kernel["Console Kernel Service"]
-  app -- "Binds as Singleton" --> exception_handler["Exception Handler Service"]
-```
+[![](https://mermaid.ink/img/pako:eNqdkUFLAzEQhf9KmHP7B_YgWC1URBB3TxpZhmS2G5qdhCQrSul_d3a3rXjU28zLe19I3hFMsAQV7BPGXjUbzUphjG3s45sGmTS8q_VaaXihjhKxoaxBlJvJJpbbGL0zWFxg9cC5oDgkc-Ys0Y1jmxVmVTveeyqBz4i-lNgeKDF5Qe2a5lk9zpuqKX24P5BM4Bw8_cDuFuG_PPo0FKdHtT2y9ZQEub1oardov6iwgoHSgM7Kdx6nWzSUngY5rWS01OHoiwbNJ7HiWEL9xQaqkkZawRgtFrp3KEUMUHXo81XdWldCuoo0r09Lb3N9K4jIryFcgqdvJaafug?type=png)](https://mermaid.live/edit#pako:eNqdkUFLAzEQhf9KmHP7B_YgWC1URBB3TxpZhmS2G5qdhCQrSul_d3a3rXjU28zLe19I3hFMsAQV7BPGXjUbzUphjG3s45sGmTS8q_VaaXihjhKxoaxBlJvJJpbbGL0zWFxg9cC5oDgkc-Ys0Y1jmxVmVTveeyqBz4i-lNgeKDF5Qe2a5lk9zpuqKX24P5BM4Bw8_cDuFuG_PPo0FKdHtT2y9ZQEub1oardov6iwgoHSgM7Kdx6nWzSUngY5rWS01OHoiwbNJ7HiWEL9xQaqkkZawRgtFrp3KEUMUHXo81XdWldCuoo0r09Lb3N9K4jIryFcgqdvJaafug)
 
 ### Demystifying the HTTP Kernel:
 

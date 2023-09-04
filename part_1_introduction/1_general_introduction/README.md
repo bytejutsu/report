@@ -20,11 +20,7 @@ From the top 20 most visited websites in 2023, 16 of them use real-time features
 
 These real-time features range from real-time video streaming on YouTube, to instant messaging and notifications on various platforms. Real-time updates are also crucial for e-commerce platforms and business tools.
 
-```mermaid
-pie title Top visited 20 Websites in 2023
-"Using Real-Time Features" : 80
-"Not using Real-Time Features" : 20
-```
+![img.png](img.png)
 
 ---
 

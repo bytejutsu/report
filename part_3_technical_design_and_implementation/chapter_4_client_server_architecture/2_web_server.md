@@ -9,35 +9,14 @@ The **OS** is installed on a **Physical Server**.
 
 So a **browser** requesting a **web application** is more accurately represented like the following:
 
-```mermaid
-sequenceDiagram
-participant Browser
-box "OS"
-participant WebServer as Web Server Process
-end
-Browser->>WebServer: HTTP Request
-WebServer->>Browser: HTTP Response
-```
+![img_4.png](img_4.png)
 ---
 
 **A Web Server's Primary Function**: is to handle HTTP requests and responses. It serves **static** content like HTML, CSS, Javascript and images to the client's browser.
 
 So an even more accurate representation of a **browser** requesting a **Web Server** is the following:
 
-```mermaid
-sequenceDiagram
-    participant Browser
-    box "OS"
-        participant WebServer as Web Server Process
-        participant ASC as Application Source Code
-    end
-    Browser->>WebServer: HTTP Request for welcome.html
-    WebServer->>ASC: File System Access
-    Note over ASC: Contains multiple files
-    Note over ASC: including welcome.html
-    ASC-->>WebServer: Files Retrieved
-    WebServer->>Browser: HTTP Response (welcome.html)
-```
+![img_5.png](img_5.png)
 
 ---
 
@@ -100,30 +79,7 @@ There are different MPMs available in Apache, each implementing different strate
 
 The following is a diagram that represents different implementations of the MPM and how they differ.
 
-```mermaid
-
-graph TD;
-  A[Apache HTTP Server];
-  MPM[Multi-Processing Modules];
-  B[mpm_prefork];
-  C[mpm_worker];
-  D[mpm_event];
-  E[Multiple Child Processes];
-  F[Multiple Threads per Child];
-  G[Keep-Alive Handling];
-  A --> MPM;
-  MPM --> B;
-  MPM --> C;
-  MPM --> D;
-  B --> E;
-  C --> E;
-  C --> F;
-  D --> E;
-  D --> F;
-  D --> G;
-  
-```
-
+![img_6.png](img_6.png)
 
 ---
 
@@ -143,171 +99,17 @@ The following diagram illustrates the flow of HTTP requests and responses in the
 
 This diagram visually represents the interaction between browser clients, the Apache HTTP Server, and its components, including the Master Process, Multi-Processing Module (MPM), Request Queue, and Worker Processes. The red links indicate the path of HTTP requests and responses.
 
-```mermaid
-
-graph RL;
-  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
-  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
-  subgraph OS[OS]
-    style OS fill:#ffffff00,stroke:#333;
-    subgraph Apache["Apache HTTP Server (Master Process)"]
-        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
-        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
-        MP --> |monitor|Pool;
-        MP --> |start|HttpdModule;
-        MPM --> |to create|Pool;
-        style Apache fill:#f9f9f9,stroke:#333;
-        Queue[[Request Queue]];
-        MPM{{"`Multi-Processing Module (**mpm_prefork**)`"}}
-        subgraph Pool[Pool]
-            direction TB;
-            style Pool fill:#f9f9f9,stroke:#333;
-            Worker1("Worker 1 (Process)");
-            Worker2("Worker 2 (Process)");
-            Worker3("Worker 3 (Process)");
-        end
-        Pool -. "watches" .-> Queue;
-    end
-    Worker1 -->|Access| FileSystem[File System];
-    Worker1 -->|Forwards Generated Response|HttpdModule;
-    Worker2 -->|Access| FileSystem;
-    Worker3 -->|Access| FileSystem;
-    FileSystem -->|Retrieve| WelcomePage[public/welcome.html];
-    subgraph SourceCode[Application Source Code]
-        style SourceCode fill:#f9f9f9,stroke:#333;
-        WelcomePage[public/welcome.html];
-    end
-  end
-  style HttpdModule fill:#85C1E9,stroke:#333;
-  style Queue fill:#F7DC6F,stroke:#333;
-  style Worker1 fill:#82E0CA,stroke:#333;
-  style Worker2 fill:#82E0CA,stroke:#333;
-  style Worker3 fill:#82E0CA,stroke:#333;
-  style FileSystem fill:#E59866,stroke:#333;
-  style SourceCode fill:#E59866,stroke:#333;
-  style MP fill:#82E0AA,stroke:#333;
-  linkStyle 0,2,7,9 stroke: red;
-
-
-```
+![img_7.png](img_7.png)
 
 ### mpm_worker
 
-```mermaid
-
-graph RL;
-  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
-  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
-  subgraph OS[OS]
-    style OS fill:#ffffff00,stroke:#333;
-    subgraph Apache["Apache HTTP Server (Master Process)"]
-        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
-        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
-        MP --> |monitor|Pool;
-        MP --> |start|HttpdModule;
-        MPM --> |to create|Pool;
-        style Apache fill:#f9f9f9,stroke:#333;
-        Queue[[Request Queue]];
-        MPM{{"`Multi-Processing Module (**mpm_worker**)`"}}
-        subgraph Pool[Pool]
-            direction TB;
-            style Pool fill:#f9f9f9,stroke:#333;
-            subgraph Worker1["Worker 1 (Process)"]
-                Thread1_1["Thread 1"]
-                Thread1_2["Thread 2"]
-            end
-            subgraph Worker2["Worker 2 (Process)"]
-                Thread2_1["Thread 1"]
-                Thread2_2["Thread 2"]
-            end
-            subgraph Worker3["Worker 3 (Process)"]
-                Thread3_1["Thread 1"]
-                Thread3_2["Thread 2"]
-            end
-        end
-        Pool -. "watches" .-> Queue;
-    end
-    Thread1_1 -->|Access| FileSystem[File System];
-    Thread1_1 -->|Forwards Generated Response|HttpdModule;
-    Thread2_1 -->|Access| FileSystem;
-    Thread3_1 -->|Access| FileSystem;
-    FileSystem -->|Retrieve| WelcomePage[public/welcome.html];
-    subgraph SourceCode[Application Source Code]
-        style SourceCode fill:#f9f9f9,stroke:#333;
-        WelcomePage[public/welcome.html];
-    end
-  end
-  style HttpdModule fill:#85C1E9,stroke:#333;
-  style Queue fill:#F7DC6F,stroke:#333;
-  style Worker1 fill:#82E0CA,stroke:#333;
-  style Worker2 fill:#82E0CA,stroke:#333;
-  style Worker3 fill:#82E0CA,stroke:#333;
-  style FileSystem fill:#E59866,stroke:#333;
-  style SourceCode fill:#E59866,stroke:#333;
-  style MP fill:#82E0AA,stroke:#333;
-  linkStyle 0,2,7,9 stroke: red;
-
-```
+![img_8.png](img_8.png)
 
 The `mpm_worker` module uses multiple worker processes, each of which can handle many threads, with each thread handling one connection at a time. This model allows the server to handle multiple requests concurrently with fewer resources than a process-based model.
 
 ### mpm_event
 
-```mermaid
-
-graph RL;
-  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
-  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
-  subgraph OS[OS]
-    style OS fill:#ffffff00,stroke:#333;
-    subgraph Apache["Apache HTTP Server (Master Process)"]
-        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
-        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
-        MP --> |monitor|Pool;
-        MP --> |start|HttpdModule;
-        MPM --> |to create|Pool;
-        style Apache fill:#f9f9f9,stroke:#333;
-        Queue[[Request Queue]];
-        MPM{{"`Multi-Processing Module (**mpm_event**)`"}}
-        subgraph Pool[Pool]
-            direction TB;
-            style Pool fill:#f9f9f9,stroke:#333;
-            subgraph Worker1["Worker 1 (Process)"]
-                Thread1_1["Worker Thread 1"] --> |Handoff| Thread1_2
-                Thread1_2["Supporting Thread 1"]
-            end
-            subgraph Worker2["Worker 2 (Process)"]
-                Thread2_1["Worker Thread 1"] --> |Handoff| Thread2_2
-                Thread2_2["Supporting Thread 1"]
-            end
-            subgraph Worker3["Worker 3 (Process)"]
-                Thread3_1["Worker Thread 1"] --> |Handoff| Thread3_2
-                Thread3_2["Supporting Thread 1"]
-            end
-        end
-        Pool -. "watches" .-> Queue;
-    end
-    Thread1_1 -->|Access| FileSystem[File System];
-    Thread1_1 -->|Forwards Generated Response|HttpdModule;
-    Thread2_1 -->|Access| FileSystem;
-    Thread3_1 -->|Access| FileSystem;
-    FileSystem -->|Retrieve| WelcomePage[public/welcome.html];
-    subgraph SourceCode[Application Source Code]
-        style SourceCode fill:#f9f9f9,stroke:#333;
-        WelcomePage[public/welcome.html];
-    end
-  end
-  style HttpdModule fill:#85C1E9,stroke:#333;
-  style Queue fill:#F7DC6F,stroke:#333;
-  style Worker1 fill:#82E0CA,stroke:#333;
-  style Worker2 fill:#82E0CA,stroke:#333;
-  style Worker3 fill:#82E0CA,stroke:#333;
-  style FileSystem fill:#E59866,stroke:#333;
-  style SourceCode fill:#E59866,stroke:#333;
-  style MP fill:#82E0AA,stroke:#333;
-  linkStyle 0,2,7,10,12 stroke: red;
-
-```
+![img_9.png](img_9.png)
 
 In the context of the `mpm_event` module in Apache HTTP Server, "supporting threads" refers to threads that are used to handle certain parts of the request/response process, freeing up the main threads to handle other requests.
 
@@ -422,11 +224,6 @@ The maximum number of requests that a worker process or thread can handle in Apa
 {% endhint %}
 
 
-
-
-
-
-
 ### Dynamic Content
 
 More than often we need our web application to provide content based on the specific user's provided data.
@@ -469,66 +266,7 @@ Other than **mod_php** there is also:
 
 The following diagram illustrates the workflow of an Apache Web Server configured to use **mod_php** to execute PHP scripts and **mpm_prefork** to manage concurrency.
 
-```mermaid
-
-graph RL;
-  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
-  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
-  subgraph OS[OS]
-    style OS fill:#ffffff00,stroke:#333;
-    subgraph Apache["Apache HTTP Server (Master Process)"]
-        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
-        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
-        MP --> |monitor|Pool;
-        MP --> |start|HttpdModule;
-        MPM --> |to create|Pool;
-        style Apache fill:#f9f9f9,stroke:#333;
-        Queue[[Request Queue]];
-        MPM{{"`Multi-Processing Module (**mpm_prefork**)`"}}
-        MODP{{"mod_php"}}
-        MP --> |loads at start|MODP
-        PI1 -. Inherited .-> MODP;
-        PI2 -. Inherited .-> MODP;
-        PI3 -. Inherited .-> MODP;
-        subgraph Pool[Pool]
-            direction TB;
-            style Pool fill:#f9f9f9,stroke:#333;
-            subgraph Worker1["Worker 1 (Process)"];
-                direction TB;
-                PI1("PHP Interpreter (PI):<br>0.(PI) loads PHP script<br>1.(PI) executes PHP script<br>2.worker process retrieves generated result and serves it back<br>3.(PI) cleans memory allocated for script");    
-            end
-            subgraph Worker2["Worker 2 (Process)"];
-                direction TB;
-                PI2("PHP Interpreter");
-            end
-            subgraph Worker3["Worker 3 (Process)"];
-                direction TB;
-                PI3("PHP Interpreter");
-            end
-        end
-        Pool -. "watches" .-> Queue;
-    end
-    Worker1 -->|Access| FileSystem[File System];
-    Worker1 -->|Forwards Generated Response|HttpdModule;
-    Worker2 -->|Access| FileSystem;
-    Worker3 -->|Access| FileSystem;
-    FileSystem -->|Retrieve| WelcomePage[public/index.php];
-    subgraph SourceCode[Application Source Code]
-        style SourceCode fill:#f9f9f9,stroke:#333;
-        WelcomePage[public/index.php];
-    end
-  end
-  style HttpdModule fill:#85C1E9,stroke:#333;
-  style Queue fill:#F7DC6F,stroke:#333;
-  style Worker1 fill:#82E0CA,stroke:#333;
-  style Worker2 fill:#82E0CA,stroke:#333;
-  style Worker3 fill:#82E0CA,stroke:#333;
-  style FileSystem fill:#E59866,stroke:#333;
-  style SourceCode fill:#E59866,stroke:#333;
-  style MP fill:#82E0AA,stroke:#333;
-  linkStyle 0,2,11,13 stroke: red;
-
-```
+![img_10.png](img_10.png)
 
 0. When the Apache HTTP Server starts up, it loads all of its configured modules, including `mod_php`. This means that the PHP interpreter becomes part of the Apache server itself.
 1. Then, when the Apache master process creates child processes (using the `mpm_prefork` module or any other Multi-Processing Module), each child process inherits all the capabilities of the Apache server, including all its loaded modules. This means that each child process includes an embedded PHP interpreter, because it's part of the Apache server that the child process is a copy of.
@@ -602,68 +340,7 @@ The approach of using the **mod_php Script Execution Module** has its **Pros** a
 
 ### mod_cgi with mod_prefork
 
-```mermaid
-
-graph RL;
-  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
-  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
-  subgraph OS[OS]
-    style OS fill:#ffffff00,stroke:#333;
-    subgraph Apache["Apache HTTP Server (Master Process)"]
-        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
-        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
-        MP --> |monitor|Pool;
-        MP --> |start|HttpdModule;
-        MPM --> |to create|Pool;
-        style Apache fill:#f9f9f9,stroke:#333;
-        Queue[[Request Queue]];
-        MPM{{"`Multi-Processing Module (**mpm_prefork**)`"}}
-        MODP{{"mod_cgi"}}
-        MP --> |loads at start|MODP
-        subgraph Pool[Pool]
-            direction TB;
-            style Pool fill:#f9f9f9,stroke:#333;
-            Worker1("Worker 1 (Process)");
-                   
-            Worker2("Worker 2 (Process)");
-                
-            Worker3("Worker 3 (Process)");
-                
-        end
-        Pool -. "watches" .-> Queue;
-
-        subgraph CGI_Process["CGI Process"]
-            PI("PHP Interpreter");
-        end 
-
-        Worker1 -->|starts child process|CGI_Process;
-        Worker1 -->|passes HTTP Request|CGI_Process;
-        CGI_Process --> |sends Generated HTTP Response|Worker1;
-        Worker1 --> |terminates|CGI_Process;
-
-        
-    end
-    Worker1 -->|Access| FileSystem[File System];
-    Worker1 -->|Forwards Generated Response|HttpdModule;
-    Worker2 -->|Access| FileSystem;
-    Worker3 -->|Access| FileSystem;
-    FileSystem -->|Retrieve| WelcomePage[public/index.php];
-    subgraph SourceCode[Application Source Code]
-        style SourceCode fill:#f9f9f9,stroke:#333;
-        WelcomePage[public/index.php];
-    end
-  end
-  style HttpdModule fill:#85C1E9,stroke:#333;
-  style Queue fill:#F7DC6F,stroke:#333;
-  style Worker1 fill:#82E0CA,stroke:#333;
-  style Worker2 fill:#82E0CA,stroke:#333;
-  style Worker3 fill:#82E0CA,stroke:#333;
-  style FileSystem fill:#E59866,stroke:#333;
-  style SourceCode fill:#E59866,stroke:#333;
-  style MP fill:#82E0AA,stroke:#333;
-  linkStyle 0,2,8,10,11,14 stroke: red;
-
-```
+![img_11.png](img_11.png)
 
 When Apache is configured to use `mod_cgi` and a worker process receives a HTTP request that requires the execution of a PHP script, the worker process will handle the request in the following way:
 
@@ -679,75 +356,7 @@ When Apache is configured to use `mod_cgi` and a worker process receives a HTTP 
 
 ### mod_cgi with mod_worker/mod_event
 
-```mermaid
-
-graph RL;
-  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
-  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
-  subgraph OS[OS]
-    style OS fill:#ffffff00,stroke:#333;
-    subgraph Apache["Apache HTTP Server (Master Process)"]
-        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
-        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
-        MP --> |monitor|Pool;
-        MP --> |start|HttpdModule;
-        MPM --> |to create|Pool;
-        style Apache fill:#f9f9f9,stroke:#333;
-        Queue[[Request Queue]];
-        MPM{{"`Multi-Processing Module (**mpm_worker**)`"}}
-        MODP{{"mod_cgi"}}
-        MP --> |loads at start|MODP
-        subgraph Pool[Pool]
-            direction TB;
-            style Pool fill:#f9f9f9,stroke:#333;
-
-            subgraph Worker1["Worker 1 (Process)"];
-                Thread1_1("Thread 1");
-                Thread1_2("Thread 2");
-            end       
-            
-            subgraph Worker2["Worker 2 (Process)"];
-                Thread2_1("Thread 1");
-                Thread2_2("Thread 2");
-            end       
-
-            subgraph Worker3["Worker 3 (Process)"];
-                Thread3_1("Thread 1");
-                Thread3_2("Thread 2");
-            end       
-        end
-
-        subgraph CGI_Process["CGI Process"]
-            PI("PHP Interpreter");
-        end
-
-        Pool -. "watches" .-> Queue;
-
-        Thread1_1 -->|starts child process|CGI_Process;
-        Thread1_1 -->|passes HTTP Request|CGI_Process;
-        CGI_Process --> |sends Generated HTTP Response|Thread1_1;
-        Thread1_1 --> |terminates|CGI_Process;
-        
-    end
-    Thread1_1 -->|Access| FileSystem[File System];
-    Thread1_1 -->|Forwards Generated Response|HttpdModule;
-    FileSystem -->|Retrieve| WelcomePage[public/index.php];
-    subgraph SourceCode[Application Source Code]
-        style SourceCode fill:#f9f9f9,stroke:#333;
-        WelcomePage[public/index.php];
-    end
-  end
-  style HttpdModule fill:#85C1E9,stroke:#333;
-  style Queue fill:#F7DC6F,stroke:#333;
-  style Worker1 fill:#82E0CA,stroke:#333;
-  style Worker2 fill:#82E0CA,stroke:#333;
-  style Worker3 fill:#82E0CA,stroke:#333;
-  style FileSystem fill:#E59866,stroke:#333;
-  style SourceCode fill:#E59866,stroke:#333;
-  style MP fill:#82E0AA,stroke:#333;
-  linkStyle 0,2,8,10,11,14 stroke: red;
-
-```
+![img_12.png](img_12.png)
 
 Steps:
 
@@ -807,77 +416,7 @@ So, regardless of whether the FastCGI service is on the same machine or a differ
 
 The following diagram illustrates **mod_worker** with **mod_fastcgi**
 
-
-```mermaid
-
-graph RL;
-  Browser1(Browser Client 1) <--> |HTTP Request/Reponse|HttpdModule;
-  Browser2(Browser Client 2) --> |HTTP Request|HttpdModule;
-  subgraph OS[OS]
-    style OS fill:#ffffff00,stroke:#333;
-    subgraph Apache["Apache HTTP Server (Master Process)"]
-        HttpdModule["httpd Apache Listener<br>(functionality)"] -->|Forwards Request| Queue;
-        MP((("Apache HTTP Server (Master Process)"))) -->|use|MPM;
-        MP --> |monitor|Pool;
-        MP --> |start|HttpdModule;
-        MPM --> |to create|Pool;
-        style Apache fill:#f9f9f9,stroke:#333;
-        Queue[[Request Queue]];
-        MPM{{"`Multi-Processing Module (**mpm_worker**)`"}}
-        MODP{{"mod_fastcgi"}}
-        MP --> |loads at start|MODP
-        subgraph Pool[Pool]
-            direction TB;
-            style Pool fill:#f9f9f9,stroke:#333;
-
-            subgraph Worker1["Worker 1 (Process)"];
-                Thread1_1("Thread 1");
-                Thread1_2("Thread 2");
-            end
-
-            subgraph Worker2["Worker 2 (Process)"];
-                Thread2_1("Thread 1");
-                Thread2_2("Thread 2");
-            end       
-        end
-        Pool -. "watches" .-> Queue;
-    end
-    Thread1_1 -->|Access| FileSystem[File System];
-    Thread1_1 -->|Forwards Generated Response|HttpdModule;
-    FileSystem -->|Retrieve| WelcomePage[public/index.php];
-    subgraph SourceCode[Application Source Code]
-        style SourceCode fill:#f9f9f9,stroke:#333;
-        WelcomePage[public/index.php];
-    end
-    subgraph FASTCGI_Process["FastCGI Service (Master Process)"]
-        FASTCGI_PROCESSS_MANAGER((("FASTCGI Process Manager")))
-        subgraph Pool2["Pool"]
-            subgraph FASTCGI_WORKER1 ["Worker 1 (Process)"]
-                PI0("PHP Interpreter");
-            end
-            subgraph FASTCGI_WORKER2["Worker 2 (Process)"]
-                PI1("PHP Interpreter");
-            end
-        end
-        
-        FASTCGI_PROCESSS_MANAGER --> |creates and monitors|Pool2;
-    end
-    Thread1_1 -->|FastCGI Protocol Request|FASTCGI_PROCESSS_MANAGER;
-  end
-    PI0 --> |FastCGI Protocol Response|Thread1_1;
-
-  style HttpdModule fill:#85C1E9,stroke:#333;
-  style Queue fill:#F7DC6F,stroke:#333;
-  style Worker1 fill:#82E0CA,stroke:#333;
-  style Worker2 fill:#82E0CA,stroke:#333;
-  style FASTCGI_WORKER1 fill:red;
-  style FASTCGI_WORKER2 fill:red;
-  style FileSystem fill:#E59866,stroke:#333;
-  style SourceCode fill:#E59866,stroke:#333;
-  style MP fill:#82E0AA,stroke:#333;
-  linkStyle 0,2,8,10,12,13,14 stroke: red;
-
-```
+![img_13.png](img_13.png)
 
 1. The Apache master process spawns worker processes as per the configuration of the `mpm_worker` module.
 2. Each of these worker processes can spawn multiple threads to handle incoming requests.
@@ -895,37 +434,7 @@ The number of FastCGI processes that are created and how they are managed can be
 
 The following diagram is a simplified version, that illustrates the interaction between the Apache Web Server and the FastCGI Process Manager (FPM):
 
-
-```mermaid
-
-sequenceDiagram
-  participant Browser as Browser Client
-  box grey Apache HTTP Server (Master Process)
-    participant ApacheMaster as Apache HTTP Server (Master Process)
-    participant ApacheWorkerProcess as Worker Process
-    participant ApacheWorkerThread as Worker Thread
-  end
-  box lightyellow FastCGI Process Manager (Master Process)
-    participant FastCGIProcess as FastCGI Process
-    participant FastCGIWorker as FastCGI Worker Process
-  end
-  participant FileSystem as File System  
-    
-  Browser->>ApacheMaster: Sends HTTP request
-  ApacheMaster->>ApacheWorkerProcess: Receives HTTP request
-  ApacheWorkerProcess->>ApacheWorkerThread: Hands off request
-  ApacheWorkerThread->>FastCGIProcess: Sends request via socket
-  FastCGIProcess->>FastCGIWorker: Hands off request
-  FastCGIWorker->>FileSystem: Reads file 'public/index.html'
-  FileSystem-->>FastCGIWorker: Returns file content
-  FastCGIWorker-->>FastCGIProcess: Sends executed result
-  FastCGIProcess-->>ApacheWorkerThread: Sends result via socket
-  ApacheWorkerThread-->>ApacheWorkerProcess: Sends result
-  ApacheWorkerProcess-->>ApacheMaster: Sends HTTP response
-  ApacheMaster-->>Browser: Returns HTTP response
-  
-
-```
+![img_14.png](img_14.png)
 
 ---
 

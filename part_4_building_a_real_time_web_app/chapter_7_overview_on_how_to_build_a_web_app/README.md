@@ -209,52 +209,11 @@ The caching behavior can be controlled by various HTTP headers, such as `Cache-C
 
 The following diagram shows the communication between the client and the server.
 
-```mermaid
-sequenceDiagram
-    participant B as Browser
-    participant S as Server
-    B->>S: Request HTML page
-    S-->>B: Send HTML page
-    B->>B: Parse HTML and find link/script tags
-    B->>B: Check cache for each referenced file
-    Note over B: If file is in cache and not expired, use it
-    B->>S: If file not in cache, request file from server
-    S-->>B: Send requested file
-    B->>B: Handle file (CSS blocks rendering, JS may block parsing)
-    B->>B: Cache the fetched file
-    B->>B: Continue parsing HTML
-```
+![img_2.png](img_2.png)
 
 The following workflow shows how the browser handles referenced files depending on their **type** and **referencing tag attributes**
 
-```mermaid
-flowchart TB
-    start[start] --> parse[parse HTML]
-    parse --> execfinishedasync[execute async js scripts that finished downloading]
-    execfinishedasync --> reference
-    reference{Browser encounters file reference?}
-    reference -- No --> eof{is EOF?} 
-    eof -- Yes --> exdefscr[execute defered js scripts]
-    exdefscr --> End[End]
-    eof -- No -->render[render HTML]
-    render --> parse
-    reference -- Yes --> decision1{Is file CSS?}
-    decision1 -- Yes --> action1[Browser fetches CSS file]
-    action1 -- Browser blocks rendering until CSS is applied --> parse
-    decision1 -- No --> decision2{Is file JS?}
-    decision2 -- Yes --> async{async?}
-    async -- Yes --> dnldwhlpars[download js while parsing]
-    async -- No --> defer{defer?}
-    defer -- Yes --> dnldwhlpars
-    dnldwhlpars --> parse
-    defer -- No --> stpprsdnld[stop parsing and download js]
-    stpprsdnld --> dnldcomplt{download complete?}
-    dnldcomplt -- No --> wait[wait]
-    wait --> dnldcomplt
-    dnldcomplt -- Yes --> execjs[execute js script]
-    execjs --> parse
-    decision2 -- No --> parse
-```
+![img.png](img.png)
 
 {% hint type = "tip" %}
 
@@ -857,20 +816,7 @@ So, your project structure will look like this:
 
 The following diagram illustrates the life-cycle of a typical PHP application.
 
-```mermaid
-sequenceDiagram
-    participant Client
-    participant WebServer as Web Server
-    participant index.php
-    activate WebServer
-    Client->>WebServer: HTTP Request
-    WebServer->>index.php: Passes HTTP Request
-    activate index.php
-    index.php->>index.php: execute
-    index.php->>WebServer: HTTP Response
-    deactivate index.php
-    WebServer->>Client: HTTP Response
-```
+![img_1.png](img_1.png)
 
 
 
