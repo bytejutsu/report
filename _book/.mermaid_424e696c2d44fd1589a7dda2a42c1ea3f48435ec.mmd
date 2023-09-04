@@ -1,9 +1,0 @@
-sequenceDiagram
-    participant Event as Event
-    participant Listener1 as Listener1
-    participant Listener2 as Listener2
-    Listener1->>Event: subscribe()
-    Listener2->>Event: subscribe()
-    Note over Event,Listener2: Event occurs
-    Event->>Listener1: notify()
-    Event->>Listener2: notify()

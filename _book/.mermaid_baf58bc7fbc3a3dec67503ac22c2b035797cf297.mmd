@@ -1,7 +1,0 @@
-sequenceDiagram
-  participant Client
-  participant Server
-  Client->>Server: HTTP request (open connection for updates)
-  Server-->>Client: HTTP response (connection established)
-  Note over Server: When updates are available
-  Server-->>Client: Send updates

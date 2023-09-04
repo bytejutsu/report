@@ -1,8 +1,0 @@
-sequenceDiagram
-  participant Client
-  participant Server
-  Client->>Server: HTTP request (check for updates)
-  Server-->>Client: HTTP response (no updates)
-  Note over Client: Wait for polling interval
-  Client->>Server: HTTP request (check for updates)
-  Server-->>Client: HTTP response (updates available)

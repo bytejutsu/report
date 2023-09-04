@@ -1,8 +1,0 @@
-sequenceDiagram
-  participant Client
-  participant Server
-  Client->>Server: HTTP request (open WebSocket connection)
-  Server-->>Client: HTTP response (WebSocket connection established)
-  Note over Client,Server: Bidirectional communication
-  Client->>Server: Send message
-  Server-->>Client: Send message

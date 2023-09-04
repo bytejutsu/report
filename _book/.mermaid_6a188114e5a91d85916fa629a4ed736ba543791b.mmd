@@ -1,6 +1,0 @@
-graph TB
-  U["User"] -- "Dispatches Job" --> DJ["Job Dispatcher"]
-  DJ -- "Adds Job to" --> JT["Jobs Table"]
-  DJ -- "Adds Job to" --> TQ["Task Queue"]
-  WT["Worker Thread"] -- "Picks up Job from" --> TQ
-  WT -- "Executes Job" --> EJ["Executed Job"]

@@ -1,8 +1,0 @@
-
-graph TB
-  A["Client"] -- "HTTP Request" --> B["Apache Load Balancer"]
-  B -- "HTTP Request" --> C["Application Server 1"]
-  B -- "HTTP Request" --> D["Application Server 2"]
-  C -- "HTTP Response" --> B
-  D -- "HTTP Response" --> B
-  B -- "HTTP Response" --> A

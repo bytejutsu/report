@@ -1,9 +1,0 @@
-sequenceDiagram
-    participant Subject as Subject
-    participant Observer1 as Observer1
-    participant Observer2 as Observer2
-    Observer1->>Subject: subscribe()
-    Observer2->>Subject: subscribe()
-    Note over Subject,Observer2: Event occurs
-    Subject->>Observer1: notify()
-    Subject->>Observer2: notify()
