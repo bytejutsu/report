@@ -804,24 +804,30 @@ define(<span class="hljs-string">&apos;LARAVEL_START&apos;</span>, microtime(<sp
 </ol>
 <p>Let&apos;s break down the steps that <code>index.php</code> performs and see which section of the <code>index.php</code> code is responsible for which step:</p>
 <p>1 Define LARAVEL_START</p>
-<pre><code>define(&apos;LARAVEL_START&apos;, microtime(true));
-</code></pre><p>2 Check If The Application Is Under Maintenance</p>
-<pre><code>if (file_exists($maintenance = __DIR__.&apos;/../storage/framework/maintenance.php&apos;)) {
-    require $maintenance;
+<pre><code class="lang-PHP">define(<span class="hljs-string">&apos;LARAVEL_START&apos;</span>, microtime(<span class="hljs-literal">true</span>));
+</code></pre>
+<p>2 Check If The Application Is Under Maintenance</p>
+<pre><code class="lang-PHP"><span class="hljs-keyword">if</span> (file_exists(<span class="hljs-variable">$maintenance</span> = <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../storage/framework/maintenance.php&apos;</span>)) {
+    <span class="hljs-keyword">require</span> <span class="hljs-variable">$maintenance</span>;
 }
-</code></pre><p>3 Register The Auto Loader</p>
-<pre><code>require __DIR__.&apos;/../vendor/autoload.php&apos;;
-</code></pre><p>4 Run The Application</p>
-<pre><code>$app = require_once __DIR__.&apos;/../bootstrap/app.php&apos;;
+</code></pre>
+<p>3 Register The Auto Loader</p>
+<pre><code class="lang-PHP"><span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../vendor/autoload.php&apos;</span>;
+</code></pre>
+<p>4 Run The Application</p>
+<pre><code class="lang-PHP"><span class="hljs-variable">$app</span> = <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../bootstrap/app.php&apos;</span>;
 
-$kernel = $app-&gt;make(Kernel::class);
-</code></pre><p>5 Sends an HTTP response back to the web server</p>
-<pre><code>$response = $kernel-&gt;handle(
-    $request = Request::capture()
+<span class="hljs-variable">$kernel</span> = <span class="hljs-variable">$app</span>-&gt;make(Kernel::class);
+</code></pre>
+<p>5 Sends an HTTP response back to the web server</p>
+<pre><code class="lang-PHP"><span class="hljs-variable">$response</span> = <span class="hljs-variable">$kernel</span>-&gt;handle(
+    <span class="hljs-variable">$request</span> = Request::capture()
 )-&gt;send();
-</code></pre><p>6 Terminate The Application</p>
-<pre><code>$kernel-&gt;terminate($request, $response);
-</code></pre><h3 id="explaining-the-indexphp-code-sections">Explaining the index.php code sections</h3>
+</code></pre>
+<p>6 Terminate The Application</p>
+<pre><code class="lang-PHP"><span class="hljs-variable">$kernel</span>-&gt;terminate(<span class="hljs-variable">$request</span>, <span class="hljs-variable">$response</span>);
+</code></pre>
+<h3 id="explaining-the-indexphp-code-sections">Explaining the index.php code sections</h3>
 <ol>
 <li><strong>Define LARAVEL_START</strong>: This line sets a constant that holds the timestamp of when the script started. This can be used for profiling and debugging.</li>
 <li><strong>Check If The Application Is Under Maintenance</strong>: Laravel provides a maintenance mode that can be activated with the <code>php artisan down</code> command. When in maintenance mode, Laravel will display a custom view to all requests into your application. This can be used when you are updating your server or installing a new feature and you don&apos;t want users to see errors or experience downtime.</li>
@@ -831,61 +837,65 @@ $kernel = $app-&gt;make(Kernel::class);
 <ul>
 <li>It starts by <strong>bootstrapping the Laravel application</strong>, which involves setting up error handling, configuring logging, loading configuration files, and more. </li>
 </ul>
-<pre><code>$app = require_once __DIR__.&apos;/../bootstrap/app.php&apos;;
-</code></pre><ul>
+<pre><code class="lang-PHP"><span class="hljs-variable">$app</span> = <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../bootstrap/app.php&apos;</span>;
+</code></pre>
+<ul>
 <li>Then it creates an instance of Laravel&apos;s <strong>HTTP kernel</strong>, which is responsible for handling the request. The kernel handles the request and returns a response, which is then sent back to the client.</li>
 </ul>
-<pre><code>$kernel = $app-&gt;make(Kernel::class);
-</code></pre><p>5 <strong>Terminate The Application</strong>: After the response has been sent to the client, the script calls the kernel&apos;s <code>terminate</code> method. This method is used to perform any final tasks after the response has been sent, such as committing database transactions or writing to log files.</p>
+<pre><code class="lang-PHP"><span class="hljs-variable">$kernel</span> = <span class="hljs-variable">$app</span>-&gt;make(Kernel::class);
+</code></pre>
+<p>5 <strong>Terminate The Application</strong>: After the response has been sent to the client, the script calls the kernel&apos;s <code>terminate</code> method. This method is used to perform any final tasks after the response has been sent, such as committing database transactions or writing to log files.</p>
 <h3 id="the-http-kernel">The HTTP Kernel</h3>
 <p>Ok, now let&apos;s try to reason backwards and try to understand the following lines of code:</p>
-<pre><code>$response = $kernel-&gt;handle(
-    $request = Request::capture()
+<pre><code class="lang-PHP"><span class="hljs-variable">$response</span> = <span class="hljs-variable">$kernel</span>-&gt;handle(
+    <span class="hljs-variable">$request</span> = Request::capture()
 )-&gt;send();
 
-$kernel-&gt;terminate($request, $response);
-</code></pre><p>the Laravel&apos;s HTTP kernel is primarily responsible for handling incoming HTTP requests to the application. It is the central component that manages the request lifecycle in a Laravel application.</p>
+<span class="hljs-variable">$kernel</span>-&gt;terminate(<span class="hljs-variable">$request</span>, <span class="hljs-variable">$response</span>);
+</code></pre>
+<p>the Laravel&apos;s HTTP kernel is primarily responsible for handling incoming HTTP requests to the application. It is the central component that manages the request lifecycle in a Laravel application.</p>
 <p>To understand how the Laravel HTTP kernel works, we need to firstly start by analysing the code that <code>index.php</code> is <strong>using</strong>, namely, <code>Illuminate\Contracts\Http\Kernel</code>.</p>
 <h3 id="analysing-the-illuminatecontractshttpkernel">Analysing the <code>Illuminate\Contracts\Http\Kernel</code>:</h3>
 <p>The following is the code of the <code>Kernel.php</code> file which is namespaced as <code>Illuminate\Contracts\Http\Kernel</code>:</p>
-<pre><code>&lt;?php
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
 
-namespace Illuminate\Contracts\Http;
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Contracts</span>\<span class="hljs-title">Http</span>;
 
-interface Kernel
-{
-    /**
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Kernel</span>
+</span>{
+    <span class="hljs-comment">/**
      * Bootstrap the application for HTTP requests.
      *
-     * @return void
-     */
-    public function bootstrap();
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bootstrap</span>(<span class="hljs-params"></span>)</span>;
 
-    /**
+    <span class="hljs-comment">/**
      * Handle an incoming HTTP request.
      *
-     * @param  \Symfony\Component\HttpFoundation\Request  $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function handle($request);
+     * <span class="hljs-doctag">@param</span>  \Symfony\Component\HttpFoundation\Request  $request
+     * <span class="hljs-doctag">@return</span> \Symfony\Component\HttpFoundation\Response
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span>(<span class="hljs-params"><span class="hljs-variable">$request</span></span>)</span>;
 
-    /**
+    <span class="hljs-comment">/**
      * Perform any final actions for the request lifecycle.
      *
-     * @param  \Symfony\Component\HttpFoundation\Request  $request
-     * @param  \Symfony\Component\HttpFoundation\Response  $response
-     * @return void
-     */
-    public function terminate($request, $response);
+     * <span class="hljs-doctag">@param</span>  \Symfony\Component\HttpFoundation\Request  $request
+     * <span class="hljs-doctag">@param</span>  \Symfony\Component\HttpFoundation\Response  $response
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">terminate</span>(<span class="hljs-params"><span class="hljs-variable">$request</span>, <span class="hljs-variable">$response</span></span>)</span>;
 
-    /**
+    <span class="hljs-comment">/**
      * Get the Laravel application instance.
      *
-     * @return \Illuminate\Contracts\Foundation\Application
-     */
-    public function getApplication();
+     * <span class="hljs-doctag">@return</span> \Illuminate\Contracts\Foundation\Application
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getApplication</span>(<span class="hljs-params"></span>)</span>;
 }
-</code></pre><p>This code is the interface for the HTTP Kernel in Laravel. </p>
+</code></pre>
+<p>This code is the interface for the HTTP Kernel in Laravel. </p>
 <p>An interface in PHP is a contract or a blueprint for a class. </p>
 <p>It defines a set of methods that the class must implement. In this case, any class that implements the <code>Illuminate\Contracts\Http\Kernel</code> interface must define the methods <code>bootstrap()</code>, <code>handle()</code>, <code>terminate()</code>, and <code>getApplication()</code>.</p>
 <p>Here&apos;s what each method is intended to do:</p>
@@ -897,8 +907,9 @@ interface Kernel
 </ol>
 <h3 id="the-question-that-begs-itself">The <span style="color: red;">question</span> that begs itself:</h3>
 <p>How does the following line of code works?:</p>
-<pre><code>$kernel = $app-&gt;make(Kernel::class);
-</code></pre><p>How is the <code>$app-&gt;make();</code> method able to instantiate the <code>Kernel</code> Interface using just its namespace as a string <code>Kernel::class</code>? </p>
+<pre><code class="lang-PHP"><span class="hljs-variable">$kernel</span> = <span class="hljs-variable">$app</span>-&gt;make(Kernel::class);
+</code></pre>
+<p>How is the <code>$app-&gt;make();</code> method able to instantiate the <code>Kernel</code> Interface using just its namespace as a string <code>Kernel::class</code>? </p>
 <p>In PHP, you can&apos;t instantiate an interface. In order to instantiate an Interface you need to create a non-abstract class that implements that interface.</p>
 <h3 id="short-answer">Short answer:</h3>
 <div style="display:flex; align-items:center; justify-content:center; border:5px solid black;">
@@ -1036,10 +1047,11 @@ Route::get(<span class="hljs-string">&apos;/users&apos;</span>, <span class="hlj
 <h3 id="the-app-container">The app container</h3>
 <p>To get a grasp of how Laravel works we need to understand the main component of the Laravel framework. Which is the <strong>app container</strong>.</p>
 <p>To understand what the following two lines of code do.</p>
-<pre><code>$app = require_once __DIR__.&apos;/../bootstrap/app.php&apos;;
+<pre><code class="lang-PHP"><span class="hljs-variable">$app</span> = <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../bootstrap/app.php&apos;</span>;
 
-$kernel = $app-&gt;make(Kernel::class);
-</code></pre><p>We take a look at the <strong>./bootstrap/app.php</strong> file:</p>
+<span class="hljs-variable">$kernel</span> = <span class="hljs-variable">$app</span>-&gt;make(Kernel::class);
+</code></pre>
+<p>We take a look at the <strong>./bootstrap/app.php</strong> file:</p>
 <pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
 
 <span class="hljs-comment">/*
@@ -1263,7 +1275,7 @@ Route::middleware(<span class="hljs-string">&apos;admin&apos;</span>)-&gt;get(<s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 8.1: The Scaffolding of a Laravel App","level":"5.2.1","depth":2,"next":{"title":"Section 8.2: Service Providers","level":"5.2.2","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},"previous":{"title":"Chapter 8: Laravel as a Backend Framework","level":"5.2","depth":1,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/README.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/README.md","articles":[{"title":"Section 8.1: The Scaffolding of a Laravel App","level":"5.2.1","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},{"title":"Section 8.2: Service Providers","level":"5.2.2","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},{"title":"Section 8.3: Facades","level":"5.2.3","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","articles":[]},{"title":"Section 8.4: The Rest","level":"5.2.4","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","mtime":"2023-09-05T08:59:09.298Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-05T08:59:18.038Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 8.1: The Scaffolding of a Laravel App","level":"5.2.1","depth":2,"next":{"title":"Section 8.2: Service Providers","level":"5.2.2","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},"previous":{"title":"Chapter 8: Laravel as a Backend Framework","level":"5.2","depth":1,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/README.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/README.md","articles":[{"title":"Section 8.1: The Scaffolding of a Laravel App","level":"5.2.1","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},{"title":"Section 8.2: Service Providers","level":"5.2.2","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},{"title":"Section 8.3: Facades","level":"5.2.3","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","articles":[]},{"title":"Section 8.4: The Rest","level":"5.2.4","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","mtime":"2023-09-05T09:17:23.698Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-05T09:17:33.239Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

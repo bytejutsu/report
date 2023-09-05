@@ -751,52 +751,53 @@
 </ul>
 <p>The following, is an example of a HTML page using the <strong>style</strong> and <strong>script</strong> tags. The example also show-cases the use of embedded css styling inside the p tag.</p>
 <p><strong>index.html</strong></p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My Website&lt;/title&gt;
-    &lt;style&gt;
-        nav {
-            background-color: #f8f9fa;
-            padding: 10px;
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">nav</span> {
+            <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f8f9fa</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
         }
-        footer {
-            background-color: #f8f9fa;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+        <span class="hljs-selector-tag">footer</span> {
+            <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f8f9fa</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+            <span class="hljs-attribute">position</span>: fixed;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+            <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
         }
-        body {
-            background-color: lightblue;
-            font-family: Arial, sans-serif;
+        <span class="hljs-selector-tag">body</span> {
+            <span class="hljs-attribute">background-color</span>: lightblue;
+            <span class="hljs-attribute">font-family</span>: Arial, sans-serif;
         }
-        h1 {
-            color: navy;
+        <span class="hljs-selector-tag">h1</span> {
+            <span class="hljs-attribute">color</span>: navy;
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;nav&gt;
-        &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; 
-        &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt; 
-    &lt;/nav&gt;
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 
-    &lt;h1&gt;Click Me!&lt;/h1&gt;
-    &lt;p style=&quot;color: red; font-size: 20px;&quot;&gt;This is a paragraph.&lt;/p&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Click Me!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color: red; font-size: 20px;&quot;</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-    &lt;footer&gt;
-        &lt;p&gt;Copyright &amp;copy; My Website&lt;/p&gt;
-    &lt;/footer&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Copyright <span class="hljs-symbol">&amp;copy;</span> My Website<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
 
-    &lt;script&gt;
-        document.querySelector(&quot;h1&quot;).addEventListener(&quot;click&quot;, function() {
-        alert(&quot;You clicked the heading!&quot;);
-    &lt;/script&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;h1&quot;</span>).addEventListener(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        alert(<span class="hljs-string">&quot;You clicked the heading!&quot;</span>);
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 });
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>modern browsers can also handle other types of content like:</p>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p></p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>modern browsers can also handle other types of content like:</p>
 <ul>
 <li><strong>XML</strong>, <strong>JSON</strong>, <strong>SVG</strong>, <strong>WebP</strong>,</li>
 <li>and various <strong>media formats</strong> (audio, video).</li>
@@ -815,57 +816,60 @@
 <p>For this reason, an HTML page can link external JS or CSS resources. CSS resources are linked using the <strong>link</strong> tag, and JS resources are linked using the <strong>script</strong> tag. These resources can be local or remote/in the cloud.</p>
 <p>The following example refactors the previous example to use external JS and CSS resources.</p>
 <p><strong>index.html</strong></p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My Website&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/app.css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;nav&gt;
-        &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; 
-        &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt; 
-    &lt;/nav&gt;
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;css/app.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> 
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 
-    &lt;h1&gt;Click Me!&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Click Me!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-    &lt;footer&gt;
-        &lt;p&gt;Copyright &amp;copy; My Website&lt;/p&gt;
-    &lt;/footer&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Copyright <span class="hljs-symbol">&amp;copy;</span> My Website<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
 
-    &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p><strong>css/app.css</strong></p>
-<pre><code>nav {
-   background-color: #f8f9fa;
-   padding: 10px;
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/app.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p><strong>css/app.css</strong></p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">nav</span> {
+   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f8f9fa</span>;
+   <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
 }
-footer {
-   background-color: #f8f9fa;
-   padding: 10px;
-   position: fixed;
-   width: 100%;
-   bottom: 0;
+<span class="hljs-selector-tag">footer</span> {
+   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f8f9fa</span>;
+   <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+   <span class="hljs-attribute">position</span>: fixed;
+   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+   <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 }
-body {
-   background-color: lightblue;
-   font-family: Arial, sans-serif;
+<span class="hljs-selector-tag">body</span> {
+   <span class="hljs-attribute">background-color</span>: lightblue;
+   <span class="hljs-attribute">font-family</span>: Arial, sans-serif;
 }
-h1 {
-   color: navy;
+<span class="hljs-selector-tag">h1</span> {
+   <span class="hljs-attribute">color</span>: navy;
 }
-p {
-   color: red;
-   font-size: 20px;
+<span class="hljs-selector-tag">p</span> {
+   <span class="hljs-attribute">color</span>: red;
+   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
 }
-</code></pre><p><strong>js/app.js</strong></p>
-<pre><code>document.querySelector(&quot;h1&quot;).addEventListener(&quot;click&quot;, function() {
-    alert(&quot;You clicked the heading!&quot;);
+</code></pre>
+<p><strong>js/app.js</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;h1&quot;</span>).addEventListener(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    alert(<span class="hljs-string">&quot;You clicked the heading!&quot;</span>);
 });
-</code></pre><p>So, now your project structure looks more like this.</p>
-<pre><code>/mywebsite
+</code></pre>
+<p>So, now your project structure looks more like this.</p>
+<pre><code class="lang-text">/mywebsite
   /public
     index.html
     about.html
@@ -876,7 +880,8 @@ p {
       app.js    
   /config
     config.txt
-</code></pre><h4 id="browser-and-linked-resources">Browser and linked resources</h4>
+</code></pre>
+<h4 id="browser-and-linked-resources">Browser and linked resources</h4>
 <p>When a user requests an HTML page that references external files using the <strong>link</strong> or <strong>script</strong> tag:</p>
 <ol>
 <li><strong>The browser parses the HTML</strong>: When a user requests an HTML page, the browser begins by parsing the HTML. As it encounters <strong>link</strong> or <strong>script</strong> tags that reference external files, it prepares to fetch these resources.</li>
@@ -900,19 +905,19 @@ p {
 <li><strong>no attribute</strong>: block parsing and download js script. When finished downloading, execute the js script and resume parsing.</li>
 </ul>
 <p>Example <strong>jQuery</strong>:</p>
-<pre><code class="lang-text">&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <ul>
 <li><strong>async</strong>: download js script asynchronously while parsing. When finished execute the js script and resume parsing.</li>
 </ul>
 <p>Example <strong>D3.js</strong>:</p>
-<pre><code class="lang-text">&lt;script async src=&quot;https://d3js.org/d3.v6.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">async</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://d3js.org/d3.v6.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <ul>
 <li><strong>defer</strong>: download js script asynchronously while parsing. But, don&apos;t execute js script until parsing is finished.</li>
 </ul>
 <p>Example <strong>Vue.js</strong>:</p>
-<pre><code class="lang-text">&lt;script defer src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 </div></div><p></p>
 <h4 id="including-html-files">including HTML files</h4>
@@ -929,123 +934,124 @@ p {
 </div></div><p></p>
 <h4 id="inserting-html-components-using-javascript">inserting HTML components using javascript</h4>
 <p>You can create HTML elements programmatically using JavaScript and then insert them into the DOM. Like the following example:</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My Website&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/app.css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;nav&quot;&gt;&lt;/div&gt;
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;css/app.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nav&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    &lt;h1&gt;Click Me!&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Click Me!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-    &lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
-        // Create nav element
-        var nav = document.createElement(&apos;nav&apos;);
-        var aboutLink = document.createElement(&apos;a&apos;);
-        aboutLink.href = &apos;about.html&apos;;
-        aboutLink.textContent = &apos;About&apos;;
-        var contactLink = document.createElement(&apos;a&apos;);
-        contactLink.href = &apos;contact.html&apos;;
-        contactLink.textContent = &apos;Contact&apos;;
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/app.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-comment">// Create nav element</span>
+        <span class="hljs-keyword">var</span> nav = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;nav&apos;</span>);
+        <span class="hljs-keyword">var</span> aboutLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;a&apos;</span>);
+        aboutLink.href = <span class="hljs-string">&apos;about.html&apos;</span>;
+        aboutLink.textContent = <span class="hljs-string">&apos;About&apos;</span>;
+        <span class="hljs-keyword">var</span> contactLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;a&apos;</span>);
+        contactLink.href = <span class="hljs-string">&apos;contact.html&apos;</span>;
+        contactLink.textContent = <span class="hljs-string">&apos;Contact&apos;</span>;
         nav.appendChild(aboutLink);
         nav.appendChild(contactLink);
 
-        // Insert nav into the DOM
-        document.getElementById(&apos;nav&apos;).appendChild(nav);
+        <span class="hljs-comment">// Insert nav into the DOM</span>
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;nav&apos;</span>).appendChild(nav);
 
-        // Create footer element
-        var footer = document.createElement(&apos;footer&apos;);
-        var copyright = document.createElement(&apos;p&apos;);
-        copyright.textContent = &apos;Copyright &amp;copy; My Website&apos;;
+        <span class="hljs-comment">// Create footer element</span>
+        <span class="hljs-keyword">var</span> footer = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;footer&apos;</span>);
+        <span class="hljs-keyword">var</span> copyright = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;p&apos;</span>);
+        copyright.textContent = <span class="hljs-string">&apos;Copyright &amp;copy; My Website&apos;</span>;
         footer.appendChild(copyright);
 
-        // Insert footer into the DOM
-        document.getElementById(&apos;footer&apos;).appendChild(footer);
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>You can reason about each included HTML element as a standalone javascript component, like the following:</p>
+        <span class="hljs-comment">// Insert footer into the DOM</span>
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;footer&apos;</span>).appendChild(footer);
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>You can reason about each included HTML element as a standalone javascript component, like the following:</p>
 <p><strong>nav.js</strong></p>
-<pre><code class="lang-text">// Create nav element
-var nav = document.createElement(&apos;nav&apos;);
-var aboutLink = document.createElement(&apos;a&apos;);
-aboutLink.href = &apos;about.html&apos;;
-aboutLink.textContent = &apos;About&apos;;
-var contactLink = document.createElement(&apos;a&apos;);
-contactLink.href = &apos;contact.html&apos;;
-contactLink.textContent = &apos;Contact&apos;;
+<pre><code class="lang-javascript"><span class="hljs-comment">// Create nav element</span>
+<span class="hljs-keyword">var</span> nav = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;nav&apos;</span>);
+<span class="hljs-keyword">var</span> aboutLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;a&apos;</span>);
+aboutLink.href = <span class="hljs-string">&apos;about.html&apos;</span>;
+aboutLink.textContent = <span class="hljs-string">&apos;About&apos;</span>;
+<span class="hljs-keyword">var</span> contactLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;a&apos;</span>);
+contactLink.href = <span class="hljs-string">&apos;contact.html&apos;</span>;
+contactLink.textContent = <span class="hljs-string">&apos;Contact&apos;</span>;
 nav.appendChild(aboutLink);
 nav.appendChild(contactLink);
 
-// Insert nav into the DOM
-document.getElementById(&apos;nav&apos;).appendChild(nav);
+<span class="hljs-comment">// Insert nav into the DOM</span>
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;nav&apos;</span>).appendChild(nav);
 </code></pre>
 <p><strong>footer.js</strong></p>
-<pre><code class="lang-text">// Create footer element
-var footer = document.createElement(&apos;footer&apos;);
-var copyright = document.createElement(&apos;p&apos;);
-copyright.textContent = &apos;Copyright &amp;copy; My Website&apos;;
+<pre><code class="lang-javascript"><span class="hljs-comment">// Create footer element</span>
+<span class="hljs-keyword">var</span> footer = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;footer&apos;</span>);
+<span class="hljs-keyword">var</span> copyright = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;p&apos;</span>);
+copyright.textContent = <span class="hljs-string">&apos;Copyright &amp;copy; My Website&apos;</span>;
 footer.appendChild(copyright);
 
-// Insert footer into the DOM
-document.getElementById(&apos;footer&apos;).appendChild(footer);
+<span class="hljs-comment">// Insert footer into the DOM</span>
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;footer&apos;</span>).appendChild(footer);
 </code></pre>
 <p>Then you include it as an HTML element with a matching script in the:</p>
 <p><strong>main.html</strong></p>
-<pre><code class="lang-text">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My Website&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/app.css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;nav&quot;&gt;&lt;/div&gt;
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;css/app.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nav&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    &lt;h1&gt;Click Me!&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Click Me!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-    &lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;js/nav.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;js/footer.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/app.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/nav.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/footer.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
 <p>This ability to manipulate the DOM/CSSOM is the basis that modern javascript frameworks are based on to provide a component based architecture where each component encapsulates its own <strong>view</strong>, <strong>state</strong> and <strong>business logic</strong>.</p>
 <p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>There are libraries that allow you to write HTML-like syntax directly in your JavaScript without needing to directly use the DOM/CSSOM.</p>
 <p>Those libraries are just syntactic sugar over the DOM/CSSOM API.</p>
 <p>An example of those libraries is the <strong>lit-html</strong> library. So, using <strong>lit-html</strong> with our previous <strong>nav.js</strong> and <strong>footer.js</strong> components will look like the following:</p>
 <p><strong>nav.js</strong></p>
-<pre><code class="lang-text">import { html, render } from &apos;lit-html&apos;;
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { html, render } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;lit-html&apos;</span>;
 
-const nav = html`
-  &lt;nav&gt;
-    &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
-    &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
-  &lt;/nav&gt;
-`;
+<span class="hljs-keyword">const</span> nav = html`<span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+`</span>;
 
-// Insert nav into the DOM
-render(nav, document.getElementById(&apos;nav&apos;));
+<span class="hljs-comment">// Insert nav into the DOM</span>
+render(nav, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;nav&apos;</span>));
 </code></pre>
 <p><strong>footer.js</strong></p>
-<pre><code class="lang-text">import { html, render } from &apos;lit-html&apos;;
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { html, render } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;lit-html&apos;</span>;
 
-const footer = html`
-  &lt;footer&gt;
-    &lt;p&gt;Copyright &amp;copy; My Website&lt;/p&gt;
-  &lt;/footer&gt;
-`;
+<span class="hljs-keyword">const</span> footer = html`<span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Copyright <span class="hljs-symbol">&amp;copy;</span> My Website<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+`</span>;
 
-// Insert footer into the DOM
-render(footer, document.getElementById(&apos;footer&apos;));
+<span class="hljs-comment">// Insert footer into the DOM</span>
+render(footer, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;footer&apos;</span>));
 </code></pre>
 <p><strong>React.js</strong> also uses a similar concept that utilizes <strong>JSX</strong>.</p>
 <p><strong>JSX</strong> is a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript.</p>
@@ -1076,33 +1082,33 @@ render(footer, document.getElementById(&apos;footer&apos;));
 </div></div><p></p>
 <p>So your project files will look like the following:</p>
 <p><strong>index.html</strong></p>
-<pre><code class="lang-text">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My Website&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/app.css&quot;&gt;
-    &lt;script src=&quot;https://unpkg.com/lit-html&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;nav&quot;&gt;&lt;/div&gt;
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;css/app.css&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/lit-html&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nav&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    &lt;h1&gt;Click Me!&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Click Me!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-    &lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    &lt;script type=&quot;module&quot; src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/app.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
 <p><strong>nav.js</strong></p>
-<pre><code class="lang-text">import { html, render } from &apos;lit-html&apos;;
+<pre><code class="lang-html">import { html, render } from &apos;lit-html&apos;;
 
 const navTemplate = html`
-  &lt;nav&gt;
-    &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
-    &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
-  &lt;/nav&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 `;
 
 export function createNav() {
@@ -1111,22 +1117,22 @@ export function createNav() {
 }
 </code></pre>
 <p><strong>footer.js</strong></p>
-<pre><code class="lang-text">import { html, render } from &apos;lit-html&apos;;
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { html, render } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;lit-html&apos;</span>;
 
-const footerTemplate = html`
-  &lt;footer&gt;
-    &lt;p&gt;Copyright &amp;copy; My Website&lt;/p&gt;
-  &lt;/footer&gt;
-`;
+<span class="hljs-keyword">const</span> footerTemplate = html`<span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Copyright <span class="hljs-symbol">&amp;copy;</span> My Website<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+`</span>;
 
-export function createFooter() {
-  const footerContainer = document.getElementById(&apos;footer&apos;);
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFooter</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> footerContainer = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;footer&apos;</span>);
   render(footerTemplate, footerContainer);
 }
 </code></pre>
 <p><strong>app.js</strong></p>
-<pre><code class="lang-text">import { createNav } from &apos;../resources/nav.js&apos;;
-import { createFooter } from &apos;../resources/footer.js&apos;;
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { createNav } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../resources/nav.js&apos;</span>;
+<span class="hljs-keyword">import</span> { createFooter } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../resources/footer.js&apos;</span>;
 
 createNav();
 createFooter();
@@ -1152,26 +1158,26 @@ createFooter();
 <p>Because the use of a component based architecture implies that there is a parent/child relation between components and thus the existence of a &quot;first ancestor&quot; component. This component is often referred as the <strong>root component</strong>.</p>
 <p>The <strong>root component</strong> is the first component that gets mounted into the DOM and serves as a start-point for the components&apos; tree. So there is actually no use for using pure HTML other than mounting the <strong>root component</strong>.</p>
 <p>That is why a typical index.html file in a project where the vue.js 3 is used as a frontend library looks like the following:</p>
-<pre><code class="lang-text">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Simple Vue.js 3 App&lt;/title&gt;
-    &lt;script src=&quot;https://unpkg.com/vue@3/dist/vue.global.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-   &lt;div id=&quot;app&quot;&gt;{{ message }}&lt;/div&gt;
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Simple Vue.js 3 App<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/vue@3/dist/vue.global.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>{{ message }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-   &lt;script&gt;
-     const { createApp } = Vue
+   <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+     <span class="hljs-keyword">const</span> { createApp } = Vue
 
      createApp({
-       setup() {
-         return {}
+       <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> {
+         <span class="hljs-keyword">return</span> {}
        }
-     }).mount(&apos;#app&apos;)
-   &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+     }).mount(<span class="hljs-string">&apos;#app&apos;</span>)
+   </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
 <h4 id="single-page-applications-spas">Single Page Applications (SPAs)</h4>
 <p>Now, because the entire application relies on one index.html page on which the <strong>root component</strong> is mounted. There is no need for additional pages.</p>
@@ -1225,34 +1231,34 @@ createFooter();
 <h4 id="inserting-html-components-using-php">inserting HTML components using PHP</h4>
 <p>In PHP, you can include other predefined PHP components that describe HTML using the PHP <code>include</code> statement. Like the following:</p>
 <p><strong>index.php</strong></p>
-<pre><code class="lang-text">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My Website&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/app.css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;css/app.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
     &lt;?php include &apos;resources/nav.php&apos;; ?&gt;
 
-    &lt;h1&gt;Click Me!&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Click Me!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
     &lt;?php include &apos;resources/footer.php&apos;; ?&gt;
 
-    &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/app.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
 <p><strong>nav.php</strong></p>
-<pre><code class="lang-text">&lt;nav&gt;
-    &lt;a href=&quot;about.php&quot;&gt;About&lt;/a&gt;
-    &lt;a href=&quot;contact.php&quot;&gt;Contact&lt;/a&gt;
-&lt;/nav&gt;
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.php&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.php&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 </code></pre>
 <p><strong>footer.php</strong></p>
-<pre><code class="lang-text">&lt;footer&gt;
-    &lt;p&gt;Copyright &amp;copy; My Website&lt;/p&gt;
-&lt;/footer&gt;
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Copyright <span class="hljs-symbol">&amp;copy;</span> My Website<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
 </code></pre>
 <p>So, now your project structure would look similar to the following:</p>
 <pre><code class="lang-text">/mywebsite
@@ -1395,7 +1401,7 @@ error_reporting(E_ALL);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Chapter 7: Overview on how to Build a Web App","level":"5.1","depth":1,"next":{"title":"Chapter 8: Laravel as a Backend Framework","level":"5.2","depth":1,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/README.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/README.md","articles":[{"title":"Section 8.1: The Scaffolding of a Laravel App","level":"5.2.1","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},{"title":"Section 8.2: Service Providers","level":"5.2.2","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},{"title":"Section 8.3: Facades","level":"5.2.3","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","articles":[]},{"title":"Section 8.4: The Rest","level":"5.2.4","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","articles":[]}]},"previous":{"title":"Section 6.4: Ajax","level":"4.3.4","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/README.md","mtime":"2023-09-05T08:59:09.298Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-05T08:59:18.038Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Chapter 7: Overview on how to Build a Web App","level":"5.1","depth":1,"next":{"title":"Chapter 8: Laravel as a Backend Framework","level":"5.2","depth":1,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/README.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/README.md","articles":[{"title":"Section 8.1: The Scaffolding of a Laravel App","level":"5.2.1","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.md","articles":[]},{"title":"Section 8.2: Service Providers","level":"5.2.2","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/2_service_providers.md","articles":[]},{"title":"Section 8.3: Facades","level":"5.2.3","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/3_facades.md","articles":[]},{"title":"Section 8.4: The Rest","level":"5.2.4","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","ref":"part_4_building_a_real_time_web_app/chapter_8_laravel_as_a_backend_framework/4_the_rest.md","articles":[]}]},"previous":{"title":"Section 6.4: Ajax","level":"4.3.4","depth":2,"path":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.md","ref":"part_3_technical_design_and_implementation/chapter_6_real_time_protocols_and_techniques/4_ajax.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_4_building_a_real_time_web_app/chapter_7_overview_on_how_to_build_a_web_app/README.md","mtime":"2023-09-05T09:17:23.698Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-05T09:17:33.239Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

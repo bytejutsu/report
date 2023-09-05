@@ -748,14 +748,16 @@
 </div></div><p></p>
 <p>Example:</p>
 <p>(inside script setup tags)</p>
-<pre><code>&lt;!-- Child Component --&gt;
-import { ref } from &apos;vue&apos;;
-const props = defineProps([&apos;value&apos;]);
-const emit = defineEmits([&apos;update:value&apos;]);
-const updateValue = newValue =&gt; { emit(&apos;update:value&apos;, newValue) };
-</code></pre><pre><code>&lt;!-- Parent Component --&gt;
-&lt;ChildComponent :value=&quot;parentValue&quot; @update:value=&quot;parentValue = $event&quot; /&gt;
-</code></pre><p>The following is a class diagram of a parent component and its direct child component communicating with props and events. The parent passes props <strong>down</strong> to the child component and the child component emits events <strong>up</strong> to the parent.</p>
+<pre><code class="lang-javascript">&lt;!-- Child Component --&gt;
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>;
+<span class="hljs-keyword">const</span> props = defineProps([<span class="hljs-string">&apos;value&apos;</span>]);
+<span class="hljs-keyword">const</span> emit = defineEmits([<span class="hljs-string">&apos;update:value&apos;</span>]);
+<span class="hljs-keyword">const</span> updateValue = <span class="hljs-function"><span class="hljs-params">newValue</span> =&gt;</span> { emit(<span class="hljs-string">&apos;update:value&apos;</span>, newValue) };
+</code></pre>
+<pre><code class="lang-javascript">&lt;!-- Parent Component --&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ChildComponent</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;parentValue&quot;</span> @<span class="hljs-attr">update:value</span>=<span class="hljs-string">&quot;parentValue = $event&quot;</span> /&gt;</span></span>
+</code></pre>
+<p>The following is a class diagram of a parent component and its direct child component communicating with props and events. The parent passes props <strong>down</strong> to the child component and the child component emits events <strong>up</strong> to the parent.</p>
 <p><a href="https://mermaid.live/edit#pako:eNptULFOxTAM_BXLE4j2BzKwPN6IhMSGsli1SyMlcZSmldCj_05aShEVk-3z-c66G3bKggY7T-P45Og9U7ARYJvhhbLEctGQNNYGbusKoE1Z02ggVY4wFIXL4DwfvG_Ww0CRvVznitzdG5jV8bpZfvX_np3ls3Ti5mrQZw3nX3YPCa7873D-vW0_H0-G2GCQHMhxTWAzt1gGCWLR1Jalp8kXizYulUpT0deP2KEpeZIGp8RUZM8MTU9-PNAru6L5AGUbn_eo19Jgovim-nO4fAE6GIhn" target="_blank"><img src="https://mermaid.ink/img/pako:eNptULFOxTAM_BXLE4j2BzKwPN6IhMSGsli1SyMlcZSmldCj_05aShEVk-3z-c66G3bKggY7T-P45Og9U7ARYJvhhbLEctGQNNYGbusKoE1Z02ggVY4wFIXL4DwfvG_Ww0CRvVznitzdG5jV8bpZfvX_np3ls3Ti5mrQZw3nX3YPCa7873D-vW0_H0-G2GCQHMhxTWAzt1gGCWLR1Jalp8kXizYulUpT0deP2KEpeZIGp8RUZM8MTU9-PNAru6L5AGUbn_eo19Jgovim-nO4fAE6GIhn?type=png" alt></a></p>
 <h3 id="3-provide--inject">3. <strong>Provide + Inject</strong>:</h3>
 <p>This is a way to pass data from a parent component to descendant components through a dependency injection mechanism, without going through intermediate components. This can be useful for avoiding prop drilling.</p>
@@ -763,43 +765,48 @@ const updateValue = newValue =&gt; { emit(&apos;update:value&apos;, newValue) };
 </div></div><p></p>
 <p>Example:</p>
 <p>(inside script setup tags)</p>
-<pre><code>&lt;!-- Parent Component --&gt;
-import { provide, ref } from &apos;vue&apos;;
-const value = ref(&apos;Hello&apos;);
-provide(&apos;key&apos;, value);
-</code></pre><p>(inside script setup tags)</p>
-<pre><code>&lt;!-- more than 1-level nested Child Component --&gt;
-import { inject } from &apos;vue&apos;;
-const value = inject(&apos;key&apos;);
-</code></pre><p>The following is a class diagram illustration of the Parent Component providing its state. The Grad Child Component gets the Parent&apos;s state injected without the need of it passing through the Child component. </p>
+<pre><code class="lang-javascript">&lt;!-- Parent Component --&gt;
+<span class="hljs-keyword">import</span> { provide, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>;
+<span class="hljs-keyword">const</span> value = ref(<span class="hljs-string">&apos;Hello&apos;</span>);
+provide(<span class="hljs-string">&apos;key&apos;</span>, value);
+</code></pre>
+<p>(inside script setup tags)</p>
+<pre><code class="lang-javascript">&lt;!-- more than <span class="hljs-number">1</span>-level nested Child Component --&gt;
+<span class="hljs-keyword">import</span> { inject } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>;
+<span class="hljs-keyword">const</span> value = inject(<span class="hljs-string">&apos;key&apos;</span>);
+</code></pre>
+<p>The following is a class diagram illustration of the Parent Component providing its state. The Grad Child Component gets the Parent&apos;s state injected without the need of it passing through the Child component. </p>
 <p><img src="vuejs-provide-inject.png" alt="provide_inject"></p>
 <h3 id="4-shared-state-store-pinia">4. <strong>Shared State Store (Pinia)</strong>:</h3>
 <p>Pinia is a state management library for Vue.js that provides a centralized store for shared state. It&apos;s an alternative to Vuex and is designed to be more intuitive and flexible.</p>
 <p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Only use this technique if you want to <strong>share</strong> state between a parent, and a <strong>more than one</strong> level nested child component. <strong>In multiple occurrences</strong>.</p>
 </div></div><p></p>
 <p>(inside script setup tags)</p>
-<pre><code>&lt;!-- Store --&gt;
-import { defineStore } from &apos;pinia&apos;;
-export const useStore = defineStore({
-  id: &apos;main&apos;,
-  state: () =&gt; ({ count: 0 }),
-  actions: {
-    increment() { this.count++ }
+<pre><code class="lang-javascript">&lt;!-- Store --&gt;
+<span class="hljs-keyword">import</span> { defineStore } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;pinia&apos;</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useStore = defineStore({
+  <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;main&apos;</span>,
+  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">count</span>: <span class="hljs-number">0</span> }),
+  <span class="hljs-attr">actions</span>: {
+    <span class="hljs-function"><span class="hljs-title">increment</span>(<span class="hljs-params"></span>)</span> { <span class="hljs-built_in">this</span>.count++ }
   }
 });
-</code></pre><p>(inside script setup tags)</p>
-<pre><code>&lt;!-- Component --&gt;
-import { useStore } from &apos;./store&apos;;
-const store = useStore();
-const count = store.count;
-const increment = store.increment;
-</code></pre><p>(inside script setup tags)</p>
-<pre><code>&lt;!-- More than 1-level nested child Component --&gt;
-import { useStore } from &apos;./store&apos;;
-const store = useStore();
-const count = store.count;
-const increment = store.increment;
-</code></pre><p>The following is an example illustration of how different components nested in different levels can share a state defined in a Pinia store:</p>
+</code></pre>
+<p>(inside script setup tags)</p>
+<pre><code class="lang-javascript">&lt;!-- Component --&gt;
+<span class="hljs-keyword">import</span> { useStore } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./store&apos;</span>;
+<span class="hljs-keyword">const</span> store = useStore();
+<span class="hljs-keyword">const</span> count = store.count;
+<span class="hljs-keyword">const</span> increment = store.increment;
+</code></pre>
+<p>(inside script setup tags)</p>
+<pre><code class="lang-javascript">&lt;!-- More than <span class="hljs-number">1</span>-level nested child Component --&gt;
+<span class="hljs-keyword">import</span> { useStore } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./store&apos;</span>;
+<span class="hljs-keyword">const</span> store = useStore();
+<span class="hljs-keyword">const</span> count = store.count;
+<span class="hljs-keyword">const</span> increment = store.increment;
+</code></pre>
+<p>The following is an example illustration of how different components nested in different levels can share a state defined in a Pinia store:</p>
 <p><a href="https://mermaid.live/edit#pako:eNqdUUsKwjAQvUqYdesBshC0dSkI7iSboZnaQJOUJF1I7d1NS22roIirZN5neMProLCSgENRo_e5wqtDLQxj48xOyig8B-uIdQPKWOoDBuLMV-hIDli_yDOrG2vIhN27fFm0GZFPxv2_xuxfY_6zcXVdmt63q9Bf2eyFzd7YHBLQ5DQqGVsYowgIFWkSwONXUoltHQQI00cptsGeb6YAHlxLCbSNjBGn3oCXWPsZPUgVr5hBGsfjVPfwJNCguVj7NPYPZ_a0ew" target="_blank"><img src="https://mermaid.ink/img/pako:eNqdUUsKwjAQvUqYdesBshC0dSkI7iSboZnaQJOUJF1I7d1NS22roIirZN5neMProLCSgENRo_e5wqtDLQxj48xOyig8B-uIdQPKWOoDBuLMV-hIDli_yDOrG2vIhN27fFm0GZFPxv2_xuxfY_6zcXVdmt63q9Bf2eyFzd7YHBLQ5DQqGVsYowgIFWkSwONXUoltHQQI00cptsGeb6YAHlxLCbSNjBGn3oCXWPsZPUgVr5hBGsfjVPfwJNCguVj7NPYPZ_a0ew?type=png" alt></a></p>
 <h3 id="5-using-composables">5. <strong>Using Composables</strong>:</h3>
 <p>Composables are reusable logic functions in Vue.js Composition API. They can be used to share stateful logic between components.</p>
@@ -810,18 +817,20 @@ const increment = store.increment;
 </div></div><p></p>
 <p>Example</p>
 <p>(inside script setup tags)</p>
-<pre><code>&lt;!-- Composable --&gt;
-import { ref } from &apos;vue&apos;;
-export function useCounter() {
-  const count = ref(0);
-  const increment = () =&gt; { count.value++ };
-  return { count, increment };
+<pre><code class="lang-javascript">&lt;!-- Composable --&gt;
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useCounter</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> count = ref(<span class="hljs-number">0</span>);
+  <span class="hljs-keyword">const</span> increment = <span class="hljs-function">() =&gt;</span> { count.value++ };
+  <span class="hljs-keyword">return</span> { count, increment };
 }
-</code></pre><p>(inside script setup tags)</p>
-<pre><code>&lt;!-- Component --&gt;
-import { useCounter } from &apos;./composables&apos;;
-const { count, increment } = useCounter();
-</code></pre><p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Composable can also be used in combination with a shared state store like Pinia:</p>
+</code></pre>
+<p>(inside script setup tags)</p>
+<pre><code class="lang-javascript">&lt;!-- Component --&gt;
+<span class="hljs-keyword">import</span> { useCounter } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./composables&apos;</span>;
+<span class="hljs-keyword">const</span> { count, increment } = useCounter();
+</code></pre>
+<p></p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Composable can also be used in combination with a shared state store like Pinia:</p>
 </div></div><p></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useAuthStore = defineStore(<span class="hljs-string">&apos;auth&apos;</span>, {
@@ -885,7 +894,7 @@ watch(count, <span class="hljs-function"><span class="hljs-params">newValue</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section 9.1: State Management in Vue.js 3","level":"5.3.1","depth":2,"next":{"title":"Chapter 10: Monolothic Architecture","level":"5.4","depth":1,"path":"part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/README.md","ref":"part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/README.md","articles":[]},"previous":{"title":"Chapter 9: Vue.js 3 as a Frontend Framework","level":"5.3","depth":1,"path":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/README.md","ref":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/README.md","articles":[{"title":"Section 9.1: State Management in Vue.js 3","level":"5.3.1","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md","ref":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md","mtime":"2023-09-05T08:59:09.302Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-05T08:59:18.038Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section 9.1: State Management in Vue.js 3","level":"5.3.1","depth":2,"next":{"title":"Chapter 10: Monolothic Architecture","level":"5.4","depth":1,"path":"part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/README.md","ref":"part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/README.md","articles":[]},"previous":{"title":"Chapter 9: Vue.js 3 as a Frontend Framework","level":"5.3","depth":1,"path":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/README.md","ref":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/README.md","articles":[{"title":"Section 9.1: State Management in Vue.js 3","level":"5.3.1","depth":2,"path":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md","ref":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints","theme-creative"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"numbered":{},"chapter-fold":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-creative":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"hidepagefooters":[],"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":32,"left":32,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"hidepageheaders":[],"variables":{},"title":"Small-Scale Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Small-Scale Real-Time Modern Web Applications"},"file":{"path":"part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md","mtime":"2023-09-05T09:17:23.702Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-05T09:17:33.239Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
