@@ -8,7 +8,7 @@
 * [General Introduction](part_1_introduction/1_general_introduction/README.md)
 * [Chapter 1: General Context](part_1_introduction/chapter_1_general_context/README.md)
 
-### Part 2: Analysis And Conception 
+### Part 2: Analysis And Conception
 
 * [Chapter 2: Project Structure](part_2_analysis_and_conception/chapter_2_project_structure/README.md)
 * [Chapter 3: Tools](part_2_analysis_and_conception/chapter_3_tools/README.md)
@@ -40,7 +40,7 @@
   * [Section 9.1: State Management in Vue.js 3](part_4_building_a_real_time_web_app/chapter_9_vue_js_3_as_a_frontend_framework/1_state_management_in_vuejs_3.md)
 * [Chapter 10: Monolothic Architecture](part_4_building_a_real_time_web_app/chapter_10_monolithic_architecture/README.md)
 
-### Part 5: Conclusion 
+### Part 5: Conclusion
 
 * [Chapter 11: Takeaways](part_5_conclusion/chapter_11_takeaways/README.md)
 * [Chapter 12: General Conclusion](part_5_conclusion/chapter_12_general_conclusion/README.md)
