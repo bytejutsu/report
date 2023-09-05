@@ -8,8 +8,9 @@
 
 **Class Diagram:**
 
-![Class Diagram for Invoicing App](./invoicing_app_class_diagram.svg)
+[![](https://mermaid.ink/img/pako:eNptkcFOwzAMhl8lyrl7gR6QiuCwAwgx4IB6sRJ3tZTYVeIMVdPenbQUEBO5JPb_2fnjnK0Tj7a1LkDOdwTHBLFnU9drxmR2uxvzlGSggK0ZIV9Jez4JuSq5hKC4yVt2JW5LJsac9zxIiqAkXGlhBeJ_8LfupcoQXAm__X6u63ykWp4ndATB6DyhkeELWrWVWvDOKZ1I59ZEYVJJ160e5RmPlDV9WwI24Fx1aj5IRylqGxuxWiZfx3NeynurI0bsbVuPHgcoQXvb86WiUFQOMzvbairY2DL5-oBtoH-T934xZNsBQq5JXMOH7RuWrbET8LtI3JjLJ5-CjUw?type=png)](https://mermaid.live/edit#pako:eNptkcFOwzAMhl8lyrl7gR6QiuCwAwgx4IB6sRJ3tZTYVeIMVdPenbQUEBO5JPb_2fnjnK0Tj7a1LkDOdwTHBLFnU9drxmR2uxvzlGSggK0ZIV9Jez4JuSq5hKC4yVt2JW5LJsac9zxIiqAkXGlhBeJ_8LfupcoQXAm__X6u63ykWp4ndATB6DyhkeELWrWVWvDOKZ1I59ZEYVJJ160e5RmPlDV9WwI24Fx1aj5IRylqGxuxWiZfx3NeynurI0bsbVuPHgcoQXvb86WiUFQOMzvbairY2DL5-oBtoH-T934xZNsBQq5JXMOH7RuWrbET8LtI3JjLJ5-CjUw)
 
+---
 **Screenshots:**
 
 ![screenshot 0](./invoicing_app_screenshots/0.png)
@@ -60,7 +61,9 @@
 
 **Class Diagram:**
 
-![Class Diagram for Messaging App](./messaging_app_class_diagram.svg)
+[![](https://mermaid.ink/img/pako:eNptksFqwzAMhl_F-Nywuw-7bINdOgqll5GLsNVWEMvBkjtK6bvPTbKRlPhi-_evD0nWzfoU0DrrOxB5JzhliC2bugbFHASzuY3KYzWlCgwRZ1JfjT8ph1G6z8N3OR2pwwUhkPQdXL-eIKNzR15LxhXUFkXgtET5xIqsM0UpoijEfoWwV9AiC0DijhjHh5lc7bpH5BXIW-ILZgGlxAtUD1nJUw-sc1Qc0_4k0ZSvC-DQ26Z5_euSM2eQp6epamcEOchLRo90wWfXWMBa_DxdZ_5zVBRDbDc2Yo5AoU7AUEtr9Yz1X6yrx4BHKJ22tuV7tULRtL-yt05zwY0tfaicaWaW4kegWq11R-ikijhct9OkPbaNrX36TilOnvsvu-nNqQ?type=png)](https://mermaid.live/edit#pako:eNptksFqwzAMhl_F-Nywuw-7bINdOgqll5GLsNVWEMvBkjtK6bvPTbKRlPhi-_evD0nWzfoU0DrrOxB5JzhliC2bugbFHASzuY3KYzWlCgwRZ1JfjT8ph1G6z8N3OR2pwwUhkPQdXL-eIKNzR15LxhXUFkXgtET5xIqsM0UpoijEfoWwV9AiC0DijhjHh5lc7bpH5BXIW-ILZgGlxAtUD1nJUw-sc1Qc0_4k0ZSvC-DQ26Z5_euSM2eQp6epamcEOchLRo90wWfXWMBa_DxdZ_5zVBRDbDc2Yo5AoU7AUEtr9Yz1X6yrx4BHKJ22tuV7tULRtL-yt05zwY0tfaicaWaW4kegWq11R-ikijhct9OkPbaNrX36TilOnvsvu-nNqQ)
+
+---
 
 **Screenshots:**
 
