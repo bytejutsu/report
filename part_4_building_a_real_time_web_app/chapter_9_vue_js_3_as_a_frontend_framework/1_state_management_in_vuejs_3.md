@@ -47,7 +47,7 @@ Only use this technique if you want to communicate state between a parent, and i
 Example:
 
 (inside script setup tags)
-```
+```javascript
 <!-- Child Component -->
 import { ref } from 'vue';
 const props = defineProps(['value']);
@@ -55,7 +55,7 @@ const emit = defineEmits(['update:value']);
 const updateValue = newValue => { emit('update:value', newValue) };
 ```
 
-```
+```javascript
 <!-- Parent Component -->
 <ChildComponent :value="parentValue" @update:value="parentValue = $event" />
 ```
@@ -77,7 +77,7 @@ Only use this technique if you want to communicate state between a parent, and a
 Example:
 
 (inside script setup tags)
-```
+```javascript
 <!-- Parent Component -->
 import { provide, ref } from 'vue';
 const value = ref('Hello');
@@ -85,7 +85,7 @@ provide('key', value);
 ```
 
 (inside script setup tags)
-```
+```javascript
 <!-- more than 1-level nested Child Component -->
 import { inject } from 'vue';
 const value = inject('key');
@@ -106,7 +106,7 @@ Only use this technique if you want to **share** state between a parent, and a *
 {% endhint %}
 
 (inside script setup tags)
-```
+```javascript
 <!-- Store -->
 import { defineStore } from 'pinia';
 export const useStore = defineStore({
@@ -119,7 +119,7 @@ export const useStore = defineStore({
 ```
 
 (inside script setup tags)
-```
+```javascript
 <!-- Component -->
 import { useStore } from './store';
 const store = useStore();
@@ -128,7 +128,7 @@ const increment = store.increment;
 ```
 
 (inside script setup tags)
-```
+```javascript
 <!-- More than 1-level nested child Component -->
 import { useStore } from './store';
 const store = useStore();
@@ -155,7 +155,7 @@ Use this technique only if
 Example
 
 (inside script setup tags)
-```
+```javascript
 <!-- Composable -->
 import { ref } from 'vue';
 export function useCounter() {
@@ -166,7 +166,7 @@ export function useCounter() {
 ```
 
 (inside script setup tags)
-```
+```javascript
 <!-- Component -->
 import { useCounter } from './composables';
 const { count, increment } = useCounter();

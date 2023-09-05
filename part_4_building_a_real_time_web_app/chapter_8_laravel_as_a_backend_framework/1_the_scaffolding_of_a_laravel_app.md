@@ -97,13 +97,13 @@ Let's break down the steps that `index.php` performs and see which section of th
 
 1 Define LARAVEL_START
 
-```
+```PHP
 define('LARAVEL_START', microtime(true));
 ```
 
 2 Check If The Application Is Under Maintenance
 
-```
+```PHP
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
 }
@@ -111,13 +111,13 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
  
 3 Register The Auto Loader
 
-```
+```PHP
 require __DIR__.'/../vendor/autoload.php';
 ```
  
 4 Run The Application
 
-```
+```PHP
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
@@ -125,7 +125,7 @@ $kernel = $app->make(Kernel::class);
  
 5 Sends an HTTP response back to the web server
 
-```
+```PHP
 $response = $kernel->handle(
     $request = Request::capture()
 )->send();
@@ -133,7 +133,7 @@ $response = $kernel->handle(
  
 6 Terminate The Application
 
-```
+```PHP
 $kernel->terminate($request, $response);
 ```
 
@@ -147,13 +147,13 @@ $kernel->terminate($request, $response);
 
 - It starts by **bootstrapping the Laravel application**, which involves setting up error handling, configuring logging, loading configuration files, and more. 
 
-```
+```PHP
 $app = require_once __DIR__.'/../bootstrap/app.php';
 ```
 
 - Then it creates an instance of Laravel's **HTTP kernel**, which is responsible for handling the request. The kernel handles the request and returns a response, which is then sent back to the client.
 
-```
+```PHP
 $kernel = $app->make(Kernel::class);
 ```
 
@@ -164,7 +164,7 @@ $kernel = $app->make(Kernel::class);
 
 Ok, now let's try to reason backwards and try to understand the following lines of code:
 
-```
+```PHP
 $response = $kernel->handle(
     $request = Request::capture()
 )->send();
@@ -180,7 +180,7 @@ To understand how the Laravel HTTP kernel works, we need to firstly start by ana
 
 The following is the code of the `Kernel.php` file which is namespaced as `Illuminate\Contracts\Http\Kernel`:
 
-```
+```PHP
 <?php
 
 namespace Illuminate\Contracts\Http;
@@ -239,7 +239,7 @@ Here's what each method is intended to do:
 
 How does the following line of code works?:
 
-```
+```PHP
 $kernel = $app->make(Kernel::class);
 ```
 
@@ -509,7 +509,7 @@ To get a grasp of how Laravel works we need to understand the main component of 
 
 To understand what the following two lines of code do.
 
-```
+```PHP
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);

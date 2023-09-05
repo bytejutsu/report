@@ -46,7 +46,7 @@ Since the browser can interpret mainly **HTML**, **CSS**, **JavaScript**, each H
 The following, is an example of a HTML page using the **style** and **script** tags. The example also show-cases the use of embedded css styling inside the p tag.
 
 **index.html**
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,7 +116,7 @@ For this reason, an HTML page can link external JS or CSS resources. CSS resourc
 The following example refactors the previous example to use external JS and CSS resources.
 
 **index.html**
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,7 +141,7 @@ The following example refactors the previous example to use external JS and CSS 
 </html>
 ```
 **css/app.css**
-```
+```css
 nav {
    background-color: #f8f9fa;
    padding: 10px;
@@ -167,7 +167,7 @@ p {
 ```
 
 **js/app.js**
-```
+```javascript
 document.querySelector("h1").addEventListener("click", function() {
     alert("You clicked the heading!");
 });
@@ -175,7 +175,7 @@ document.querySelector("h1").addEventListener("click", function() {
 
 So, now your project structure looks more like this.
 
-```
+```text
 /mywebsite
   /public
     index.html
@@ -221,7 +221,7 @@ The following workflow shows how the browser handles referenced files depending 
 
 Example **jQuery**:
 
-```text
+```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 ```
 
@@ -229,7 +229,7 @@ Example **jQuery**:
 
 Example **D3.js**:
 
-```text
+```html
 <script async src="https://d3js.org/d3.v6.min.js"></script>
 ```
 
@@ -237,7 +237,7 @@ Example **D3.js**:
 
 Example **Vue.js**:
 
-```text
+```html
 <script defer src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 ```
 
@@ -265,7 +265,7 @@ Many modern front-end js frameworks and libraries (like React, Angular, Vue.js) 
 
 You can create HTML elements programmatically using JavaScript and then insert them into the DOM. Like the following example:
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -312,7 +312,7 @@ You can create HTML elements programmatically using JavaScript and then insert t
 You can reason about each included HTML element as a standalone javascript component, like the following:
 
 **nav.js**
-```text
+```javascript
 // Create nav element
 var nav = document.createElement('nav');
 var aboutLink = document.createElement('a');
@@ -329,7 +329,7 @@ document.getElementById('nav').appendChild(nav);
 ```
 
 **footer.js**
-```text
+```javascript
 // Create footer element
 var footer = document.createElement('footer');
 var copyright = document.createElement('p');
@@ -343,7 +343,7 @@ document.getElementById('footer').appendChild(footer);
 Then you include it as an HTML element with a matching script in the:
 
 **main.html**
-```text
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -376,7 +376,7 @@ Those libraries are just syntactic sugar over the DOM/CSSOM API.
 An example of those libraries is the **lit-html** library. So, using **lit-html** with our previous **nav.js** and **footer.js** components will look like the following:
 
 **nav.js**
-```text
+```javascript
 import { html, render } from 'lit-html';
 
 const nav = html`
@@ -391,7 +391,7 @@ render(nav, document.getElementById('nav'));
 ```
 
 **footer.js**
-```text
+```javascript
 import { html, render } from 'lit-html';
 
 const footer = html`
@@ -452,7 +452,7 @@ So your project files will look like the following:
 
 **index.html**
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -475,7 +475,7 @@ So your project files will look like the following:
 
 **nav.js**
 
-```text
+```html
 import { html, render } from 'lit-html';
 
 const navTemplate = html`
@@ -492,7 +492,7 @@ export function createNav() {
 ```
 
 **footer.js**
-```text
+```javascript
 import { html, render } from 'lit-html';
 
 const footerTemplate = html`
@@ -508,7 +508,7 @@ export function createFooter() {
 ```
 
 **app.js**
-```text
+```javascript
 import { createNav } from '../resources/nav.js';
 import { createFooter } from '../resources/footer.js';
 
@@ -547,7 +547,7 @@ The **root component** is the first component that gets mounted into the DOM and
 
 That is why a typical index.html file in a project where the vue.js 3 is used as a frontend library looks like the following:
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -655,7 +655,7 @@ Those remote JS/CSS libraries will still need to be fetched by the browser from 
 In PHP, you can include other predefined PHP components that describe HTML using the PHP `include` statement. Like the following:
 
 **index.php**
-```text
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -676,7 +676,7 @@ In PHP, you can include other predefined PHP components that describe HTML using
 ```
 
 **nav.php**
-```text
+```html
 <nav>
     <a href="about.php">About</a>
     <a href="contact.php">Contact</a>
@@ -684,7 +684,7 @@ In PHP, you can include other predefined PHP components that describe HTML using
 ```
 
 **footer.php**
-```text
+```html
 <footer>
     <p>Copyright &copy; My Website</p>
 </footer>
