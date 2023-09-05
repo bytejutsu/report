@@ -10,7 +10,24 @@
 
 ![Class Diagram for Invoicing App](./invoicing_app_class_diagram.svg)
 
-**State Diagram:**
+**Screenshots:**
+
+![screenshot 0](./invoicing_app_screenshots/0.png)
+---
+![screenshot 1](./invoicing_app_screenshots/1.png)
+---
+![screenshot 2](./invoicing_app_screenshots/2.png)
+---
+![screenshot 3](./invoicing_app_screenshots/3.png)
+---
+![screenshot 4](./invoicing_app_screenshots/4.png)
+---
+![screenshot 5](./invoicing_app_screenshots/5.png)
+---
+![screenshot 6](./invoicing_app_screenshots/6.png)
+---
+![screenshot 7](./invoicing_app_screenshots/7.png)
+---
 
 **Sprint 1 Backlog for the Invoicing App:**
 
@@ -45,7 +62,20 @@
 
 ![Class Diagram for Messaging App](./messaging_app_class_diagram.svg)
 
-**State Diagram:**
+**Screenshots:**
+
+![screenshot 0](./messaging_app_screenshots/0.png)
+---
+![screenshot 1](./messaging_app_screenshots/1.png)
+---
+![screenshot 2](./messaging_app_screenshots/2.png)
+---
+![screenshot 3](./messaging_app_screenshots/3.png)
+---
+![screenshot 4](./messaging_app_screenshots/4.png)
+---
+![screenshot 5](./messaging_app_screenshots/5.png)
+---
 
 **Sprint 1 Backlog for the Messaging App:**
 
