@@ -4,7 +4,7 @@
 * [Dedication](1_dedication/README.md)
 * [Acknowledgment](2_acknowledgment/README.md)
 * [Abstract](3_abstract/README.md)
-* [Summary](ManualTOC.md)
+* [Table of Content](ManualTOC.md)
 * [General Introduction](4_general_introduction/README.md)
 * [Chapter 1: General Context](chapter_1_general_context/README.md)
 * [Chapter 2: Building a Real-Time Web App](chapter_2_building_a_real_time_web_app/README.md)
