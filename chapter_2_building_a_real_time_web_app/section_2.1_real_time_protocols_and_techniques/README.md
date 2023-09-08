@@ -4,7 +4,7 @@ The following is an overview of the WebSocket and WebRTC protocols in the "proto
 
 <figure>
   <img src="img_3.png" alt="Web protocols tree">
-  <figcaption style="text-align: center;">Web protocols tree</figcaption>
+  <figcaption style="text-align: center;">Figure 2: Web protocols tree</figcaption>
 </figure>
 
 ## 1. Websockets
@@ -29,7 +29,7 @@ WebSockets is a protocol **separate** from HTTP, but it's designed to work over 
 
 <figure>
   <img src="img_2.png" alt="Websocket protocol">
-  <figcaption style="text-align: center;">Websocket protocol</figcaption>
+  <figcaption style="text-align: center;">Figure 3: Websocket protocol</figcaption>
 </figure>
 
 ## 2. WebRTC
@@ -56,7 +56,7 @@ Here's a simplified explanation of how it works:
 
 <figure>
   <img src="img_1.png" alt="WebRTC protocol">
-  <figcaption style="text-align: center;">WebRTC protocol</figcaption>
+  <figcaption style="text-align: center;">Figure 4: WebRTC protocol</figcaption>
 </figure>
 
 {% hint style="info" %}
@@ -71,5 +71,5 @@ The following diagram illustrates a more practical use-case where a signaling se
 
 <figure>
   <img src="img.png" alt="WebRTC practical use-case">
-  <figcaption style="text-align: center;">WebRTC practical use-case</figcaption>
+  <figcaption style="text-align: center;">Figure 5: WebRTC practical use-case</figcaption>
 </figure>

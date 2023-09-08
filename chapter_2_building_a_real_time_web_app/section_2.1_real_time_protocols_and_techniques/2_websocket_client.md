@@ -16,7 +16,7 @@ The WebSocket server is responsible for maintaining the long-lived connections w
 
 <figure>
   <img src="img_10.png" alt="Client knows how to reach back websocket server">
-  <figcaption style="text-align: center;">Client knows how to reach back websocket server</figcaption>
+  <figcaption style="text-align: center;">Figure 14: Client knows how to reach back websocket server</figcaption>
 </figure>
 
 ### Client and Websocket Server

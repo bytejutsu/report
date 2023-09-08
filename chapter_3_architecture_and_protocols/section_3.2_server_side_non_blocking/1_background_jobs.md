@@ -8,7 +8,7 @@ Background jobs in Laravel allow you to defer the processing of a time-consuming
 
 <figure style="text-align: center">
   <img src="img_8.png" alt="Laravel background jobs">
-  <figcaption style="text-align: center;">Laravel background jobs</figcaption>
+  <figcaption style="text-align: center;">Figure 51: Laravel background jobs</figcaption>
 </figure>
 
 ### Asynchronous Execution of Background Jobs
@@ -21,7 +21,7 @@ Worker threads, which are separate processes, are responsible for picking up and
 
 <figure style="text-align: center">
   <img src="img_7.png" alt="Asynchronous execution of background jobs">
-  <figcaption style="text-align: center;">Asynchronous execution of background jobs</figcaption>
+  <figcaption style="text-align: center;">Figure 52: Asynchronous execution of background jobs</figcaption>
 </figure>
 
 ### Job Queues 
@@ -32,7 +32,7 @@ Message queues are services that implement a priority queue. They are designed t
 
 <figure style="text-align: center">
   <img src="img_6.png" alt="Job queues">
-  <figcaption style="text-align: center;">Job queues</figcaption>
+  <figcaption style="text-align: center;">Figure 53: Job queues</figcaption>
 </figure>
 
 
@@ -42,7 +42,7 @@ Job events in Laravel provide hooks into the Laravel queue's job processing syst
 
 <figure style="text-align: center">
   <img src="img_5.png" alt="Job events">
-  <figcaption style="text-align: center;">Job events</figcaption>
+  <figcaption style="text-align: center;">Figure 54: Job events</figcaption>
 </figure>
 
 

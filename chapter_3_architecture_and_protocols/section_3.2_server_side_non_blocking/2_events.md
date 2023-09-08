@@ -8,7 +8,7 @@ The following diagram represents how the Observer Pattern typically works:
 
 <figure style="text-align: center">
   <img src="img_4.png" alt="Observer pattern">
-  <figcaption style="text-align: center;">Observer pattern</figcaption>
+  <figcaption style="text-align: center;">Figure 55: Observer pattern</figcaption>
 </figure>
 
 
@@ -16,7 +16,7 @@ The following diagram shows how the Observer Pattern is implemented in the conte
 
 <figure style="text-align: center">
   <img src="img_3.png" alt="Observer pattern in laravel">
-  <figcaption style="text-align: center;">Observer pattern in laravel</figcaption>
+  <figcaption style="text-align: center;">Figure 56: Observer pattern in laravel</figcaption>
 </figure>
 
 + They serve as a great way to decouple various aspects of your application, as the event object can be used to share data between the event listeners.
@@ -29,7 +29,7 @@ The following diagram shows how the Observer Pattern is implemented in the conte
 
 <figure style="text-align: center">
   <img src="img_2.png" alt="Event types in laravel">
-  <figcaption style="text-align: center;">Event types in laravel</figcaption>
+  <figcaption style="text-align: center;">Figure 57: Event types in laravel</figcaption>
 </figure>
 
 
@@ -39,7 +39,7 @@ The following diagram illustrates how Job Event use the Database shared resource
 
 <figure style="text-align: center">
   <img src="img_1.png" alt="Persistent events in laravel">
-  <figcaption style="text-align: center;">Persistent events in laravel</figcaption>
+  <figcaption style="text-align: center;">Figure 58: Persistent events in laravel</figcaption>
 </figure>
 
 in the sequence diagram:
@@ -62,7 +62,7 @@ The following is a sequence diagram for request-specific events that get listene
 
 <figure style="text-align: center">
   <img src="img.png" alt="Non persistent events in laravel">
-  <figcaption style="text-align: center;">Non persistent events in laravel</figcaption>
+  <figcaption style="text-align: center;">Figure 59: Non persistent events in laravel</figcaption>
 </figure>
 
 Both the Event and the Listener are part of the Laravel Application instance.

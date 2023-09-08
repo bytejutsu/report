@@ -4,7 +4,7 @@ One of the `bootstrappers` that the `bootstrap()` method calls is the `BootProvi
 
 <figure style="text-align: center">
   <img src="BootProviders1.drawio.png" alt="Inside the bootstrap method">
-  <figcaption style="text-align: center;">Inside the bootstrap method</figcaption>
+  <figcaption style="text-align: center;">Figure 30: Inside the bootstrap method</figcaption>
 </figure>
 
 The `Illuminate\Foundation\Bootstrap\BootProviders::class` is responsible for booting the service providers.

@@ -10,7 +10,7 @@ The following are common techniques used to facilitate real-time communication b
 
 <figure style="text-align: center">
   <img src="img_6.png" alt="Polling">
-  <figcaption style="text-align: center;">Polling</figcaption>
+  <figcaption style="text-align: center;">Figure 15: Polling</figcaption>
 </figure>
 
 ### 2. Server-Sent Events (SSE)
@@ -21,7 +21,7 @@ The following are common techniques used to facilitate real-time communication b
 
 <figure style="text-align: center">
   <img src="img_7.png" alt="SSE">
-  <figcaption style="text-align: center;">SSE</figcaption>
+  <figcaption style="text-align: center;">Figure 16: SSE</figcaption>
 </figure>
 
 ### 3. WebSockets
@@ -32,7 +32,7 @@ The following are common techniques used to facilitate real-time communication b
 
 <figure style="text-align: center">
   <img src="img_8.png" alt="Websockets">
-  <figcaption style="text-align: center;">Websockets</figcaption>
+  <figcaption style="text-align: center;">Figure 17: Websockets</figcaption>
 </figure>
 
 ### 4. Push Notifications
@@ -43,5 +43,5 @@ The following are common techniques used to facilitate real-time communication b
 
 <figure style="text-align: center">
   <img src="img_9.png" alt="Push notifications">
-  <figcaption style="text-align: center;">Push notifications</figcaption>
+  <figcaption style="text-align: center;">Figure 18: Push notifications</figcaption>
 </figure>

@@ -32,7 +32,7 @@ The following diagram models a javascript runtime (a browser's tab), which is an
 
 | ![javascript_runtime](javascript_runtime.png) |
 |-----------------------------------------------|
-| javascript runtime                            |
+| Figure 90: javascript runtime                 |
 
 
 **Javascript Engine**: runs on the main-thread an uses both the **call-stack** and the **Heap** data structures.

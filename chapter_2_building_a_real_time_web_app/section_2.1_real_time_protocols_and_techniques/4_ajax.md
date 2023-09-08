@@ -29,7 +29,7 @@ The following is a diagram that shows how an AJAX Request/Response works:
 
 <figure style="text-align: center">
   <img src="img_5.png" alt="AJAX Request Response">
-  <figcaption style="text-align: center;">AJAX Request Response</figcaption>
+  <figcaption style="text-align: center;">Figure 19: AJAX Request Response</figcaption>
 </figure>
 
 {% hint style = "tip" %}
@@ -119,7 +119,7 @@ The following diagram shows how AJAX Polling works:
 
 <figure style="text-align: center">
   <img src="img_4.png" alt="AJAX Polling">
-  <figcaption style="text-align: center;">AJAX Polling</figcaption>
+  <figcaption style="text-align: center;">Figure 20: AJAX Polling</figcaption>
 </figure>
 
 This can give the **illusion** of real-time communication by keeping the client's display updated with the latest data from the server. 

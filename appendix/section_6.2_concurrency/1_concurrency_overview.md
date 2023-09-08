@@ -15,7 +15,7 @@ The following class diagram illustrates this concept:
 
 | [![](https://mermaid.ink/img/pako:eNp1UM0KwjAMfpWS8_YCxZvu4EEQvEkvoc200B_pUlHm3t1tzIlQT0m-P_jSg46GQIJ22HU7i5eEXgUh5ltsY9A5JQrcPEhntjF8ySMmdI5cgdoHpuQI72R-2EKe2Lzqupz1V12Khwo8JY_WjG36ya6Ar-RJgRxXQy1mxwpUGEYpZo6nZ9AgOWWqIN8MMi39QbbouhVtjOWYVpDm87C8bRoV3DCcY_wYhzfwZHuL?type=png)](https://mermaid.live/edit#pako:eNp1UM0KwjAMfpWS8_YCxZvu4EEQvEkvoc200B_pUlHm3t1tzIlQT0m-P_jSg46GQIJ22HU7i5eEXgUh5ltsY9A5JQrcPEhntjF8ySMmdI5cgdoHpuQI72R-2EKe2Lzqupz1V12Khwo8JY_WjG36ya6Ar-RJgRxXQy1mxwpUGEYpZo6nZ9AgOWWqIN8MMi39QbbouhVtjOWYVpDm87C8bRoV3DCcY_wYhzfwZHuL) |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Types of concurrent execution                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Figure 86: Types of concurrent execution                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 #### difference between parallel and interleaved execution
 
@@ -65,7 +65,7 @@ The following is a state diagram that illustrates the life-cycle of a thread (pt
 
 | [![](https://mermaid.ink/img/pako:eNptkcFOwzAMQH8l8hG1F449cEDbEQ4rEhKEg0ncNSJNqtTZQNP-naShHRrk5Dw_x5F9AuU1QQMTI9PG4D7gUB9upRPpvN68ibq-E490LCAFM9hF5_DdkmhEyxi4ZFe6KMbts6F60tFSEBszjciqv-jZuH5w1duj-Vd-ojAYl_6rk779NPxXubdefcz5ZzQsOh9EoMnHoKjIi3DVfPcjCTygsRkW_VfLXJEGAxUMCaLRaXqnbEngngaS0KRQU4fRsgTpzknFyL79cgoaDpEqiKO-zBuaDu200q027MMKab4-lDXN26pgRPfi_VJ4_gYuP5SZ?type=png)](https://mermaid.live/edit#pako:eNptkcFOwzAMQH8l8hG1F449cEDbEQ4rEhKEg0ncNSJNqtTZQNP-naShHRrk5Dw_x5F9AuU1QQMTI9PG4D7gUB9upRPpvN68ibq-E490LCAFM9hF5_DdkmhEyxi4ZFe6KMbts6F60tFSEBszjciqv-jZuH5w1duj-Vd-ojAYl_6rk779NPxXubdefcz5ZzQsOh9EoMnHoKjIi3DVfPcjCTygsRkW_VfLXJEGAxUMCaLRaXqnbEngngaS0KRQU4fRsgTpzknFyL79cgoaDpEqiKO-zBuaDu200q027MMKab4-lDXN26pgRPfi_VJ4_gYuP5SZ) |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Life-cycle of a thread state diagram                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Figure 87: Life-cycle of a thread state diagram                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 {% hint style= "info" %}
 
@@ -116,7 +116,7 @@ The following diagram taken from wikipedia illustrates the interaction between t
 
 <figure style="text-align: center">
   <img src="Concepts-_Program_vs._Process_vs._Thread.jpg" alt="Process vs Thread">
-  <figcaption style="text-align: center;">Process vs Thread</figcaption>
+  <figcaption style="text-align: center;">Figure 88: Process vs Thread</figcaption>
 </figure>
 
 ### Process Life-Cycle
@@ -137,7 +137,7 @@ The following diagram shows the different process states and how each state maps
 
 <figure style="text-align: center">
   <img src="process_states.png" alt="Process life-cycle states: wikipedia">
-  <figcaption style="text-align: center;">Process life-cycle states</figcaption>
+  <figcaption style="text-align: center;">Figure 89: Process life-cycle states</figcaption>
 </figure>
 
 ### types of processes

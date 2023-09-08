@@ -11,7 +11,7 @@ So a **browser** requesting a **web application** is more accurately represented
 
 <figure>
   <img src="img_4.png" alt="Browser interacting with a web server">
-  <figcaption style="text-align: center;">Browser interacting with a web server</figcaption>
+  <figcaption style="text-align: center;">Figure 37: Browser interacting with a web server</figcaption>
 </figure>
 
 ---
@@ -22,7 +22,7 @@ So an even more accurate representation of a **browser** requesting a **Web Serv
 
 <figure>
   <img src="img_5.png" alt="web server and application source code">
-  <figcaption style="text-align: center;">Web server and application source code</figcaption>
+  <figcaption style="text-align: center;">Figure 38: Web server and application source code</figcaption>
 </figure>
 
 ---
@@ -88,7 +88,7 @@ The following is a diagram that represents different implementations of the MPM 
 
 <figure>
   <img src="img_6.png" alt="Different MPM implementations">
-  <figcaption style="text-align: center;">Different MPM implementations</figcaption>
+  <figcaption style="text-align: center;">Figure 39: Different MPM implementations</figcaption>
 </figure>
 
 ---
@@ -111,14 +111,14 @@ This diagram visually represents the interaction between browser clients, the Ap
 
 <figure>
   <img src="img_7.png" alt="Apache HTTP Server configured to use MPM prefork">
-  <figcaption style="text-align: center;">Apache HTTP Server configured to use MPM prefork</figcaption>
+  <figcaption style="text-align: center;">Figure 40: Apache HTTP Server configured to use MPM prefork</figcaption>
 </figure>
 
 ### mpm_worker
 
 <figure style="text-align: center">
   <img src="img_8.png" alt="Apache HTTP Server configured to use MPM worker">
-  <figcaption style="text-align: center;">Apache HTTP Server configured to use MPM worker</figcaption>
+  <figcaption style="text-align: center;">Figure 41: Apache HTTP Server configured to use MPM worker</figcaption>
 </figure>
 
 The `mpm_worker` module uses multiple worker processes, each of which can handle many threads, with each thread handling one connection at a time. This model allows the server to handle multiple requests concurrently with fewer resources than a process-based model.
@@ -127,7 +127,7 @@ The `mpm_worker` module uses multiple worker processes, each of which can handle
 
 <figure style="text-align: center">
   <img src="img_9.png" alt="Apache HTTP Server configured to use MPM event">
-  <figcaption style="text-align: center;">Apache HTTP Server configured to use MPM event</figcaption>
+  <figcaption style="text-align: center;">Figure 42: Apache HTTP Server configured to use MPM event</figcaption>
 </figure>
 
 In the context of the `mpm_event` module in Apache HTTP Server, "supporting threads" refers to threads that are used to handle certain parts of the request/response process, freeing up the main threads to handle other requests.
@@ -163,7 +163,6 @@ For the `mpm_worker` and `mpm_event` modules, you can use the following directiv
 
 
 Example of an Apache configuration file:
-
 
 ```apache
 <IfModule mpm_worker_module>
@@ -287,7 +286,7 @@ The following diagram illustrates the workflow of an Apache Web Server configure
 
 <figure style="text-align: center">
   <img src="img_10.png" alt="Apache configured to use mod_php with mpm_prefork">
-  <figcaption style="text-align: center;">Apache configured to use mod_php with mpm_prefork</figcaption>
+  <figcaption style="text-align: center;">Figure 43: Apache configured to use mod_php with mpm_prefork</figcaption>
 </figure>
 
 0. When the Apache HTTP Server starts up, it loads all of its configured modules, including `mod_php`. This means that the PHP interpreter becomes part of the Apache server itself.
@@ -364,7 +363,7 @@ The approach of using the **mod_php Script Execution Module** has its **Pros** a
 
 <figure>
   <img src="img_11.png" alt="Apache configured to use mod_cgi with mod_prefork">
-  <figcaption style="text-align: center;">Apache configured to use mod_cgi with mod_prefork</figcaption>
+  <figcaption style="text-align: center;">Figure 44: Apache configured to use mod_cgi with mod_prefork</figcaption>
 </figure>
 
 When Apache is configured to use `mod_cgi` and a worker process receives a HTTP request that requires the execution of a PHP script, the worker process will handle the request in the following way:
@@ -383,7 +382,7 @@ When Apache is configured to use `mod_cgi` and a worker process receives a HTTP 
 
 <figure>
   <img src="img_12.png" alt="Apache configured to use mod_cgi with mod_worker/mod_event">
-  <figcaption style="text-align: center;">Apache configured to use mod_cgi with mod_worker/mod_event</figcaption>
+  <figcaption style="text-align: center;">Figure 45: Apache configured to use mod_cgi with mod_worker/mod_event</figcaption>
 </figure>
 
 Steps:
@@ -441,7 +440,7 @@ The following diagram illustrates **mod_worker** with **mod_fastcgi**
 
 <figure>
   <img src="img_13.png" alt="Apache configured to use mod_fastcgi with mod_worker">
-  <figcaption style="text-align: center;">Apache configured to use mod_fastcgi with mod_worker</figcaption>
+  <figcaption style="text-align: center;">Figure 46: Apache configured to use mod_fastcgi with mod_worker</figcaption>
 </figure>
 
 1. The Apache master process spawns worker processes as per the configuration of the `mpm_worker` module.
@@ -460,7 +459,7 @@ The following diagram is a simplified version, that illustrates the interaction 
 
 <figure>
   <img src="img_14.png" alt="Interaction between apache web server and FPM">
-  <figcaption style="text-align: center;">Interaction between apache web server and FPM</figcaption>
+  <figcaption style="text-align: center;">Figure 47: Interaction between apache web server and FPM</figcaption>
 </figure>
 
 ---

@@ -12,7 +12,7 @@ WebSockets provide a protocol for real-time, bidirectional communication between
 
 <figure style="text-align: center">
   <img src="img_18.png" alt="websocket server in a laravel app">
-  <figcaption style="text-align: center;">Websocket server in a laravel app</figcaption>
+  <figcaption style="text-align: center;">Figure 6: Websocket server in a laravel app</figcaption>
 </figure>
 
 ### WebSocket Server Process:
@@ -24,14 +24,14 @@ The following is a diagram of the WebSocket Server running as process in the sam
 
 <figure style="text-align: center">
   <img src="img_17.png" alt="websocket server process vs web server process">
-  <figcaption style="text-align: center;">Websocket process vs web server process</figcaption>
+  <figcaption style="text-align: center;">Figure 7: Websocket process vs web server process</figcaption>
 </figure>
 
 The following is a diagram of the WebSocket Server and the Web Server each running on a different OS:
 
 <figure style="text-align: center">
   <img src="img_16.png" alt="websocket server in a separate OS">
-  <figcaption style="text-align: center;">Websocket server in a separate OS</figcaption>
+  <figcaption style="text-align: center;">Figure 8: Websocket server in a separate OS</figcaption>
 </figure>
 
 ### Laravel Applications and WebSocket Connections:
@@ -41,7 +41,7 @@ While a WebSocket connection between a client and the WebSocket server is long-l
 
 <figure style="text-align: center">
   <img src="img_15.png" alt="App terminates after sending HTTP Response">
-  <figcaption style="text-align: center;">App terminates after sending HTTP Response</figcaption>
+  <figcaption style="text-align: center;">Figure 9: App terminates after sending HTTP Response</figcaption>
 </figure>
 
 ### Laravel Application Communication with WebSocket Server:
@@ -51,7 +51,7 @@ In a typical scenario, the Laravel application doesn't communicate directly with
 
 <figure style="text-align: center">
   <img src="img_14.png" alt="Laravel app communicating with websocket server via events">
-  <figcaption style="text-align: center;">Laravel app communicating with websocket server via events</figcaption>
+  <figcaption style="text-align: center;">Figure 10: Laravel app communicating with websocket server via events</figcaption>
 </figure>
 
 ### WebSocket Servers and Clients:
@@ -61,8 +61,10 @@ In most scenarios, it's the WebSocket server that is actively pushing messages t
 
 <figure style="text-align: center">
   <img src="img_13.png" alt="Client communicating both with websocket and HTTP web servers">
-  <figcaption style="text-align: center;">Client communicating both with websocket and HTTP web servers</figcaption>
+  <figcaption style="text-align: center;">Figure 11: Client communicating both with websocket and HTTP web servers</figcaption>
 </figure>
+
+<div style="padding-top: 32px;"></div>
 
 In a typical messaging app scenario the following occurs:
 
@@ -75,7 +77,7 @@ In a typical messaging app scenario the following occurs:
 
 <figure style="text-align: center">
   <img src="img_12.png" alt="Propagation of a typical event in a websocket application">
-  <figcaption style="text-align: center;">Propagation of a typical event in a websocket application</figcaption>
+  <figcaption style="text-align: center;">Figure 12: Propagation of a typical event in a websocket application</figcaption>
 </figure>
 
 ### Clients Sending Messages to WebSocket Server:
@@ -88,5 +90,5 @@ There's still server-side application logic involved, but it's primarily for han
 
 <figure style="text-align: center">
   <img src="img_11.png" alt="Multiple clients interacting with a websocket server">
-  <figcaption style="text-align: center;">Multiple clients interacting with a websocket server</figcaption>
+  <figcaption style="text-align: center;">Figure 13: Multiple clients interacting with a websocket server</figcaption>
 </figure>

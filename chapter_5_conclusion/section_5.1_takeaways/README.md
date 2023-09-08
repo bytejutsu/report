@@ -74,22 +74,22 @@ You can clearly see the similarities between the following models:
 
 <figure style="text-align: center">
   <img src="processor_model.png" alt="Processor Model">
-  <figcaption style="text-align: center;">Processor Model</figcaption>
+  <figcaption style="text-align: center;">Figure 81: Processor Model</figcaption>
 </figure>
 
 <figure style="text-align: center">
   <img src="nginx_model.png" alt="Nginx Model">
-  <figcaption style="text-align: center;">Nginx Model</figcaption>
+  <figcaption style="text-align: center;">Figure 82: Nginx Model</figcaption>
 </figure>
 
 <figure style="text-align: center">
   <img src="javascript_runtime.png" alt="JS Runtime Model">
-  <figcaption style="text-align: center;">JS Runtime Model</figcaption>
+  <figcaption style="text-align: center;">Figure 83: JS Runtime Model</figcaption>
 </figure>
 
 <figure style="text-align: center">
   <img src="scrum_process.svg.png" alt="Scrum Model">
-  <figcaption style="text-align: center;">Scrum Model</figcaption>
+  <figcaption style="text-align: center;">Figure 84: Scrum Model</figcaption>
 </figure>
 
 ### Personal Thoughts 

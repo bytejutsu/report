@@ -90,7 +90,7 @@ The following is a sequence diagram that visually represents the interactions be
 
 <figure>
   <img src="img_15.png" alt="Application server">
-  <figcaption style="text-align: center;">Application server</figcaption>
+  <figcaption style="text-align: center;">Figure 48: Application server</figcaption>
 </figure>
 
 {% hint style="tip" %}
@@ -115,7 +115,7 @@ Here's an example configuration that balances load between two application serve
 
 <figure style="text-align: center">
   <img src="img.png" alt="More than one application server">
-  <figcaption style="text-align: center;">More than one application server</figcaption>
+  <figcaption style="text-align: center;">Figure 49: More than one application server</figcaption>
 </figure>
 
 
@@ -128,7 +128,7 @@ Here is a diagram that illustrates the example:
 
 <figure style="text-align: center">
   <img src="img_16.png" alt="Apache Load Balancer + Reverse Proxy">
-  <figcaption style="text-align: center;">Apache Load Balancer + Reverse Proxy</figcaption>
+  <figcaption style="text-align: center;">Figure 50: Apache Load Balancer + Reverse Proxy</figcaption>
 </figure>
 
 

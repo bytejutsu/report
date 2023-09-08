@@ -32,7 +32,7 @@ The following sequence diagram describes the interaction between the browser and
 
 <figure style="text-align: center">
   <img src="img_3.png" alt="Browser-Server interaction">
-  <figcaption style="text-align: center;">Browser-Server interaction</figcaption>
+  <figcaption style="text-align: center;">Figure 34: Browser-Server interaction</figcaption>
 </figure>
 
 ---
@@ -183,7 +183,7 @@ Here's an example of an HTTP response:
 
 <figure style="text-align: center">
   <img src="img_1.png" alt="HTTP response example">
-  <figcaption style="text-align: center;">HTTP response example</figcaption>
+  <figcaption style="text-align: center;">Figure 35: HTTP response example</figcaption>
 </figure>
 
 {% endhint %}
@@ -208,5 +208,5 @@ The following is a diagram that illustrates that specific scenario:
 
 <figure style="text-align: center">
   <img src="img_2.png" alt="Web app is both client and server">
-  <figcaption style="text-align: center;">Web app is both client and server</figcaption>
+  <figcaption style="text-align: center;">Figure 36: Web app is both client and server</figcaption>
 </figure>

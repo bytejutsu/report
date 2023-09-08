@@ -175,7 +175,7 @@ The Agile Scrum methodology was chosen as the primary development approach for b
 
 <figure>
   <img src="scrum_process.svg.png" alt="scrum process model">
-  <figcaption style="text-align: center;">Scrum Process Model</figcaption>
+  <figcaption style="text-align: center;">Figure 1: Scrum Process Model</figcaption>
 </figure>
 
 **Product Backlog for the Invoicing App:**

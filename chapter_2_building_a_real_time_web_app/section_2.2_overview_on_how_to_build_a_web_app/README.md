@@ -211,14 +211,14 @@ The following diagram shows the communication between the client and the server.
 
 <figure style="text-align: center">
   <img src="img_2.png" alt="Communication between the client and the server">
-  <figcaption style="text-align: center;">Communication between the client and the server</figcaption>
+  <figcaption style="text-align: center;">Figure 21: Communication between the client and the server</figcaption>
 </figure>
 
 The following workflow shows how the browser handles referenced files depending on their **type** and **referencing tag attributes**
 
 <figure style="text-align: center">
   <img src="img.png" alt="Browser workflow to handle referenced files">
-  <figcaption style="text-align: center;">Browser workflow to handle referenced files</figcaption>
+  <figcaption style="text-align: center;">Figure 22: Browser workflow to handle referenced files</figcaption>
 </figure>
 
 {% hint type = "tip" %}
@@ -824,7 +824,7 @@ The following diagram illustrates the life-cycle of a typical PHP application.
 
 <figure style="text-align: center">
   <img src="img_1.png" alt="life-cycle of a typical PHP app">
-  <figcaption style="text-align: center;">life-cycle of a typical PHP app</figcaption>
+  <figcaption style="text-align: center;">Figure 23: Life-cycle of a typical PHP app</figcaption>
 </figure>
 
 

@@ -6,14 +6,16 @@
 
 <figure style="text-align: center">
   <img src="invoicing_app_use_case.png" alt="Use-Case Diagram for Invoicing App">
-  <figcaption style="text-align: center;">Use-Case Diagram for Invoicing App</figcaption>
+  <figcaption style="text-align: center;">Figure 63: Use-Case Diagram for Invoicing App</figcaption>
 </figure>
+
+<div style="margin-top: 576px;"></div>
 
 **Class Diagram:**
 
 <figure style="text-align: center">
   <img src="invoicing_app_class_diagram.png" alt="Invoicing app class diagram">
-  <figcaption style="text-align: center;">Invoicing app class diagram</figcaption>
+  <figcaption style="text-align: center;">Figure 64: Invoicing app class diagram</figcaption>
 </figure>
 
 ---
@@ -24,7 +26,7 @@
 
 <figure style="text-align: center">
   <img src="invoicing_app_screenshots/0.png" alt="Login page">
-  <figcaption style="text-align: center;">Login page</figcaption>
+  <figcaption style="text-align: center;">Figure 65: Login page</figcaption>
 </figure>
 
 The user is able to login to access his personal information and make the invoice creation quicker by using that saved information. 
@@ -33,7 +35,7 @@ The user is able to login to access his personal information and make the invoic
 
 <figure style="text-align: center">
   <img src="invoicing_app_screenshots/1.png" alt="Dashboard for non logged in users">
-  <figcaption style="text-align: center;">Dashboard for non logged in users</figcaption>
+  <figcaption style="text-align: center;">Figure 66: Dashboard for non logged in users</figcaption>
 </figure>
 
 The default welcome page is the invoicing dashboard where the user can create an invoice without the need to create an account.
@@ -42,7 +44,7 @@ The default welcome page is the invoicing dashboard where the user can create an
 
 <figure style="text-align: center">
   <img src="invoicing_app_screenshots/2.png" alt="Dashboard for logged in users">
-  <figcaption style="text-align: center;">Dashboard for logged in users</figcaption>
+  <figcaption style="text-align: center;">Figure 67: Dashboard for logged in users</figcaption>
 </figure>
 
 However, the user doesn't need to create an account and login in order to be able to create an account.
@@ -51,7 +53,7 @@ However, the user doesn't need to create an account and login in order to be abl
 
 <figure style="text-align: center">
   <img src="invoicing_app_screenshots/3.png" alt="Dashboard">
-  <figcaption style="text-align: center;">Dashboard</figcaption>
+  <figcaption style="text-align: center;">Figure 68: Dashboard</figcaption>
 </figure>
 
 The VAT is calculated automatically for each added item
@@ -60,7 +62,7 @@ The VAT is calculated automatically for each added item
 
 <figure style="text-align: center">
   <img src="invoicing_app_screenshots/4.png" alt="Invoice logo settings">
-  <figcaption style="text-align: center;">Invoice logo settings</figcaption>
+  <figcaption style="text-align: center;">Figure 69: Invoice logo settings</figcaption>
 </figure>
 
 If the user is logged in, he can upload and save a logo that will appear on every future generated invoice. 
@@ -69,7 +71,7 @@ If the user is logged in, he can upload and save a logo that will appear on ever
 
 <figure style="text-align: center">
   <img src="invoicing_app_screenshots/5.png" alt="Customer name autocomplete">
-  <figcaption style="text-align: center;">Customer name autocomplete</figcaption>
+  <figcaption style="text-align: center;">Figure 70: Customer name autocomplete</figcaption>
 </figure>
 
 The user can add customers with their specific information. When creating an invoice the user will get customer name suggestions and its corresponding data autofilled based on the entered customer's name.
@@ -78,7 +80,7 @@ The user can add customers with their specific information. When creating an inv
 
 <figure style="text-align: center">
   <img src="invoicing_app_screenshots/6.png" alt="My customer page">
-  <figcaption style="text-align: center;">My customer page</figcaption>
+  <figcaption style="text-align: center;">Figure 71: My customer page</figcaption>
 </figure>
 
 In the "My Customers" section the user can manage his customers. The app will then use this information to help the user fill future invoices. 
@@ -87,7 +89,7 @@ In the "My Customers" section the user can manage his customers. The app will th
 
 <figure style="text-align: center">
   <img src="invoicing_app_screenshots/7.png" alt="Generated invoice example">
-  <figcaption style="text-align: center;">Generated invoice example</figcaption>
+  <figcaption style="text-align: center;">Figure 72: Generated invoice example</figcaption>
 </figure>
 
 When the user finishes entering the required information and decides to generate an invoice. Then a PDF invoice will be generated accordingly that contains a revenue stamp tax.
@@ -125,7 +127,7 @@ When the user finishes entering the required information and decides to generate
 
 <figure style="text-align: center">
   <img src="messaging_app_use_case.svg" alt="Use-Case Diagram for Messaging App">
-  <figcaption style="text-align: center;">Use-Case Diagram for Messaging App</figcaption>
+  <figcaption style="text-align: center;">Figure 73: Use-Case Diagram for Messaging App</figcaption>
 </figure>
 
 <div style="margin: 72px; padding: 72px;"></div>
@@ -134,7 +136,7 @@ When the user finishes entering the required information and decides to generate
 
 <figure style="text-align: center">
   <img src="messaging_app_class_diagram.png" alt="Messaging app class diagram">
-  <figcaption style="text-align: center;">Messaging app class diagram</figcaption>
+  <figcaption style="text-align: center;">Figure 74: Messaging app class diagram</figcaption>
 </figure>
 
 ---
@@ -143,7 +145,7 @@ When the user finishes entering the required information and decides to generate
 
 <figure style="text-align: center">
   <img src="messaging_app_screenshots/0.png" alt="Welcome page">
-  <figcaption style="text-align: center;">Welcome page</figcaption>
+  <figcaption style="text-align: center;">Figure 75: Welcome page</figcaption>
 </figure>
 
 The welcome page is the first page in the app that the user interacts with.
@@ -152,7 +154,7 @@ The welcome page is the first page in the app that the user interacts with.
 
 <figure style="text-align: center">
   <img src="messaging_app_screenshots/1.png" alt="Login page">
-  <figcaption style="text-align: center;">Login page</figcaption>
+  <figcaption style="text-align: center;">Figure 76: Login page</figcaption>
 </figure>
 
 If the needs to sign in, in order to use the app. If the user doesn't have an account he can create one. 
@@ -161,7 +163,7 @@ If the needs to sign in, in order to use the app. If the user doesn't have an ac
 
 <figure style="text-align: center">
   <img src="messaging_app_screenshots/2.png" alt="Find users">
-  <figcaption style="text-align: center;">Find users</figcaption>
+  <figcaption style="text-align: center;">Figure 77: Find users</figcaption>
 </figure>
 
 In the dashboard the user finds other users and is able to see their profiles and start a chat with any other user.
@@ -170,7 +172,7 @@ In the dashboard the user finds other users and is able to see their profiles an
 
 <figure style="text-align: center">
   <img src="messaging_app_screenshots/3.png" alt="Online user">
-  <figcaption style="text-align: center;">Online user</figcaption>
+  <figcaption style="text-align: center;">Figure 78: Online user</figcaption>
 </figure>
 
 Every user's online state is updated in real-time, so if another user is online, then all other users will see the update in real-time. The same is when a user goes offline.
@@ -179,7 +181,7 @@ Every user's online state is updated in real-time, so if another user is online,
 
 <figure style="text-align: center">
   <img src="messaging_app_screenshots/4.png" alt="Chats page">
-  <figcaption style="text-align: center;">Chats page</figcaption>
+  <figcaption style="text-align: center;">Figure 79: Chats page</figcaption>
 </figure>
 
 In the chats section the user is able to see all his chats with the other users and see if he got new messages from other users through the notifications that represent new non-read messages.
@@ -188,7 +190,7 @@ In the chats section the user is able to see all his chats with the other users 
 
 <figure style="text-align: center">
   <img src="messaging_app_screenshots/5.png" alt="Chat page">
-  <figcaption style="text-align: center;">Chat page</figcaption>
+  <figcaption style="text-align: center;">Figure 80: Chat page</figcaption>
 </figure>
 
 When a user starts a chat with another user they can exchange messages back and forth in real-time. The messages do persist after the user leaves the conversation.
