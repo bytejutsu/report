@@ -9,7 +9,7 @@
   <figcaption style="text-align: center;">Figure 63: Use-Case Diagram for Invoicing App</figcaption>
 </figure>
 
-<div style="margin-top: 576px;"></div>
+<div style="padding-top: 576px;"></div>
 
 **Class Diagram:**
 
@@ -20,7 +20,7 @@
 
 ---
 
-<div style="margin: 72px; padding: 72px;"></div>
+<div style="padding-top:576px;"></div>
 
 **Screenshots:**
 
