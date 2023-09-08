@@ -12,7 +12,8 @@
     "hints"
   ],
   "pdf": {
-    "fontSize": 18
+    "fontSize": 18,
+    "pageNumbers": false
   },
   "pluginsConfig": {
     "asciidoc": {
