@@ -33,7 +33,7 @@ Please note that I am talking about production-ready Application Servers and not
 
 {% endhint %}
 
-## 2.3 Web Server vs Application Server
+### Web Server vs Application Server
 
 Web Server and Application Server are both components used in web applications, they work in conjunction but serve different purposes. Let's compare them:
 
@@ -90,7 +90,7 @@ The following is a sequence diagram that visually represents the interactions be
 
 <figure>
   <img src="img_15.png" alt="Application server">
-  <figcaption style="text-align: center;">Figure 48: Application server</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.3.1: Application server</figcaption>
 </figure>
 
 {% hint style="tip" %}
@@ -101,7 +101,7 @@ Please keep in mind that the above scenario represents the typical use-case. All
 
 ---
 
-### more than one application server
+### More than one application server
 
 It is possible for an Apache web server to act as both a reverse proxy and a load balancer for more than one application server.
 
@@ -115,7 +115,7 @@ Here's an example configuration that balances load between two application serve
 
 <figure style="text-align: center">
   <img src="img.png" alt="More than one application server">
-  <figcaption style="text-align: center;">Figure 49: More than one application server</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.3.2: More than one application server</figcaption>
 </figure>
 
 
@@ -128,7 +128,7 @@ Here is a diagram that illustrates the example:
 
 <figure style="text-align: center">
   <img src="img_16.png" alt="Apache Load Balancer + Reverse Proxy">
-  <figcaption style="text-align: center;">Figure 50: Apache Load Balancer + Reverse Proxy</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.3.3: Apache Load Balancer + Reverse Proxy</figcaption>
 </figure>
 
 

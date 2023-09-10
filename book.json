@@ -12,12 +12,11 @@
     "hints"
   ],
   "pdf": {
-    "fontSize": 18,
-    "pageNumbers": false
+    "pageNumbers": false,
+    "fontSize": 18
   },
   "pluginsConfig": {
     "asciidoc": {
-      "chapter-fold":{},
       "hints": {
         "info": "fa fa-info-circle",
         "tip": "fa fa-mortar-board",
@@ -25,8 +24,5 @@
         "working": "fa fa-wrench"
       }
     }
-  },
-  "styles": {
-    "pdf": "_layouts/pdf.css"
   }
 }

@@ -1,0 +1,913 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Section 4.1: Invoicing App · Real-Time Modern Web Applications</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.8">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../section_4.2_messaging_app/" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../cover.html">
+            
+                <a href="../../cover.html">
+            
+                    
+                    Cover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../1_dedication/">
+            
+                <a href="../../1_dedication/">
+            
+                    
+                    Dedication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../2_acknowledgment/">
+            
+                <a href="../../2_acknowledgment/">
+            
+                    
+                    Acknowledgment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../3_abstract/">
+            
+                <a href="../../3_abstract/">
+            
+                    
+                    Abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../ManualTOC.html">
+            
+                <a href="../../ManualTOC.html">
+            
+                    
+                    Table of Content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../4_general_introduction/">
+            
+                <a href="../../4_general_introduction/">
+            
+                    
+                    General Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../chapter_1_general_context/">
+            
+                <a href="../../chapter_1_general_context/">
+            
+                    
+                    Chapter 1: General Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../chapter_2_building_a_real_time_web_app/">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/">
+            
+                    
+                    Chapter 2: Building a Real-Time Web App
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../chapter_2_building_a_real_time_web_app/section_2.1_real_time_protocols_and_techniques/">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.1_real_time_protocols_and_techniques/">
+            
+                    
+                    Section 2.1: Real-Time Protocols And Techniques
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../../chapter_2_building_a_real_time_web_app/section_2.1_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.1_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                    
+                    2.1.1: Websocket Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../../chapter_2_building_a_real_time_web_app/section_2.1_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.1_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                    
+                    2.1.2: Websocket Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../../chapter_2_building_a_real_time_web_app/section_2.1_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.1_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                    
+                    2.1.3: Real-Time Communication Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/">
+            
+                    
+                    Section 2.2: Laravel as a Backend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/1_the_scaffolding_of_a_laravel_app.html">
+            
+                    
+                    2.2.1: The Scaffolding of a Laravel App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/2_service_providers.html">
+            
+                    
+                    2.2.2: Service Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/3_facades.html">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/3_facades.html">
+            
+                    
+                    2.2.3: Facades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/4_the_rest.html">
+            
+                    
+                    2.2.4: The Rest
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../chapter_2_building_a_real_time_web_app/section_2.3_state_management_in_vue_js_3/">
+            
+                <a href="../../chapter_2_building_a_real_time_web_app/section_2.3_state_management_in_vue_js_3/">
+            
+                    
+                    Section 2.3: State Management in Vue.js 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../chapter_3_architecture_and_protocols/">
+            
+                <a href="../../chapter_3_architecture_and_protocols/">
+            
+                    
+                    Chapter 3: Architecture and Protocols
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/">
+            
+                    
+                    Section 3.1: Client Server Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/1_request_response_cycle.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/1_request_response_cycle.html">
+            
+                    
+                    3.1.1: Request Response Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/2_web_server.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/2_web_server.html">
+            
+                    
+                    3.1.2: Web Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/3_application_server.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/3_application_server.html">
+            
+                    
+                    3.1.3: Application Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/">
+            
+                    
+                    Section 3.2: Server Side Non-Blocking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.2.1" data-path="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/1_background_jobs.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/1_background_jobs.html">
+            
+                    
+                    3.2.1: Background Jobs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.2" data-path="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/2_events.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/2_events.html">
+            
+                    
+                    3.2.2: Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../chapter_3_architecture_and_protocols/section_3.3_monolithic_architecture/">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.3_monolithic_architecture/">
+            
+                    
+                    Section 3.3: Monolothic Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter 4: Technical Design and Implementation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.11.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Section 4.1: Invoicing App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../section_4.2_messaging_app/">
+            
+                <a href="../section_4.2_messaging_app/">
+            
+                    
+                    Section 4.2: Messaging App
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../general_conclusion/">
+            
+                <a href="../../general_conclusion/">
+            
+                    
+                    Chapter 5: General Conclusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Section 4.1: Invoicing App</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="section-41-invoicing-app">Section 4.1: Invoicing App</h1>
+<h2 id="411-use-case-diagram">4.1.1: <strong>Use-Case Diagram:</strong></h2>
+<figure style="text-align: center">
+  <img src="invoicing_app_use_case.png" alt="Use-Case Diagram for Invoicing App">
+  <figcaption style="text-align: center;">Figure 63: Use-Case Diagram for Invoicing App</figcaption>
+</figure>
+
+<div style="padding-top: 576px;"></div>
+
+<h2 id="412-class-diagram">4.1.2: <strong>Class Diagram:</strong></h2>
+<figure style="text-align: center">
+  <img src="invoicing_app_class_diagram.png" alt="Invoicing app class diagram">
+  <figcaption style="text-align: center;">Figure 64: Invoicing app class diagram</figcaption>
+</figure>
+
+<hr>
+<div style="margin: 16px; padding: 16px;"></div>   
+
+<h2 id="413-sprints">4.1.3: Sprints</h2>
+<p><strong>Sprint 1 Backlog for the Invoicing App:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>User Story</th>
+<th>Acceptance Criteria</th>
+<th>Estimated Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>As a user, I want to create a profile so that I can personalize my invoicing experience.</td>
+<td>User can sign up, add essential details, and upload a business logo.</td>
+<td>6 days</td>
+</tr>
+<tr>
+<td>2</td>
+<td>As a user, I want to generate an invoice without any delays.</td>
+<td>Invoices are generated in the background, ensuring the UI remains responsive.</td>
+<td>6 days</td>
+</tr>
+<tr>
+<td>3</td>
+<td>As a user, I want to see the calculated VAT automatically.</td>
+<td>VAT is automatically calculated based on entered details.</td>
+<td>2 days</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Estimated Time for Sprint 1:</strong> 14 days</p>
+<hr>
+<p><strong>Sprint 2 Backlog for the Invoicing App:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>User Story</th>
+<th>Acceptance Criteria</th>
+<th>Estimated Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>As an admin, I want to monitor user activity.</td>
+<td>Admin can log in and view users.</td>
+<td>7 days</td>
+</tr>
+<tr>
+<td>5</td>
+<td>As a user, I want to access the app without mandatory registration.</td>
+<td>Users can access basic features without obligatory registration.</td>
+<td>7 days</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Estimated Time for Sprint 2:</strong> 14 days</p>
+<hr>
+<h2 id="414-tools-used">4.1.4: Tools Used:</h2>
+<ul>
+<li><strong>Git</strong>: A distributed version control system commonly used for tracking changes in source code during software development.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="Git Logo" src="project_logos_resized/git_logo.png"></div>
+
+<ul>
+<li><strong>PhpStorm</strong>: An integrated development environment (IDE) for PHP developed by JetBrains.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="PhpStorm" src="project_logos_resized/phpstorm_logo.png"></div>
+
+<ul>
+<li><strong>Laravel</strong>: A free, open-source PHP web framework intended for the development of web applications.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="Laravel Logo" src="project_logos_resized/laravel_logo.png"></div>
+
+<ul>
+<li><strong>Node.js</strong>: A JavaScript runtime built on Chrome&apos;s V8 JavaScript engine. It&apos;s used for building scalable network applications.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="NodeJS" src="project_logos_resized/node_js_logo.svg.png"></div>
+
+<ul>
+<li><strong>WebSocket</strong>: A communication protocol that provides full-duplex communication channels over a single TCP connection. Used for real-time web applications.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="Websocket Logo" src="project_logos_resized/websocket_logo.png"></div>
+
+<ul>
+<li><strong>Apache2 Web Server</strong>: Open-source and free web server software that provides a secure and efficient HTTP server in line with current HTTP standards.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="Apache Logo" src="project_logos_resized/apache_logo.svg.png"></div>
+
+<ul>
+<li><strong>MySQL</strong>: An open-source relational database management system.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="SQLite Logo" src="project_logos_resized/sqlite_logo.png"></div>
+
+<ul>
+<li><strong>Linux</strong>: A family of open-source Unix-like operating systems based on the Linux kernel.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="Tux Logo" src="project_logos_resized/tux.png"></div>
+
+<ul>
+<li><strong>GitHub</strong>: A platform that provides hosting for software development and version control using Git.</li>
+</ul>
+<div style="text-align: center; margin: 8px;"><img alt="GitHub Logo" src="project_logos_resized/github_logo.png"></div>
+
+<h2 id="screenshots">Screenshots</h2>
+<div style="padding-top:576px;"></div>
+
+<figure style="text-align: center">
+  <img src="invoicing_app_screenshots/0.png" alt="Login page">
+  <figcaption style="text-align: center;">Figure 65: Login page</figcaption>
+</figure>
+
+<p>The user is able to login to access his personal information and make the invoice creation quicker by using that saved information.</p>
+<hr>
+<figure style="text-align: center">
+  <img src="invoicing_app_screenshots/1.png" alt="Dashboard for non logged in users">
+  <figcaption style="text-align: center;">Figure 66: Dashboard for non logged in users</figcaption>
+</figure>
+
+<p>The default welcome page is the invoicing dashboard where the user can create an invoice without the need to create an account.</p>
+<hr>
+<figure style="text-align: center">
+  <img src="invoicing_app_screenshots/2.png" alt="Dashboard for logged in users">
+  <figcaption style="text-align: center;">Figure 67: Dashboard for logged in users</figcaption>
+</figure>
+
+<p>However, the user doesn&apos;t need to create an account and login in order to be able to create an account.</p>
+<hr>
+<figure style="text-align: center">
+  <img src="invoicing_app_screenshots/3.png" alt="Dashboard">
+  <figcaption style="text-align: center;">Figure 68: Dashboard</figcaption>
+</figure>
+
+<p>The VAT is calculated automatically for each added item</p>
+<hr>
+<figure style="text-align: center">
+  <img src="invoicing_app_screenshots/4.png" alt="Invoice logo settings">
+  <figcaption style="text-align: center;">Figure 69: Invoice logo settings</figcaption>
+</figure>
+
+<p>If the user is logged in, he can upload and save a logo that will appear on every future generated invoice.</p>
+<hr>
+<figure style="text-align: center">
+  <img src="invoicing_app_screenshots/5.png" alt="Customer name autocomplete">
+  <figcaption style="text-align: center;">Figure 70: Customer name autocomplete</figcaption>
+</figure>
+
+<p>The user can add customers with their specific information. When creating an invoice the user will get customer name suggestions and its corresponding data autofilled based on the entered customer&apos;s name.</p>
+<hr>
+<figure style="text-align: center">
+  <img src="invoicing_app_screenshots/6.png" alt="My customer page">
+  <figcaption style="text-align: center;">Figure 71: My customer page</figcaption>
+</figure>
+
+<p>In the &quot;My Customers&quot; section the user can manage his customers. The app will then use this information to help the user fill future invoices.</p>
+<hr>
+<figure style="text-align: center">
+  <img src="invoicing_app_screenshots/7.png" alt="Generated invoice example">
+  <figcaption style="text-align: center;">Figure 72: Generated invoice example</figcaption>
+</figure>
+
+<p>When the user finishes entering the required information and decides to generate an invoice. Then a PDF invoice will be generated accordingly that contains a revenue stamp tax.</p>
+<hr>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Chapter 4: Technical Design and Implementation">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../section_4.2_messaging_app/" class="navigation navigation-next " aria-label="Next page: Section 4.2: Messaging App">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Section 4.1: Invoicing App","level":"1.11.1","depth":2,"next":{"title":"Section 4.2: Messaging App","level":"1.11.2","depth":2,"path":"chapter_4_technical_design_and_implementation/section_4.2_messaging_app/README.md","ref":"chapter_4_technical_design_and_implementation/section_4.2_messaging_app/README.md","articles":[]},"previous":{"title":"Chapter 4: Technical Design and Implementation","level":"1.11","depth":1,"path":"chapter_4_technical_design_and_implementation/README.md","ref":"chapter_4_technical_design_and_implementation/README.md","articles":[{"title":"Section 4.1: Invoicing App","level":"1.11.1","depth":2,"path":"chapter_4_technical_design_and_implementation/section_4.1_invoicing_app/README.md","ref":"chapter_4_technical_design_and_implementation/section_4.1_invoicing_app/README.md","articles":[]},{"title":"Section 4.2: Messaging App","level":"1.11.2","depth":2,"path":"chapter_4_technical_design_and_implementation/section_4.2_messaging_app/README.md","ref":"chapter_4_technical_design_and_implementation/section_4.2_messaging_app/README.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":false,"fontSize":18,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Real-Time Modern Web Applications"},"file":{"path":"chapter_4_technical_design_and_implementation/section_4.1_invoicing_app/README.md","mtime":"2023-09-10T14:35:26.845Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-10T17:38:57.498Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

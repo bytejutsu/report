@@ -11,7 +11,7 @@ So a **browser** requesting a **web application** is more accurately represented
 
 <figure>
   <img src="img_4.png" alt="Browser interacting with a web server">
-  <figcaption style="text-align: center;">Figure 37: Browser interacting with a web server</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.2.1: Browser interacting with a web server</figcaption>
 </figure>
 
 ---
@@ -22,7 +22,7 @@ So an even more accurate representation of a **browser** requesting a **Web Serv
 
 <figure>
   <img src="img_5.png" alt="web server and application source code">
-  <figcaption style="text-align: center;">Figure 38: Web server and application source code</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.2.2: Web server and application source code</figcaption>
 </figure>
 
 ---
@@ -88,7 +88,7 @@ The following is a diagram that represents different implementations of the MPM 
 
 <figure>
   <img src="img_6.png" alt="Different MPM implementations">
-  <figcaption style="text-align: center;">Figure 39: Different MPM implementations</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.2.3: Different MPM implementations</figcaption>
 </figure>
 
 ---
@@ -111,298 +111,17 @@ This diagram visually represents the interaction between browser clients, the Ap
 
 <figure>
   <img src="img_7.png" alt="Apache HTTP Server configured to use MPM prefork">
-  <figcaption style="text-align: center;">Figure 40: Apache HTTP Server configured to use MPM prefork</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.2.4: Apache HTTP Server configured to use MPM prefork</figcaption>
 </figure>
 
 ### mpm_worker
 
 <figure style="text-align: center">
   <img src="img_8.png" alt="Apache HTTP Server configured to use MPM worker">
-  <figcaption style="text-align: center;">Figure 41: Apache HTTP Server configured to use MPM worker</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.2.5: Apache HTTP Server configured to use MPM worker</figcaption>
 </figure>
 
 The `mpm_worker` module uses multiple worker processes, each of which can handle many threads, with each thread handling one connection at a time. This model allows the server to handle multiple requests concurrently with fewer resources than a process-based model.
-
-### mpm_event
-
-<figure style="text-align: center">
-  <img src="img_9.png" alt="Apache HTTP Server configured to use MPM event">
-  <figcaption style="text-align: center;">Figure 42: Apache HTTP Server configured to use MPM event</figcaption>
-</figure>
-
-In the context of the `mpm_event` module in Apache HTTP Server, "supporting threads" refers to threads that are used to handle certain parts of the request/response process, freeing up the main threads to handle other requests.
-
-
-In a typical web server setup, a "normal" thread (or worker thread) would handle the entire lifecycle of a client request, from accepting the connection, processing the request, sending the response, and finally closing the connection. This means that while the thread is waiting for network I/O (such as waiting for the full request to arrive or for the response to be fully sent), it can't do anything else.
-
-The `mpm_event` module improves upon this by using a different approach. When a client connection is first accepted, it's handled by a worker thread just like in `mpm_worker`. However, once the initial request has been processed and the response is being sent (or if the connection is simply being kept open for possible future requests), the connection is handed off to a separate "supporting" thread. This allows the worker thread to move on and handle other incoming requests.
-
-The supporting threads are part of a separate thread pool and are responsible for handling these "keep-alive" connections, waiting for new requests to come in on these connections, and if a new request does come in, the connection is passed back to a worker thread for processing.
-
-This approach allows `mpm_event` to handle a larger number of concurrent connections, as the worker threads are freed up to handle new requests instead of being tied up with long-lived connections. It's particularly beneficial for workloads where many connections are in the keep-alive state, waiting for new requests.
-
----
-
-<section style="background-color: aliceblue; padding: 20px; border-radius: 10px">
-
-<h3 style="color: grey; font-weight: 700;">Configuration</h3>
-
-</section>
-
-The number of worker processes and threads created by Apache HTTP Server can be configured in the Apache configuration file, typically named `httpd.conf` or `apache2.conf`, depending on your system.
-
-The specific directives you need to modify depend on the Multi-Processing Module (MPM) you are using.
-
-For the `mpm_worker` and `mpm_event` modules, you can use the following directives:
-
-- `ServerLimit`: This directive sets the maximum configured value for `MaxRequestWorkers` for the lifetime of the Apache process.
-
-- `MaxRequestWorkers`: This directive sets the limit on the total number of simultaneous requests to be served. For `mpm_worker` and `mpm_event`, this is the total number of worker threads (i.e., the product of `ServerLimit` and `ThreadsPerChild`).
-
-- `ThreadsPerChild`: This directive sets the number of threads created by each worker process.
-
-
-Example of an Apache configuration file:
-
-```apache
-<IfModule mpm_worker_module>
-    ServerLimit          16
-    StartServers         4
-    MinSpareThreads      25
-    MaxSpareThreads      75 
-    ThreadsPerChild      25
-    MaxRequestWorkers    400
-    MaxConnectionsPerChild 10000
-</IfModule>
-```
-
-In this example: 
-  * Apache would start with 4 worker processes (due to `StartServers`), 
-  * each with 25 threads (`ThreadsPerChild`). 
-  * It would allow up to 16 worker processes (`ServerLimit`).
-  * and a maximum of 400 threads (`MaxRequestWorkers`)
-  * which means that if needed, Apache could scale up to 16 processes each with 25 threads to handle heavy load.
-
-<section style="background-color: aliceblue; padding: 20px; border-radius: 10px">
-
-These configuration should be adjusted according to the server's hardware capabilities and the nature of your workload. 
-
-</section>
-
-{% hint style="danger"%}
-
-#### Terminating workers (process/threads)
-
-worker processes/threads will be terminated in case if they crash. But they will also be terminated in the following scenarios: 
-
-* Idle Timeout: For the `mpm_worker` and `mpm_event modules`, the `MaxSpareThreads` directive sets an upper limit on the number of idle worker threads. If there are more idle threads than this limit, some of the idle threads will be terminated.
-
-* System Conditions: Worker processes or threads may also be terminated due to system conditions, such as out-of-memory situations, or system shutdown or reboot.
-
-{% endhint %}
-
-{% hint style="info" %}
-
-#### creating workers (process/threads)
-
-**MaxConnectionsPerChild** Limit Reached: For the `mpm_prefork`, `mpm_worker`, and `mpm_event` modules, the `MaxConnectionsPerChild` configuration directive sets a limit on the number of requests that a worker process should handle before it is terminated and a new process is created. This can be useful for mitigating memory leaks in third-party modules or in the Apache server itself. When a worker process reaches this limit, it will not accept new connections and will terminate after finishing its current request.
-
-{% endhint %}
-
-{% hint style="info" %}
-
-The maximum number of requests that a worker process or thread can handle in Apache HTTP Server is determined by several factors and configurations:
-
-
-* **Web Server Configuration:**
-  * MaxConnectionsPerChild
-  * ThreadsPerChild
-  * MaxRequestWorkers
-  * KeepAlive and MaxKeepAliveRequests
-  * LimitRequestLine and LimitRequestFieldSize
-
-
-* **OS Configuration:**
-  * File Descriptors: limit on the total number of file descriptors
-  * TCP/IP Stack Settings
-  * Network Interface Settings
-  * Process Limits
-  * Memory Management
-  * Security Limits
-
-
-* **Hardware Resources:** 
-  * CPU
-  * Memory(RAM)
-  * Disk I/O: SSD - HDD
-  * Network Bandwidth
-  * Hardware Concurrency: number of CPUs and number of CPU cores.
-
-
-{% endhint %}
-
-
-### Dynamic Content
-
-More than often we need our web application to provide content based on the specific user's provided data.
-
-It is impossible to store all possible combinations of all the possible users that may interact with our application as static content since this would result in an infinite amount of static files.
-
-To solve this problem we need to **generate** the file (for example a html page) based on data that the user provided. If this data changes the generated content will change accordingly and hence the name **dynamic content** as opposed to **static content** that never changes.
-
-To perform the **generation** of a **dynamic content** a **script** needs to be executed. This **script** specifies how this content is going to be generated.
-
-As said before the **primary function** of a **Web Server** is to serve **static** assets. But **Web Servers**' functionality can be extended through the use of **modules**.
-
-
-{% hint style="info" %}
-
-**Handler Modules**: These modules handle specific types of content. For example, **mod_php** handles **PHP scripts**, `mod_cgi` handles CGI scripts, and `mod_dav` handles `WebDAV` publishing.
-
-{% endhint %}
-
-{% hint style="info"%}
-
-**mod_php**: is a module for the Apache HTTP server that enables the server to process PHP scripts. It is one of the ways to run PHP scripts on a web server.
-
-{% endhint %}
-
-
-{% hint style="info"%}
-
-Other than **mod_php** there is also:
-
-**mod_python**: is an Apache HTTP Server module that allows the execution of Python code within the Apache web server process. The **mod_python** is deprecated and now replaced with **mod_wsgi**
-
-**mod_jserv**: also known as Apache JServ Protocol (AJP), is an Apache module designed to enable communication between the Apache HTTP Server and Java applications running in a separate Java Virtual Machine (JVM). However, **mod_jserv** is an older technology and has been largely replaced by the Apache Tomcat Connector (mod_jk) and the Apache Tomcat Native Connector (mod_proxy_ajp) for integrating Apache with Java applications
-
-{% endhint %}
-
-----
-
-### using mod_php with mpm_prefork
-
-The following diagram illustrates the workflow of an Apache Web Server configured to use **mod_php** to execute PHP scripts and **mpm_prefork** to manage concurrency.
-
-<figure style="text-align: center">
-  <img src="img_10.png" alt="Apache configured to use mod_php with mpm_prefork">
-  <figcaption style="text-align: center;">Figure 43: Apache configured to use mod_php with mpm_prefork</figcaption>
-</figure>
-
-0. When the Apache HTTP Server starts up, it loads all of its configured modules, including `mod_php`. This means that the PHP interpreter becomes part of the Apache server itself.
-1. Then, when the Apache master process creates child processes (using the `mpm_prefork` module or any other Multi-Processing Module), each child process inherits all the capabilities of the Apache server, including all its loaded modules. This means that each child process includes an embedded PHP interpreter, because it's part of the Apache server that the child process is a copy of.
-2. When the worker process needs to execute a PHP script then:
-  0. The PHP Interpreter (PI) loads the PHP script into memory
-  1. The PHP Interpreter (PI) executes the PHP script.
-  2. The Worker Process retrieves the generated result and serves it back.
-  3. The PHP Interpreter (PI) cleans the memory that it already allocated for the PHP script.
-
-{% hint style="tip" %}
-
-### Very Important
-
-Notice how the PHP script is loaded into memory, executed and then **cleaned out**.
-
-The PHP script can be an **entire web application's business logic**.
-
-For every different single HTTP request a new instance of the **web application** will be **loaded into memory**, **executed** and then **cleaned out**.
-
-Maybe the most important thing to take home from this section is that:
-
-Regardless of the Web Server implementation or its configuration: 
-
-A Web application doesn't persist state between HTTP requests.
-
-The HTTP Protocol is a stateless protocol by design. That means there is no way to associate two or more different HTTP requests with each other.
-
-The only way to achieve a persistent state in a Web Application is to use services that are based on the **OS System Calls**.
-
-Some of those services are: Database Service, Session Service, Cache Service ...
-
-{% endhint %}
-
----
-
-### don't use mod_php with mpm_worker/mpm_event
-
-{% hint style="danger" %}
-
-**mod_php** is not thread-safe, meaning it can have issues when run in a multi-threaded environment like the one **mpm_worker** or **mpm_event** creates. This is because PHP extensions, which **mod_php** relies on, may not be designed to handle simultaneous threads and can behave unpredictably.
-
-So, if you switch Apache to use **mpm_worker** or **mpm_event**, it's generally recommended not to use **mod_php**. Instead, you would typically use a different method to process PHP scripts, such as **FastCGI** using **mod_fcgid** or **mod_proxy_fcgi** with **PHP-FPM (FastCGI Process Manager)**
-
-We will explain more about **FastCGI** and **PHP-FPM** later.
-
-{% endhint %}
-
----
-
-The approach of using the **mod_php Script Execution Module** has its **Pros** and **Cons**. Let us analyse them.
-
-#### Pros:
-
-* **Ease Of Integration**: mod_php integrates tightly with Apache. Once enabled, PHP scripts can be executed without additional setup, making it convenient for developers.
-
-
-* **Performance**: mod_php is highly optimized for performance because it runs PHP code directly within the Apache server process. This eliminates the need for launching separate PHP processes for each request, resulting in faster execution compared to CGI or FastCGI approaches.
-
-#### Cons:
-
-* **Limited scalability**: mod_php is not ideal for high-traffic websites or applications with a heavy load. As each Apache worker process handles both serving static files and executing PHP scripts, scaling PHP applications may require scaling the entire Apache server, which can be resource-intensive.
-
-
-* **Lack of process isolation**: Since mod_php runs PHP code within the Apache process, there is no strict process isolation. If a PHP script crashes or consumes excessive resources, it can affect the stability and performance of the entire server.
-
-
-* **Security risks**: Running PHP within the Apache process raises potential security concerns. If a PHP script has a vulnerability, it could potentially affect the entire server and compromise its security. Careful consideration and security measures are necessary to mitigate these risks.
-
-
-## mod_cgi
-
-### mod_cgi with mod_prefork
-
-<figure>
-  <img src="img_11.png" alt="Apache configured to use mod_cgi with mod_prefork">
-  <figcaption style="text-align: center;">Figure 44: Apache configured to use mod_cgi with mod_prefork</figcaption>
-</figure>
-
-When Apache is configured to use `mod_cgi` and a worker process receives a HTTP request that requires the execution of a PHP script, the worker process will handle the request in the following way:
-
-1. The worker process will start a separate CGI process. This is a completely new process, separate from the worker process.
-2. The worker process passes the request information to the CGI process. This information includes the request method, the URL, any query string parameters, headers, and the body of the request, if applicable.
-3. The CGI process will then load the PHP interpreter, which will execute the PHP script. The PHP script has access to the request information via predefined variables.
-4. The PHP script generates a response, which is sent back to the CGI process. This response typically includes HTTP headers and a body, which is the output of the PHP script.
-5. The CGI process sends this response back to the worker process.
-6. The worker process then sends the response back to the client.
-7. After the response is sent, the CGI process is terminated. This means that for each request that requires the execution of a PHP script, a new CGI process is created and terminated.
-
----
-
-### mod_cgi with mod_worker/mod_event
-
-<figure>
-  <img src="img_12.png" alt="Apache configured to use mod_cgi with mod_worker/mod_event">
-  <figcaption style="text-align: center;">Figure 45: Apache configured to use mod_cgi with mod_worker/mod_event</figcaption>
-</figure>
-
-Steps:
-
-1. The Apache master process starts and initializes the `mpm_worker` or `mpm_event` module.
-2. The `mpm_worker` or `mpm_event` module creates a fixed number of worker processes. Each of these worker processes can handle many threads, and each thread can handle one connection at a time.
-3. When a request comes in that requires the execution of a PHP script (like "public/index.php"), one of the worker threads within a worker process is assigned to handle the request.
-4. This worker thread accesses the "public/index.php" file, reads its content, and if Apache is configured to use `mod_cgi`, it will spawn a separate CGI process to execute the PHP script.
-5. The CGI process executes the PHP script and generates a response, which is sent back to the worker thread.
-6. The worker thread then sends the response back to the client.
-
----
-
-{% hint style="info" %}
-
-### mod_cgi caveat
-
-This is part of the reason why `CGI` can be less efficient than other methods like `mod_php` or `mod_fastcgi`. Each new request that requires script execution results in the creation of a new process, which can be resource-intensive. Once the script execution is complete and the response is sent, the CGI process is terminated.
-
-{% endhint %}
 
 ---
 
@@ -440,7 +159,7 @@ The following diagram illustrates **mod_worker** with **mod_fastcgi**
 
 <figure>
   <img src="img_13.png" alt="Apache configured to use mod_fastcgi with mod_worker">
-  <figcaption style="text-align: center;">Figure 46: Apache configured to use mod_fastcgi with mod_worker</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.2.6: Apache configured to use mod_fastcgi with mod_worker</figcaption>
 </figure>
 
 1. The Apache master process spawns worker processes as per the configuration of the `mpm_worker` module.
@@ -459,7 +178,7 @@ The following diagram is a simplified version, that illustrates the interaction 
 
 <figure>
   <img src="img_14.png" alt="Interaction between apache web server and FPM">
-  <figcaption style="text-align: center;">Figure 47: Interaction between apache web server and FPM</figcaption>
+  <figcaption style="text-align: center;">Figure 3.1.2.7: Interaction between apache web server and FPM</figcaption>
 </figure>
 
 ---

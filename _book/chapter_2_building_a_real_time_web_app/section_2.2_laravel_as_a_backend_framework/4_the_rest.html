@@ -1,0 +1,993 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>2.2.4: The Rest · Real-Time Modern Web Applications</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.8">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../section_2.3_state_management_in_vue_js_3/" />
+    
+    
+    <link rel="prev" href="3_facades.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../cover.html">
+            
+                <a href="../../cover.html">
+            
+                    
+                    Cover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../1_dedication/">
+            
+                <a href="../../1_dedication/">
+            
+                    
+                    Dedication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../2_acknowledgment/">
+            
+                <a href="../../2_acknowledgment/">
+            
+                    
+                    Acknowledgment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../3_abstract/">
+            
+                <a href="../../3_abstract/">
+            
+                    
+                    Abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../ManualTOC.html">
+            
+                <a href="../../ManualTOC.html">
+            
+                    
+                    Table of Content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../4_general_introduction/">
+            
+                <a href="../../4_general_introduction/">
+            
+                    
+                    General Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../chapter_1_general_context/">
+            
+                <a href="../../chapter_1_general_context/">
+            
+                    
+                    Chapter 1: General Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter 2: Building a Real-Time Web App
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../section_2.1_real_time_protocols_and_techniques/">
+            
+                <a href="../section_2.1_real_time_protocols_and_techniques/">
+            
+                    
+                    Section 2.1: Real-Time Protocols And Techniques
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../section_2.1_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                <a href="../section_2.1_real_time_protocols_and_techniques/1_websocket_server.html">
+            
+                    
+                    2.1.1: Websocket Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../section_2.1_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                <a href="../section_2.1_real_time_protocols_and_techniques/2_websocket_client.html">
+            
+                    
+                    2.1.2: Websocket Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../section_2.1_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                <a href="../section_2.1_real_time_protocols_and_techniques/3_real_time_communication_techniques.html">
+            
+                    
+                    2.1.3: Real-Time Communication Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Section 2.2: Laravel as a Backend Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="1_the_scaffolding_of_a_laravel_app.html">
+            
+                <a href="1_the_scaffolding_of_a_laravel_app.html">
+            
+                    
+                    2.2.1: The Scaffolding of a Laravel App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="2_service_providers.html">
+            
+                <a href="2_service_providers.html">
+            
+                    
+                    2.2.2: Service Providers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="3_facades.html">
+            
+                <a href="3_facades.html">
+            
+                    
+                    2.2.3: Facades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.2.4" data-path="4_the_rest.html">
+            
+                <a href="4_the_rest.html">
+            
+                    
+                    2.2.4: The Rest
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../section_2.3_state_management_in_vue_js_3/">
+            
+                <a href="../section_2.3_state_management_in_vue_js_3/">
+            
+                    
+                    Section 2.3: State Management in Vue.js 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../chapter_3_architecture_and_protocols/">
+            
+                <a href="../../chapter_3_architecture_and_protocols/">
+            
+                    
+                    Chapter 3: Architecture and Protocols
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/">
+            
+                    
+                    Section 3.1: Client Server Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/1_request_response_cycle.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/1_request_response_cycle.html">
+            
+                    
+                    3.1.1: Request Response Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/2_web_server.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/2_web_server.html">
+            
+                    
+                    3.1.2: Web Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/3_application_server.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.1_client_server_architecture/3_application_server.html">
+            
+                    
+                    3.1.3: Application Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/">
+            
+                    
+                    Section 3.2: Server Side Non-Blocking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.2.1" data-path="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/1_background_jobs.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/1_background_jobs.html">
+            
+                    
+                    3.2.1: Background Jobs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.2" data-path="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/2_events.html">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.2_server_side_non_blocking/2_events.html">
+            
+                    
+                    3.2.2: Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../chapter_3_architecture_and_protocols/section_3.3_monolithic_architecture/">
+            
+                <a href="../../chapter_3_architecture_and_protocols/section_3.3_monolithic_architecture/">
+            
+                    
+                    Section 3.3: Monolothic Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../chapter_4_technical_design_and_implementation/">
+            
+                <a href="../../chapter_4_technical_design_and_implementation/">
+            
+                    
+                    Chapter 4: Technical Design and Implementation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../chapter_4_technical_design_and_implementation/section_4.1_invoicing_app/">
+            
+                <a href="../../chapter_4_technical_design_and_implementation/section_4.1_invoicing_app/">
+            
+                    
+                    Section 4.1: Invoicing App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../chapter_4_technical_design_and_implementation/section_4.2_messaging_app/">
+            
+                <a href="../../chapter_4_technical_design_and_implementation/section_4.2_messaging_app/">
+            
+                    
+                    Section 4.2: Messaging App
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../general_conclusion/">
+            
+                <a href="../../general_conclusion/">
+            
+                    
+                    Chapter 5: General Conclusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >2.2.4: The Rest</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="224-the-rest">2.2.4: The Rest</h2>
+<p>The rest of Laravel framework is basically syntactic sugar built on top of:</p>
+<ol>
+<li>The Kernels</li>
+<li>The Service Container</li>
+<li>The Facades</li>
+</ol>
+<div class="overflow-auto">
+<table>
+<thead>
+<tr>
+<th>Facade</th>
+<th>Class</th>
+<th>Service Container Binding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Foundation/Application.html" target="_blank">Illuminate\Foundation\Application</a></td>
+<td><code>app</code></td>
+</tr>
+<tr>
+<td>Artisan</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Console/Kernel.html" target="_blank">Illuminate\Contracts\Console\Kernel</a></td>
+<td><code>artisan</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Auth/AuthManager.html" target="_blank">Illuminate\Auth\AuthManager</a></td>
+<td><code>auth</code></td>
+</tr>
+<tr>
+<td>Auth (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Auth/Guard.html" target="_blank">Illuminate\Contracts\Auth\Guard</a></td>
+<td><code>auth.driver</code></td>
+</tr>
+<tr>
+<td>Blade</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/View/Compilers/BladeCompiler.html" target="_blank">Illuminate\View\Compilers\BladeCompiler</a></td>
+<td><code>blade.compiler</code></td>
+</tr>
+<tr>
+<td>Broadcast</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Broadcasting/Factory.html" target="_blank">Illuminate\Contracts\Broadcasting\Factory</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Broadcast (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Broadcasting/Broadcaster.html" target="_blank">Illuminate\Contracts\Broadcasting\Broadcaster</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Bus</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Bus/Dispatcher.html" target="_blank">Illuminate\Contracts\Bus\Dispatcher</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Cache</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Cache/CacheManager.html" target="_blank">Illuminate\Cache\CacheManager</a></td>
+<td><code>cache</code></td>
+</tr>
+<tr>
+<td>Cache (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Cache/Repository.html" target="_blank">Illuminate\Cache\Repository</a></td>
+<td><code>cache.store</code></td>
+</tr>
+<tr>
+<td>Config</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Config/Repository.html" target="_blank">Illuminate\Config\Repository</a></td>
+<td><code>config</code></td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Cookie/CookieJar.html" target="_blank">Illuminate\Cookie\CookieJar</a></td>
+<td><code>cookie</code></td>
+</tr>
+<tr>
+<td>Crypt</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Encryption/Encrypter.html" target="_blank">Illuminate\Encryption\Encrypter</a></td>
+<td><code>encrypter</code></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Support/DateFactory.html" target="_blank">Illuminate\Support\DateFactory</a></td>
+<td><code>date</code></td>
+</tr>
+<tr>
+<td>DB</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Database/DatabaseManager.html" target="_blank">Illuminate\Database\DatabaseManager</a></td>
+<td><code>db</code></td>
+</tr>
+<tr>
+<td>DB (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Database/Connection.html" target="_blank">Illuminate\Database\Connection</a></td>
+<td><code>db.connection</code></td>
+</tr>
+<tr>
+<td>Event</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Events/Dispatcher.html" target="_blank">Illuminate\Events\Dispatcher</a></td>
+<td><code>events</code></td>
+</tr>
+<tr>
+<td>File</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Filesystem/Filesystem.html" target="_blank">Illuminate\Filesystem\Filesystem</a></td>
+<td><code>files</code></td>
+</tr>
+<tr>
+<td>Gate</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Auth/Access/Gate.html" target="_blank">Illuminate\Contracts\Auth\Access\Gate</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Hash</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Hashing/Hasher.html" target="_blank">Illuminate\Contracts\Hashing\Hasher</a></td>
+<td><code>hash</code></td>
+</tr>
+<tr>
+<td>Http</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Http/Client/Factory.html" target="_blank">Illuminate\Http\Client\Factory</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Lang</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Translation/Translator.html" target="_blank">Illuminate\Translation\Translator</a></td>
+<td><code>translator</code></td>
+</tr>
+<tr>
+<td>Log</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Log/LogManager.html" target="_blank">Illuminate\Log\LogManager</a></td>
+<td><code>log</code></td>
+</tr>
+<tr>
+<td>Mail</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Mail/Mailer.html" target="_blank">Illuminate\Mail\Mailer</a></td>
+<td><code>mailer</code></td>
+</tr>
+<tr>
+<td>Notification</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Notifications/ChannelManager.html" target="_blank">Illuminate\Notifications\ChannelManager</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Password</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html" target="_blank">Illuminate\Auth\Passwords\PasswordBrokerManager</a></td>
+<td><code>auth.password</code></td>
+</tr>
+<tr>
+<td>Password (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Auth/Passwords/PasswordBroker.html" target="_blank">Illuminate\Auth\Passwords\PasswordBroker</a></td>
+<td><code>auth.password.broker</code></td>
+</tr>
+<tr>
+<td>Pipeline (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Pipeline/Pipeline.html" target="_blank">Illuminate\Pipeline\Pipeline</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Queue</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Queue/QueueManager.html" target="_blank">Illuminate\Queue\QueueManager</a></td>
+<td><code>queue</code></td>
+</tr>
+<tr>
+<td>Queue (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Queue/Queue.html" target="_blank">Illuminate\Contracts\Queue\Queue</a></td>
+<td><code>queue.connection</code></td>
+</tr>
+<tr>
+<td>Queue (Base Class)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Queue/Queue.html" target="_blank">Illuminate\Queue\Queue</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Redirect</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Routing/Redirector.html" target="_blank">Illuminate\Routing\Redirector</a></td>
+<td><code>redirect</code></td>
+</tr>
+<tr>
+<td>Redis</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Redis/RedisManager.html" target="_blank">Illuminate\Redis\RedisManager</a></td>
+<td><code>redis</code></td>
+</tr>
+<tr>
+<td>Redis (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Redis/Connections/Connection.html" target="_blank">Illuminate\Redis\Connections\Connection</a></td>
+<td><code>redis.connection</code></td>
+</tr>
+<tr>
+<td>Request</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Http/Request.html" target="_blank">Illuminate\Http\Request</a></td>
+<td><code>request</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Routing/ResponseFactory.html" target="_blank">Illuminate\Contracts\Routing\ResponseFactory</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Response (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Http/Response.html" target="_blank">Illuminate\Http\Response</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Route</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Routing/Router.html" target="_blank">Illuminate\Routing\Router</a></td>
+<td><code>router</code></td>
+</tr>
+<tr>
+<td>Schema</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Database/Schema/Builder.html" target="_blank">Illuminate\Database\Schema\Builder</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Session</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Session/SessionManager.html" target="_blank">Illuminate\Session\SessionManager</a></td>
+<td><code>session</code></td>
+</tr>
+<tr>
+<td>Session (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Session/Store.html" target="_blank">Illuminate\Session\Store</a></td>
+<td><code>session.store</code></td>
+</tr>
+<tr>
+<td>Storage</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Filesystem/FilesystemManager.html" target="_blank">Illuminate\Filesystem\FilesystemManager</a></td>
+<td><code>filesystem</code></td>
+</tr>
+<tr>
+<td>Storage (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Contracts/Filesystem/Filesystem.html" target="_blank">Illuminate\Contracts\Filesystem\Filesystem</a></td>
+<td><code>filesystem.disk</code></td>
+</tr>
+<tr>
+<td>URL</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Routing/UrlGenerator.html" target="_blank">Illuminate\Routing\UrlGenerator</a></td>
+<td><code>url</code></td>
+</tr>
+<tr>
+<td>Validator</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Validation/Factory.html" target="_blank">Illuminate\Validation\Factory</a></td>
+<td><code>validator</code></td>
+</tr>
+<tr>
+<td>Validator (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Validation/Validator.html" target="_blank">Illuminate\Validation\Validator</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>View</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/View/Factory.html" target="_blank">Illuminate\View\Factory</a></td>
+<td><code>view</code></td>
+</tr>
+<tr>
+<td>View (Instance)</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/View/View.html" target="_blank">Illuminate\View\View</a></td>
+<td> </td>
+</tr>
+<tr>
+<td>Vite</td>
+<td><a href="https://laravel.com/api/10.x/Illuminate/Foundation/Vite.html" target="_blank">Illuminate\Foundation\Vite</a></td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="3_facades.html" class="navigation navigation-prev " aria-label="Previous page: 2.2.3: Facades">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../section_2.3_state_management_in_vue_js_3/" class="navigation navigation-next " aria-label="Next page: Section 2.3: State Management in Vue.js 3">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.2.4: The Rest","level":"1.9.2.4","depth":3,"next":{"title":"Section 2.3: State Management in Vue.js 3","level":"1.9.3","depth":2,"path":"chapter_2_building_a_real_time_web_app/section_2.3_state_management_in_vue_js_3/README.md","ref":"chapter_2_building_a_real_time_web_app/section_2.3_state_management_in_vue_js_3/README.md","articles":[]},"previous":{"title":"2.2.3: Facades","level":"1.9.2.3","depth":3,"path":"chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/3_facades.md","ref":"chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/3_facades.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","hide-published-with","hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"asciidoc":{"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-cicle","working":"fa fa-wrench"}},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"copyright":"Dhia Eddine Nabli","authors":["Dhia Eddine Nabli"],"theme":"default","keywords":["PHP","JS"],"pdf":{"pageNumbers":false,"fontSize":18,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Real-Time Modern Web Applications","language":"en","gitbook":"*","description":"Real-Time Modern Web Applications"},"file":{"path":"chapter_2_building_a_real_time_web_app/section_2.2_laravel_as_a_backend_framework/4_the_rest.md","mtime":"2023-09-10T14:46:08.322Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-09-10T17:38:57.498Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

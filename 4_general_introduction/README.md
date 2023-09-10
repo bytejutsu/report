@@ -1,4 +1,4 @@
-# Chapter 1: General Introduction
+# General Introduction
 
 In today's digital age, the demand for real-time web applications has surged, driven not only by the need for instant communication but also by the desire for efficient business processes. This shift is transforming the landscape of web applications, making real-time features such as instant messaging, push notifications, real-time updates, and live chat essential components. Equally important are features that streamline business operations, such as real-time invoice generation, automatic VAT calculations, and background processing, which enhance user experience in business-centric applications.
 
@@ -37,8 +37,7 @@ In the following chapters:
 - **Chapter 2:** Building a Real-Time Web App
 - **Chapter 3:** Architecture and Protocols
 - **Chapter 4:** Technical Design and Implementation
-- **Chapter 5:** Conclusion
-- **Appendix** 
+- **General Conclusion**
 
 we will delve deeper into the specifics of real-time web applications and business-centric applications, exploring their features, benefits, challenges, and the technologies that make them possible.
 

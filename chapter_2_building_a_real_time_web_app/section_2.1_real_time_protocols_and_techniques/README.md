@@ -66,10 +66,3 @@ Because WebRTC is a peer to peer protocol. Usually the caller doesn't know enoug
 For this reason, in real-world applications, there is typically a signaling server involved that helps to exchange information between the caller and callee.
 
 {% endhint %}
-
-The following diagram illustrates a more practical use-case where a signaling server is involved to help exchange information between the caller and callee.
-
-<figure>
-  <img src="img.png" alt="WebRTC practical use-case">
-  <figcaption style="text-align: center;">Figure 5: WebRTC practical use-case</figcaption>
-</figure>
